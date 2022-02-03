@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<HTML lang="en">
+
+<!-- Links -->
+<link rel="stylesheet" type="text/css" href="css/theme.css" media="all" />
+<script src="javascript/race.js"></script>
+<script src="javascript/alliance.js"></script>
+<script src="javascript/fightingstyle.js"></script> <!-- Turned off -->
+<script src="javascript/haki.js"></script>
+<script src="javascript/devilfruit.js"></script>
+<script src="javascript/bounty.js"></script>
+
+<head>
+	<h1><center>One Piece Character Generator</center></h1>
+</head>
+<body onload="javascript()">
+	<table>
+		<tr style="background-color: #E6E6E6;">
+			<th style="width: 16%;">Info</th>
+		    <th style="width: 28%;">1st Year</th>
+		    <th style="width: 28%;">After 2 Years</th>
+		    <th style="width: 28%;">After 10 years</th>
+  		</tr>
+  		<tr>
+		    <td>Name</td>
+		    <td colspan="3"><input type="text" id="fname" name="fname" style="text-align: center;"></td>
+  		</tr>
+  		<tr>
+		    <td>Nickname</td>
+		    <td colspan="3"><input type="text" id="fname" name="fname" style="text-align: center;"></td>
+  		</tr>
+  		<tr>
+		    <td>Race</td>
+		    <td colspan="3" style="text-align: center;"><h5 id="race"><input type="button" value="Generate" onclick="race();"/></h5></td>
+  		</tr>
+  		<tr>
+		    <td>Gender</td>
+		    <td colspan="3"><select id="gender">
+  					<option value="male"><h6>Male</h6></option>
+  					<option value="female"><h6>Female</h6></option>
+  					<option value="other"><h6>Other</h6></option>
+				</select>
+			</td>
+  		</tr>
+  		<tr>
+		    <td>Alliance</td>
+		    <td><h5 id="alliance"><input type="button" value="Generate" onclick="generateAlliance();" /></h5></td>
+		    <td>Mexico</td>
+		    <td>Germany</td>
+  		</tr>
+  		<tr>
+		    <td>Rank (within the alliance)</td>
+		    <td><h5 id="rank"><input type="button" value="Generate" onclick="assignRank();"/></h5></td>
+		    <td>Mexico</td>
+		    <td>Germany</td>
+  		</tr>
+  		<tr>
+		    <td>Fighting Style</td>
+		    <td><h5 id="fighting"><input type="button" value="Generate" onclick="generatefighting()()"></h5></td>
+		    <td>Mexico</td>
+		    <td>Germany</td>
+  		</tr>
+  		<tr>
+		    <td>Advanced Haki</td>
+		    <td><h5 id="haki"><input type="button" value="Generate" onclick="assignhaki();"/></h5></td>
+		    <td>Mexico</td>
+		    <td>Germany</td>
+  		</tr>
+  		<tr>
+		    <td>Devil-fruit</td>
+		    <td><h5 id="devilfruit"><input type="button" value="Generate" onclick="generatedevilfruit();"/></h5></td>
+		    <td>Mexico</td>
+		    <td>Germany</td>
+  		</tr>
+  		<tr>
+		    <td>Devil-fruit (specified)</td>
+		    <td><h5 id="df"><input type="button" value="Generate" onclick="assigndevilfruit()"></h5></td>
+		    <td>Mexico</td>
+		    <td>Germany</td>
+  		</tr>
+  		<tr>
+		    <td>Feat</td>
+		    <td><input type="button" value="Generate" onclick=""></td>
+		    <td>Mexico</td>
+		    <td>Germany</td>
+  		</tr>
+  		<tr>
+		    <td >Bounty</td>
+		    <td>
+		    	<h5 id="bounty"></h5><h6 id="bounty1" style="color: green;">
+		    		<input type="button" value="Generate" onclick="calcSum()">
+		    <td>
+		    	<h5 id="bounty22"></h5><h6 id="bounty2" style="color: green;">
+		    		<input type="button" value="Generate" onclick="calcSum()">
+		    </td>
+		    <td>
+		    	<h5 id="bounty33"></h5><h6 id="bounty3" style="color: green;">
+		    		<input type="button" value="Generate" onclick="calcSum()">
+		    </td>
+  		</tr>
+	</table>
+</body>
+</html>
