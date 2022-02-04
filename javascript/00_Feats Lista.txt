@@ -1,0 +1,44 @@
+Feats (if Revolucionary Army):
+      Attacked a Government country. 
+      Leaked sensitive Government information. 
+      Stole a rare evil fruit from the Government.
+      Participated in a war. 
+      Released slaves from a Government ally.
+----------------------------------------------------------------------
+Feats (if Marine):
+      Captured a 40,000,000 bounty pirate all by himself.
+      Defeated a small group of pirates.
+      Helped save a country.
+      Captured a 20,000,000 bounty pirate all by himself.
+----------------------------------------------------------------------
+Feats (if Pirate):
+      Stole a town's supplies.
+      Defeated a small group of pirates.
+      Defeated a Marine's Captain.
+      Defeated a Shichibukai.
+      Defeated a Yonko.
+      Is investigating the poneglifs.
+      Escaped Impel Down.
+      Stormed a Marine's fortress.
+      Defeated a notorious pirate.
+      Stole a rare evil fruit from the Government.
+----------------------------------------------------------------------
+Feats (if Bounty Hunter):
+      Captured a 40,000,000 bounty criminal.
+      Defeated a small group of pirates.
+      Defeated a Marine's Captain.
+      Captured a 20,000,000 bounty criminal.
+      Captured a 5,000,000 bounty criminal.
+----------------------------------------------------------------------
+Feats (if Cipher Pol):
+      Adquired information about a poneglif.
+      Spied on a Yonko.
+      Contained a possible leak of sensitive Government information.
+      Completed a secret mission from the Government.
+      Defeated a notorious pirate.
+----------------------------------------------------------------------
+Feats (if World Nobles):
+      Attacked a neighboring country.
+      Denied his past and royal family.
+      Destroyed an enemy's facility.
+      Allied with pirates.
