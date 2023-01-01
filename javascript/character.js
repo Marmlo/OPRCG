@@ -28,7 +28,7 @@ function capFirst(alli) {
     return alli.charAt(0).toUpperCase() + alli.slice(1);
     }
 
-let racesWeighted = ["Human","Giant","Ancient Giant","Frost Giant","Fishman","Merfolk","Skypiean", "Lunarian", "Mink", "Tontatta", "Oni", "Cyborg", "Hybrid"];
+let racesWeighted = ['Human', 'Giant', 'Ancient Giant', 'Frost Giant', 'Fishman', 'Merfolk', 'Skypiean', 'Lunarian', 'Mink', 'Tontatta', 'Oni', 'Cyborg', 'Hybrid']
 let racesWeights = [10, 3, 1, 1, 4, 2, 1, 1, 1, 1, 1, 1, 3]
 
 function race() {
@@ -53,37 +53,26 @@ function weightedRandom(items, weights) {
     return items[i];
 }
 
-function raceOld(){
-      var races = ["Human","Giant","Ancient Giant","Frost Giant","Fishman","Merfolk","Skipean", "Lunarian", "Mink", "Tonnata", "Oni", "Cyborg", "Hybrid"
-      ,"Human","Giant","Human","Human","Fishman","Merfolk","Fishman", "Human", "Hybrid", "Fishman", "Human", "Human", "Hybrid"
-      ,"Human","Giant","Human","Human"];
-
-      race = capFirst(races[getRandomInt(0, races.length + 1)]);
-      document.getElementById("race").innerHTML = race;
-}
-
 function getRandomInt(min, max) {
       return Math.floor(Math.random() * (max - min)) + min;
 }
 
-    /* 
-
-    Odds:
-      Human             - 10/30 - 33%
-      Giant         - 3/30 - 09%    
-      Ancient Giant   - 1/30 - 03%    
-      Frost Giant       - 1/30 - 03%  
-      Fishman       - 4/30 - 12%  
-      Merfolk           - 2/30 - 06%  
-      Skipean       - 1/30 - 03%  
-      Lunarian      - 1/30 - 03%  
-      Mink        - 1/30 - 03%  
-      Tonnata     - 1/30 - 03%  
-      Oni       - 1/30 - 04%  
-      Cyborg      - 1/30 - 04%  
-      Hybrid            - 3/30 - 09%  
-
-    */
+/* 
+Odds:
+  Human         - 10/30 ≈ 33%
+  Fishman       - 4/30 ≈ 13%
+  Giant         - 3/30 ≈ 10%
+  Hybrid        - 3/30 ≈ 10%
+  Merfolk       - 2/30 ≈ 7%
+  Ancient Giant - 1/30 ≈ 3%
+  Frost Giant   - 1/30 ≈ 3%
+  Skypiean      - 1/30 ≈ 3%
+  Lunarian      - 1/30 ≈ 3%
+  Mink          - 1/30 ≈ 3%
+  Tontatta      - 1/30 ≈ 3%
+  Oni           - 1/30 ≈ 3%
+  Cyborg        - 1/30 ≈ 3%
+*/
 
     
 // Alliance ---------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -94,7 +83,7 @@ function capFirst(alli) {
 
 function generateAlliance(){
       var alliances = ["Revolutionary Army","Marine","Pirate","Bounty Hunter","Cipher Pol","World Nobles"
-      				,"Revolutionary Army","Marine","Pirate","Bounty Hunter","Marine","Pirate"];
+                      ,"Revolutionary Army","Marine","Pirate","Bounty Hunter","Marine","Pirate"];
 
       alliance = capFirst(alliances[getRandomInt(0, alliances.length + 1)]);
       document.getElementById("alliance").innerHTML = alliance;
@@ -104,17 +93,17 @@ function getRandomInt(min, max) {
       return Math.floor(Math.random() * (max - min)) + min;
 }
 
-	/* 
+    /* 
 
     Odds:
       Revolutionary Army - 2/12 - 16,6%
-      Marine    		 - 3/12 - 25,0%
-      Pirate 		 	 - 3/12 - 25,0%
+      Marine             - 3/12 - 25,0%
+      Pirate               - 3/12 - 25,0%
       Bounty Hunter      - 2/12 - 16,6%
-      Cipher Pol    	 - 1/12 - 08,3%
-      World Nobles  	 - 1/12 - 08,3%
+      Cipher Pol         - 1/12 - 08,3%
+      World Nobles       - 1/12 - 08,3%
 
-	*/
+    */
 
 // Alliance2 -----
 
@@ -464,9 +453,9 @@ function generatefighting(){
      fightings = ["Six power"];
   } else if(rank === "Seaman") {  // ---------------------------------------------- Marine
      fightings = ["Gunsmanship","Swordsmanship"];
-  } else if(rank === "Choreboy") { 						
+  } else if(rank === "Choreboy") {                         
      fightings = ["Gunsmanship","Swordsmanship","Fists"];
-  } else if(rank === "Swordsman") {   // ------------------------------------------ Pirate			
+  } else if(rank === "Swordsman") {   // ------------------------------------------ Pirate            
      fightings = ["Swordsmanship","Samurai"];    
   } else if(rank === "Sniper") {
      fightings = ["Gunsmanship"];
@@ -479,7 +468,7 @@ function generatefighting(){
   } else if(race === "Merfolk") {  // --------------------------------------------- Merfolk Race
      fightings = ["Fishman karate","Swordsmanship","Gunsmanship","Six power","Dragon Claw","Freestyle","Black leg","Fists","Samurai"];      
   } else {                         // --------------------------------------------- Rest
-  	 fightings = ["Swordsmanship","Gunsmanship","Six power","Dragon Claw","Freestyle","Black leg","Fists","Samurai"]
+       fightings = ["Swordsmanship","Gunsmanship","Six power","Dragon Claw","Freestyle","Black leg","Fists","Samurai"]
   }
 
   fighting = capFirst(fightings[getRandomInt(0, fightings.length + 1)]);
@@ -555,7 +544,7 @@ function assignhaki(){
       document.getElementById("haki").innerHTML = haki;
 }
 
-	/* 
+    /* 
 
     Odds:
       Conquerors  - 4/25 - 16%
@@ -579,9 +568,9 @@ function assignhaki(){
       Observation - 13/25 - 52%
       None        - 0/25 - 00%
       Two Haki    - 3/25 - 12%
-      Three Haki  - 1/25 - 04%  
+      Three Haki  - 1/25 - 04%
 
-	*/
+    */
 
 // Haki 2 -----------------
 
@@ -660,7 +649,7 @@ function getRandomInt(min, max) {
       return Math.floor(Math.random() * (max - min)) + min;
 }
 
-	/* 
+    /* 
 
     Odds:
       Zoan              - 4/25 - 16%
