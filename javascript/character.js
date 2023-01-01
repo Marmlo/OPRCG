@@ -21,18 +21,23 @@ let feat2 = "";
 let feat3 = "";
 
 
+// Probably not going to need these:
+function capFirst(alli) {
+    return alli.charAt(0).toUpperCase() + alli.slice(1);
+}
+
+function getRandomInt(min, max) {
+      return Math.floor(Math.random() * (max - min)) + min;
+}
+// ----------------------------------
 
 // Race ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-function capFirst(alli) {
-    return alli.charAt(0).toUpperCase() + alli.slice(1);
-    }
+let racesWeighted = ['Human', 'Fishman', 'Giant', 'Hybrid', 'Merfolk', 'Ancient Giant', 'Frost Giant',  'Skypiean', 'Lunarian', 'Mink', 'Tontatta', 'Oni', 'Cyborg']
+let racesWeights = [10, 4, 3, 3, 2, 1, 1, 1, 1, 1, 1, 1, 1]
 
-let racesWeighted = ['Human', 'Giant', 'Ancient Giant', 'Frost Giant', 'Fishman', 'Merfolk', 'Skypiean', 'Lunarian', 'Mink', 'Tontatta', 'Oni', 'Cyborg', 'Hybrid']
-let racesWeights = [10, 3, 1, 1, 4, 2, 1, 1, 1, 1, 1, 1, 3]
-
-function race() {
-    document.getElementById("race").innerHTML = (weightedRandom(racesWeighted, racesWeights))
+function raceGen() {
+    document.getElementById("race").innerHTML = weightedRandom(racesWeighted, racesWeights)
 }
 
 function weightedRandom(items, weights) {
@@ -53,9 +58,6 @@ function weightedRandom(items, weights) {
     return items[i];
 }
 
-function getRandomInt(min, max) {
-      return Math.floor(Math.random() * (max - min)) + min;
-}
 
 /* 
 Odds:
@@ -76,6 +78,14 @@ Odds:
     
 // Alliance ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+let alliancesWeighted = ["Marine", "Pirate", "Revolutionary Army", "Bounty Hunter", "Cipher Pol", "World Nobles"];
+let alliancesWeights = [3, 3, 2, 2, 1, 1]
+
+function allianceGen() {
+    alliance = weightedRandom(alliancesWeighted, alliancesWeights)
+    document.getElementById("alliance").innerHTML = alliance;
+}
+
 function generateAlliance(){
       var alliances = ["Revolutionary Army","Marine","Pirate","Bounty Hunter","Cipher Pol","World Nobles"
                       ,"Revolutionary Army","Marine","Pirate","Bounty Hunter","Marine","Pirate"];
@@ -84,21 +94,15 @@ function generateAlliance(){
       document.getElementById("alliance").innerHTML = alliance;
 }
 
-function getRandomInt(min, max) {
-      return Math.floor(Math.random() * (max - min)) + min;
-}
-
-    /* 
-
-    Odds:
-      Revolutionary Army - 2/12 - 16,6%
-      Marine             - 3/12 - 25,0%
-      Pirate               - 3/12 - 25,0%
-      Bounty Hunter      - 2/12 - 16,6%
-      Cipher Pol         - 1/12 - 08,3%
-      World Nobles       - 1/12 - 08,3%
-
-    */
+/* 
+Odds:
+  Marine             - 3/12 ≈ 25%
+  Pirate             - 3/12 ≈ 25%
+  Revolutionary Army - 2/12 ≈ 17%
+  Bounty Hunter      - 2/12 ≈ 17%
+  Cipher Pol         - 1/12 ≈ 8%
+  World Nobles       - 1/12 ≈ 8%
+*/
 
 // Alliance2 -----
 
