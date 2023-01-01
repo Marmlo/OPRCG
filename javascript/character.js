@@ -1207,8 +1207,8 @@ function doriki() {
      var featdoriki = getRandomInt(0, 0 + 1);
   }
 
-  dorikifinal = racedoriki + rankdoriki + hakidoriki + devilfruitdoriki + featdoriki
-  adddoriki = racedoriki + rankdoriki + hakidoriki + devilfruitdoriki + featdoriki
+  dorikifinal =  rankdoriki + hakidoriki + devilfruitdoriki + featdoriki
+  adddoriki =  rankdoriki + hakidoriki + devilfruitdoriki + featdoriki
   document.getElementById("dorikifinal").innerHTML = parseInt(dorikifinal);
   document.getElementById("adddoriki").innerHTML = '(+' + parseInt(adddoriki) + ')';
 }  
