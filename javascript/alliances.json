@@ -64,10 +64,10 @@
             "list": [
                 "Bounty Hunter",
 				"Revolutionary Army",
-				"Pirate",],
+				"Pirate"
+			],
             "weights": [
                 3,
-                1,
                 1,
                 1
             ]
