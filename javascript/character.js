@@ -955,6 +955,15 @@ function assignfeat(){
      ,"Stole a rare devil fruit from the Government."
      ,"Participated in a war."
      ,"Released slaves from a Government ally."];
+  } else if(rank === "Admiral" || rank === "Fleet Admiral") { // ---------------------------------------------- Marine Admiral and Fleet Admiral
+     feats = ["None"
+     ,"Held up on a fight against a Yonko. And came out alive."
+     ,"With the help of another Admiral defeated a Yonko."
+     ,"Helped save a country."
+     ,"Captured a 500,000,000 bounty pirate all alone."
+     ,"Captured a 800,000,000 bounty pirate all alone."
+     ,"Team'd up with a pirate do defeat a notorious pirate."
+     ,"Protected the Celestial Dragons on an attemped attack on Mariejois."];   
   } else if(alliance === "Marine") { // ---------------------------------------------- Marine
      feats = ["None"
      ,"Captured a 40,000,000 bounty pirate all alone."
@@ -970,7 +979,7 @@ function assignfeat(){
      ,"Defeated a Yonko."
      ,"Is investigating the poneglifs."
      ,"Escaped Impel Down."
-     ,"Stormed a Marine's fortress."
+     ,"Stormed a Marine fortress."
      ,"Defeated a notorious pirate."
      ,"Stole a rare devil fruit from the Government."];
   } else if(alliance === "Bounty Hunter") { // ---------------------------------------------- Bounty Hunter
@@ -986,7 +995,8 @@ function assignfeat(){
      ,"Spied on a Yonko."
      ,"Contained a possible leak of sensitive Government information."
      ,"Completed a secret mission from the Government."
-     ,"Defeated a notorious pirate."];
+     ,"Defeated a notorious pirate."
+     ,"Adquired information about one of the Ancient weapons."];
   } else if(alliance === "World Nobles") { // ---------------------------------------------- World Nobles
      feats = ["None"
      ,"Attacked a neighboring country."
@@ -1010,6 +1020,15 @@ function assignfeat2(){
      ,"Stole a rare devil fruit from the Government."
      ,"Participated in a war."
      ,"Released slaves from a Government ally."];
+  } else if(rank2 === "Admiral" || rank2 === "Fleet Admiral") { // ---------------------------------------------- Marine Admiral and Fleet Admiral
+     feats2 = ["None"
+     ,"Held up on a fight against a Yonko. And came out alive."
+     ,"With the help of another Admiral defeated a Yonko."
+     ,"Helped save a country."
+     ,"Captured a 500,000,000 bounty pirate all alone."
+     ,"Captured a 800,000,000 bounty pirate all alone."
+     ,"Team'd up with a pirate do defeat a notorious pirate."
+     ,"Protected the Celestial Dragons on an attemped attack on Mariejois."];      
   } else if(alliance2 === "Marine") { // ---------------------------------------------- Marine
      feats2 = ["None"
      ,"Captured a 40,000,000 bounty pirate all alone."
@@ -1035,13 +1054,14 @@ function assignfeat2(){
      ,"Defeated a Marine's Captain."
      ,"Captured a 20,000,000 bounty criminal."
      ,"Captured a 5,000,000 bounty criminal."];
-  } else if(alliance2 === "Cipher Pol") { // ---------------------------------------------- Cipher Pol
-     feats2 = ["None"
+  } else if(alliance === "Cipher Pol") { // ---------------------------------------------- Cipher Pol
+     feats = ["None"
      ,"Adquired information about a poneglif."
      ,"Spied on a Yonko."
      ,"Contained a possible leak of sensitive Government information."
      ,"Completed a secret mission from the Government."
-     ,"Defeated a notorious pirate."];
+     ,"Defeated a notorious pirate."
+     ,"Adquired information about one of the Ancient weapons."];
   } else if(alliance2 === "World Nobles") { // ---------------------------------------------- World Nobles
      feats2 = ["None"
      ,"Attacked a neighboring country."
@@ -1065,6 +1085,15 @@ function assignfeat3(){
      ,"Stole a rare devil fruit from the Government."
      ,"Participated in a war."
      ,"Released slaves from a Government ally."];
+  } else if(rank3 === "Admiral" || rank3 === "Fleet Admiral") { // ---------------------------------------------- Marine Admiral and Fleet Admiral
+     feats3 = ["None"
+     ,"Held up on a fight against a Yonko. And came out alive."
+     ,"With the help of another Admiral defeated a Yonko."
+     ,"Helped save a country."
+     ,"Captured a 500,000,000 bounty pirate all alone."
+     ,"Captured a 800,000,000 bounty pirate all alone."
+     ,"Team'd up with a pirate do defeat a notorious pirate."
+     ,"Protected the Celestial Dragons on an attemped attack on Mariejois."]; 
   } else if(alliance3 === "Marine") { // ---------------------------------------------- Marine
      feats3 = ["None"
      ,"Captured a 40,000,000 bounty pirate all alone."
@@ -1090,13 +1119,14 @@ function assignfeat3(){
      ,"Defeated a Marine's Captain."
      ,"Captured a 20,000,000 bounty criminal."
      ,"Captured a 5,000,000 bounty criminal."];
-  } else if(alliance3 === "Cipher Pol") { // ---------------------------------------------- Cipher Pol
-     feats3 = ["None"
+  } else if(alliance === "Cipher Pol") { // ---------------------------------------------- Cipher Pol
+     feats = ["None"
      ,"Adquired information about a poneglif."
      ,"Spied on a Yonko."
      ,"Contained a possible leak of sensitive Government information."
      ,"Completed a secret mission from the Government."
-     ,"Defeated a notorious pirate."];
+     ,"Defeated a notorious pirate."
+     ,"Adquired information about one of the Ancient weapons."];
   } else if(alliance3 === "World Nobles") { // ---------------------------------------------- World Nobles
      feats3 = ["None"
      ,"Attacked a neighboring country."
