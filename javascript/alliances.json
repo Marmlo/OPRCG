@@ -1,0 +1,104 @@
+{
+    "Main": {
+        "list": [
+            "Marine",
+            "Pirate",
+            "Revolutionary Army",
+            "Bounty Hunter",
+            "Cipher Pol",
+            "World Nobles"
+        ],
+        "weights": [
+            3,
+            3,
+            2,
+            2,
+            1,
+            1
+        ]
+    },
+    "Sub": {
+        "Revolutionary Army": {
+            "list": [
+                "Revolutionary Army",
+                "Pirate",
+                "Bounty Hunter"
+            ],
+            "weights": [
+                2,
+                1,
+                1
+            ]
+        },
+        "Marine": {
+            "list": [
+                "Marine",
+                "Revolutionary Army",
+                "Pirate",
+                "Bounty Hunter",
+                "Cipher Pol"
+            ],
+            "weights": [
+                3,
+                1,
+                1,
+                1,
+                1
+            ]
+        },
+        "Pirate": {
+            "list": [
+                "Pirate",
+                "Revolutionary Army",
+                "Bounty Hunter",
+                "Marine"
+            ],
+            "weights": [
+                2,
+                1,
+                1,
+                1
+            ]
+        },
+        "Bounty Hunter": {
+            "list": [
+                "Bounty Hunter",
+				"Revolutionary Army",
+				"Pirate",],
+            "weights": [
+                3,
+                1,
+                1,
+                1
+            ]
+        },
+        "Cipher Pol": {
+            "list": [
+                "Cipher Pol",
+				"Marine"
+			],
+            "weights": [
+                2,
+                1
+            ]
+        },
+        "World Nobles": {
+            "list": [
+                "World Nobles",
+				"Cipher Pol",
+				"Marine",
+				"Pirate",
+				"Bounty Hunter",
+				"Revolutionary Army"
+			],
+            "weights": [
+                9,
+                7,
+                5,
+                3,
+                2,
+                1,
+            ]
+        }
+    }
+}
