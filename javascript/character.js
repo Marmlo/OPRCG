@@ -70,8 +70,8 @@ function capFirst(alli) {
 }
 
 function generateAlliance(){
-      var alliances = ["Revolucionary Army","Marine","Pirate","Bounty Hunter","Cipher Pol","World Nobles"
-      				,"Revolucionary Army","Marine","Pirate","Bounty Hunter","Marine","Pirate"];
+      var alliances = ["Revolutionary Army","Marine","Pirate","Bounty Hunter","Cipher Pol","World Nobles"
+      				,"Revolutionary Army","Marine","Pirate","Bounty Hunter","Marine","Pirate"];
 
       alliance = capFirst(alliances[getRandomInt(0, alliances.length + 1)]);
       document.getElementById("alliance").innerHTML = alliance;
@@ -84,7 +84,7 @@ function getRandomInt(min, max) {
 	/* 
 
     Odds:
-      Revolucionary Army - 2/12 - 16,6%
+      Revolutionary Army - 2/12 - 16,6%
       Marine    		 - 3/12 - 25,0%
       Pirate 		 	 - 3/12 - 25,0%
       Bounty Hunter      - 2/12 - 16,6%
@@ -96,18 +96,18 @@ function getRandomInt(min, max) {
 // Alliance2 -----
 
 function generateAlliance2(){
-  if (alliance === "Revolucionary Army") {
-     alliances2 = ["Revolucionary Army","Revolucionary Army","Pirate","Bounty Hunter"];
+  if (alliance === "Revolutionary Army") {
+     alliances2 = ["Revolutionary Army","Revolutionary Army","Pirate","Bounty Hunter"];
   } else if(alliance === "Marine") {
-     alliances2 = ["Marine","Marine","Marine","Revolucionary Army","Pirate","Bounty Hunter","Cipher Pol"];
+     alliances2 = ["Marine","Marine","Marine","Revolutionary Army","Pirate","Bounty Hunter","Cipher Pol"];
   } else if(alliance === "Pirate") {
-     alliances2 = ["Revolucionary Army","Pirate","Pirate","Bounty Hunter","Marine"];
+     alliances2 = ["Revolutionary Army","Pirate","Pirate","Bounty Hunter","Marine"];
   } else if(alliance === "Bounty Hunter") {
-     alliances2 = ["Bounty Hunter","Bounty Hunter","Revolucionary Army","Pirate","Bounty Hunter"];
+     alliances2 = ["Bounty Hunter","Bounty Hunter","Revolutionary Army","Pirate","Bounty Hunter"];
   } else if(alliance === "Cipher Pol") {
      alliances2 = ["Cipher Pol","Cipher Pol","Marine"];
   } else if(alliance === "World Nobles") {
-     alliances2 = ["World Nobles","World Nobles","Revolucionary Army","Marine","Pirate","Bounty Hunter","Cipher Pol"];
+     alliances2 = ["World Nobles","World Nobles","Revolutionary Army","Marine","Pirate","Bounty Hunter","Cipher Pol"];
   }
 
   alliance2 = capFirst(alliances2[getRandomInt(0, alliances2.length + 1)]);
@@ -117,18 +117,18 @@ function generateAlliance2(){
 // Alliance3 -----
 
 function generateAlliance3(){
-  if (alliance2 === "Revolucionary Army") {
-     alliances3 = ["Revolucionary Army","Revolucionary Army","Pirate","Bounty Hunter"];
+  if (alliance2 === "Revolutionary Army") {
+     alliances3 = ["Revolutionary Army","Revolutionary Army","Pirate","Bounty Hunter"];
   } else if(alliance2 === "Marine") {
-     alliances3 = ["Marine","Marine","Marine","Revolucionary Army","Pirate","Bounty Hunter","Cipher Pol"];
+     alliances3 = ["Marine","Marine","Marine","Revolutionary Army","Pirate","Bounty Hunter","Cipher Pol"];
   } else if(alliance2 === "Pirate") {
-     alliances3 = ["Revolucionary Army","Pirate","Pirate","Bounty Hunter","Marine"];
+     alliances3 = ["Revolutionary Army","Pirate","Pirate","Bounty Hunter","Marine"];
   } else if(alliance2 === "Bounty Hunter") {
-     alliances3 = ["Bounty Hunter","Bounty Hunter","Revolucionary Army","Pirate","Bounty Hunter"];
+     alliances3 = ["Bounty Hunter","Bounty Hunter","Revolutionary Army","Pirate","Bounty Hunter"];
   } else if(alliance2 === "Cipher Pol") {
      alliances3 = ["Cipher Pol","Cipher Pol","Marine"];
   } else if(alliance2 === "World Nobles") {
-     alliances3 = ["World Nobles","World Nobles","Revolucionary Army","Marine","Pirate","Bounty Hunter","Cipher Pol"];
+     alliances3 = ["World Nobles","World Nobles","Revolutionary Army","Marine","Pirate","Bounty Hunter","Cipher Pol"];
   }
 
   alliance3 = capFirst(alliances3[getRandomInt(0, alliances3.length + 1)]);
@@ -140,7 +140,7 @@ function generateAlliance3(){
 
 function assignRank(){
      
- if (alliance === "Revolucionary Army") {
+ if (alliance === "Revolutionary Army") {
      ranks = ["Leader","Chief of Staff","Army Commander","Officer","Member","Associate"];
   } else if(alliance === "Marine") {
      ranks = ["Fleet Admiral","Admiral","Vice Admiral","Rear Admiral","Commodore","Captain","Commander",
@@ -164,20 +164,20 @@ function assignRank(){
 
 function assignRank2(){
  
-  if(rank === "Leader" && alliance2 === "Revolucionary Army") { // --------------------------- Revolucionary Army
+  if(rank === "Leader" && alliance2 === "Revolutionary Army") { // --------------------------- Revolutionary Army
      ranks2 = ["Leader"];
-  } else if(rank === "Chief of Staff" && alliance2 === "Revolucionary Army") {
+  } else if(rank === "Chief of Staff" && alliance2 === "Revolutionary Army") {
      ranks2 = ["Leader","Chief of Staff"];
-  } else if(rank === "Army Commander" && alliance2 === "Revolucionary Army") {
+  } else if(rank === "Army Commander" && alliance2 === "Revolutionary Army") {
      ranks2 = ["Leader","Chief of Staff","Army Commander"];
-  } else if(rank === "Officer" && alliance2 === "Revolucionary Army") {
+  } else if(rank === "Officer" && alliance2 === "Revolutionary Army") {
      ranks2 = ["Leader","Chief of Staff","Army Commander","Officer"];
-  } else if(rank === "Member" && alliance2 === "Revolucionary Army") {
+  } else if(rank === "Member" && alliance2 === "Revolutionary Army") {
      ranks2 = ["Leader","Chief of Staff","Army Commander","Officer","Member","Associate"];
-  } else if(rank === "Associate" && alliance2 === "Revolucionary Army") {
+  } else if(rank === "Associate" && alliance2 === "Revolutionary Army") {
      ranks2 = ["Leader","Chief of Staff","Army Commander","Officer","Member","Associate"];
 
-  } else if(alliance2 === "Revolucionary Army") {
+  } else if(alliance2 === "Revolutionary Army") {
      ranks2 = ["Leader","Chief of Staff","Army Commander","Officer","Member","Associate"];   
 //----------------------------------------------------------------------------
   } else if(rank === "Fleet Admiral" && alliance2 === "Marine") {  // ------------------------- Marine
@@ -300,20 +300,20 @@ function assignRank2(){
 
 function assignRank3(){
  
-  if(rank2 === "Leader" && alliance3 === "Revolucionary Army") { // --------------------------- Revolucionary Army
+  if(rank2 === "Leader" && alliance3 === "Revolutionary Army") { // --------------------------- Revolutionary Army
      ranks3 = ["Leader"];
-  } else if(rank2 === "Chief of Staff" && alliance3 === "Revolucionary Army") {
+  } else if(rank2 === "Chief of Staff" && alliance3 === "Revolutionary Army") {
      ranks3 = ["Leader","Chief of Staff"];
-  } else if(rank2 === "Army Commander" && alliance3 === "Revolucionary Army") {
+  } else if(rank2 === "Army Commander" && alliance3 === "Revolutionary Army") {
      ranks3 = ["Leader","Chief of Staff","Army Commander"];
-  } else if(rank2 === "Officer" && alliance3 === "Revolucionary Army") {
+  } else if(rank2 === "Officer" && alliance3 === "Revolutionary Army") {
      ranks3 = ["Leader","Chief of Staff","Army Commander","Officer"];
-  } else if(rank2 === "Member" && alliance3 === "Revolucionary Army") {
+  } else if(rank2 === "Member" && alliance3 === "Revolutionary Army") {
      ranks3 = ["Leader","Chief of Staff","Army Commander","Officer","Member","Associate"];
-  } else if(rank2 === "Associate" && alliance3 === "Revolucionary Army") {
+  } else if(rank2 === "Associate" && alliance3 === "Revolutionary Army") {
      ranks3 = ["Leader","Chief of Staff","Army Commander","Officer","Member","Associate"];
 
-  } else if(alliance3 === "Revolucionary Army") {
+  } else if(alliance3 === "Revolutionary Army") {
      ranks3 = ["Leader","Chief of Staff","Army Commander","Officer","Member","Associate"];   
 //----------------------------------------------------------------------------
   } else if(rank2 === "Fleet Admiral" && alliance3 === "Marine") {  // ------------------------- Marine
@@ -506,7 +506,7 @@ function assignhaki(){
      hakis = ["Armament","Conquerors","Observation","Armament","Observation","Conquerors + Armament","Observation","Observation + Armament","Observation",
       "Conquerors + Observation","Armament","Armament","Observation","Observation","Armament","Observation","Armament","Armament","Observation","Armament",
       "Observation","Armament","Observation","Armament","Conquerors + Armament + Observation"];
-  } else if (rank === "Leader"){ // -------------------------------------------------------------------------------------------------- Revolucionary Army
+  } else if (rank === "Leader"){ // -------------------------------------------------------------------------------------------------- Revolutionary Army
      hakis = ["Armament","Conquerors","Observation","Armament","Observation","Conquerors + Armament","Observation","Observation + Armament","Observation",
       "Conquerors + Observation","Observation","Observation","Armament","Observation","Observation","Armament",
       "Observation","Armament","Observation","Conquerors + Armament + Observation"];
@@ -949,7 +949,7 @@ function assigndevilfruit3(){
 
 function assignfeat(){
      
- if (alliance === "Revolucionary Army") { // ---------------------------------------------- Revolucionary Army
+ if (alliance === "Revolutionary Army") { // ---------------------------------------------- Revolutionary Army
      feats = ["None"
      ,"Attacked a Government country."
      ,"Leaked sensitive Government information."
@@ -958,10 +958,10 @@ function assignfeat(){
      ,"Released slaves from a Government ally."];
   } else if(alliance === "Marine") { // ---------------------------------------------- Marine
      feats = ["None"
-     ,"Captured a 40,000,000 bounty pirate all by himself."
+     ,"Captured a 40,000,000 bounty pirate all alone."
      ,"Defeated a small group of pirates."
      ,"Helped save a country."
-     ,"Captured a 20,000,000 bounty pirate all by himself."];
+     ,"Captured a 20,000,000 bounty pirate all alone."];
   } else if(alliance === "Pirate") { // ---------------------------------------------- Pirate
      feats = ["None"
      ,"Stole a town's supplies."
@@ -1004,7 +1004,7 @@ function assignfeat(){
 
 function assignfeat2(){
      
- if (alliance2 === "Revolucionary Army") { // ---------------------------------------------- Revolucionary Army
+ if (alliance2 === "Revolutionary Army") { // ---------------------------------------------- Revolutionary Army
      feats2 = ["None"
      ,"Attacked a Government country."
      ,"Leaked sensitive Government information."
@@ -1013,10 +1013,10 @@ function assignfeat2(){
      ,"Released slaves from a Government ally."];
   } else if(alliance2 === "Marine") { // ---------------------------------------------- Marine
      feats2 = ["None"
-     ,"Captured a 40,000,000 bounty pirate all by himself."
+     ,"Captured a 40,000,000 bounty pirate all alone."
      ,"Defeated a small group of pirates."
      ,"Helped save a country."
-     ,"Captured a 20,000,000 bounty pirate all by himself."];
+     ,"Captured a 20,000,000 bounty pirate all alone."];
   } else if(alliance2 === "Pirate") { // ---------------------------------------------- Pirate
      feats2 = ["None"
      ,"Stole a town's supplies."
@@ -1059,7 +1059,7 @@ function assignfeat2(){
 
 function assignfeat3(){
      
- if (alliance3 === "Revolucionary Army") { // ---------------------------------------------- Revolucionary Army
+ if (alliance3 === "Revolutionary Army") { // ---------------------------------------------- Revolutionary Army
      feats3 = ["None"
      ,"Attacked a Government country."
      ,"Leaked sensitive Government information."
@@ -1068,10 +1068,10 @@ function assignfeat3(){
      ,"Released slaves from a Government ally."];
   } else if(alliance3 === "Marine") { // ---------------------------------------------- Marine
      feats3 = ["None"
-     ,"Captured a 40,000,000 bounty pirate all by himself."
+     ,"Captured a 40,000,000 bounty pirate all alone."
      ,"Defeated a small group of pirates."
      ,"Helped save a country."
-     ,"Captured a 20,000,000 bounty pirate all by himself."];
+     ,"Captured a 20,000,000 bounty pirate all alone."];
   } else if(alliance3 === "Pirate") { // ---------------------------------------------- Pirate
      feats3 = ["None"
      ,"Stole a town's supplies."
@@ -1153,7 +1153,7 @@ function doriki() {
      var rankdoriki = getRandomInt(0, 0 + 1);
   }
 
-  if (rank === "Leader") {                            // --- Rank Revolucionary Army
+  if (rank === "Leader") {                            // --- Rank Revolutionary Army
      var rankdoriki = getRandomInt(20000, 50000 + 1);
   } else if(rank === "Chief of Staff") {
      var rankdoriki = getRandomInt(10000, 15000 + 1);
@@ -1311,7 +1311,7 @@ let adddoriki2 = "";
 
 function doriki2() {
 
-  if (rank2 === "Leader") {                            // --- Rank Revolucionary Army
+  if (rank2 === "Leader") {                            // --- Rank Revolutionary Army
      var rankdoriki2 = getRandomInt(20000, 50000 + 1);
   } else if(rank2 === "Chief of Staff") {
      var rankdoriki2 = getRandomInt(10000, 15000 + 1);
@@ -1453,7 +1453,7 @@ let adddoriki3 = "";
 
 function doriki3() {
 
-  if (rank3 === "Leader") {                            // --- Rank Revolucionary Army
+  if (rank3 === "Leader") {                            // --- Rank Revolutionary Army
      var rankdoriki3 = getRandomInt(20000, 50000 + 1);
   } else if(rank3 === "Chief of Staff") {
      var rankdoriki3 = getRandomInt(10000, 15000 + 1);
@@ -1594,7 +1594,7 @@ let bountyfinal = "";
 
 function addbounty() {
 
-  if (alliance === "Revolucionary Army") {            // --- Alliance
+  if (alliance === "Revolutionary Army") {            // --- Alliance
      var alliancebounty = getRandomInt(1, 10 + 1);
   } else if(alliance === "Pirate") {
      var alliancebounty = getRandomInt(1, 5 + 1);
@@ -1665,7 +1665,7 @@ let bountyfinal2 = "";
 
 function addbounty2() {
 
-  if (alliance2 === "Revolucionary Army") {            // --- Alliance
+  if (alliance2 === "Revolutionary Army") {            // --- Alliance
      var alliancebounty2 = getRandomInt(1, 10 + 1);
   } else if(alliance2 === "Pirate") {
      var alliancebounty2 = getRandomInt(1, 5 + 1);
@@ -1729,7 +1729,7 @@ let bountyfinal3 = "";
 
 function addbounty3() {
 
-  if (alliance3 === "Revolucionary Army") {            // --- Alliance
+  if (alliance3 === "Revolutionary Army") {            // --- Alliance
      var alliancebounty3 = getRandomInt(1, 10 + 1);
   } else if(alliance3 === "Pirate") {
      var alliancebounty3 = getRandomInt(1, 5 + 1);
@@ -1781,4 +1781,4 @@ function addbounty3() {
   addbounty3 = parseInt(bountyfinal3) - parseInt(bountyfinal2) // Calcula a diferença entre as bounties no anos 2 e 3
   document.getElementById("bountyfinal3").innerHTML = parseInt(bountyfinal3) + ',000,000)';
   document.getElementById("addbounty3").innerHTML = '(+' + parseInt(addbounty3) + ',000,000)';
-}
+}

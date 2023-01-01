@@ -1,4 +1,4 @@
-Feats (if Revolucionary Army):
+Feats (if Revolutionary Army):
       Attacked a Government country. 
       Leaked sensitive Government information. 
       Stole a rare devil fruit from the Government.
@@ -6,32 +6,32 @@ Feats (if Revolucionary Army):
       Released slaves from a Government ally.
 ----------------------------------------------------------------------
 Feats (if Marine):
-      Captured a 40,000,000 bounty pirate all by himself.
+      Captured a 40,000,000 bounty pirate all alone.
       Defeated a small group of pirates.
       Helped save a country.
-      Captured a 20,000,000 bounty pirate all by himself.
+      Captured a 20,000,000 bounty pirate all alone.
 ----------------------------------------------------------------------
 Feats (if Pirate):
       Stole a town's supplies.
       Defeated a small group of pirates.
-      Defeated a Marine's Captain.
+      Defeated a Marine Captain.
       Defeated a Shichibukai.
       Defeated a Yonko.
-      Is investigating the poneglifs.
+      Is investigating the poneglyphs.
       Escaped Impel Down.
-      Stormed a Marine's fortress.
+      Stormed a Marine fortress.
       Defeated a notorious pirate.
       Stole a rare devil fruit from the Government.
 ----------------------------------------------------------------------
 Feats (if Bounty Hunter):
       Captured a 40,000,000 bounty criminal.
       Defeated a small group of pirates.
-      Defeated a Marine's Captain.
+      Defeated a Marine Captain.
       Captured a 20,000,000 bounty criminal.
       Captured a 5,000,000 bounty criminal.
 ----------------------------------------------------------------------
 Feats (if Cipher Pol):
-      Adquired information about a poneglif.
+      Acquired information about a poneglyph.
       Spied on a Yonko.
       Contained a possible leak of sensitive Government information.
       Completed a secret mission from the Government.
@@ -39,6 +39,6 @@ Feats (if Cipher Pol):
 ----------------------------------------------------------------------
 Feats (if World Nobles):
       Attacked a neighboring country.
-      Denied his past and royal family.
+      Denied own past and royal family.
       Destroyed an enemy's facility.
-      Allied with pirates.
+      Allied with pirates.
