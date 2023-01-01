@@ -28,16 +28,39 @@ function capFirst(alli) {
     return alli.charAt(0).toUpperCase() + alli.slice(1);
     }
 
-   
+let racesWeighted = ["Human","Giant","Ancient Giant","Frost Giant","Fishman","Merfolk","Skypiean", "Lunarian", "Mink", "Tontatta", "Oni", "Cyborg", "Hybrid"];
+let racesWeights = [10, 3, 1, 1, 4, 2, 1, 1, 1, 1, 1, 1, 3]
 
-function race(){
+function race() {
+    document.getElementById("race").innerHTML = (weightedRandom(racesWeighted, racesWeights))
+}
+
+function weightedRandom(items, weights) {
+    var i;
+
+    for (i = 0; i < weights.length; i++) {
+        weights[i] += weights[i - 1] || 0;
+    }
+
+    var random = Math.random() * weights[weights.length - 1];
+    
+    for (i = 0; i < weights.length; i++) {
+        if (weights[i] > random) {
+            break;
+        }
+    }
+    
+    return items[i];
+}
+
+function raceOld(){
       var races = ["Human","Giant","Ancient Giant","Frost Giant","Fishman","Merfolk","Skipean", "Lunarian", "Mink", "Tonnata", "Oni", "Cyborg", "Hybrid"
       ,"Human","Giant","Human","Human","Fishman","Merfolk","Fishman", "Human", "Hybrid", "Fishman", "Human", "Human", "Hybrid"
       ,"Human","Giant","Human","Human"];
 
       race = capFirst(races[getRandomInt(0, races.length + 1)]);
       document.getElementById("race").innerHTML = race;
-    }
+}
 
 function getRandomInt(min, max) {
       return Math.floor(Math.random() * (max - min)) + min;
@@ -1135,13 +1158,13 @@ function doriki() {
      var racedoriki = getRandomInt(10, 50 + 1);
   } else if(race === "Merfolk") {
      var racedoriki = getRandomInt(10, 100 + 1);
-  } else if(race === "Skipean") {
+  } else if(race === "Skypiean") {
      var racedoriki = getRandomInt(1, 50 + 1);
   } else if(race === "Lunarian") {
      var racedoriki = getRandomInt(1, 50 + 1);
   } else if(race === "Mink") {
      var racedoriki = getRandomInt(100, 300 + 1);
-  } else if(race === "Tonnata") {
+  } else if(race === "Tontatta") {
      var racedoriki = getRandomInt(5, 30 + 1);
   } else if(race === "Oni") {
      var racedoriki = getRandomInt(50, 500 + 1);
@@ -1781,4 +1804,5 @@ function addbounty3() {
   addbounty3 = parseInt(bountyfinal3) - parseInt(bountyfinal2) // Calcula a diferença entre as bounties no anos 2 e 3
   document.getElementById("bountyfinal3").innerHTML = parseInt(bountyfinal3) + ',000,000)';
   document.getElementById("addbounty3").innerHTML = '(+' + parseInt(addbounty3) + ',000,000)';
-}
+}
+
