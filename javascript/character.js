@@ -27,7 +27,7 @@ function capFirst(alli) {
 }
 
 function getRandomInt(min, max) {
-      return Math.floor(Math.random() * (max - min)) + min;
+    return Math.floor(Math.random() * (max - min)) + min;
 }
 // ----------------------------------
 
@@ -79,10 +79,10 @@ Odds:
 // Alliance ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 let alliancesWeighted = ["Marine", "Pirate", "Revolutionary Army", "Bounty Hunter", "Cipher Pol", "World Nobles"];
-let alliancesWeights = [3, 3, 2, 2, 1, 1]
+let alliancesWeights = [3, 3, 2, 2, 1, 1];
 
 function allianceGen() {
-    alliance = weightedRandom(alliancesWeighted, alliancesWeights)
+    alliance = weightedRandom(alliancesWeighted, alliancesWeights);
     document.getElementById("alliance").innerHTML = alliance;
 }
 
