@@ -655,24 +655,56 @@ function getRandomInt(min, max) {
 function assigndevilfruit(){
      
  if (devilfruit === "Zoan") {
-     dfs = ["Tori-Tori no Mi - Model: Raven","Uma-Uma no Mi - Model: Pony","Neko-Neko no Mi - Model: Tiger"
-     ,"Kani-Kani no Mi - Model: Hermit Crab","Hebi-Hebi no Mi - Model: Viper","Kame-Kame no Mi - Model: Tortoise"
-     ,"Croco-Croco no Mi - Model: Alligator","Prima-Prima no Mi - Model: Gorilla","Kuma-Kuma no Mi - Model: Polar Bear"];
+     dfs = ["Uma-Uma no Mi - Model: Pony","Uma-Uma no Mi - Model: Antelope"
+     ,"Kani-Kani no Mi - Model: Hermit Crab"
+     ,"Hebi-Hebi no Mi - Model: Viper","Hebi-Hebi no Mi - Model: Python","Hebi-Hebi no Mi - Model: Black Mamba"
+     ,"Kame-Kame no Mi - Model: Tortoise"
+     ,"Croco-Croco no Mi - Model: Alligator"
+     ,"Prima-Prima no Mi - Model: Gorilla"
+     ,"Kuma-Kuma no Mi - Model: Polar Bear","Kuma-Kuma no Mi - Model: Black Bear"
+     ,"Mushi-Mushi no Mi - Model: Bee","Mushi-Mushi no Mi - Model: Scorpion"
+     ,"Webbo-Webbo no Mi - Model: Black Widow"
+     ,"Tori-Tori no Mi - Model: Duck","Tori-Tori no Mi - Model: Flamingo","Tori-Tori no Mi - Model: Raven"
+     ,"Ushi-Ushi no Mi - Model: Reindeer"
+     ,"Neko-Neko no Mi - Model: Puma","Neko-Neko no Mi - Model: Panther","Neko-Neko no Mi - Model: Tiger"
+     ,"Inu-Inu no Mi - Model: Golden Retriever","Inu-Inu no Mi - Model: Husky","Inu-Inu no Mi - Model: Blood Hound"
+     ,"Hito-Hito no Mi - Model: Human"];
   } else if(devilfruit === "Mythical Zoan") {
-     dfs = ["Tori-Tori no Mi - Model: Thunderbird","Uma-Uma no Mi - Model: Pegasus","Neko-Neko no Mi - Model: Sphinx"
-     ,"Kame-Kame no Mi - Model: Colossal Turtle"];
+     dfs = ["Tori-Tori no Mi - Model: Thunderbird","Tori-Tori no Mi - Model: Tripodero"
+     ,"Uma-Uma no Mi - Model: Pegasus","Neko-Neko no Mi - Model: Unicorn"
+     ,"Neko-Neko no Mi - Model: Sphinx","Neko-Neko no Mi - Model: Griffin"
+     ,"Kame-Kame no Mi - Model: Colossal Turtle"
+     ,"Inu-Inu no Mi - Model: Cerberus","Inu-Inu no Mi - Model: Fenrir Wolf","Inu-Inu no Mi - Model: Moon Wolf"
+     ,"Prima-Prima no Mi - Model: Yeti"
+     ,"Ryu-Ryu no Mi - Model: Western Dragon"
+     ,"Hito-Hito no Mi - Model: Angel","Hito-Hito no Mi - Model: Nika","Hito-Hito no Mi - Model: Zombie"
+     ,"Aku-Aku no Mi - Model: Asura","Aku-Aku no Mi - Model: Suuccubus","Aku-Aku no Mi - Model: Imp"];
   } else if(devilfruit === "Ancient Zoan") {
-     dfs = ["Mushi-Mushi no Mi - Model: Meganeura","Mushi-Mushi no Mi - Model: Gastropod","Webbo-Webbo no Mi - Model: Megarachne"];
+     dfs = ["Mushi-Mushi no Mi - Model: Meganeura","Mushi-Mushi no Mi - Model: Gastropod"
+     ,"Webbo-Webbo no Mi - Model: Megarachne"
+     ,"Tori-Tori no Mi - Model: Dodo Bird"
+     ,"Uma-Uma no Mi - Model: Giant Deer"
+     ,"Neko-Neko no Mi - Model: Xenosmilus"
+     ,"Inu-Inu no Mi - Model: Dire Wolf"
+     ,"Ryu-Ryu no Mi - Model: Pterodactyl","Ryu-Ryu no Mi - Model: Veolociraptor","Ryu-Ryu no Mi - Model: Megaraptor","Ryu-Ryu no Mi - Model: Tyrannosaurus Rex","Ryu-Ryu no Mi - Model: Braichiosaurus"
+     ,"Hito-Hito no Mi - Model: Neanderthal"];
   } else if(devilfruit === "Paramecia") {
-     dfs = ["Obbi-Obbi no Mi","Depra-Depra no Mi","Soda-Soda no Mi","Kako-Kako no Mi","Ana-Ana no Mi","Kyara-Kyara no Mi"
-     ,"Emro-Emro no Mi","Enye-Enye no Mi","Rubi-Rubi no Mi","Gamma-Gamma no Mi","Hoshi-Hoshi no Mi","Implo-Implo no Mi"];
+     dfs = ["Choco-Choco no Mi (Chocolate Fruit)","Yume-Yume no Mi (Dream Fruit)","Soda-Soda no Mi (Soda Fruit)","Toki-Toki no Mi (Time Fruit)","Ana-Ana no Mi (Hole Fruit)","Kyara-Kyara no Mi (Character Fruit)"
+     ,"Wara-Wara no Mi (Laugh Fruit)","Rubi-Rubi no Mi (Ruby Fruit)","Ope-Ope no Mi (Op Fruit)","Hoshi-Hoshi no Mi (Star Fuit)","Naiha-Naiha no Mi (Implosian Man Fruit)","Pero-Pero No Mi (Lick Fruit)","Kaya-Kaya No Mi (Gunpowder Fruit)"
+     ,"Nichi-Nichi No Mi (2D Fruit)","Hamma-Hamma No Mi (Hammer Fruit)","Oru-Oru No Mi (Origami Fruit)","Glasa-Glasa No Mi (Glass Fruit)","Gane-Gane No Mi (Steel Body Fruit)","Kawai-Kawai No Mi (Cute-Cute Fruit)","Dragu-Dragu No Mi (Drugs Fruit)"
+     ,"Alco-Alco No Mi (Alcohol Fruit)","Gera-Gera No Mi (Gear Fruit)","Caro-Caro No Mi (Vehicle Fruit)","Foldu-Foldu No Mi (Fold-Fold Fruit)","Obbi-Obbi No Mi (Obsidian Fruit)","Vibro-Vibro No Mi (Vibration Fruit)","Susu-Susu No Mi (SuperSpeed Fruit)","Yari-Yari No Mi (Spikes Fruit)"
+     ,"Kini-Kini No Mi (Muscle Fruit)","Jiki-Jiki No Mi (Magnet Fruit)","Wara-Wara No Mi (Straw Fruit)","Horu-Horu No Mi (Hormones Fruit)","Hana-Hana No Mi (Flower Fruit)","Mane-Mane No Mi (Clone Fruit)","Bane-Bane No Mi (Springs Fruit)","Ito-Ito No Mi (Strings Fruit)"
+     ,"Sabi-Sabi No Mi (Rust Fruit)","Yomi-Yomi No Mi (Revive Fruit)","Suke-Suke No Mi (Invisible Fruit)","Goru-Goru No Mi (Gold Fruit)","Peto-Peto No Mi (Pet Fruit)","Bisu-Bisu No Mi (Biscuit Fruit)","Soru-Soru No Mi (Soul Fruit)","Chiyu-Chiyu No Mi (Heal Fruit)"
+     ,"Ato-Ato No Mi (Art Fruit)","Bari-Bari No Mi (Barrier Fruit)","Horo-Horo No Mi (Ghost/Hollow Fruit)"];
   } else if(devilfruit === "Special Paramecia") {
-     dfs = ["Jero-Jero no Mi","Nori-Nori no Mi","Huni-Huni no Mi","Pinu-Pinu no Mi","Toryo-Toryo no Mi"];
+     dfs = ["Huni-Huni no Mi (Honey Fruit)","Ki-Ki no Mi (Tree Fruit)","Toryo-Toryo no Mi (Paint Fruit)","Mochi-Mochi No Mi (Mochi Fruit)","Nori-Nori No Mi (Glue Fruit)","Jero-Jero no Mi (Gelatin Fruit)","Doku-Doku No Mi (Venom Fruit)"];
   } else if(devilfruit === "Logia") {
-     dfs = ["Salti-Salti no Mi","Sora-Sora no Mi","Sido-Sido no Mi","Nendo-Nendo no Mi","Doro-Doro no Mi","Plazu-Plazu no Mi","Suigi-Suigi no Mi","Taru-Taru no Mi",
-     "Genyu-Genyu no Mi","Shibo-Shibo no Mi","Tanso-Tanso no Mi","Unchi-Unchi no Mi","Hone-Hone no Mi","Moku-Moku no Mi","Nama-Nama no Mi","Sulfu-Sulfu no Mi",
-     "Tassi-Tassi no Mi","Gino-Gino no Mi","Noni-Noni no Mi","Kaze-Kaze no Mi","Ketsu-Ketsu no Mi","Inku-Inku no Mi","Kusa-Kusa no Mi","Iwa-Iwa no Mi","Kessho-Kessho no Mi"
-     ,"Foru-Foru no Mi","Enso-Enso no Mi","Choku-Choku no Mi","Hoko-Hoko no Mi","Jushi-Jushi no Mi","Nuclee-Nuclee no Mi","Suraimu-Suraimu no Mi","Mera-Mera no Mi"];
+     dfs = ["Salti-Salti no Mi (Salt Fruit)","Sora-Sora no Mi (Coulds Fruit)","Sido-Sido no Mi (Acid Fruit)","Nendo-Nendo no Mi (Clay Fruit)","Doro-Doro no Mi (Dirt Fruit)","Plazu-Plazu no Mi (Plasma Fruit)","Suigi-Suigi no Mi (Mercury Fruit)","Taru-Taru no Mi (Tar Fruit)",
+     "Genyu-Genyu no Mi (Crude Oil Fruit)","Shibo-Shibo no Mi (Fatty Oil Fruit)","Tanso-Tanso no Mi (Coal/Carbon Fruit)","Unchi-Unchi no Mi (Waste Fruit)","Hone-Hone no Mi (Calcium/Bone Fruit)","Moku-Moku no Mi (Wood Fruit)","Nama-Nama no Mi (Lead Fruit)","Sulfu-Sulfu no Mi (Sulfur Fruit)",
+     "Tassi-Tassi no Mi (Patassium Fruit)","Gino-Gino no Mi (Silver Fruit)","Noni-Noni no Mi (Neon Fruit)","Kaze-Kaze no Mi (Wind Fruit)","Ketsu-Ketsu no Mi (Blood Fruit)","Inku-Inku no Mi (Ink Fruit)","Kusa-Kusa no Mi (Grass Fruit)","Iwa-Iwa no Mi (Stone Fruit)","Kessho-Kessho no Mi (Crystal Fruit)"
+     ,"Foru-Foru no Mi (Phosphorus Fruit)","Enso-Enso no Mi (Chlorine Fruit)","Choku-Choku no Mi (Chalk Fruit)","Hoko-Hoko no Mi (Dust Fruit)","Jushi-Jushi no Mi (Resin Fruit)","Nuclee-Nuclee no Mi (Nuclear Energy Fruit)","Suraimu-Suraimu no Mi (Slime Fruit)","Moku-Moku no Mi (Smoke Fruit)"
+     ,"Suna-Suna no Mi (Sand Fruit)","Mera-Mera no Mi (Fire Fruit)","Goro-Goro no Mi (Lightning Fruit)","Hie-Hie no Mi (Ice Fruit)","Yami-Yami no Mi (Darkness Fruit)","Pika-Pika no Mi (Light Fruit)","Magu-Magu no Mi (Magma Fruit)","Numa-Numa no Mi (Mud Fruit)","Gasu-Gasu no Mi (Gas Fruit)"
+     ,"Yuki-Yuki no Mi (Snow Fruit)","Toro-Toro no Mi (Unknown Liquid Fruit)","Pasa-Pasa no Mi (Paper Fruit)","Ame-Ame no Mi (Candy Syrup Fruit)"];
   } else if(devilfruit === "No") {
      dfs = ["None"];
   } 
@@ -737,24 +769,56 @@ function assigndevilfruit2(){
   
 
   if(devilfruit2 === "Zoan" && devilfruit === "No") {
-     dfs2 = ["Tori-Tori no Mi - Model: Raven","Uma-Uma no Mi - Model: Pony","Neko-Neko no Mi - Model: Tiger"
-     ,"Kani-Kani no Mi - Model: Hermit Crab","Hebi-Hebi no Mi - Model: Viper","Kame-Kame no Mi - Model: Tortoise"
-     ,"Croco-Croco no Mi - Model: Alligator","Prima-Prima no Mi - Model: Gorilla","Kuma-Kuma no Mi - Model: Polar Bear"];
+     dfs2 = ["Uma-Uma no Mi - Model: Pony","Uma-Uma no Mi - Model: Antelope"
+     ,"Kani-Kani no Mi - Model: Hermit Crab"
+     ,"Hebi-Hebi no Mi - Model: Viper","Hebi-Hebi no Mi - Model: Python","Hebi-Hebi no Mi - Model: Black Mamba"
+     ,"Kame-Kame no Mi - Model: Tortoise"
+     ,"Croco-Croco no Mi - Model: Alligator"
+     ,"Prima-Prima no Mi - Model: Gorilla"
+     ,"Kuma-Kuma no Mi - Model: Polar Bear","Kuma-Kuma no Mi - Model: Black Bear"
+     ,"Mushi-Mushi no Mi - Model: Bee","Mushi-Mushi no Mi - Model: Scorpion"
+     ,"Webbo-Webbo no Mi - Model: Black Widow"
+     ,"Tori-Tori no Mi - Model: Duck","Tori-Tori no Mi - Model: Flamingo","Tori-Tori no Mi - Model: Raven"
+     ,"Ushi-Ushi no Mi - Model: Reindeer"
+     ,"Neko-Neko no Mi - Model: Puma","Neko-Neko no Mi - Model: Panther","Neko-Neko no Mi - Model: Tiger"
+     ,"Inu-Inu no Mi - Model: Golden Retriever","Inu-Inu no Mi - Model: Husky","Inu-Inu no Mi - Model: Blood Hound"
+     ,"Hito-Hito no Mi - Model: Human"];
   } else if(devilfruit2 === "Mythical Zoan" && devilfruit === "No") {
-     dfs2 = ["Tori-Tori no Mi - Model: Thunderbird","Uma-Uma no Mi - Model: Pegasus","Neko-Neko no Mi - Model: Sphinx"
-     ,"Kame-Kame no Mi - Model: Colossal Turtle"];
+     dfs2 = ["Tori-Tori no Mi - Model: Thunderbird","Tori-Tori no Mi - Model: Tripodero"
+     ,"Uma-Uma no Mi - Model: Pegasus","Neko-Neko no Mi - Model: Unicorn"
+     ,"Neko-Neko no Mi - Model: Sphinx","Neko-Neko no Mi - Model: Griffin"
+     ,"Kame-Kame no Mi - Model: Colossal Turtle"
+     ,"Inu-Inu no Mi - Model: Cerberus","Inu-Inu no Mi - Model: Fenrir Wolf","Inu-Inu no Mi - Model: Moon Wolf"
+     ,"Prima-Prima no Mi - Model: Yeti"
+     ,"Ryu-Ryu no Mi - Model: Western Dragon"
+     ,"Hito-Hito no Mi - Model: Angel","Hito-Hito no Mi - Model: Nika","Hito-Hito no Mi - Model: Zombie"
+     ,"Aku-Aku no Mi - Model: Asura","Aku-Aku no Mi - Model: Suuccubus","Aku-Aku no Mi - Model: Imp"];
   } else if(devilfruit2 === "Ancient Zoan" && devilfruit === "No") {
-     dfs2 = ["Mushi-Mushi no Mi - Model: Meganeura","Mushi-Mushi no Mi - Model: Gastropod","Webbo-Webbo no Mi - Model: Megarachne"];
+     dfs2 = ["Mushi-Mushi no Mi - Model: Meganeura","Mushi-Mushi no Mi - Model: Gastropod"
+     ,"Webbo-Webbo no Mi - Model: Megarachne"
+     ,"Tori-Tori no Mi - Model: Dodo Bird"
+     ,"Uma-Uma no Mi - Model: Giant Deer"
+     ,"Neko-Neko no Mi - Model: Xenosmilus"
+     ,"Inu-Inu no Mi - Model: Dire Wolf"
+     ,"Ryu-Ryu no Mi - Model: Pterodactyl","Ryu-Ryu no Mi - Model: Veolociraptor","Ryu-Ryu no Mi - Model: Megaraptor","Ryu-Ryu no Mi - Model: Tyrannosaurus Rex","Ryu-Ryu no Mi - Model: Braichiosaurus"
+     ,"Hito-Hito no Mi - Model: Neanderthal"];
   } else if(devilfruit2 === "Paramecia" && devilfruit === "No") {
-     dfs2 = ["Obbi-Obbi no Mi","Depra-Depra no Mi","Soda-Soda no Mi","Kako-Kako no Mi","Ana-Ana no Mi","Kyara-Kyara no Mi"
-     ,"Emro-Emro no Mi","Enye-Enye no Mi","Rubi-Rubi no Mi","Gamma-Gamma no Mi","Hoshi-Hoshi no Mi","Implo-Implo no Mi"];
+     dfs2 = ["Choco-Choco no Mi (Chocolate Fruit)","Yume-Yume no Mi (Dream Fruit)","Soda-Soda no Mi (Soda Fruit)","Toki-Toki no Mi (Time Fruit)","Ana-Ana no Mi (Hole Fruit)","Kyara-Kyara no Mi (Character Fruit)"
+     ,"Wara-Wara no Mi (Laugh Fruit)","Rubi-Rubi no Mi (Ruby Fruit)","Ope-Ope no Mi (Op Fruit)","Hoshi-Hoshi no Mi (Star Fuit)","Naiha-Naiha no Mi (Implosian Man Fruit)","Pero-Pero No Mi (Lick Fruit)","Kaya-Kaya No Mi (Gunpowder Fruit)"
+     ,"Nichi-Nichi No Mi (2D Fruit)","Hamma-Hamma No Mi (Hammer Fruit)","Oru-Oru No Mi (Origami Fruit)","Glasa-Glasa No Mi (Glass Fruit)","Gane-Gane No Mi (Steel Body Fruit)","Kawai-Kawai No Mi (Cute-Cute Fruit)","Dragu-Dragu No Mi (Drugs Fruit)"
+     ,"Alco-Alco No Mi (Alcohol Fruit)","Gera-Gera No Mi (Gear Fruit)","Caro-Caro No Mi (Vehicle Fruit)","Foldu-Foldu No Mi (Fold-Fold Fruit)","Obbi-Obbi No Mi (Obsidian Fruit)","Vibro-Vibro No Mi (Vibration Fruit)","Susu-Susu No Mi (SuperSpeed Fruit)","Yari-Yari No Mi (Spikes Fruit)"
+     ,"Kini-Kini No Mi (Muscle Fruit)","Jiki-Jiki No Mi (Magnet Fruit)","Wara-Wara No Mi (Straw Fruit)","Horu-Horu No Mi (Hormones Fruit)","Hana-Hana No Mi (Flower Fruit)","Mane-Mane No Mi (Clone Fruit)","Bane-Bane No Mi (Springs Fruit)","Ito-Ito No Mi (Strings Fruit)"
+     ,"Sabi-Sabi No Mi (Rust Fruit)","Yomi-Yomi No Mi (Revive Fruit)","Suke-Suke No Mi (Invisible Fruit)","Goru-Goru No Mi (Gold Fruit)","Peto-Peto No Mi (Pet Fruit)","Bisu-Bisu No Mi (Biscuit Fruit)","Soru-Soru No Mi (Soul Fruit)","Chiyu-Chiyu No Mi (Heal Fruit)"
+     ,"Ato-Ato No Mi (Art Fruit)","Bari-Bari No Mi (Barrier Fruit)","Horo-Horo No Mi (Ghost/Hollow Fruit)"];
   } else if(devilfruit2 === "Special Paramecia" && devilfruit === "No") {
-     dfs2 = ["Jero-Jero no Mi","Nori-Nori no Mi","Huni-Huni no Mi","Pinu-Pinu no Mi","Toryo-Toryo no Mi"];
+     dfs2 = ["Huni-Huni no Mi (Honey Fruit)","Ki-Ki no Mi (Tree Fruit)","Toryo-Toryo no Mi (Paint Fruit)","Mochi-Mochi No Mi (Mochi Fruit)","Nori-Nori No Mi (Glue Fruit)","Jero-Jero no Mi (Gelatin Fruit)","Doku-Doku No Mi (Venom Fruit)"];
   } else if(devilfruit2 === "Logia" && devilfruit === "No") {
-     dfs2 = ["Salti-Salti no Mi","Sora-Sora no Mi","Sido-Sido no Mi","Nendo-Nendo no Mi","Doro-Doro no Mi","Plazu-Plazu no Mi","Suigi-Suigi no Mi","Taru-Taru no Mi",
-     "Genyu-Genyu no Mi","Shibo-Shibo no Mi","Tanso-Tanso no Mi","Unchi-Unchi no Mi","Hone-Hone no Mi","Moku-Moku no Mi","Nama-Nama no Mi","Sulfu-Sulfu no Mi",
-     "Tassi-Tassi no Mi","Gino-Gino no Mi","Noni-Noni no Mi","Kaze-Kaze no Mi","Ketsu-Ketsu no Mi","Inku-Inku no Mi","Kusa-Kusa no Mi","Iwa-Iwa no Mi","Kessho-Kessho no Mi"
-     ,"Foru-Foru no Mi","Enso-Enso no Mi","Choku-Choku no Mi","Hoko-Hoko no Mi","Jushi-Jushi no Mi","Nuclee-Nuclee no Mi","Suraimu-Suraimu no Mi","Mera-Mera no Mi"];
+     dfs2 = ["Salti-Salti no Mi (Salt Fruit)","Sora-Sora no Mi (Coulds Fruit)","Sido-Sido no Mi (Acid Fruit)","Nendo-Nendo no Mi (Clay Fruit)","Doro-Doro no Mi (Dirt Fruit)","Plazu-Plazu no Mi (Plasma Fruit)","Suigi-Suigi no Mi (Mercury Fruit)","Taru-Taru no Mi (Tar Fruit)",
+     "Genyu-Genyu no Mi (Crude Oil Fruit)","Shibo-Shibo no Mi (Fatty Oil Fruit)","Tanso-Tanso no Mi (Coal/Carbon Fruit)","Unchi-Unchi no Mi (Waste Fruit)","Hone-Hone no Mi (Calcium/Bone Fruit)","Moku-Moku no Mi (Wood Fruit)","Nama-Nama no Mi (Lead Fruit)","Sulfu-Sulfu no Mi (Sulfur Fruit)",
+     "Tassi-Tassi no Mi (Patassium Fruit)","Gino-Gino no Mi (Silver Fruit)","Noni-Noni no Mi (Neon Fruit)","Kaze-Kaze no Mi (Wind Fruit)","Ketsu-Ketsu no Mi (Blood Fruit)","Inku-Inku no Mi (Ink Fruit)","Kusa-Kusa no Mi (Grass Fruit)","Iwa-Iwa no Mi (Stone Fruit)","Kessho-Kessho no Mi (Crystal Fruit)"
+     ,"Foru-Foru no Mi (Phosphorus Fruit)","Enso-Enso no Mi (Chlorine Fruit)","Choku-Choku no Mi (Chalk Fruit)","Hoko-Hoko no Mi (Dust Fruit)","Jushi-Jushi no Mi (Resin Fruit)","Nuclee-Nuclee no Mi (Nuclear Energy Fruit)","Suraimu-Suraimu no Mi (Slime Fruit)","Moku-Moku no Mi (Smoke Fruit)"
+     ,"Suna-Suna no Mi (Sand Fruit)","Mera-Mera no Mi (Fire Fruit)","Goro-Goro no Mi (Lightning Fruit)","Hie-Hie no Mi (Ice Fruit)","Yami-Yami no Mi (Darkness Fruit)","Pika-Pika no Mi (Light Fruit)","Magu-Magu no Mi (Magma Fruit)","Numa-Numa no Mi (Mud Fruit)","Gasu-Gasu no Mi (Gas Fruit)"
+     ,"Yuki-Yuki no Mi (Snow Fruit)","Toro-Toro no Mi (Unknown Liquid Fruit)","Pasa-Pasa no Mi (Paper Fruit)","Ame-Ame no Mi (Candy Syrup Fruit)"];
   } else if(devilfruit2 === "No") {
      dfs2 = ["None"];
   } else if (devilfruit === devilfruit2) {
@@ -821,24 +885,56 @@ function assigndevilfruit3(){
   
 
   if(devilfruit3 === "Zoan" && devilfruit2 === "No") {
-     dfs3 = ["Tori-Tori no Mi - Model: Raven","Uma-Uma no Mi - Model: Pony","Neko-Neko no Mi - Model: Tiger"
-     ,"Kani-Kani no Mi - Model: Hermit Crab","Hebi-Hebi no Mi - Model: Viper","Kame-Kame no Mi - Model: Tortoise"
-     ,"Croco-Croco no Mi - Model: Alligator","Prima-Prima no Mi - Model: Gorilla","Kuma-Kuma no Mi - Model: Polar Bear"];
+     dfs3 = ["Uma-Uma no Mi - Model: Pony","Uma-Uma no Mi - Model: Antelope"
+     ,"Kani-Kani no Mi - Model: Hermit Crab"
+     ,"Hebi-Hebi no Mi - Model: Viper","Hebi-Hebi no Mi - Model: Python","Hebi-Hebi no Mi - Model: Black Mamba"
+     ,"Kame-Kame no Mi - Model: Tortoise"
+     ,"Croco-Croco no Mi - Model: Alligator"
+     ,"Prima-Prima no Mi - Model: Gorilla"
+     ,"Kuma-Kuma no Mi - Model: Polar Bear","Kuma-Kuma no Mi - Model: Black Bear"
+     ,"Mushi-Mushi no Mi - Model: Bee","Mushi-Mushi no Mi - Model: Scorpion"
+     ,"Webbo-Webbo no Mi - Model: Black Widow"
+     ,"Tori-Tori no Mi - Model: Duck","Tori-Tori no Mi - Model: Flamingo","Tori-Tori no Mi - Model: Raven"
+     ,"Ushi-Ushi no Mi - Model: Reindeer"
+     ,"Neko-Neko no Mi - Model: Puma","Neko-Neko no Mi - Model: Panther","Neko-Neko no Mi - Model: Tiger"
+     ,"Inu-Inu no Mi - Model: Golden Retriever","Inu-Inu no Mi - Model: Husky","Inu-Inu no Mi - Model: Blood Hound"
+     ,"Hito-Hito no Mi - Model: Human"];
   } else if(devilfruit3 === "Mythical Zoan" && devilfruit2 === "No") {
-     dfs3 = ["Tori-Tori no Mi - Model: Thunderbird","Uma-Uma no Mi - Model: Pegasus","Neko-Neko no Mi - Model: Sphinx"
-     ,"Kame-Kame no Mi - Model: Colossal Turtle"];
+     dfs3 = ["Tori-Tori no Mi - Model: Thunderbird","Tori-Tori no Mi - Model: Tripodero"
+     ,"Uma-Uma no Mi - Model: Pegasus","Neko-Neko no Mi - Model: Unicorn"
+     ,"Neko-Neko no Mi - Model: Sphinx","Neko-Neko no Mi - Model: Griffin"
+     ,"Kame-Kame no Mi - Model: Colossal Turtle"
+     ,"Inu-Inu no Mi - Model: Cerberus","Inu-Inu no Mi - Model: Fenrir Wolf","Inu-Inu no Mi - Model: Moon Wolf"
+     ,"Prima-Prima no Mi - Model: Yeti"
+     ,"Ryu-Ryu no Mi - Model: Western Dragon"
+     ,"Hito-Hito no Mi - Model: Angel","Hito-Hito no Mi - Model: Nika","Hito-Hito no Mi - Model: Zombie"
+     ,"Aku-Aku no Mi - Model: Asura","Aku-Aku no Mi - Model: Suuccubus","Aku-Aku no Mi - Model: Imp"];
   } else if(devilfruit3 === "Ancient Zoan" && devilfruit2 === "No") {
-     dfs3 = ["Mushi-Mushi no Mi - Model: Meganeura","Mushi-Mushi no Mi - Model: Gastropod","Webbo-Webbo no Mi - Model: Megarachne"];
+     dfs3 = ["Mushi-Mushi no Mi - Model: Meganeura","Mushi-Mushi no Mi - Model: Gastropod"
+     ,"Webbo-Webbo no Mi - Model: Megarachne"
+     ,"Tori-Tori no Mi - Model: Dodo Bird"
+     ,"Uma-Uma no Mi - Model: Giant Deer"
+     ,"Neko-Neko no Mi - Model: Xenosmilus"
+     ,"Inu-Inu no Mi - Model: Dire Wolf"
+     ,"Ryu-Ryu no Mi - Model: Pterodactyl","Ryu-Ryu no Mi - Model: Veolociraptor","Ryu-Ryu no Mi - Model: Megaraptor","Ryu-Ryu no Mi - Model: Tyrannosaurus Rex","Ryu-Ryu no Mi - Model: Braichiosaurus"
+     ,"Hito-Hito no Mi - Model: Neanderthal"];
   } else if(devilfruit3 === "Paramecia" && devilfruit2 === "No") {
-     dfs3 = ["Obbi-Obbi no Mi","Depra-Depra no Mi","Soda-Soda no Mi","Kako-Kako no Mi","Ana-Ana no Mi","Kyara-Kyara no Mi"
-     ,"Emro-Emro no Mi","Enye-Enye no Mi","Rubi-Rubi no Mi","Gamma-Gamma no Mi","Hoshi-Hoshi no Mi","Implo-Implo no Mi"];
+     dfs3 = ["Choco-Choco no Mi (Chocolate Fruit)","Yume-Yume no Mi (Dream Fruit)","Soda-Soda no Mi (Soda Fruit)","Toki-Toki no Mi (Time Fruit)","Ana-Ana no Mi (Hole Fruit)","Kyara-Kyara no Mi (Character Fruit)"
+     ,"Wara-Wara no Mi (Laugh Fruit)","Rubi-Rubi no Mi (Ruby Fruit)","Ope-Ope no Mi (Op Fruit)","Hoshi-Hoshi no Mi (Star Fuit)","Naiha-Naiha no Mi (Implosian Man Fruit)","Pero-Pero No Mi (Lick Fruit)","Kaya-Kaya No Mi (Gunpowder Fruit)"
+     ,"Nichi-Nichi No Mi (2D Fruit)","Hamma-Hamma No Mi (Hammer Fruit)","Oru-Oru No Mi (Origami Fruit)","Glasa-Glasa No Mi (Glass Fruit)","Gane-Gane No Mi (Steel Body Fruit)","Kawai-Kawai No Mi (Cute-Cute Fruit)","Dragu-Dragu No Mi (Drugs Fruit)"
+     ,"Alco-Alco No Mi (Alcohol Fruit)","Gera-Gera No Mi (Gear Fruit)","Caro-Caro No Mi (Vehicle Fruit)","Foldu-Foldu No Mi (Fold-Fold Fruit)","Obbi-Obbi No Mi (Obsidian Fruit)","Vibro-Vibro No Mi (Vibration Fruit)","Susu-Susu No Mi (SuperSpeed Fruit)","Yari-Yari No Mi (Spikes Fruit)"
+     ,"Kini-Kini No Mi (Muscle Fruit)","Jiki-Jiki No Mi (Magnet Fruit)","Wara-Wara No Mi (Straw Fruit)","Horu-Horu No Mi (Hormones Fruit)","Hana-Hana No Mi (Flower Fruit)","Mane-Mane No Mi (Clone Fruit)","Bane-Bane No Mi (Springs Fruit)","Ito-Ito No Mi (Strings Fruit)"
+     ,"Sabi-Sabi No Mi (Rust Fruit)","Yomi-Yomi No Mi (Revive Fruit)","Suke-Suke No Mi (Invisible Fruit)","Goru-Goru No Mi (Gold Fruit)","Peto-Peto No Mi (Pet Fruit)","Bisu-Bisu No Mi (Biscuit Fruit)","Soru-Soru No Mi (Soul Fruit)","Chiyu-Chiyu No Mi (Heal Fruit)"
+     ,"Ato-Ato No Mi (Art Fruit)","Bari-Bari No Mi (Barrier Fruit)","Horo-Horo No Mi (Ghost/Hollow Fruit)"];
   } else if(devilfruit3 === "Special Paramecia" && devilfruit2 === "No") {
-     dfs3 = ["Jero-Jero no Mi","Nori-Nori no Mi","Huni-Huni no Mi","Pinu-Pinu no Mi","Toryo-Toryo no Mi"];
+     dfs3 = ["Huni-Huni no Mi (Honey Fruit)","Ki-Ki no Mi (Tree Fruit)","Toryo-Toryo no Mi (Paint Fruit)","Mochi-Mochi No Mi (Mochi Fruit)","Nori-Nori No Mi (Glue Fruit)","Jero-Jero no Mi (Gelatin Fruit)","Doku-Doku No Mi (Venom Fruit)"];
   } else if(devilfruit3 === "Logia" && devilfruit2 === "No") {
-     dfs3 = ["Salti-Salti no Mi","Sora-Sora no Mi","Sido-Sido no Mi","Nendo-Nendo no Mi","Doro-Doro no Mi","Plazu-Plazu no Mi","Suigi-Suigi no Mi","Taru-Taru no Mi",
-     "Genyu-Genyu no Mi","Shibo-Shibo no Mi","Tanso-Tanso no Mi","Unchi-Unchi no Mi","Hone-Hone no Mi","Moku-Moku no Mi","Nama-Nama no Mi","Sulfu-Sulfu no Mi",
-     "Tassi-Tassi no Mi","Gino-Gino no Mi","Noni-Noni no Mi","Kaze-Kaze no Mi","Ketsu-Ketsu no Mi","Inku-Inku no Mi","Kusa-Kusa no Mi","Iwa-Iwa no Mi","Kessho-Kessho no Mi"
-     ,"Foru-Foru no Mi","Enso-Enso no Mi","Choku-Choku no Mi","Hoko-Hoko no Mi","Jushi-Jushi no Mi","Nuclee-Nuclee no Mi","Suraimu-Suraimu no Mi","Mera-Mera no Mi"];
+     dfs3 = ["Salti-Salti no Mi (Salt Fruit)","Sora-Sora no Mi (Coulds Fruit)","Sido-Sido no Mi (Acid Fruit)","Nendo-Nendo no Mi (Clay Fruit)","Doro-Doro no Mi (Dirt Fruit)","Plazu-Plazu no Mi (Plasma Fruit)","Suigi-Suigi no Mi (Mercury Fruit)","Taru-Taru no Mi (Tar Fruit)",
+     "Genyu-Genyu no Mi (Crude Oil Fruit)","Shibo-Shibo no Mi (Fatty Oil Fruit)","Tanso-Tanso no Mi (Coal/Carbon Fruit)","Unchi-Unchi no Mi (Waste Fruit)","Hone-Hone no Mi (Calcium/Bone Fruit)","Moku-Moku no Mi (Wood Fruit)","Nama-Nama no Mi (Lead Fruit)","Sulfu-Sulfu no Mi (Sulfur Fruit)",
+     "Tassi-Tassi no Mi (Patassium Fruit)","Gino-Gino no Mi (Silver Fruit)","Noni-Noni no Mi (Neon Fruit)","Kaze-Kaze no Mi (Wind Fruit)","Ketsu-Ketsu no Mi (Blood Fruit)","Inku-Inku no Mi (Ink Fruit)","Kusa-Kusa no Mi (Grass Fruit)","Iwa-Iwa no Mi (Stone Fruit)","Kessho-Kessho no Mi (Crystal Fruit)"
+     ,"Foru-Foru no Mi (Phosphorus Fruit)","Enso-Enso no Mi (Chlorine Fruit)","Choku-Choku no Mi (Chalk Fruit)","Hoko-Hoko no Mi (Dust Fruit)","Jushi-Jushi no Mi (Resin Fruit)","Nuclee-Nuclee no Mi (Nuclear Energy Fruit)","Suraimu-Suraimu no Mi (Slime Fruit)","Moku-Moku no Mi (Smoke Fruit)"
+     ,"Suna-Suna no Mi (Sand Fruit)","Mera-Mera no Mi (Fire Fruit)","Goro-Goro no Mi (Lightning Fruit)","Hie-Hie no Mi (Ice Fruit)","Yami-Yami no Mi (Darkness Fruit)","Pika-Pika no Mi (Light Fruit)","Magu-Magu no Mi (Magma Fruit)","Numa-Numa no Mi (Mud Fruit)","Gasu-Gasu no Mi (Gas Fruit)"
+     ,"Yuki-Yuki no Mi (Snow Fruit)","Toro-Toro no Mi (Unknown Liquid Fruit)","Pasa-Pasa no Mi (Paper Fruit)","Ame-Ame no Mi (Candy Syrup Fruit)"];
   } else if(devilfruit3 === "No") {
      dfs3 = ["None"];
   } else if (devilfruit2 === devilfruit3) {
