@@ -78,15 +78,15 @@ Odds:
     
 // Alliance ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-let alliancesWeighted = ["Marine", "Pirate", "Revolutionary Army", "Bounty Hunter", "Cipher Pol", "World Nobles"];
-let alliancesWeights = [3, 3, 2, 2, 1, 1];
+let alliancesWeighted = ["Marine", "Pirate", "Revolutionary Army", "Cipher Pol"];
+let alliancesWeights = [3, 3, 2, 2];
 
 function allianceGen() {
     alliance = weightedRandom(alliancesWeighted, alliancesWeights);
     document.getElementById("alliance").innerHTML = alliance;
 }
 
-function generateAlliance(){
+/*function generateAlliance(){
       var alliances = ["Revolutionary Army","Marine","Pirate","Bounty Hunter","Cipher Pol","World Nobles"
                       ,"Revolutionary Army","Marine","Pirate","Bounty Hunter","Marine","Pirate"];
 
@@ -108,17 +108,13 @@ Odds:
 
 function generateAlliance2(){
   if (alliance === "Revolutionary Army") {
-     alliances2 = ["Revolutionary Army","Revolutionary Army","Pirate","Bounty Hunter"];
+     alliances2 = ["Revolutionary Army","Revolutionary Army","Pirate"];
   } else if(alliance === "Marine") {
-     alliances2 = ["Marine","Marine","Marine","Revolutionary Army","Pirate","Bounty Hunter","Cipher Pol"];
+     alliances2 = ["Marine","Marine","Marine","Revolutionary Army","Pirate","Cipher Pol"];
   } else if(alliance === "Pirate") {
-     alliances2 = ["Revolutionary Army","Pirate","Pirate","Bounty Hunter","Marine"];
-  } else if(alliance === "Bounty Hunter") {
-     alliances2 = ["Bounty Hunter","Bounty Hunter","Revolutionary Army","Pirate","Bounty Hunter"];
+     alliances2 = ["Revolutionary Army","Pirate","Pirate","Marine"];
   } else if(alliance === "Cipher Pol") {
      alliances2 = ["Cipher Pol","Cipher Pol","Marine"];
-  } else if(alliance === "World Nobles") {
-     alliances2 = ["World Nobles","World Nobles","Revolutionary Army","Marine","Pirate","Bounty Hunter","Cipher Pol"];
   }
 
   alliance2 = capFirst(alliances2[getRandomInt(0, alliances2.length + 1)]);
@@ -129,17 +125,13 @@ function generateAlliance2(){
 
 function generateAlliance3(){
   if (alliance2 === "Revolutionary Army") {
-     alliances3 = ["Revolutionary Army","Revolutionary Army","Pirate","Bounty Hunter"];
+     alliances3 = ["Revolutionary Army","Revolutionary Army","Pirate"];
   } else if(alliance2 === "Marine") {
-     alliances3 = ["Marine","Marine","Marine","Revolutionary Army","Pirate","Bounty Hunter","Cipher Pol"];
+     alliances3 = ["Marine","Marine","Marine","Revolutionary Army","Pirate","Cipher Pol"];
   } else if(alliance2 === "Pirate") {
-     alliances3 = ["Revolutionary Army","Pirate","Pirate","Bounty Hunter","Marine"];
-  } else if(alliance2 === "Bounty Hunter") {
-     alliances3 = ["Bounty Hunter","Bounty Hunter","Revolutionary Army","Pirate","Bounty Hunter"];
+     alliances3 = ["Revolutionary Army","Pirate","Pirate","Marine"];
   } else if(alliance2 === "Cipher Pol") {
      alliances3 = ["Cipher Pol","Cipher Pol","Marine"];
-  } else if(alliance2 === "World Nobles") {
-     alliances3 = ["World Nobles","World Nobles","Revolutionary Army","Marine","Pirate","Bounty Hunter","Cipher Pol"];
   }
 
   alliance3 = capFirst(alliances3[getRandomInt(0, alliances3.length + 1)]);
@@ -158,12 +150,8 @@ function assignRank(){
      "Lieutenant","Ensign","Petty Officer","Seaman","Choreboy","Inspector General","Instructor","Shichibukai"];
   } else if(alliance === "Pirate") {
      ranks = ["Pirate Captain","First Mate","Swordsman","Sniper","Martial Artist","Navigator","Cook","Doctor","Shipwright","Musician","Aprentice","Pet"];
-  } else if(alliance === "Bounty Hunter") {
-     ranks = ["Individual","Guild Leader","Guild Member"];
   } else if(alliance === "Cipher Pol") {
      ranks = ["CP0","CP1","CP2","CP3","CP4","CP5","CP6","CP7","CP8","CP9"];
-  } else if(alliance === "World Nobles") {
-     ranks = ["Celestial Dragon","King/Queen","Prince/Princess","Noble Commander","Soldier"];
   } 
 
   rank = capFirst(ranks[getRandomInt(0, ranks.length + 1)]);
@@ -254,16 +242,6 @@ function assignRank2(){
   } else if(alliance2 === "Pirate") {
      ranks2 = ["Pirate Captain","First Mate","Swordsman","Sniper","Martial Artist","Navigator","Cook","Doctor","Shipwright","Musician","Aprentice","Pet"];   
 //----------------------------------------------------------------------------
-  } else if(rank === "Individual" && alliance2 === "Bounty Hunter") {  // ------------------------- Bounty Hunter
-     ranks2 = ["Individual","Guild Leader","Guild Member"];
-  } else if(rank === "Guild Leader" && alliance2 === "Bounty Hunter") {
-     ranks2 = ["Individual","Guild Leader"];
-  } else if(rank === "Guild Member" && alliance2 === "Bounty Hunter") {
-     ranks2 = ["Individual","Guild Leader","Guild Member"];
-
-  } else if(alliance2 === "Bounty Hunter") {
-     ranks2 = ["Individual","Guild Leader","Guild Member"];   
-//----------------------------------------------------------------------------
   } else if(rank === "CP0" && alliance2 === "Cipher Pol") {             // ------------------------- Cipher Pol
      ranks2 = ["CP0"];
   } else if(rank === "CP1" && alliance2 === "Cipher Pol") {            
@@ -287,20 +265,7 @@ function assignRank2(){
 
   } else if(alliance2 === "Cipher Pol") {            
      ranks2 = ["CP0","CP1","CP2","CP3","CP4","CP5","CP6","CP7","CP8","CP9"];
-//----------------------------------------------------------------------------
-  } else if(rank === "Celestial Dragon" && alliance2 === "World Nobles") { // ------------------------- World Nobles
-     ranks2 = ["Celestial Dragon","King/Queen","Prince/Princess","Noble Commander","Soldier"];
-  } else if(rank === "King/Queen" && alliance2 === "World Nobles") {                            
-     ranks2 = ["Celestial Dragon","King/Queen"];
-  } else if(rank === "Prince/Princess" && alliance2 === "World Nobles") {                            
-     ranks2 = ["King/Queen","Prince/Princess"];
-  } else if(rank === "Noble Commander" && alliance2 === "World Nobles") {                            
-     ranks2 = ["King/Queen","Prince/Princess","Noble Commander"];
-  } else if(rank === "Soldier" && alliance2 === "World Nobles") {                            
-     ranks2 = ["King/Queen","Prince/Princess","Noble Commander","Soldier"];
 
-  } else if(alliance2 === "World Nobles") {                            
-     ranks2 = ["King/Queen","Prince/Princess","Noble Commander","Soldier"];
   }
 
   rank2 = capFirst(ranks2[getRandomInt(0, ranks2.length + 1)]);
@@ -388,17 +353,7 @@ function assignRank3(){
      ranks3 = ["Pirate Captain","First Mate","Pet"];
 
   } else if(alliance3 === "Pirate") {
-     ranks3 = ["Pirate Captain","First Mate","Swordsman","Sniper","Martial Artist","Navigator","Cook","Doctor","Shipwright","Musician","Aprentice","Pet"];   
-//----------------------------------------------------------------------------
-  } else if(rank2 === "Individual" && alliance3 === "Bounty Hunter") {  // ------------------------- Bounty Hunter
-     ranks3 = ["Individual","Guild Leader","Guild Member"];
-  } else if(rank2 === "Guild Leader" && alliance3 === "Bounty Hunter") {
-     ranks3 = ["Individual","Guild Leader"];
-  } else if(rank2 === "Guild Member" && alliance3 === "Bounty Hunter") {
-     ranks3 = ["Individual","Guild Leader","Guild Member"];
-
-  } else if(alliance3 === "Bounty Hunter") {
-     ranks3 = ["Individual","Guild Leader","Guild Member"];   
+     ranks3 = ["Pirate Captain","First Mate","Swordsman","Sniper","Martial Artist","Navigator","Cook","Doctor","Shipwright","Musician","Aprentice","Pet"];     
 //----------------------------------------------------------------------------
   } else if(rank2 === "CP0" && alliance3 === "Cipher Pol") {             // ------------------------- Cipher Pol
      ranks3 = ["CP0"];
@@ -423,20 +378,7 @@ function assignRank3(){
 
   } else if(alliance3 === "Cipher Pol") {            
      ranks3 = ["CP0","CP1","CP2","CP3","CP4","CP5","CP6","CP7","CP8","CP9"];
-//----------------------------------------------------------------------------
-  } else if(rank2 === "Celestial Dragon" && alliance3 === "World Nobles") { // ------------------------- World Nobles
-     ranks3 = ["Celestial Dragon","King/Queen","Prince/Princess","Noble Commander","Soldier"];
-  } else if(rank2 === "King/Queen" && alliance3 === "World Nobles") {                            
-     ranks3 = ["Celestial Dragon","King/Queen"];
-  } else if(rank2 === "Prince/Princess" && alliance3 === "World Nobles") {                            
-     ranks3 = ["King/Queen","Prince/Princess"];
-  } else if(rank2 === "Noble Commander" && alliance3 === "World Nobles") {                            
-     ranks3 = ["King/Queen","Prince/Princess","Noble Commander"];
-  } else if(rank2 === "Soldier" && alliance3 === "World Nobles") {                            
-     ranks3 = ["King/Queen","Prince/Princess","Noble Commander","Soldier"];
 
-  } else if(alliance3 === "World Nobles") {                            
-     ranks3 = ["King/Queen","Prince/Princess","Noble Commander","Soldier"];
   }
 
   rank3 = capFirst(ranks3[getRandomInt(0, ranks3.length + 1)]);
@@ -460,8 +402,6 @@ function generatefighting(){
      fightings = ["Gunsmanship"];
   } else if(rank === "Martial Artist") {
      fightings = ["Six power","Dragon Claw","Fishman karate"];
-  } else if(rank === "Soldier") {  // --------------------------------------------- World Nobles
-     fightings = ["Gunsmanship","Swordsmanship"];
   } else if(race === "Fishman") {  // --------------------------------------------- Fishman Race
      fightings = ["Fishman karate","Swordsmanship","Gunsmanship","Six power","Dragon Claw","Freestyle","Black leg","Fists","Samurai"];
   } else if(race === "Merfolk") {  // --------------------------------------------- Merfolk Race
@@ -982,13 +922,6 @@ function assignfeat(){
      ,"Stormed a Marine fortress."
      ,"Defeated a notorious pirate."
      ,"Stole a rare devil fruit from the Government."];
-  } else if(alliance === "Bounty Hunter") { // ---------------------------------------------- Bounty Hunter
-     feats = ["None"
-     ,"Captured a 40,000,000 bounty criminal."
-     ,"Defeated a small group of pirates."
-     ,"Defeated a Marine's Captain."
-     ,"Captured a 20,000,000 bounty criminal."
-     ,"Captured a 5,000,000 bounty criminal."];
   } else if(alliance === "Cipher Pol") { // ---------------------------------------------- Cipher Pol
      feats = ["None"
      ,"Adquired information about a poneglif."
@@ -997,12 +930,6 @@ function assignfeat(){
      ,"Completed a secret mission from the Government."
      ,"Defeated a notorious pirate."
      ,"Adquired information about one of the Ancient weapons."];
-  } else if(alliance === "World Nobles") { // ---------------------------------------------- World Nobles
-     feats = ["None"
-     ,"Attacked a neighboring country."
-     ,"Denied his past and royal family."
-     ,"Destroyed an enemy's facility."
-     ,"Allied with pirates."];
   } 
 
   feat = capFirst(feats[getRandomInt(0, feats.length + 1)]);
@@ -1047,27 +974,14 @@ function assignfeat2(){
      ,"Stormed a Marine's fortress."
      ,"Defeated a notorious pirate."
      ,"Stole a rare devil fruit from the Government."];
-  } else if(alliance2 === "Bounty Hunter") { // ---------------------------------------------- Bounty Hunter
+  } else if(alliance2 === "Cipher Pol") { // ---------------------------------------------- Cipher Pol
      feats2 = ["None"
-     ,"Captured a 40,000,000 bounty criminal."
-     ,"Defeated a small group of pirates."
-     ,"Defeated a Marine's Captain."
-     ,"Captured a 20,000,000 bounty criminal."
-     ,"Captured a 5,000,000 bounty criminal."];
-  } else if(alliance === "Cipher Pol") { // ---------------------------------------------- Cipher Pol
-     feats = ["None"
      ,"Adquired information about a poneglif."
      ,"Spied on a Yonko."
      ,"Contained a possible leak of sensitive Government information."
      ,"Completed a secret mission from the Government."
      ,"Defeated a notorious pirate."
      ,"Adquired information about one of the Ancient weapons."];
-  } else if(alliance2 === "World Nobles") { // ---------------------------------------------- World Nobles
-     feats2 = ["None"
-     ,"Attacked a neighboring country."
-     ,"Denied his past and royal family."
-     ,"Destroyed an enemy's facility."
-     ,"Allied with pirates."];
   } 
 
   feat2 = capFirst(feats2[getRandomInt(0, feats2.length + 1)]);
@@ -1112,27 +1026,14 @@ function assignfeat3(){
      ,"Stormed a Marine's fortress."
      ,"Defeated a notorious pirate."
      ,"Stole a rare devil fruit from the Government."];
-  } else if(alliance3 === "Bounty Hunter") { // ---------------------------------------------- Bounty Hunter
+  } else if(alliance3 === "Cipher Pol") { // ---------------------------------------------- Cipher Pol
      feats3 = ["None"
-     ,"Captured a 40,000,000 bounty criminal."
-     ,"Defeated a small group of pirates."
-     ,"Defeated a Marine's Captain."
-     ,"Captured a 20,000,000 bounty criminal."
-     ,"Captured a 5,000,000 bounty criminal."];
-  } else if(alliance === "Cipher Pol") { // ---------------------------------------------- Cipher Pol
-     feats = ["None"
      ,"Adquired information about a poneglif."
      ,"Spied on a Yonko."
      ,"Contained a possible leak of sensitive Government information."
      ,"Completed a secret mission from the Government."
      ,"Defeated a notorious pirate."
      ,"Adquired information about one of the Ancient weapons."];
-  } else if(alliance3 === "World Nobles") { // ---------------------------------------------- World Nobles
-     feats3 = ["None"
-     ,"Attacked a neighboring country."
-     ,"Denied his past and royal family."
-     ,"Destroyed an enemy's facility."
-     ,"Allied with pirates."];
   } 
 
   feat3 = capFirst(feats3[getRandomInt(0, feats3.length + 1)]);
@@ -1252,22 +1153,6 @@ function doriki() {
      var rankdoriki = getRandomInt(4000, 6000 + 1);
   } else if(rank === "CP9") {
      var rankdoriki = getRandomInt(500, 4000 + 1);
-  } else if(rank === "Guild Leader") {   // ----------------------------------- Rank Bounty Hunter
-     var rankdoriki = getRandomInt(100, 1500 + 1);
-  } else if(rank === "Guild Member") {
-     var rankdoriki = getRandomInt(10, 1000 + 1);
-  } else if(rank === "Individual") {
-     var rankdoriki = getRandomInt(10, 1500 + 1);
-  } else if(rank === "Celestial Dragon") {         // ----------------------------------- Rank World Nobles
-     var rankdoriki = getRandomInt(1, 10 + 1);
-  } else if(rank === "King/Queen") {         // ----------------------------------- Rank World Nobles
-     var rankdoriki = getRandomInt(10, 200 + 1);
-  } else if(rank === "Price/Princess") {         // ----------------------------------- Rank World Nobles
-     var rankdoriki = getRandomInt(1, 50 + 1);
-  } else if(rank === "Noble Commander") {         // ----------------------------------- Rank World Nobles
-     var rankdoriki = getRandomInt(10, 500 + 1);
-  } else if(rank === "Soldier") {         // ----------------------------------- Rank World Nobles
-     var rankdoriki = getRandomInt(10, 20 + 1);
   } else {                                           
      var rankdoriki = getRandomInt(1, 400 + 1);
   }
@@ -1410,22 +1295,6 @@ function doriki2() {
      var rankdoriki2 = getRandomInt(4000, 6000 + 1);
   } else if(rank2 === "CP9") {
      var rankdoriki2 = getRandomInt(500, 4000 + 1);
-  } else if(rank2 === "Guild Leader") {   // ----------------------------------- Rank Bounty Hunter
-     var rankdoriki2 = getRandomInt(100, 1500 + 1);
-  } else if(rank2 === "Guild Member") {
-     var rankdoriki2 = getRandomInt(10, 1000 + 1);
-  } else if(rank2 === "Individual") {
-     var rankdoriki2 = getRandomInt(10, 1500 + 1);
-  } else if(rank2 === "Celestial Dragon") {         // ----------------------------------- Rank World Nobles
-     var rankdoriki2 = getRandomInt(1, 10 + 1);
-  } else if(rank2 === "King/Queen") {         // ----------------------------------- Rank World Nobles
-     var rankdoriki2 = getRandomInt(10, 200 + 1);
-  } else if(rank2 === "Price/Princess") {         // ----------------------------------- Rank World Nobles
-     var rankdoriki2 = getRandomInt(1, 50 + 1);
-  } else if(rank2 === "Noble Commander") {         // ----------------------------------- Rank World Nobles
-     var rankdoriki2 = getRandomInt(10, 500 + 1);
-  } else if(rank2 === "Soldier") {         // ----------------------------------- Rank World Nobles
-     var rankdoriki2 = getRandomInt(10, 20 + 1);
   } else {                                           
      var rankdoriki2 = getRandomInt(1, 400 + 1);
   }
@@ -1552,22 +1421,6 @@ function doriki3() {
      var rankdoriki3 = getRandomInt(4000, 6000 + 1);
   } else if(rank3 === "CP9") {
      var rankdoriki3 = getRandomInt(500, 4000 + 1);
-  } else if(rank3 === "Guild Leader") {   // ----------------------------------- Rank Bounty Hunter
-     var rankdoriki3 = getRandomInt(100, 1500 + 1);
-  } else if(rank3 === "Guild Member") {
-     var rankdoriki3 = getRandomInt(10, 1000 + 1);
-  } else if(rank3 === "Individual") {
-     var rankdoriki3 = getRandomInt(10, 1500 + 1);
-  } else if(rank3 === "Celestial Dragon") {         // ----------------------------------- Rank World Nobles
-     var rankdoriki3 = getRandomInt(1, 10 + 1);
-  } else if(rank3 === "King/Queen") {         // ----------------------------------- Rank World Nobles
-     var rankdoriki3 = getRandomInt(10, 200 + 1);
-  } else if(rank3 === "Price/Princess") {         // ----------------------------------- Rank World Nobles
-     var rankdoriki3 = getRandomInt(1, 50 + 1);
-  } else if(rank3 === "Noble Commander") {         // ----------------------------------- Rank World Nobles
-     var rankdoriki3 = getRandomInt(10, 500 + 1);
-  } else if(rank3 === "Soldier") {         // ----------------------------------- Rank World Nobles
-     var rankdoriki3 = getRandomInt(10, 20 + 1);
   } else {                                           
      var rankdoriki3 = getRandomInt(1, 400 + 1);
   }
