@@ -73,13 +73,8 @@ Odds:
   Oni           - 1/30 ≈ 3%
   Cyborg        - 1/30 ≈ 3%
 */
-
     
 // Alliance ---------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-function capFirst(alli) {
-    return alli.charAt(0).toUpperCase() + alli.slice(1);
-}
 
 function generateAlliance(){
       var alliances = ["Revolutionary Army","Marine","Pirate","Bounty Hunter","Cipher Pol","World Nobles"
@@ -632,10 +627,6 @@ function assignhaki3(){
 
 // Devil Fruit ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-function capFirst(alli) {
-    return alli.charAt(0).toUpperCase() + alli.slice(1);
-}
-
 function generatedevilfruit() {
       var devilfruits = ["Special Paramecia","Paramecia","Zoan","No","Paramecia","Ancient Zoan","No","Paramecia","Logia","Zoan",
       "No","Zoan","No","Special Paramecia","Mythical Zoan","No","Paramecia","No","Zoan","Mythical Zoan",
@@ -726,10 +717,6 @@ function assigndevilfruit(){
 }
 
 // Devil Fruit 2 -----
-
-function capFirst(alli) {
-    return alli.charAt(0).toUpperCase() + alli.slice(1);
-}
 
 function generatedevilfruit2() {
 
@@ -842,10 +829,6 @@ function assigndevilfruit2(){
 }
     
 // Devil Fruit 3 -----
-
-function capFirst(alli) {
-    return alli.charAt(0).toUpperCase() + alli.slice(1);
-}
 
 function generatedevilfruit3() {
 
