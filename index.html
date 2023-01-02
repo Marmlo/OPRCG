@@ -12,7 +12,18 @@
         <div class="relative my-5 select-none flex justify-center">
             <img src="/logo.png" alt="Random character generator">
         </div>
-        <div id="gen-all-button">
+        <div id="content">
+            <div id="gen-all-button">
+            </div>
+            <div id="info">
+                <div id="name" class="flex">
+                    <label class="text-black block font-bold text-xl mb-2" for="name">
+                        Name
+                    </label>
+                    <input type="text" id="name" placeholder="Enter your name"
+                    class="hover:border-3 hover:border-orange-700 focus:border-3 focus:border-orange-400 focus:outline-none bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:bg-white">
+                </div>
+            </div>
         </div>
     </div>
     <script type="module" src="/src/main.ts"></script>

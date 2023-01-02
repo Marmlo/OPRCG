@@ -1,0 +1,32 @@
+{
+    "list": [
+        "Human",
+        "Fishman",
+        "Giant",
+        "Hybrid",
+        "Merfolk",
+        "Ancient Giant",
+        "Frost Giant",
+         "Skypiean",
+        "Lunarian",
+        "Mink",
+        "Tontatta",
+        "Oni",
+        "Cyborg"
+    ],
+    "weights": [
+        10,
+        4,
+        3,
+        3,
+        2,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+    ]
+}
