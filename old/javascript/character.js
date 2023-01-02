@@ -20,7 +20,6 @@ let feat = "";
 let feat2 = "";
 let feat3 = "";
 
-
 // Probably not going to need these:
 function capFirst(alli) {
     return alli.charAt(0).toUpperCase() + alli.slice(1);
@@ -86,14 +85,6 @@ function allianceGen() {
     document.getElementById("alliance").innerHTML = alliance;
 }
 
-function generateAlliance(){
-      var alliances = ["Revolutionary Army","Marine","Pirate","Bounty Hunter","Cipher Pol","World Nobles"
-                      ,"Revolutionary Army","Marine","Pirate","Bounty Hunter","Marine","Pirate"];
-
-      alliance = capFirst(alliances[getRandomInt(0, alliances.length + 1)]);
-      document.getElementById("alliance").innerHTML = alliance;
-}
-
 /* 
 Odds:
   Marine             - 3/12 ≈ 25%
@@ -106,7 +97,7 @@ Odds:
 
 // Alliance2 -----
 
-function generateAlliance2(){
+function allianceGen2(){
   if (alliance === "Revolutionary Army") {
      alliances2 = ["Revolutionary Army","Revolutionary Army","Pirate","Bounty Hunter"];
   } else if(alliance === "Marine") {
@@ -127,7 +118,7 @@ function generateAlliance2(){
 
 // Alliance3 -----
 
-function generateAlliance3(){
+function allianceGen3(){
   if (alliance2 === "Revolutionary Army") {
      alliances3 = ["Revolutionary Army","Revolutionary Army","Pirate","Bounty Hunter"];
   } else if(alliance2 === "Marine") {
