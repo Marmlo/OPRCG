@@ -1,43 +1,42 @@
-let alliance = "";
-let alliance2 = "";
-let alliance3 = "";
-let rank = "";
-let rank2 = "";
-let rank3 = "";
-let fighting = "";
-let fighting2 = "";
-let fighting3 = "";
-let haki = "";
-let haki2 = "";
-let haki3 = "";
-let devilfruit = "";
-let devilfruit2 = "";
-let devilfruit3 = "";
-let df = "";
-let df2 = "";
-let df3 = "";
-let feat = "";
-let feat2 = "";
-let feat3 = "";
+import racesJson from '/src/data/races.json';
+import affiliationsJson from '/src/data/affiliations.json';
+
+var races = racesJson.list;
+var raceWeights = racesJson.weights;
+var affiliations = affiliationsJson.main.list;
+var affiliationWeights = affiliationsJson.main.weights;
+
+var affiliation1 = "";
+var affiliation2 = "";
+var affiliation3 = "";
+var rank = "";
+var rank2 = "";
+var rank3 = "";
+var fighting = "";
+var fighting2 = "";
+var fighting3 = "";
+var haki = "";
+var haki2 = "";
+var haki3 = "";
+var devilfruit = "";
+var devilfruit2 = "";
+var devilfruit3 = "";
+var df = "";
+var df2 = "";
+var df3 = "";
+var feat = "";
+var feat2 = "";
+var feat3 = "";
+
 
 // Probably not going to need these:
 function capFirst(alli) {
     return alli.charAt(0).toUpperCase() + alli.slice(1);
 }
 
-function getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min)) + min;
-}
-// ----------------------------------
+// ---------------------------------
 
-// Race ---------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-let racesWeighted = ['Human', 'Fishman', 'Giant', 'Hybrid', 'Merfolk', 'Ancient Giant', 'Frost Giant',  'Skypiean', 'Lunarian', 'Mink', 'Tontatta', 'Oni', 'Cyborg']
-let racesWeights = [10, 4, 3, 3, 2, 1, 1, 1, 1, 1, 1, 1, 1]
-
-function raceGen() {
-    document.getElementById("race").innerHTML = weightedRandom(racesWeighted, racesWeights)
-}
+// Functions for the generation ------------------------------------------------
 
 function weightedRandom(items, weights) {
     var i;
@@ -57,24 +56,81 @@ function weightedRandom(items, weights) {
     return items[i];
 }
 
+// Generator functions ---------------------------------------------------------
 
-/* 
-Odds:
-  Human         - 10/30 ≈ 33%
-  Fishman       - 4/30 ≈ 13%
-  Giant         - 3/30 ≈ 10%
-  Hybrid        - 3/30 ≈ 10%
-  Merfolk       - 2/30 ≈ 7%
-  Ancient Giant - 1/30 ≈ 3%
-  Frost Giant   - 1/30 ≈ 3%
-  Skypiean      - 1/30 ≈ 3%
-  Lunarian      - 1/30 ≈ 3%
-  Mink          - 1/30 ≈ 3%
-  Tontatta      - 1/30 ≈ 3%
-  Oni           - 1/30 ≈ 3%
-  Cyborg        - 1/30 ≈ 3%
-*/
-    
+export function genAll() {
+    // Probably can be done with a for loop?
+    // Will try later when all old code is fixed
+    raceGen();
+    affiliationGen1();
+
+    // These don't work properly yet:
+    affiliationGen2();
+    affiliationGen3();
+
+    // These are not done yet:
+    /*
+    assignRank();
+    generatefighting();
+    assignhaki();
+    generatedevilfruit();
+    assigndevilfruit();
+    assignfeat();
+    doriki();
+    addbounty();
+    generateAlliance2();
+    assignRank2();
+    generatefighting2();
+    assignhaki2();
+    generatedevilfruit2();
+    assigndevilfruit2();
+    assignfeat2();
+    doriki2();
+    addbounty2();
+    generateAlliance3();
+    assignRank3();
+    generatefighting3();
+    assignhaki3();
+    generatedevilfruit3();
+    assigndevilfruit3();
+    assignfeat3();
+    doriki3();
+    addbounty3();
+    */
+}
+
+function raceGen() {
+    document.getElementById("race").innerHTML = weightedRandom(races, raceWeights);
+}
+
+// Takes a random affiliation
+function affiliationGen1() {
+    console.log("Affil 1");
+    affiliation1 = weightedRandom(affiliations, affiliationWeights);
+    document.getElementById("affiliation1").innerHTML = affiliation1;
+    return affiliation1;
+}
+
+// Takes a random affiliation based on the previous one
+function affiliationGen2() {
+    console.log("Affil 2");
+    const list = affiliationsJson[affiliation1].list;
+    const weights = affiliationsJson[affiliation1].weights;
+
+    affiliation2 = weightedRandom(list, weights);
+    document.getElementById("affiliation2").innerHTML = affiliation2;
+}
+
+// Takes a random affiliation based on the previous one
+function affiliationGen3() {
+    console.log("Affil 3");
+    const list = affiliationsJson[affiliation2].list;
+    const weights = affiliationsJson[affiliation2].weights;
+
+    affiliation3 = weightedRandom(list, weights);
+    document.getElementById("affiliation3").innerHTML = affiliation3;
+}
+
 // Alliance ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 let alliancesWeighted = ["Marine", "Pirate", "Revolutionary Army", "Bounty Hunter", "Cipher Pol", "World Nobles"];
@@ -631,9 +687,6 @@ function generatedevilfruit() {
       document.getElementById("devilfruit").innerHTML = devilfruit;
 }
 
-function getRandomInt(min, max) {
-      return Math.floor(Math.random() * (max - min)) + min;
-}
 
     /* 
 
@@ -738,9 +791,6 @@ function generatedevilfruit2() {
 
 }
 
-function getRandomInt(min, max) {
-      return Math.floor(Math.random() * (max - min)) + min;
-}
 
   /* 
 
@@ -850,9 +900,6 @@ function generatedevilfruit3() {
 
 }
 
-function getRandomInt(min, max) {
-      return Math.floor(Math.random() * (max - min)) + min;
-}
 
   /* 
 
