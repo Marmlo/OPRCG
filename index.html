@@ -1,50 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+    <head>
         <meta charset="UTF-8" />
         <link rel="icon" type="image/svg+xml" href="/vite.svg"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="stylesheet" href="./src/style.css">
         <title>One Piece Character Generator</title>
-  </head>
-  <body>
-    <div id="app" class="bg-[#055] w-screen h-screen">
-        <div class="relative my-5 select-none flex justify-center">
-            <img src="/logo.png" alt="Random character generator">
-        </div>
-        <div id="content" class="flex-col space-y-5">
-            <div id="gen-all-button" class="flex justify-center">
+    </head>
+    <body>
+        <div id="app" class="bg-[#055] min-w-full min-h-screen">
+            <div class="relative my-5 select-none flex justify-center">
+                <img src="/logo.png" alt="Random character generator">
             </div>
-            <div id="info" class="grid grid-cols-6 gap-4">
-                <div id="name-text" class="text-white font-bold text-xl mb-2 inline-block align-middle">
-                    Name
-                </div>
-                <input type="text" id="name" placeholder="Enter your name"
-                    class="col-span-5 border-2 border-gray-200 rounded py-3 bg-gray-200 text-gray-700 hover:border-3 hover:border-orange-700 focus:border-3 focus:border-orange-400 focus:outline-none appearance-none focus:bg-white"
-                >
-                <div id="nickname-text" class="text-white font-bold text-xl mb-2 inline-block align-middle">
-                    Nickname
-                </div>
-                <input type="text" id="nickname" placeholder="Enter your nickname"
-                    class="col-span-5 border-2 border-gray-200 rounded py-3 bg-gray-200 text-gray-700 hover:border-3 hover:border-orange-700 focus:border-3 focus:border-orange-400 focus:outline-none appearance-none focus:bg-white"
-                >
-                <div id="race-text" class="text-white font-bold text-xl mb-2 inline-block align-middle">
-                    Race
-                </div>
-                <div id="race" class="col-span-5 text-white font-bold text-xl mb-2 inline-block align-middle">
-                </div>
-                <div id="affiliation-text" class="text-white font-bold text-xl mb-2 inline-block align-middle">
-                    Affiliation
-                </div>
-                <div id="affiliation1" class="text-white font-bold text-xl mb-2 inline-block align-middle">
-                </div>
-                <div id="affiliation2" class="text-white font-bold text-xl mb-2 inline-block align-middle">
-                </div>
-                <div id="affiliation3" class="text-white font-bold text-xl mb-2 inline-block align-middle">
+            <div id="content" class="flex-col space-y-5">
+                <div id="info" class="grid grid-cols-7 gap-4">
+                    <div id="gen-all-button" class="col-span-7"></div>
+                    <!-- Separator -->
+                    <div id="name-text" class="text-white font-bold text-xl mb-2 inline-block align-middle">
+                        Name
+                    </div>
+                    <input type="text" id="name" placeholder="Enter your name"
+                        class="col-span-6 border-2 border-gray-200 rounded py-3 bg-gray-200 text-gray-700 hover:border-3 hover:border-orange-700 focus:border-3 focus:border-orange-400 focus:outline-none appearance-none focus:bg-white"
+                    >
+                    <!-- Separator -->
+                    <div id="nickname-text" class="text-white font-bold text-xl mb-2 inline-block align-middle">
+                        Nickname
+                    </div>
+                    <input type="text" id="nickname" placeholder="Enter your nickname"
+                        class="col-span-6 border-2 border-gray-200 rounded py-3 bg-gray-200 text-gray-700 hover:border-3 hover:border-orange-700 focus:border-3 focus:border-orange-400 focus:outline-none appearance-none focus:bg-white"
+                    >
+                    <!-- Separator -->
+                    <div id="race-text" class="text-white font-bold text-xl mb-2 inline-block align-middle">
+                        Race
+                    </div>
+                    <div id="race" class="col-span-6 text-white font-bold text-xl mb-2 inline-block align-middle">
+                        placeholder lol
+                    </div>
+                    <!-- Separator -->
+                    <div id="gender-text" class="text-white font-bold text-xl mb-2 inline-block align-middle">
+                        Gender
+                    </div>
+                    <select id="countries" class="col-span-6 border-2 border-gray-300 rounded py-3 bg-gray-200 text-gray-700 hover:border-3 hover:border-orange-700 focus:border-3 focus:border-orange-400 focus:outline-none appearance-none focus:bg-white">
+                        <option selected value="FE">Female</option>
+                        <option value="MA">Male</option>
+                        <option value="NB">Non-binary</option>
+                        <option value="CU">Custom (This will give a text box when finished!)</option>
+                    </select>
+                    <!-- Separator -->
+                    <div class="text-white font-bold text-xl mb-2 inline-block align-middle">
+                        Info
+                    </div>
+                    <div class="col-span-2 text-white font-bold text-xl mb-2 inline-block align-middle">
+                        First Year
+                    </div>
+                    <div class="col-span-2 text-white font-bold text-xl mb-2 inline-block align-middle">
+                        After Two Years
+                    </div>
+                    <div class="col-span-2 text-white font-bold text-xl mb-2 inline-block align-middle">
+                        After Ten Years
+                    </div>
+                    <hr class="col-span-7"/><!-- will have to put something better than a hrule -->
+                    <!-- Separator -->
+                    <div id="affiliation-text" class="text-white font-bold text-xl mb-2 inline-block align-middle">
+                        Affiliation
+                    </div>
+                    <div id="affiliation1" class="col-span-2 text-white font-bold text-xl mb-2 inline-block align-middle">
+                        affil1
+                    </div>
+                    <div id="affiliation2" class="col-span-2 text-white font-bold text-xl mb-2 inline-block align-middle">
+                        affil2
+                    </div>
+                    <div id="affiliation3" class="col-span-2 text-white font-bold text-xl mb-2 inline-block align-middle">
+                        affil3
+                    </div>
+                    <!-- Separator -->
+                    <div id="position-text" class="text-white font-bold text-xl mb-2 inline-block align-middle">
+                        Position
+                    </div>
+                    <div id="position" class="col-span-6 text-white font-bold text-xl mb-2 inline-block align-middle">
+                        as in, position in the affiliation; captain, king, spy, whatever
+                    </div>
+                    <!-- Separator -->
+                    <div id="fighting-text" class="text-white font-bold text-xl mb-2 inline-block align-middle">
+                        Fighting Style
+                    </div>
+                    <div id="fighting1" class="col-span-2 text-white font-bold text-xl mb-2 inline-block align-middle">
+                        fight
+                    </div>
+                    <div id="fighting2" class="col-span-2 text-white font-bold text-xl mb-2 inline-block align-middle">
+                        fighter
+                    </div>
+                    <div id="fighting3" class="col-span-2 text-white font-bold text-xl mb-2 inline-block align-middle">
+                        fightest lol
+                    </div>
+                    <!-- Separator -->
+                    <div id="haki-text" class="text-white font-bold text-xl mb-2 inline-block align-middle">
+                        Haki
+                    </div>
+                    <div id="haki1" class="col-span-2 text-white font-bold text-xl mb-2 inline-block align-middle">
+                        Hak
+                    </div>
+                    <div id="haki2" class="col-span-2 text-white font-bold text-xl mb-2 inline-block align-middle">
+                        haky
+                    </div>
+                    <div id="haki3" class="col-span-2 text-white font-bold text-xl mb-2 inline-block align-middle">
+                        haki goes here
+                    </div>
+                    <!-- Separator -->
+                    <div id="dftype-text" class="text-white font-bold text-xl mb-2 inline-block align-middle">
+                        Devil Fruit type
+                    </div>
+                    <div id="dftype1" class="col-span-2 text-white font-bold text-xl mb-2 inline-block align-middle">
+                        type
+                    </div>
+                    <div id="dftype2" class="col-span-2 text-white font-bold text-xl mb-2 inline-block align-middle">
+                        will go
+                    </div>
+                    <div id="dftype3" class="col-span-2 text-white font-bold text-xl mb-2 inline-block align-middle">
+                        here
+                    </div>
+                    <!-- Separator -->
+                    <div id="df-text" class="text-white font-bold text-xl mb-2 inline-block align-middle">
+                        Devil Fruit name
+                    </div>
+                    <div id="df1" class="col-span-2 text-white font-bold text-xl mb-2 inline-block align-middle">
+                        also buttons
+                    </div>
+                    <div id="df2" class="col-span-2 text-white font-bold text-xl mb-2 inline-block align-middle">
+                        will go
+                    </div>
+                    <div id="df3" class="col-span-2 text-white font-bold text-xl mb-2 inline-block align-middle">
+                        here too
+                    </div>
+                    <!-- Separator -->
+                    <div id="doriki-text" class="text-white font-bold text-xl mb-2 inline-block align-middle">
+                        Dōriki
+                    </div>
+                    <div id="doriki1" class="col-span-2 text-white font-bold text-xl mb-2 inline-block align-middle">
+                        do we actually
+                    </div>
+                    <div id="doriki2" class="col-span-2 text-white font-bold text-xl mb-2 inline-block align-middle">
+                        even need this?
+                    </div>
+                    <div id="doriki3" class="col-span-2 text-white font-bold text-xl mb-2 inline-block align-middle">
+                        <a href="https://onepiece.fandom.com/wiki/Doriki#Known_Doriki_Levels" class="text-sky-500 underline">
+                            only a few people have a known dōriki level
+                        </a>
+                    </div>
+                    <!-- Separator -->
+                    <div id="bounty-text" class="text-white font-bold text-xl mb-2 inline-block align-middle">
+                        Bounty
+                    </div>
+                    <div id="bounty1" class="col-span-2 text-white font-bold text-xl mb-2 inline-block align-middle">
+                        I'm just building the page
+                    </div>
+                    <div id="bounty2" class="col-span-2 text-white font-bold text-xl mb-2 inline-block align-middle">
+                        Later I'll add the functionality
+                    </div>
+                    <div id="bounty3" class="col-span-2 text-white font-bold text-xl mb-2 inline-block align-middle">
+                        something something
+                    </div>
+                    <!-- Separator -->
+                    <div id="export-button" class="bg-[#044] col-span-7 text-white font-bold text-xl mb-2 inline-block align-middle">
+                        here gonna be a button to export the character maybe
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+        <script type="module" src="/src/main.ts"></script>
+        <script type="module" src="/node_modules/flowbite/dist/flowbite.js"></script>
+    </body>
 </html>
