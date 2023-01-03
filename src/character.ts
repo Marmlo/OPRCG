@@ -114,8 +114,8 @@ function affiliationGen1() {
 // Takes a random affiliation based on the previous one
 function affiliationGen2() {
     console.log("Affil 2");
-    const list = affiliationsJson[affiliation1].list;
-    const weights = affiliationsJson[affiliation1].weights;
+    const list = affiliationsJson["sub"][affiliation1].list;
+    const weights = affiliationsJson["sub"][affiliation1].weights;
 
     affiliation2 = weightedRandom(list, weights);
     document.getElementById("affiliation2").innerHTML = affiliation2;
@@ -124,8 +124,8 @@ function affiliationGen2() {
 // Takes a random affiliation based on the previous one
 function affiliationGen3() {
     console.log("Affil 3");
-    const list = affiliationsJson[affiliation2].list;
-    const weights = affiliationsJson[affiliation2].weights;
+    const list = affiliationsJson["sub"][affiliation2].list;
+    const weights = affiliationsJson["sub"][affiliation2].weights;
 
     affiliation3 = weightedRandom(list, weights);
     document.getElementById("affiliation3").innerHTML = affiliation3;

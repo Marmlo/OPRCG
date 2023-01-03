@@ -11,10 +11,10 @@ function makeButtons() {
     var genAllDiv = document.getElementById('gen-all-button');
     button.className = 'text-white w-full bg-orange-700 hover:bg-orange-300 hover:text-black hover:border-3 hover:border-orange-700 focus:border-3 focus:border-orange-400 focus:outline-0';
     button.innerHTML = 'Generate All';
-    button.onclick = function() {
+    button.addEventListener('click', () => {
         character.genAll();
-        this.blur(); //removes focus from the button (focus is opposite of blur)
-    }
+        button.blur(); //removes focus from the button (focus is opposite of blur) 
+    });
     genAllDiv.appendChild(button);
 }
 
