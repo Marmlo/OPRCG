@@ -15,6 +15,11 @@ module.exports = {
       "desktop": {"max": "1280px"},
     },
   },
+  variants: {
+    extend: {
+      visibility: ["group-hover"],
+    },
+  },
   plugins: [
         require("flowbite/plugin")
   ],

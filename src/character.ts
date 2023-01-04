@@ -58,13 +58,135 @@ function weightedRandom(items, weights) {
 
 // Generator functions ---------------------------------------------------------
 
+export function gen(id) {
+/*
+        "race",
+        "affiliation1", "affiliation2", "affiliation3",
+        "position",
+        "fighting1", "fighting2", "fighting3",
+        "haki1", "haki2", "haki3",
+        "dftype1", "dftype2", "dftype3",
+        "df1", "df2", "df3",
+        "doriki1", "doriki2", "doriki3",
+        "bounty1", "bounty2", "bounty3"
+*/
+    switch (id) {
+        case "gen-all-button": {
+            genAll();
+            return;
+        }
+        case "race": {
+            raceGen("race");
+            return;
+        }
+        case "hybrid1": {
+            raceGen("hybrid1");
+            return;
+        }
+        case "hybrid2": {
+            raceGen("hybrid2");
+            return;
+        }
+        case "affiliation1": {
+            affiliationGen1();
+            return;
+        }
+        case "affiliation2": {
+            affiliationGen2();
+            return;
+        }
+        case "affiliation3": {
+            affiliationGen3();
+            return;
+        }
+        // Not done yet:
+
+        /*
+        case "position": {
+            raceGen();
+            return;
+        }
+        case "fighting1": {
+            raceGen();
+            return;
+        }
+        case "fighting2": {
+            raceGen();
+            return;
+        }
+        case "fighting3": {
+            raceGen();
+            return;
+        }
+        case "haki1": {
+            raceGen();
+            return;
+        }
+        case "haki2": {
+            raceGen();
+            return;
+        }
+        case "haki3": {
+            raceGen();
+            return;
+        }
+        case "dftype1": {
+            raceGen();
+            return;
+        }
+        case "dftype2": {
+            raceGen();
+            return;
+        }
+        case "dftype3": {
+            raceGen();
+            return;
+        }
+        case "df1": {
+            raceGen();
+            return;
+        }
+        case "df2": {
+            raceGen();
+            return;
+        }
+        case "df3": {
+            raceGen();
+            return;
+        }
+        case "doriki1": {
+            raceGen();
+            return;
+        }
+        case "doriki2": {
+            raceGen();
+            return;
+        }
+        case "doriki2": {
+            raceGen();
+            return;
+        }
+        case "bounty1": {
+            raceGen();
+            return;
+        }
+        case "bounty1": {
+            raceGen();
+            return;
+        }
+        case "bounty1": {
+            raceGen();
+            return;
+        }
+        */
+    }
+}
+
 export function genAll() {
     // Probably can be done with a for loop?
     // Will try later when all old code is fixed
-    raceGen();
+    raceGen("race");
     affiliationGen1();
-
-    // These don't work properly yet:
     affiliationGen2();
     affiliationGen3();
 
@@ -99,13 +221,24 @@ export function genAll() {
     */
 }
 
-function raceGen() {
-    document.getElementById("race").innerHTML = weightedRandom(races, raceWeights);
+function showRetry() {
+    document.getElementById("retry").style.display = "";
+}
+
+// Generates a race for a certain div id
+function raceGen(id) {
+    const race = weightedRandom(races, raceWeights);
+    document.getElementById(id).innerHTML = race;
+    // If the div id is "race", and the race generated is a Hybrid...
+    if (id === "race" && race === "Hybrid") {
+        // ...display the Hybrid generation buttons too
+        document.getElementById("hybrid").style.display = "";
+    };
+    showRetry();
 }
 
 // Takes a random affiliation
 function affiliationGen1() {
-    console.log("Affil 1");
     affiliation1 = weightedRandom(affiliations, affiliationWeights);
     document.getElementById("affiliation1").innerHTML = affiliation1;
     return affiliation1;
@@ -113,7 +246,9 @@ function affiliationGen1() {
 
 // Takes a random affiliation based on the previous one
 function affiliationGen2() {
-    console.log("Affil 2");
+    if (!affiliation1) {
+        return;
+    }
     const list = affiliationsJson["sub"][affiliation1].list;
     const weights = affiliationsJson["sub"][affiliation1].weights;
 
@@ -123,7 +258,9 @@ function affiliationGen2() {
 
 // Takes a random affiliation based on the previous one
 function affiliationGen3() {
-    console.log("Affil 3");
+    if (!affiliation2) {
+        return;
+    }
     const list = affiliationsJson["sub"][affiliation2].list;
     const weights = affiliationsJson["sub"][affiliation2].weights;
 
