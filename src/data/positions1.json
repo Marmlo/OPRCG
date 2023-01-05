@@ -1,0 +1,139 @@
+{
+    "Revolutionary Army": {
+        "list": [
+            "Leader",
+            "Chief of Staff",
+            "Army Commander",
+            "Officer",
+            "Member",
+            "Associate"
+        ],
+        "weights": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+        ]
+    },
+    "Marine": {
+        "list": [
+            "Fleet Admiral",
+            "Admiral",
+            "Vice Admiral",
+            "Rear Admiral",
+            "Commodore",
+            "Captain",
+            "Commander",
+            "Lieutenant",
+            "Ensign",
+            "Petty Officer",
+            "Seaman",
+            "Choreboy",
+            "Inspector General",
+            "Instructor",
+            "Shichibukai"
+        ],
+        "weights": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+        ]
+    },
+    "Pirate": {
+        "list": [
+            "Captain",
+            "First Mate",
+            "Swordfighter",
+            "Sniper",
+            "Martial Artist",
+            "Navigator",
+            "Cook",
+            "Doctor",
+            "Shipwright",
+            "Musician",
+            "Deckhand",
+            "Pet"
+        ],
+        "weights": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+        ]
+    },
+    "Bounty Hunter": {
+        "list": [
+            "Individual",
+            "Guild Leader",
+            "Guild Member"
+		],
+        "weights": [
+            1,
+            1,
+            1
+        ]
+    },
+    "Cipher Pol": {
+        "list": [
+            "CP0",
+            "CP1",
+            "CP2",
+            "CP3",
+            "CP4",
+            "CP5",
+            "CP6",
+            "CP7",
+            "CP8",
+            "CP9"
+		],
+        "weights": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+        ]
+    },
+    "World Nobles": {
+        "list": [
+            "Celestial Dragon",
+            "Monarch",
+            "Heir",
+            "Noble Commander",
+            "Soldier"
+		],
+        "weights": [
+            1,
+            1,
+            1,
+            1,
+            1
+        ]
+    }
+}

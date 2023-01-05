@@ -1,22 +1,29 @@
 import racesJson from '/src/data/races.json';
 import affiliationsJson from '/src/data/affiliations.json';
+import positionsJson1 from '/src/data/positions1.json';
 
 var races = racesJson.allRaces.list;
 var raceWeights = racesJson.allRaces.weights;
 var hRaces = racesJson.nonHybrid.list;
 var hRaceWeights = racesJson.nonHybrid.weights;
+
 var affiliations = affiliationsJson.main.list;
 var affiliationWeights = affiliationsJson.main.weights;
 
-var helptext = ""; 
+//var positionsJson1 = positionsJson.a;
+/*var positionsJson2 = positionsJson.b;
+var positionsJson3 = positionsJson.c;*/
+
+var helptext = "";
+var element = "";
 
 var race = "";
 var affiliation1 = "";
 var affiliation2 = "";
 var affiliation3 = "";
-var rank = "";
-var rank2 = "";
-var rank3 = "";
+var position1 = "";
+var position2 = "";
+var position3 = "";
 var fighting = "";
 var fighting2 = "";
 var fighting3 = "";
@@ -104,13 +111,25 @@ export function gen(id) {
             affiliationGen3();
             return;
         }
+
+        case "position1": {
+            positionGen1();
+            return;
+        }
+        /*
+        case "position2": {
+            positionGen2();
+            return;
+        }
+        case "position3": {
+            positionGen3();
+            return;
+        }*/
+        
+        
         // Not done yet:
 
         /*
-        case "position": {
-            raceGen();
-            return;
-        }
         case "fighting1": {
             raceGen();
             return;
@@ -201,6 +220,12 @@ export function genAll() {
     affiliationGen2();
     affiliationGen3();
 
+    /*
+    positionGen1();
+    positionGen2();
+    positionGen3();
+    */
+
     // These are not done yet:
     /*
     assignRank();
@@ -255,7 +280,7 @@ function raceGen(id) {
     } else {
         race = weightedRandom(hRaces, hRaceWeights);
     }
-    var element = document.getElementById(id);
+    element = document.getElementById(id);
     element.innerHTML = race;
     element.className = element.className.replace('text-lg', 'text-xl') + " py-3";
     
@@ -270,7 +295,7 @@ function raceGen(id) {
 // Takes a random affiliation
 function affiliationGen1() {
     affiliation1 = weightedRandom(affiliations, affiliationWeights);
-    var element = document.getElementById('affiliation1');
+    element = document.getElementById('affiliation1');
     element.innerHTML = affiliation1;
     element.className = element.className.replace('text-lg', 'text-xl') + " py-3";
     allowReload();
@@ -285,7 +310,7 @@ function affiliationGen2() {
     const weights = affiliationsJson['sub'][affiliation1].weights;
 
     affiliation2 = weightedRandom(list, weights);
-    var element = document.getElementById('affiliation2');
+    element = document.getElementById('affiliation2');
     element.innerHTML = affiliation2;
     element.className = element.className.replace('text-lg', 'text-xl') + " py-3";
     allowReload();
@@ -300,7 +325,7 @@ function affiliationGen3() {
     const weights = affiliationsJson['sub'][affiliation2].weights;
 
     affiliation3 = weightedRandom(list, weights);
-    var element = document.getElementById('affiliation3');
+    element = document.getElementById('affiliation3');
     element.innerHTML = affiliation3;
     element.className = element.className.replace('text-lg', 'text-xl') + " py-3";
     allowReload();
@@ -316,27 +341,41 @@ function affiliationGen3() {
 
 // Rank ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-function assignRank(){
-     
- if (alliance === "Revolutionary Army") {
-     ranks = ["Leader","Chief of Staff","Army Commander","Officer","Member","Associate"];
-  } else if(alliance === "Marine") {
-     ranks = ["Fleet Admiral","Admiral","Vice Admiral","Rear Admiral","Commodore","Captain","Commander",
-     "Lieutenant","Ensign","Petty Officer","Seaman","Choreboy","Inspector General","Instructor","Shichibukai"];
-  } else if(alliance === "Pirate") {
-     ranks = ["Pirate Captain","First Mate","Swordsman","Sniper","Martial Artist","Navigator","Cook","Doctor","Shipwright","Musician","Aprentice","Pet"];
-  } else if(alliance === "Bounty Hunter") {
-     ranks = ["Individual","Guild Leader","Guild Member"];
-  } else if(alliance === "Cipher Pol") {
-     ranks = ["CP0","CP1","CP2","CP3","CP4","CP5","CP6","CP7","CP8","CP9"];
-  } else if(alliance === "World Nobles") {
-     ranks = ["Celestial Dragon","King/Queen","Prince/Princess","Noble Commander","Soldier"];
-  } 
-
-  rank = capFirst(ranks[getRandomInt(0, ranks.length + 1)]);
-  document.getElementById("rank").innerHTML = rank;
+function positionGen1() {
+    if (!affiliation1) {
+        return;
+    }
+    const list = positionsJson1[affiliation1].list;
+    const weights = positionsJson1[affiliation1].weights;
+    position1 = weightedRandom(list, weights);
+    element = document.getElementById('position1');
+    element.innerHTML = position1;
+    element.className = element.className.replace('text-lg', 'text-xl') + " py-3";
 }
 
+function positionGen2() {
+    if (!affiliation2 || !position1) {
+        return;
+    }
+    const list = positionsJson2[affiliation2].list;
+    const weights = positionsJson2[affiliation2].weights;
+    position1 = weightedRandom(list, weights);
+    element = document.getElementById('position2');
+    element.innerHTML = position2;
+    element.className = element.className.replace('text-lg', 'text-xl') + " py-3";
+}
+
+function positionGen3() {
+    if (!affiliation3 || !position2) {
+        return;
+    }
+    const list = positionsJson3[affiliation3].list;
+    const weights = positionsJson3[affiliation3].weights;
+    position1 = weightedRandom(list, weights);
+    element = document.getElementById('position3');
+    element.innerHTML = position3;
+    element.className = element.className.replace('text-lg', 'text-xl') + " py-3";
+}
 
 // Rank 2 -----
 

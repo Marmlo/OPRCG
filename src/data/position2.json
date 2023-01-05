@@ -1,0 +1,189 @@
+{
+   "Revolutionary Army": {
+        "Leader": [
+            "Leader",
+        ],
+        "Chief of Staff": [
+            "Leader",
+            "Chief of Staff"
+        ],
+        "Army Commander": [
+            "Leader",
+            "Chief of Staff",
+            "Army Commander"
+        ],
+        "Officer": [
+            "Leader",
+            "Chief of Staff",
+            "Army Commander",
+            "Officer"
+        ],
+        "Member": [
+            "Leader",
+            "Chief of Staff",
+            "Army Commander",
+            "Officer",
+            "Member",
+            "Associate"
+        ],
+        "Associate": [
+            "Leader",
+            "Chief of Staff",
+            "Army Commander",
+            "Officer",
+            "Member",
+            "Associate"
+        ]
+    },
+    "Marine": {
+    
+        "Fleet Admiral": [
+            "Fleet Admiral",
+            "Admiral",
+            "Vice Admiral",
+            "Inspector General",
+            "Instructor"
+        ],
+        "Admiral": [
+            "Fleet Admiral",
+            "Admiral",
+            "Vice Admiral",
+            "Inspector General",
+            "Instructor"
+        ],
+        "Vice Admiral": [
+            "Fleet Admiral",
+            "Admiral",
+            "Vice Admiral",
+            "Inspector General",
+            "Instructor"
+        ],
+        "Rear Admiral": [
+            "Fleet Admiral",
+            "Admiral",
+            "Vice Admiral",
+            "Rear Admiral",
+            "Inspector General",
+            "Instructor"
+        ],
+        "Commodore": [
+            "Fleet Admiral",
+            "Admiral",
+            "Vice Admiral",
+            "Rear Admiral",
+            "Commodore",
+            "Inspector General",
+            "Instructor"
+        ],
+        "Captain": [
+            "Fleet Admiral",
+            "Admiral",
+            "Vice Admiral",
+            "Rear Admiral",
+            "Commodore",
+            "Captain",
+            "Inspector General",
+            "Instructor"
+        ],
+        "Commander": [
+            "Fleet Admiral",
+            "Admiral",
+            "Vice Admiral",
+            "Rear Admiral",
+            "Commodore",
+            "Captain",
+            "Commander",
+            "Inspector General",
+            "Instructor"
+        ],
+        "Lieutenant": [
+            "Fleet Admiral",
+            "Admiral",
+            "Vice Admiral",
+            "Rear Admiral",
+            "Commodore",
+            "Captain",
+            "Commander",
+            "Lieutenant",
+            "Inspector General",
+            "Instructor"
+        ],
+        "Ensign": [
+            "Fleet Admiral",
+            "Admiral",
+            "Vice Admiral",
+            "Rear Admiral",
+            "Commodore",
+            "Captain",
+            "Commander",
+            "Lieutenant",
+            "Ensign",
+            "Inspector General",
+            "Instructor"
+        ],
+        "Petty Officer": [
+            "Fleet Admiral",
+            "Admiral",
+            "Vice Admiral",
+            "Rear Admiral",
+            "Commodore",
+            "Captain",
+            "Commander",
+            "Lieutenant",
+            "Ensign",
+            "Petty Officer",
+            "Inspector General",
+            "Instructor"
+        ],
+        "Seaman": [
+            "Fleet Admiral",
+            "Admiral",
+            "Vice Admiral",
+            "Rear Admiral",
+            "Commodore",
+            "Captain",
+            "Commander",
+            "Lieutenant",
+            "Ensign",
+            "Petty Officer",
+            "Seaman",
+            "Inspector General",
+            "Instructor"
+        ],
+        "Choreboy": [
+            "Fleet Admiral",
+            "Admiral",
+            "Vice Admiral",
+            "Rear Admiral",
+            "Commodore",
+            "Captain",
+            "Commander",
+            "Lieutenant",
+            "Ensign",
+            "Petty Officer",
+            "Seaman",
+            "Choreboy",
+            "Inspector General",
+            "Instructor"
+        ],
+        "Inspector General": [
+            "Fleet Admiral",
+            "Admiral",
+            "Vice Admiral",
+            "Inspector General",
+            "Instructor"
+        ],
+        "Instructor": [
+            "Fleet Admiral",
+            "Admiral",
+            "Vice Admiral",
+            "Rear Admiral",
+            "Inspector General",
+            "Instructor"
+        ],      
+        "Pirate Captain":
+        [
+            "Shichibukai"
+        ]
+     }
+}
