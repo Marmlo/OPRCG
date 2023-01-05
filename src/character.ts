@@ -221,8 +221,12 @@ export function genAll() {
     */
 }
 
-function showRetry() {
-    document.getElementById("retry").style.display = "";
+function allowReload() {
+    logo = document.getElementById('logo');
+    logo.className = logo.className + ' hover:scale-[1.1]';
+    logo.addEventListener('click', () => {
+        location.reload(true);
+    });
 }
 
 // Generates a race for a certain div id
@@ -233,8 +237,8 @@ function raceGen(id) {
     if (id === "race" && race === "Hybrid") {
         // ...display the Hybrid generation buttons too
         document.getElementById("hybrid").style.display = "";
-    };
-    showRetry();
+    }
+    allowReload();
 }
 
 // Takes a random affiliation

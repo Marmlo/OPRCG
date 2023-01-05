@@ -8,13 +8,9 @@
         <title>One Piece Character Generator</title>
     </head>
     <body>
-        <div id="app" class="bg-[#055] min-w-full min-h-screen space-y-5">
-            <div class="relative select-none flex justify-around">
-                <img src="/logo.png" alt="Random character generator">
-            </div>
-            <div id="retry" class="relative select-none flex justify-around" style="display:none">
-                HERE GOES REFRESH BUTTON I GUESS
-                WHEN I FINISH IT I MEAN
+        <div id="app" class="bg-[#007878] min-w-full min-h-screen space-y-5">
+            <div id="logo" class="relative select-none flex flex-row justify-center">
+                <img src="/logo.png">
             </div>
             <div class="bg-[#00000080] flex relative rounded-3xl justify-items-stretch">
                 <div class="container py-5 px-5 lg:px-3 2xl:px-0">
@@ -23,7 +19,7 @@
                         <div id="gen-all-button" class="flex flex-row text-white font-bold text-lg mb-2"></div>
                         <!-- Separator -->
                         <div class="flex flex-row">
-                            <div id="name-text" class="basis-2/12 text-white font-bold text-xl mb-2">
+                            <div id="name-text" class="basis-2/12 py-3 text-white font-bold text-xl mb-2">
                                 Name
                             </div>
                             <input type="text" id="name" placeholder="Enter your name"
@@ -32,7 +28,7 @@
                         </div>
                         <!-- Separator -->
                         <div class="flex flex-row">
-                            <div id="nickname-text" class="basis-2/12 text-white font-bold text-xl mb-2">
+                            <div id="nickname-text" class="basis-2/12 py-3 text-white font-bold text-xl mb-2">
                                 Nickname
                             </div>
                             <input type="text" id="nickname" placeholder="Enter your nickname"
@@ -41,7 +37,7 @@
                         </div>
                         <!-- Separator -->
                         <div class="flex flex-row">
-                            <div id="gender-text" class="basis-2/12 text-white font-bold text-xl mb-2">
+                            <div id="gender-text" class="basis-2/12 py-3 text-white font-bold text-xl mb-2">
                                 Gender
                             </div>
                             <select id="genders" class="basis-10/12 border-2 border-gray-300 rounded py-3 bg-gray-200 text-gray-700 hover:border-3 hover:border-orange-700 focus:border-3 focus:border-orange-400 focus:outline-none appearance-none focus:bg-white">
@@ -53,7 +49,7 @@
                         </div>
                         <!-- Separator -->
                         <div id="custom-gender" class="flex flex-row" style="display:none">
-                            <div id="gender-text" class="basis-2/12 text-white font-bold text-xl mb-2">
+                            <div id="gender-text" class="basis-2/12 py-3 text-white font-bold text-xl mb-2">
                                 Custom Gender
                             </div>
                             <input type="text" id="custom-gender" placeholder="Enter your gender"
@@ -62,7 +58,7 @@
                         </div>
                         <!-- Separator -->
                         <div class="flex flex-row">
-                            <div id="race-text" class="basis-2/12 text-white font-bold text-xl mb-2">
+                            <div id="race-text" class="basis-2/12 py-3 text-white font-bold text-xl mb-2">
                                 Race
                             </div>
                             <div id="race" class="basis-10/12 text-white font-bold text-lg mb-2">
@@ -70,7 +66,7 @@
                         </div>
                         <!-- Separator -->
                         <div id="hybrid" class="flex flex-row" style="display:none">
-                            <div id="hybrid-text" class="basis-2/12 text-white font-bold text-xl mb-2">
+                            <div id="hybrid-text" class="basis-2/12 py-3 text-white font-bold text-xl mb-2">
                                 Hybrid of:
                             </div>
                             <div class="basis-10/12 flex flex-row space-x-5">
@@ -81,7 +77,7 @@
                             </div>
                         </div>
                         <!-- Separator -->
-                        <hr/><!-- will have to put something better than a hrule -->
+                        <hr class="bg-orange-700 h-1 border-0 rounded-full"/>
                         <div class="flex flex-row">
                             <div class="basis-2/12 text-white font-bold text-xl mb-2">
                                 Info
@@ -98,10 +94,10 @@
                                 </div>
                             </div>
                         </div>
-                        <hr/><!-- will have to put something better than a hrule -->
+                        <hr class="bg-orange-700 h-1 border-0 rounded-full"/>
                         <!-- Separator -->
                         <div class="flex flex-row">
-                            <div id="affiliation-text" class="basis-2/12 text-white font-bold text-xl mb-2">
+                            <div id="affiliation-text" class="basis-2/12 py-3 text-white font-bold text-xl mb-2">
                                 Affiliation
                             </div>
                             <div class="basis-10/12 flex flex-row space-x-5">
@@ -115,17 +111,21 @@
                         </div>
                         <!-- Separator -->
                         <div class="flex flex-row">
-                            <div id="position-text" class="basis-2/12 text-white font-bold text-xl mb-2">
+                            <div id="position-text" class="basis-2/12 py-3 text-white font-bold text-xl mb-2">
                                 Position
                             </div>
                             <div class="basis-10/12 flex flex-row space-x-5">
-                                <div id="position" class="basis-full text-white font-bold text-lg mb-2">
+                                <div id="position1" class="basis-1/3 text-white font-bold text-lg mb-2">
+                                </div>
+                                <div id="position2" class="basis-1/3 text-white font-bold text-lg mb-2">
+                                </div>
+                                <div id="position3" class="basis-1/3 text-white font-bold text-lg mb-2">
                                 </div>
                             </div>
                         </div>
                         <!-- Separator -->
                         <div class="flex flex-row">
-                            <div id="fighting-text" class="basis-2/12 text-white font-bold text-xl mb-2">
+                            <div id="fighting-text" class="basis-2/12 py-3 text-white font-bold text-xl mb-2">
                                 Fighting Style
                             </div>
                             <div class="basis-10/12 flex flex-row space-x-5">
@@ -139,7 +139,7 @@
                         </div>
                         <!-- Separator -->
                         <div class="flex flex-row">
-                            <div id="haki-text" class="basis-2/12 text-white font-bold text-xl mb-2">
+                            <div id="haki-text" class="basis-2/12 py-3 text-white font-bold text-xl mb-2">
                                 Haki
                             </div>
                             <div class="basis-10/12 flex flex-row space-x-5">
@@ -153,7 +153,7 @@
                         </div>
                         <!-- Separator -->
                         <div class="flex flex-row">
-                            <div id="dftype-text" class="basis-2/12 text-white font-bold text-xl mb-2">
+                            <div id="dftype-text" class="basis-2/12 py-3 text-white font-bold text-xl mb-2">
                                 Devil Fruit type
                             </div>
                             <div class="basis-10/12 flex flex-row space-x-5">
@@ -167,7 +167,7 @@
                         </div>
                         <!-- Separator -->
                         <div class="flex flex-row">
-                            <div id="df-text" class="basis-2/12 text-white font-bold text-xl mb-2">
+                            <div id="df-text" class="basis-2/12 py-3 text-white font-bold text-xl mb-2">
                                 Devil Fruit name
                             </div>
                             <div class="basis-10/12 flex flex-row space-x-5">
@@ -181,7 +181,7 @@
                         </div>
                         <!-- Separator -->
                         <div class="flex flex-row">
-                            <div id="doriki-text" class="basis-2/12 text-white font-bold text-xl mb-2">
+                            <div id="doriki-text" class="basis-2/12 py-3 text-white font-bold text-xl mb-2">
                                 Dōriki
                             </div>
                             <div class="basis-10/12 flex flex-row space-x-5">
@@ -195,7 +195,7 @@
                         </div>
                         <!-- Separator -->
                         <div class="flex flex-row">
-                            <div id="bounty-text" class="basis-2/12 text-white font-bold text-xl mb-2">
+                            <div id="bounty-text" class="basis-2/12 py-3 text-white font-bold text-xl mb-2">
                                 Bounty
                             </div>
                             <div class="basis-10/12 flex flex-row space-x-5">
