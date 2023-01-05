@@ -1,11 +1,16 @@
 import racesJson from '/src/data/races.json';
 import affiliationsJson from '/src/data/affiliations.json';
 
-var races = racesJson.list;
-var raceWeights = racesJson.weights;
+var races = racesJson.allRaces.list;
+var raceWeights = racesJson.allRaces.weights;
+var hRaces = racesJson.nonHybrid.list;
+var hRaceWeights = racesJson.nonHybrid.weights;
 var affiliations = affiliationsJson.main.list;
 var affiliationWeights = affiliationsJson.main.weights;
 
+var helptext = ""; 
+
+var race = "";
 var affiliation1 = "";
 var affiliation2 = "";
 var affiliation3 = "";
@@ -185,7 +190,13 @@ export function gen(id) {
 export function genAll() {
     // Probably can be done with a for loop?
     // Will try later when all old code is fixed
-    raceGen("race");
+    document.getElementById('gen-all-button').innerHTML = '';
+    var name = document.getElementById('name');
+    name.className = name.className.replace('rounded', ' rounded-tl rounded-br rounded-bl rounded-tr-3xl');
+
+    raceGen('race');
+    raceGen('hybrid1');
+    raceGen('hybrid2');
     affiliationGen1();
     affiliationGen2();
     affiliationGen3();
@@ -222,21 +233,36 @@ export function genAll() {
 }
 
 function allowReload() {
-    logo = document.getElementById('logo');
-    logo.className = logo.className + ' hover:scale-[1.1]';
-    logo.addEventListener('click', () => {
-        location.reload(true);
-    });
+    if (!helptext) {
+        logo = document.getElementById('logo');
+        logo.className = logo.className + ' hover:scale-[1.05]';
+        logo.addEventListener('click', () => {
+            location.reload(true);
+        });
+
+        topbit = document.getElementById('topbit');
+        helptext = document.createElement('div');
+        helptext.innerHTML = '↑ Click the logo instead of reloading if you want to reset the page ↑';
+        helptext.className = 'text-[#eeeefff0] italic hover:text-[#eeeeffff] text-sm'
+        topbit.appendChild(helptext);
+    }
 }
 
 // Generates a race for a certain div id
 function raceGen(id) {
-    const race = weightedRandom(races, raceWeights);
-    document.getElementById(id).innerHTML = race;
-    // If the div id is "race", and the race generated is a Hybrid...
-    if (id === "race" && race === "Hybrid") {
+    if (!(id === 'Hybrid')) {
+        race = weightedRandom(races, raceWeights);
+    } else {
+        race = weightedRandom(hRaces, hRaceWeights);
+    }
+    var element = document.getElementById(id);
+    element.innerHTML = race;
+    element.className = element.className.replace('text-lg', 'text-xl') + " py-3";
+    
+    // If the div id is 'race' and the race generated is 'Hybrid'...
+    if (id === 'race' && race === 'Hybrid') {
         // ...display the Hybrid generation buttons too
-        document.getElementById("hybrid").style.display = "";
+        document.getElementById('hybrid').style.display = '';
     }
     allowReload();
 }
@@ -244,8 +270,10 @@ function raceGen(id) {
 // Takes a random affiliation
 function affiliationGen1() {
     affiliation1 = weightedRandom(affiliations, affiliationWeights);
-    document.getElementById("affiliation1").innerHTML = affiliation1;
-    return affiliation1;
+    var element = document.getElementById('affiliation1');
+    element.innerHTML = affiliation1;
+    element.className = element.className.replace('text-lg', 'text-xl') + " py-3";
+    allowReload();
 }
 
 // Takes a random affiliation based on the previous one
@@ -253,11 +281,14 @@ function affiliationGen2() {
     if (!affiliation1) {
         return;
     }
-    const list = affiliationsJson["sub"][affiliation1].list;
-    const weights = affiliationsJson["sub"][affiliation1].weights;
+    const list = affiliationsJson['sub'][affiliation1].list;
+    const weights = affiliationsJson['sub'][affiliation1].weights;
 
     affiliation2 = weightedRandom(list, weights);
-    document.getElementById("affiliation2").innerHTML = affiliation2;
+    var element = document.getElementById('affiliation2');
+    element.innerHTML = affiliation2;
+    element.className = element.className.replace('text-lg', 'text-xl') + " py-3";
+    allowReload();
 }
 
 // Takes a random affiliation based on the previous one
@@ -265,75 +296,23 @@ function affiliationGen3() {
     if (!affiliation2) {
         return;
     }
-    const list = affiliationsJson["sub"][affiliation2].list;
-    const weights = affiliationsJson["sub"][affiliation2].weights;
+    const list = affiliationsJson['sub'][affiliation2].list;
+    const weights = affiliationsJson['sub'][affiliation2].weights;
 
     affiliation3 = weightedRandom(list, weights);
-    document.getElementById("affiliation3").innerHTML = affiliation3;
+    var element = document.getElementById('affiliation3');
+    element.innerHTML = affiliation3;
+    element.className = element.className.replace('text-lg', 'text-xl') + " py-3";
+    allowReload();
 }
 
-// Alliance ---------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-let alliancesWeighted = ["Marine", "Pirate", "Revolutionary Army", "Bounty Hunter", "Cipher Pol", "World Nobles"];
-let alliancesWeights = [3, 3, 2, 2, 1, 1];
-
-function allianceGen() {
-    alliance = weightedRandom(alliancesWeighted, alliancesWeights);
-    document.getElementById("alliance").innerHTML = alliance;
-}
-
-/* 
-Odds:
-  Marine             - 3/12 ≈ 25%
-  Pirate             - 3/12 ≈ 25%
-  Revolutionary Army - 2/12 ≈ 17%
-  Bounty Hunter      - 2/12 ≈ 17%
-  Cipher Pol         - 1/12 ≈ 8%
-  World Nobles       - 1/12 ≈ 8%
-*/
-
-// Alliance2 -----
-
-function allianceGen2(){
-  if (alliance === "Revolutionary Army") {
-     alliances2 = ["Revolutionary Army","Revolutionary Army","Pirate","Bounty Hunter"];
-  } else if(alliance === "Marine") {
-     alliances2 = ["Marine","Marine","Marine","Revolutionary Army","Pirate","Bounty Hunter","Cipher Pol"];
-  } else if(alliance === "Pirate") {
-     alliances2 = ["Revolutionary Army","Pirate","Pirate","Bounty Hunter","Marine"];
-  } else if(alliance === "Bounty Hunter") {
-     alliances2 = ["Bounty Hunter","Bounty Hunter","Revolutionary Army","Pirate","Bounty Hunter"];
-  } else if(alliance === "Cipher Pol") {
-     alliances2 = ["Cipher Pol","Cipher Pol","Marine"];
-  } else if(alliance === "World Nobles") {
-     alliances2 = ["World Nobles","World Nobles","Revolutionary Army","Marine","Pirate","Bounty Hunter","Cipher Pol"];
-  }
-
-  alliance2 = capFirst(alliances2[getRandomInt(0, alliances2.length + 1)]);
-  document.getElementById("alliance2").innerHTML = alliance2;
-}
-
-// Alliance3 -----
-
-function allianceGen3(){
-  if (alliance2 === "Revolutionary Army") {
-     alliances3 = ["Revolutionary Army","Revolutionary Army","Pirate","Bounty Hunter"];
-  } else if(alliance2 === "Marine") {
-     alliances3 = ["Marine","Marine","Marine","Revolutionary Army","Pirate","Bounty Hunter","Cipher Pol"];
-  } else if(alliance2 === "Pirate") {
-     alliances3 = ["Revolutionary Army","Pirate","Pirate","Bounty Hunter","Marine"];
-  } else if(alliance2 === "Bounty Hunter") {
-     alliances3 = ["Bounty Hunter","Bounty Hunter","Revolutionary Army","Pirate","Bounty Hunter"];
-  } else if(alliance2 === "Cipher Pol") {
-     alliances3 = ["Cipher Pol","Cipher Pol","Marine"];
-  } else if(alliance2 === "World Nobles") {
-     alliances3 = ["World Nobles","World Nobles","Revolutionary Army","Marine","Pirate","Bounty Hunter","Cipher Pol"];
-  }
-
-  alliance3 = capFirst(alliances3[getRandomInt(0, alliances3.length + 1)]);
-  document.getElementById("alliance3").innerHTML = alliance3;
-}
-
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// I GOT THIS FAR WITH THE FIXING
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
 // Rank ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
