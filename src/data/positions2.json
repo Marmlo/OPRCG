@@ -1,7 +1,7 @@
 {
    "Revolutionary Army": {
         "Leader": [
-            "Leader",
+            "Leader"
         ],
         "Chief of Staff": [
             "Leader",
@@ -23,8 +23,7 @@
             "Chief of Staff",
             "Army Commander",
             "Officer",
-            "Member",
-            "Associate"
+            "Member"
         ],
         "Associate": [
             "Leader",
@@ -36,7 +35,6 @@
         ]
     },
     "Marine": {
-    
         "Fleet Admiral": [
             "Fleet Admiral",
             "Admiral",
@@ -96,94 +94,139 @@
             "Inspector General",
             "Instructor"
         ],
-        "Lieutenant": [
-            "Fleet Admiral",
+        "Lieutenant Commander": [
             "Admiral",
             "Vice Admiral",
             "Rear Admiral",
             "Commodore",
             "Captain",
             "Commander",
+            "Lieutenant Commander"
+        ],
+        "Lieutenant": [
+            "Vice Admiral",
+            "Rear Admiral",
+            "Commodore",
+            "Captain",
+            "Commander",
+            "Lieutenant Commander",
+            "Lieutenant"
+        ],
+        "Lieutenant Junior Grade": [
+            "Rear Admiral",
+            "Commodore",
+            "Captain",
+            "Commander",
+            "Lieutenant Commander",
             "Lieutenant",
-            "Inspector General",
-            "Instructor"
+            "Lieutenant Junior Grade"
         ],
         "Ensign": [
-            "Fleet Admiral",
-            "Admiral",
-            "Vice Admiral",
-            "Rear Admiral",
             "Commodore",
             "Captain",
             "Commander",
+            "Lieutenant Commander",
             "Lieutenant",
+            "Lieutenant Junior Grade",
+            "Ensign"
+        ],
+        "Warrant Officer": [
+            "Captain",
+            "Commander",
+            "Lieutenant Commander",
+            "Lieutenant",
+            "Lieutenant Junior Grade",
             "Ensign",
-            "Inspector General",
-            "Instructor"
+            "Warrant Officer"
+        ],
+        "Master Chief Petty Officer": [
+            "Commander",
+            "Lieutenant Commander",
+            "Lieutenant",
+            "Lieutenant Junior Grade",
+            "Ensign",
+            "Warrant Officer",
+            "Master Chief Petty Officer"
+        ],
+        "Chief Petty Officer": [
+            "Lieutenant Commander",
+            "Lieutenant",
+            "Lieutenant Junior Grade",
+            "Ensign",
+            "Warrant Officer",
+            "Master Chief Petty Officer",
+            "Chief Petty Officer"
         ],
         "Petty Officer": [
-            "Fleet Admiral",
-            "Admiral",
-            "Vice Admiral",
-            "Rear Admiral",
-            "Commodore",
-            "Captain",
-            "Commander",
             "Lieutenant",
+            "Lieutenant Junior Grade",
             "Ensign",
-            "Petty Officer",
-            "Inspector General",
-            "Instructor"
+            "Warrant Officer",
+            "Master Chief Petty Officer",
+            "Chief Petty Officer",
+            "Petty Officer"
         ],
-        "Seaman": [
-            "Fleet Admiral",
-            "Admiral",
-            "Vice Admiral",
-            "Rear Admiral",
-            "Commodore",
-            "Captain",
-            "Commander",
-            "Lieutenant",
+        "Seaman First Class": [
+            "Lieutenant Junior Grade",
             "Ensign",
+            "Warrant Officer",
+            "Master Chief Petty Officer",
+            "Chief Petty Officer",
             "Petty Officer",
-            "Seaman",
-            "Inspector General",
-            "Instructor"
+            "Seaman First Class"
+        ],
+        "Seaman Apprentice": [
+            "Ensign",
+            "Warrant Officer",
+            "Master Chief Petty Officer",
+            "Chief Petty Officer",
+            "Petty Officer",
+            "Seaman First Class",
+            "Seaman Apprentice"
+        ],
+        "Seaman Recruit": [
+            "Warrant Officer",
+            "Master Chief Petty Officer",
+            "Chief Petty Officer",
+            "Petty Officer",
+            "Seaman First Class",
+            "Seaman Apprentice",
+            "Seaman Recruit"
         ],
         "Choreboy": [
-            "Fleet Admiral",
-            "Admiral",
-            "Vice Admiral",
-            "Rear Admiral",
-            "Commodore",
-            "Captain",
-            "Commander",
-            "Lieutenant",
-            "Ensign",
+            "Master Chief Petty Officer",
+            "Chief Petty Officer",
             "Petty Officer",
-            "Seaman",
-            "Choreboy",
-            "Inspector General",
-            "Instructor"
+            "Seaman First Class",
+            "Seaman Apprentice",
+            "Seaman Recruit",
+            "Choreboy"
         ],
         "Inspector General": [
-            "Fleet Admiral",
-            "Admiral",
-            "Vice Admiral",
-            "Inspector General",
-            "Instructor"
+            "Inspector General"
         ],
         "Instructor": [
-            "Fleet Admiral",
-            "Admiral",
-            "Vice Admiral",
-            "Rear Admiral",
-            "Inspector General",
             "Instructor"
-        ],      
+        ],
+        "Cook": [
+            "Cook"
+        ],
+        "Doctor": [
+            "Doctor"
+        ],
+        "Scientist": [
+            "Scientist"
+        ],
+        "Shipwright": [
+            "Shipwright"
+        ],
+        "Custodian": [
+            "Custodian"
+        ],
+
         "Pirate Captain":
         [
             "Shichibukai"
         ]
-     }
+    }
 }

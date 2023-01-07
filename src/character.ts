@@ -1,6 +1,7 @@
 import racesJson from '/src/data/races.json';
 import affiliationsJson from '/src/data/affiliations.json';
 import positionsJson1 from '/src/data/positions1.json';
+import positionsJson2 from '/src/data/positions2.json';
 
 var races = racesJson.allRaces.list;
 var raceWeights = racesJson.allRaces.weights;
@@ -50,21 +51,20 @@ function capFirst(alli) {
 
 // Functions for the generation ------------------------------------------------
 
+const getRandomElement = (arr: any[]) =>
+    arr.length ? arr[Math.floor(Math.random() * arr.length)] : undefined;
+
 function weightedRandom(items, weights) {
     var i;
-
     for (i = 0; i < weights.length; i++) {
         weights[i] += weights[i - 1] || 0;
     }
-
     var random = Math.random() * weights[weights.length - 1];
-    
     for (i = 0; i < weights.length; i++) {
         if (weights[i] > random) {
             break;
         }
     }
-    
     return items[i];
 }
 
@@ -116,11 +116,11 @@ export function gen(id) {
             positionGen1();
             return;
         }
-        /*
         case "position2": {
             positionGen2();
             return;
         }
+        /*
         case "position3": {
             positionGen3();
             return;
@@ -220,9 +220,9 @@ export function genAll() {
     affiliationGen2();
     affiliationGen3();
 
-    /*
     positionGen1();
     positionGen2();
+    /*
     positionGen3();
     */
 
@@ -357,9 +357,8 @@ function positionGen2() {
     if (!affiliation2 || !position1) {
         return;
     }
-    const list = positionsJson2[affiliation2].list;
-    const weights = positionsJson2[affiliation2].weights;
-    position1 = weightedRandom(list, weights);
+    const list = positionsJson2[affiliation2][position1];
+    position2 = "TEST123";
     element = document.getElementById('position2');
     element.innerHTML = position2;
     element.className = element.className.replace('text-lg', 'text-xl') + " py-3";
