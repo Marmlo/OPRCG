@@ -19,6 +19,8 @@ var helptext = "";
 var element = "";
 
 var race = "";
+var hybrid1 = "";
+var hybrid2 = "";
 var affiliation1 = "";
 var affiliation2 = "";
 var affiliation3 = "";
@@ -210,6 +212,7 @@ export function gen(id) {
 export function genAll() {
     // Probably can be done with a for loop?
     // Will try later when all old code is fixed
+    // Also will have to hide this button if all has already been generated
     document.getElementById('gen-all-button').innerHTML = '';
     var name = document.getElementById('name');
     name.className = name.className.replace('rounded', ' rounded-tl rounded-br rounded-bl rounded-tr-3xl');
@@ -276,60 +279,110 @@ function allowReload() {
 
 // Generates a race for a certain div id
 function raceGen(id) {
-    if (!(id === 'Hybrid')) {
+    if (id === 'race' && !race) {
         race = weightedRandom(races, raceWeights);
+        element = document.getElementById(id);
+        element.innerHTML = race;
+        if (race === 'Hybrid') {
+            document.getElementById('hybrid').style.display = '';
+        }
+    } else if (id === 'hybrid1' && !hybrid1) {
+        hybrid1 = weightedRandom(hRaces, hRaceWeights);
+        element = document.getElementById(id);
+        element.innerHTML = hybrid1;
+    } else if (id === 'hybrid2' && !hybrid2) {
+        hybrid2 = weightedRandom(hRaces, hRaceWeights);
+        element = document.getElementById(id);
+        element.innerHTML = hybrid2;
     } else {
-        race = weightedRandom(hRaces, hRaceWeights);
+        return;
     }
-    element = document.getElementById(id);
-    element.innerHTML = race;
     element.className = element.className.replace('text-lg', 'text-xl') + " py-3";
-    
-    // If the div id is 'race' and the race generated is 'Hybrid'...
-    if (id === 'race' && race === 'Hybrid') {
-        // ...display the Hybrid generation buttons too
-        document.getElementById('hybrid').style.display = '';
-    }
     allowReload();
 }
 
 // Takes a random affiliation
 function affiliationGen1() {
-    affiliation1 = weightedRandom(affiliations, affiliationWeights);
-    element = document.getElementById('affiliation1');
-    element.innerHTML = affiliation1;
-    element.className = element.className.replace('text-lg', 'text-xl') + " py-3";
-    allowReload();
+    if (!affiliation1) {
+        affiliation1 = weightedRandom(affiliations, affiliationWeights);
+        element = document.getElementById('affiliation1');
+        element.innerHTML = affiliation1;
+        element.className = element.className.replace('text-lg', 'text-xl') + " py-3";
+        allowReload();
+    } else {
+        return;
+    }
 }
 
 // Takes a random affiliation based on the previous one
 function affiliationGen2() {
     if (!affiliation1) {
         return;
-    }
-    const list = affiliationsJson['sub'][affiliation1].list;
-    const weights = affiliationsJson['sub'][affiliation1].weights;
+    } else if (!affiliation2) {
+        const list = affiliationsJson['sub'][affiliation1].list;
+        const weights = affiliationsJson['sub'][affiliation1].weights;
 
-    affiliation2 = weightedRandom(list, weights);
-    element = document.getElementById('affiliation2');
-    element.innerHTML = affiliation2;
-    element.className = element.className.replace('text-lg', 'text-xl') + " py-3";
-    allowReload();
+        affiliation2 = weightedRandom(list, weights);
+        element = document.getElementById('affiliation2');
+        element.innerHTML = affiliation2;
+        element.className = element.className.replace('text-lg', 'text-xl') + " py-3";
+        allowReload();
+    } else {
+        return;
+    }
 }
 
 // Takes a random affiliation based on the previous one
 function affiliationGen3() {
     if (!affiliation2) {
         return;
-    }
-    const list = affiliationsJson['sub'][affiliation2].list;
-    const weights = affiliationsJson['sub'][affiliation2].weights;
+    } else if (!affiliation3) {
+        const list = affiliationsJson['sub'][affiliation2].list;
+        const weights = affiliationsJson['sub'][affiliation2].weights;
 
-    affiliation3 = weightedRandom(list, weights);
-    element = document.getElementById('affiliation3');
-    element.innerHTML = affiliation3;
-    element.className = element.className.replace('text-lg', 'text-xl') + " py-3";
-    allowReload();
+        affiliation3 = weightedRandom(list, weights);
+        element = document.getElementById('affiliation3');
+        element.innerHTML = affiliation3;
+        element.className = element.className.replace('text-lg', 'text-xl') + " py-3";
+        allowReload();
+    } else {
+        return;
+    }
+}
+
+function positionGen1() {
+    if (!affiliation1) {
+        return;
+    } else if (!position1) {
+        const list = positionsJson1[affiliation1].list;
+        const weights = positionsJson1[affiliation1].weights;
+        position1 = weightedRandom(list, weights);
+        element = document.getElementById('position1');
+        element.innerHTML = position1;
+        element.className = element.className.replace('text-lg', 'text-xl') + " py-3";
+    } else {
+        return;
+    }
+}
+
+function positionGen2() {
+    if (!affiliation2 || !position1) {
+        return;
+    } else if (!position2) {
+        const list = positionsJson2[affiliation2];
+        if (!(position1 in list)) {
+            const list = positionsJson1[affiliation2].list;
+            const weights = positionsJson1[affiliation2].weights;
+            position2 = weightedRandom(list, weights);
+        } else {
+            position2 = getRandomElement(list[position1]);
+        }
+        element = document.getElementById('position2');
+        element.innerHTML = position2;
+        element.className = element.className.replace('text-lg', 'text-xl') + " py-3";
+    } else {
+        return;
+    }
 }
 
 // -----------------------------------------------------------------------------
@@ -339,37 +392,6 @@ function affiliationGen3() {
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
-
-// Rank ---------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-function positionGen1() {
-    if (!affiliation1) {
-        return;
-    }
-    const list = positionsJson1[affiliation1].list;
-    const weights = positionsJson1[affiliation1].weights;
-    position1 = weightedRandom(list, weights);
-    element = document.getElementById('position1');
-    element.innerHTML = position1;
-    element.className = element.className.replace('text-lg', 'text-xl') + " py-3";
-}
-
-function positionGen2() {
-    if (!affiliation2 || !position1) {
-        return;
-    }
-    const list = positionsJson2[affiliation2];
-    if (!(position1 in list)) {
-        const list = positionsJson1[affiliation2].list;
-        const weights = positionsJson1[affiliation2].weights;
-        position2 = weightedRandom(list, weights);
-    } else {
-        position2 = getRandomElement(list[position1]);
-    }
-    element = document.getElementById('position2');
-    element.innerHTML = position2;
-    element.className = element.className.replace('text-lg', 'text-xl') + " py-3";
-}
 
 function positionGen3() {
     if (!affiliation3 || !position2) {

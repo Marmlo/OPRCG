@@ -337,5 +337,29 @@
             "CP8",
             "CP9"
 		]
+	},
+    "World Nobles": {
+        "Celestial Dragon": [
+            "Celestial Dragon",
+            "Monarch",
+            "Heir",
+            "Noble Commander",
+            "Soldier"
+		],
+        "Monarch": [
+            "Monarch"
+		],
+        "Heir": [
+            "Monarch",
+            "Heir"
+		],
+        "Noble Commander": [
+            "Noble Commander",
+            "Soldier"
+		],
+        "Soldier": [
+            "Noble Commander",
+            "Soldier"
+		]
 	}
 }

@@ -53,5 +53,4 @@ function makeButtons() {
     });
 }
 
-
 makeButtons();
