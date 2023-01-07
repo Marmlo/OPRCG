@@ -8,28 +8,18 @@
             "Chief of Staff"
         ],
         "Army Commander": [
-            "Leader",
             "Chief of Staff",
             "Army Commander"
         ],
         "Officer": [
-            "Leader",
-            "Chief of Staff",
             "Army Commander",
             "Officer"
         ],
         "Member": [
-            "Leader",
-            "Chief of Staff",
-            "Army Commander",
             "Officer",
             "Member"
         ],
         "Associate": [
-            "Leader",
-            "Chief of Staff",
-            "Army Commander",
-            "Officer",
             "Member",
             "Associate"
         ]
