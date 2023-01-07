@@ -49,6 +49,7 @@ function makeButtons() {
         } else {
             document.getElementById("custom-gender").style.display = "none";
         };
+        character.allowReload();
         genders.blur(); 
     });
 }

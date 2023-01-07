@@ -261,7 +261,7 @@ export function genAll() {
     */
 }
 
-function allowReload() {
+export function allowReload() {
     if (!helptext) {
         logo = document.getElementById('logo');
         logo.className = logo.className + ' hover:scale-[1.05]';
