@@ -79,84 +79,84 @@
     },
     "Pirate": {
         "list": [
-            "Captain",
-            "First Mate",
-            "Swordfighter",
-            "Sniper",
-            "Martial Artist",
-            "Navigator",
-            "Cook",
-            "Doctor",
-            "Shipwright",
-            "Musician",
             "Deckhand",
-            "Pet"
+            "Shipwright",
+            "Doctor",
+            "Cook",
+            "Musician",
+            "Navigator",
+            "Swordfighter",
+            "Martial Artist",
+            "Sniper",
+            "First Mate",
+            "Captain"
         ],
         "weights": [
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1
+		    23,
+		    21,
+		    19,
+		    17,
+		    15,
+		    13,
+		    11,
+		    9,
+		    7,
+		    5,
+		    3,
+		    1
         ]
     },
     "Bounty Hunter": {
         "list": [
             "Individual",
-            "Guild Leader",
-            "Guild Member"
+            "Guild Member",
+            "Guild Leader"
 		],
         "weights": [
-            1,
-            1,
+            5,
+            3,
             1
         ]
     },
     "Cipher Pol": {
         "list": [
-            "CP0",
-            "CP1",
-            "CP2",
-            "CP3",
-            "CP4",
-            "CP5",
-            "CP6",
-            "CP7",
+            "CP9",
             "CP8",
-            "CP9"
+            "CP7",
+            "CP6",
+            "CP5",
+            "CP4",
+            "CP3",
+            "CP2",
+            "CP1",
+            "CP0"
 		],
         "weights": [
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1,
-            1
+            19,
+		    17,
+		    15,
+		    13,
+		    11,
+		    9,
+		    7,
+		    5,
+		    3,
+		    1
         ]
     },
     "World Nobles": {
         "list": [
-            "Celestial Dragon",
-            "Monarch",
-            "Heir",
+            "Soldier",
             "Noble Commander",
-            "Soldier"
+            "Heir",
+            "Monarch",
+            "Celestial Dragon"
 		],
         "weights": [
-            1,
-            1,
-            1,
-            1,
+            9,
+            7,
+            5,
+            3,
             1
         ]
     }
