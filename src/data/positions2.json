@@ -214,9 +214,56 @@
             "Custodian"
         ],
 
-        "Pirate Captain":
-        [
+        "Captain": [
             "Shichibukai"
+        ]
+    },
+    "Pirate": {
+        "Captain": [
+            "Captain"
+        ],
+        "First Mate": [
+            "Captain",
+            "First Mate"
+        ],
+        "Sniper": [
+            "Captain",
+            "First Mate",
+            "Sniper",
+            "Navigator"
+        ],
+        "Martial Artist": [
+            "Captain",
+            "First Mate",
+            "Martial Artist",
+            "Navigator"
+        ],
+        "Swordfighter": [
+            "Captain",
+            "First Mate",
+            "Swordfighter",
+            "Navigator"
+        ],
+        "Navigator": [
+            "Captain",
+            "First Mate",
+            "Navigator"
+        ],
+        "Musician": [
+            "Musician"
+        ],
+        "Cook": [
+            "Cook"
+        ],
+        "Doctor": [
+            "Doctor"
+        ],
+        "Shipwright": [
+            "Shipwright"
+        ],
+        "Deckhand": [
+            "Musician",
+            "Deckhand"
         ]
     }
 }

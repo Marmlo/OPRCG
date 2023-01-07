@@ -51,8 +51,9 @@ function capFirst(alli) {
 
 // Functions for the generation ------------------------------------------------
 
-const getRandomElement = (arr: any[]) =>
-    arr.length ? arr[Math.floor(Math.random() * arr.length)] : undefined;
+function getRandomElement(arr) {
+    return arr.length ? arr[Math.floor(Math.random() * arr.length)] : undefined
+}
 
 function weightedRandom(items, weights) {
     var i;
@@ -357,8 +358,7 @@ function positionGen2() {
     if (!affiliation2 || !position1) {
         return;
     }
-    const list = positionsJson2[affiliation2][position1];
-    position2 = "TEST123";
+    position2 = getRandomElement(positionsJson2[affiliation2][position1]);
     element = document.getElementById('position2');
     element.innerHTML = position2;
     element.className = element.className.replace('text-lg', 'text-xl') + " py-3";
@@ -379,87 +379,9 @@ function positionGen3() {
 // Rank 2 -----
 
 function assignRank2(){
- 
-  if(rank === "Leader" && alliance2 === "Revolutionary Army") { // --------------------------- Revolutionary Army
-     ranks2 = ["Leader"];
-  } else if(rank === "Chief of Staff" && alliance2 === "Revolutionary Army") {
-     ranks2 = ["Leader","Chief of Staff"];
-  } else if(rank === "Army Commander" && alliance2 === "Revolutionary Army") {
-     ranks2 = ["Leader","Chief of Staff","Army Commander"];
-  } else if(rank === "Officer" && alliance2 === "Revolutionary Army") {
-     ranks2 = ["Leader","Chief of Staff","Army Commander","Officer"];
-  } else if(rank === "Member" && alliance2 === "Revolutionary Army") {
-     ranks2 = ["Leader","Chief of Staff","Army Commander","Officer","Member","Associate"];
-  } else if(rank === "Associate" && alliance2 === "Revolutionary Army") {
-     ranks2 = ["Leader","Chief of Staff","Army Commander","Officer","Member","Associate"];
 
-  } else if(alliance2 === "Revolutionary Army") {
-     ranks2 = ["Leader","Chief of Staff","Army Commander","Officer","Member","Associate"];   
 //----------------------------------------------------------------------------
-  } else if(rank === "Fleet Admiral" && alliance2 === "Marine") {  // ------------------------- Marine
-     ranks2 = ["Fleet Admiral","Admiral","Vice Admiral","Inspector General","Instructor"];
-  } else if(rank === "Admiral" && alliance2 === "Marine") {
-     ranks2 = ["Fleet Admiral","Admiral","Vice Admiral","Inspector General","Instructor"];
-  } else if(rank === "Vice Admiral" && alliance2 === "Marine") {
-     ranks2 = ["Fleet Admiral","Admiral","Vice Admiral","Inspector General","Instructor"];
-  } else if(rank === "Rear Admiral" && alliance2 === "Marine") {
-     ranks2 = ["Fleet Admiral","Admiral","Vice Admiral","Rear Admiral","Inspector General","Instructor"];
-  } else if(rank === "Commodore" && alliance2 === "Marine") {
-     ranks2 = ["Fleet Admiral","Admiral","Vice Admiral","Rear Admiral","Commodore","Inspector General","Instructor"];
-  } else if(rank === "Captain" && alliance2 === "Marine") {
-     ranks2 = ["Fleet Admiral","Admiral","Vice Admiral","Rear Admiral","Commodore","Captain","Inspector General","Instructor"];
-  } else if(rank === "Commander" && alliance2 === "Marine") {
-     ranks2 = ["Fleet Admiral","Admiral","Vice Admiral","Rear Admiral","Commodore","Captain","Commander","Inspector General","Instructor"];
-  } else if(rank === "Lieutenant" && alliance2 === "Marine") {
-     ranks2 = ["Fleet Admiral","Admiral","Vice Admiral","Rear Admiral","Commodore","Captain","Commander","Lieutenant","Inspector General","Instructor"];
-  } else if(rank === "Ensign" && alliance2 === "Marine") {
-     ranks2 = ["Fleet Admiral","Admiral","Vice Admiral","Rear Admiral","Commodore","Captain","Commander","Lieutenant","Ensign","Inspector General","Instructor"];
-  } else if(rank === "Petty Officer" && alliance2 === "Marine") {
-     ranks2 = ["Fleet Admiral","Admiral","Vice Admiral","Rear Admiral","Commodore","Captain","Commander","Lieutenant","Ensign","Petty Officer","Inspector General","Instructor"];
-  } else if(rank === "Seaman" && alliance2 === "Marine") {
-     ranks2 = ["Fleet Admiral","Admiral","Vice Admiral","Rear Admiral","Commodore","Captain","Commander","Lieutenant","Ensign","Petty Officer","Seaman","Inspector General","Instructor"];
-  } else if(rank === "Choreboy" && alliance2 === "Marine") {
-     ranks2 = ["Fleet Admiral","Admiral","Vice Admiral","Rear Admiral","Commodore","Captain","Commander","Lieutenant","Ensign","Petty Officer","Seaman","Choreboy","Inspector General","Instructor"];
-  } else if(rank === "Inspector General" && alliance2 === "Marine") {
-     ranks2 = ["Fleet Admiral","Admiral","Vice Admiral","Inspector General","Instructor"];
-  } else if(rank === "Instructor" && alliance2 === "Marine") {
-     ranks2 = ["Fleet Admiral","Admiral","Vice Admiral","Rear Admiral","Inspector General","Instructor"];      
-
-  } else if(rank === "Pirate Captain" && alliance2 === "Marine") {  // ------------------------- Marine (Shichibukai)
-     ranks2 = ["Shichibukai"];
-  
-  } else if(alliance2 === "Marine") {
-     ranks2 = ["Fleet Admiral","Admiral","Vice Admiral","Rear Admiral","Commodore","Captain","Commander","Lieutenant","Ensign","Petty Officer","Seaman","Choreboy","Inspector General","Instructor"];   
-//----------------------------------------------------------------------------
-  } else if(rank === "Pirate Captain" && alliance2 === "Pirate") {  // ------------------------- Pirate
-     ranks2 = ["Pirate Captain"];
-  } else if(rank === "First Mate" && alliance2 === "Pirate") {
-     ranks2 = ["Pirate Captain","First Mate"];
-  } else if(rank === "Swordsman" && alliance2 === "Pirate") {
-     ranks2 = ["Pirate Captain","First Mate","Swordsman"];
-  } else if(rank === "Sniper" && alliance2 === "Pirate") {
-     ranks2 = ["Pirate Captain","First Mate","Sniper"];
-  } else if(rank === "Martial Artist" && alliance2 === "Pirate") {
-     ranks2 = ["Pirate Captain","First Mate","Martial Artist"];
-  } else if(rank === "Navigator" && alliance2 === "Pirate") {
-     ranks2 = ["Pirate Captain","First Mate","Navigator"];
-  } else if(rank === "Cook" && alliance2 === "Pirate") {
-     ranks2 = ["Pirate Captain","First Mate","Cook"];
-  } else if(rank === "Doctor" && alliance2 === "Pirate") {
-     ranks2 = ["Pirate Captain","First Mate","Doctor"];
-  } else if(rank === "Shipwright" && alliance2 === "Pirate") {
-     ranks2 = ["Pirate Captain","First Mate","Shipwright"];
-  } else if(rank === "Musician" && alliance2 === "Pirate") {
-     ranks2 = ["Pirate Captain","First Mate","Musician"];
-  } else if(rank === "Aprentice" && alliance2 === "Pirate") {
-     ranks2 = ["Pirate Captain","First Mate","Swordsman","Sniper","Martial Artist","Navigator","Cook","Doctor","Shipwright","Musician","Aprentice"];
-  } else if(rank === "Pet" && alliance2 === "Pirate") {
-     ranks2 = ["Pirate Captain","First Mate","Pet"];
-
-  } else if(alliance2 === "Pirate") {
-     ranks2 = ["Pirate Captain","First Mate","Swordsman","Sniper","Martial Artist","Navigator","Cook","Doctor","Shipwright","Musician","Aprentice","Pet"];   
-//----------------------------------------------------------------------------
-  } else if(rank === "Individual" && alliance2 === "Bounty Hunter") {  // ------------------------- Bounty Hunter
+  if(rank === "Individual" && alliance2 === "Bounty Hunter") {  // ------------------------- Bounty Hunter
      ranks2 = ["Individual","Guild Leader","Guild Member"];
   } else if(rank === "Guild Leader" && alliance2 === "Bounty Hunter") {
      ranks2 = ["Individual","Guild Leader"];
