@@ -214,12 +214,12 @@
             "Custodian"
         ],
 
-        "Captain": [
+        "Pirate Captain": [
             "Shichibukai"
         ]
     },
     "Pirate": {
-        "Captain": [
+        "Pirate Captain": [
             "Captain"
         ],
         "First Mate": [
@@ -265,5 +265,77 @@
             "Musician",
             "Deckhand"
         ]
-    }
+    },
+    "Bounty Hunter": {
+        "Guild Leader": [
+            "Guild Leader"
+		],
+        "Guild Member": [
+            "Guild Leader",
+            "Guild Member",
+            "Individual"
+		],
+        "Individual": [
+            "Guild Member",
+            "Individual"
+		]
+    },
+    "Cipher Pol": {
+        "CP0": [
+            "CP0",
+            "CP1"
+		],
+        "CP1": [
+            "CP0",
+            "CP1",
+            "CP2"
+		],
+        "CP2": [
+            "CP0",
+            "CP1",
+            "CP2",
+            "CP3"
+		],
+        "CP3": [
+            "CP1",
+            "CP2",
+            "CP3",
+            "CP4"
+		],
+        "CP4": [
+            "CP2",
+            "CP3",
+            "CP4",
+            "CP5"
+		],
+        "CP5": [
+            "CP3",
+            "CP4",
+            "CP5",
+            "CP6"
+		],
+        "CP6": [
+            "CP4",
+            "CP5",
+            "CP6",
+            "CP7"
+		],
+        "CP7": [
+            "CP5",
+            "CP6",
+            "CP7",
+            "CP8"
+		],
+        "CP8": [
+            "CP6",
+            "CP7",
+            "CP8",
+            "CP9"
+		],
+        "CP9": [
+            "CP7",
+            "CP8",
+            "CP9"
+		]
+	}
 }

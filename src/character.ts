@@ -358,7 +358,14 @@ function positionGen2() {
     if (!affiliation2 || !position1) {
         return;
     }
-    position2 = getRandomElement(positionsJson2[affiliation2][position1]);
+    const list = positionsJson2[affiliation2];
+    if (!(position1 in list)) {
+        const list = positionsJson1[affiliation2].list;
+        const weights = positionsJson1[affiliation2].weights;
+        position2 = weightedRandom(list, weights);
+    } else {
+        position2 = getRandomElement(list[position1]);
+    }
     element = document.getElementById('position2');
     element.innerHTML = position2;
     element.className = element.className.replace('text-lg', 'text-xl') + " py-3";
@@ -380,18 +387,7 @@ function positionGen3() {
 
 function assignRank2(){
 
-//----------------------------------------------------------------------------
-  if(rank === "Individual" && alliance2 === "Bounty Hunter") {  // ------------------------- Bounty Hunter
-     ranks2 = ["Individual","Guild Leader","Guild Member"];
-  } else if(rank === "Guild Leader" && alliance2 === "Bounty Hunter") {
-     ranks2 = ["Individual","Guild Leader"];
-  } else if(rank === "Guild Member" && alliance2 === "Bounty Hunter") {
-     ranks2 = ["Individual","Guild Leader","Guild Member"];
-
-  } else if(alliance2 === "Bounty Hunter") {
-     ranks2 = ["Individual","Guild Leader","Guild Member"];   
-//----------------------------------------------------------------------------
-  } else if(rank === "CP0" && alliance2 === "Cipher Pol") {             // ------------------------- Cipher Pol
+  if(rank === "CP0" && alliance2 === "Cipher Pol") {             // ------------------------- Cipher Pol
      ranks2 = ["CP0"];
   } else if(rank === "CP1" && alliance2 === "Cipher Pol") {            
      ranks2 = ["CP0","CP1"];
