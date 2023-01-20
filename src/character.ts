@@ -11,8 +11,8 @@ var hRaceWeights = racesJson.nonHybrid.weights;
 var affiliations = affiliationsJson.main.list;
 var affiliationWeights = affiliationsJson.main.weights;
 
-//var positionsJson1 = positionsJson.a;
-/*var positionsJson2 = positionsJson.b;
+/*var positionsJson1 = positionsJson.a;
+var positionsJson2 = positionsJson.b;
 var positionsJson3 = positionsJson.c;*/
 
 var helptext = "";
@@ -403,53 +403,6 @@ function positionGen3() {
     element = document.getElementById('position3');
     element.innerHTML = position3;
     element.className = element.className.replace('text-lg', 'text-xl') + " py-3";
-}
-
-// Rank 2 -----
-
-function assignRank2(){
-
-  if(rank === "CP0" && alliance2 === "Cipher Pol") {             // ------------------------- Cipher Pol
-     ranks2 = ["CP0"];
-  } else if(rank === "CP1" && alliance2 === "Cipher Pol") {            
-     ranks2 = ["CP0","CP1"];
-  } else if(rank === "CP2" && alliance2 === "Cipher Pol") {            
-     ranks2 = ["CP0","CP1","CP2"];
-  } else if(rank === "CP3" && alliance2 === "Cipher Pol") {            
-     ranks2 = ["CP0","CP1","CP2","CP3"];
-  } else if(rank === "CP4" && alliance2 === "Cipher Pol") {            
-     ranks2 = ["CP0","CP1","CP2","CP3","CP4"];
-  } else if(rank === "CP5" && alliance2 === "Cipher Pol") {            
-     ranks2 = ["CP0","CP1","CP2","CP3","CP4","CP5"];
-  } else if(rank === "CP6" && alliance2 === "Cipher Pol") {            
-     ranks2 = ["CP0","CP1","CP2","CP3","CP4","CP5","CP6"];
-  } else if(rank === "CP7" && alliance2 === "Cipher Pol") {            
-     ranks2 = ["CP0","CP1","CP2","CP3","CP4","CP5","CP6","CP7"];
-  } else if(rank === "CP8" && alliance2 === "Cipher Pol") {            
-     ranks2 = ["CP0","CP1","CP2","CP3","CP4","CP5","CP6","CP7","CP8"];
-  } else if(rank === "CP9" && alliance2 === "Cipher Pol") {            
-     ranks2 = ["CP0","CP1","CP2","CP3","CP4","CP5","CP6","CP7","CP8","CP9"];
-
-  } else if(alliance2 === "Cipher Pol") {            
-     ranks2 = ["CP0","CP1","CP2","CP3","CP4","CP5","CP6","CP7","CP8","CP9"];
-//----------------------------------------------------------------------------
-  } else if(rank === "Celestial Dragon" && alliance2 === "World Nobles") { // ------------------------- World Nobles
-     ranks2 = ["Celestial Dragon","King/Queen","Prince/Princess","Noble Commander","Soldier"];
-  } else if(rank === "King/Queen" && alliance2 === "World Nobles") {                            
-     ranks2 = ["Celestial Dragon","King/Queen"];
-  } else if(rank === "Prince/Princess" && alliance2 === "World Nobles") {                            
-     ranks2 = ["King/Queen","Prince/Princess"];
-  } else if(rank === "Noble Commander" && alliance2 === "World Nobles") {                            
-     ranks2 = ["King/Queen","Prince/Princess","Noble Commander"];
-  } else if(rank === "Soldier" && alliance2 === "World Nobles") {                            
-     ranks2 = ["King/Queen","Prince/Princess","Noble Commander","Soldier"];
-
-  } else if(alliance2 === "World Nobles") {                            
-     ranks2 = ["King/Queen","Prince/Princess","Noble Commander","Soldier"];
-  }
-
-  rank2 = capFirst(ranks2[getRandomInt(0, ranks2.length + 1)]);
-  document.getElementById("rank2").innerHTML = rank2;
 }
 
 // Rank 3 -----

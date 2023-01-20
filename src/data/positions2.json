@@ -229,20 +229,17 @@
         "Sniper": [
             "Captain",
             "First Mate",
-            "Sniper",
-            "Navigator"
+            "Sniper"
         ],
         "Martial Artist": [
             "Captain",
             "First Mate",
-            "Martial Artist",
-            "Navigator"
+            "Martial Artist"
         ],
         "Swordfighter": [
             "Captain",
             "First Mate",
-            "Swordfighter",
-            "Navigator"
+            "Swordfighter"
         ],
         "Navigator": [
             "Captain",
