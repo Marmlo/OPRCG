@@ -1,16 +1,16 @@
 # One Piece Character Generator
 
-### Install
+## Install
 
-## New version (currently in [`refactor`][2] branch)
+### New version (currently in [`refactor`][2] branch)
 
-### 1. Install
+#### 1. Install
 
 ```
 npm install
 ```
 
-### 2. Run
+#### 2. Run
 
 ```
 npm run dev
