@@ -2,6 +2,7 @@ import racesJson from '/src/data/races.json';
 import affiliationsJson from '/src/data/affiliations.json';
 import positionsJson1 from '/src/data/positions1.json';
 import positionsJson2 from '/src/data/positions2.json';
+import positionsJson3 from '/src/data/positions3.json';
 
 var races = racesJson.allRaces.list;
 var raceWeights = racesJson.allRaces.weights;
@@ -123,12 +124,11 @@ export function gen(id) {
             positionGen2();
             return;
         }
-        /*
+
         case "position3": {
             positionGen3();
             return;
-        }*/
-        
+        }        
         
         // Not done yet:
 
@@ -226,9 +226,7 @@ export function genAll() {
 
     positionGen1();
     positionGen2();
-    /*
     positionGen3();
-    */
 
     // These are not done yet:
     /*
@@ -385,6 +383,26 @@ function positionGen2() {
     }
 }
 
+function positionGen3() {
+    if (!affiliation3 || !position2) {
+        return;
+    } else if (!position3) {
+        const list = positionsJson3[affiliation3];
+        if (!(position2 in list)) {
+            const list = positionsJson1[affiliation3].list;
+            const weights = positionsJson1[affiliation3].weights;
+            position3 = weightedRandom(list, weights);
+        } else {
+            position3 = getRandomElement(list[position2]);
+        }
+        element = document.getElementById('position3');
+        element.innerHTML = position3;
+        element.className = element.className.replace('text-lg', 'text-xl') + " py-3";
+    } else {
+        return;
+    }
+}
+
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
@@ -392,155 +410,6 @@ function positionGen2() {
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
-
-function positionGen3() {
-    if (!affiliation3 || !position2) {
-        return;
-    }
-    const list = positionsJson3[affiliation3].list;
-    const weights = positionsJson3[affiliation3].weights;
-    position1 = weightedRandom(list, weights);
-    element = document.getElementById('position3');
-    element.innerHTML = position3;
-    element.className = element.className.replace('text-lg', 'text-xl') + " py-3";
-}
-
-// Rank 3 -----
-
-function assignRank3(){
- 
-  if(rank2 === "Leader" && alliance3 === "Revolutionary Army") { // --------------------------- Revolutionary Army
-     ranks3 = ["Leader"];
-  } else if(rank2 === "Chief of Staff" && alliance3 === "Revolutionary Army") {
-     ranks3 = ["Leader","Chief of Staff"];
-  } else if(rank2 === "Army Commander" && alliance3 === "Revolutionary Army") {
-     ranks3 = ["Leader","Chief of Staff","Army Commander"];
-  } else if(rank2 === "Officer" && alliance3 === "Revolutionary Army") {
-     ranks3 = ["Leader","Chief of Staff","Army Commander","Officer"];
-  } else if(rank2 === "Member" && alliance3 === "Revolutionary Army") {
-     ranks3 = ["Leader","Chief of Staff","Army Commander","Officer","Member","Associate"];
-  } else if(rank2 === "Associate" && alliance3 === "Revolutionary Army") {
-     ranks3 = ["Leader","Chief of Staff","Army Commander","Officer","Member","Associate"];
-
-  } else if(alliance3 === "Revolutionary Army") {
-     ranks3 = ["Leader","Chief of Staff","Army Commander","Officer","Member","Associate"];   
-//----------------------------------------------------------------------------
-  } else if(rank2 === "Fleet Admiral" && alliance3 === "Marine") {  // ------------------------- Marine
-     ranks3 = ["Fleet Admiral","Admiral","Vice Admiral","Inspector General","Instructor"];
-  } else if(rank2 === "Admiral" && alliance3 === "Marine") {
-     ranks3 = ["Fleet Admiral","Admiral","Vice Admiral","Inspector General","Instructor"];
-  } else if(rank2 === "Vice Admiral" && alliance3 === "Marine") {
-     ranks3 = ["Fleet Admiral","Admiral","Vice Admiral","Inspector General","Instructor"];
-  } else if(rank2 === "Rear Admiral" && alliance3 === "Marine") {
-     ranks3 = ["Fleet Admiral","Admiral","Vice Admiral","Rear Admiral","Inspector General","Instructor"];
-  } else if(rank2 === "Commodore" && alliance3 === "Marine") {
-     ranks3 = ["Fleet Admiral","Admiral","Vice Admiral","Rear Admiral","Commodore","Inspector General","Instructor"];
-  } else if(rank2 === "Captain" && alliance3 === "Marine") {
-     ranks3 = ["Fleet Admiral","Admiral","Vice Admiral","Rear Admiral","Commodore","Captain","Inspector General","Instructor"];
-  } else if(rank2 === "Commander" && alliance3 === "Marine") {
-     ranks3 = ["Fleet Admiral","Admiral","Vice Admiral","Rear Admiral","Commodore","Captain","Commander","Inspector General","Instructor"];
-  } else if(rank2 === "Lieutenant" && alliance3 === "Marine") {
-     ranks3 = ["Fleet Admiral","Admiral","Vice Admiral","Rear Admiral","Commodore","Captain","Commander","Lieutenant","Inspector General","Instructor"];
-  } else if(rank2 === "Ensign" && alliance3 === "Marine") {
-     ranks3 = ["Fleet Admiral","Admiral","Vice Admiral","Rear Admiral","Commodore","Captain","Commander","Lieutenant","Ensign","Inspector General","Instructor"];
-  } else if(rank2 === "Petty Officer" && alliance3 === "Marine") {
-     ranks3 = ["Fleet Admiral","Admiral","Vice Admiral","Rear Admiral","Commodore","Captain","Commander","Lieutenant","Ensign","Petty Officer","Inspector General","Instructor"];
-  } else if(rank2 === "Seaman" && alliance3 === "Marine") {
-     ranks3 = ["Fleet Admiral","Admiral","Vice Admiral","Rear Admiral","Commodore","Captain","Commander","Lieutenant","Ensign","Petty Officer","Seaman","Inspector General","Instructor"];
-  } else if(rank2 === "Choreboy" && alliance3 === "Marine") {
-     ranks3 = ["Fleet Admiral","Admiral","Vice Admiral","Rear Admiral","Commodore","Captain","Commander","Lieutenant","Ensign","Petty Officer","Seaman","Choreboy","Inspector General","Instructor"];
-  } else if(rank2 === "Inspector General" && alliance3 === "Marine") {
-     ranks3 = ["Fleet Admiral","Admiral","Vice Admiral","Inspector General","Instructor"];
-  } else if(rank2 === "Instructor" && alliance3 === "Marine") {
-     ranks3 = ["Fleet Admiral","Admiral","Vice Admiral","Rear Admiral","Inspector General","Instructor"];      
-
-  } else if(rank2 === "Pirate Captain" && alliance3 === "Marine") {  // ------------------------- Marine (Shichibukai)
-     ranks3 = ["Shichibukai"];
-  
-  } else if(alliance3 === "Marine") {
-     ranks3 = ["Fleet Admiral","Admiral","Vice Admiral","Rear Admiral","Commodore","Captain","Commander","Lieutenant","Ensign","Petty Officer","Seaman","Choreboy","Inspector General","Instructor"];   
-//----------------------------------------------------------------------------
-  } else if(rank2 === "Pirate Captain" && alliance3 === "Pirate") {  // ------------------------- Pirate
-     ranks3 = ["Pirate Captain"];
-  } else if(rank2 === "First Mate" && alliance3 === "Pirate") {
-     ranks3 = ["Pirate Captain","First Mate"];
-  } else if(rank2 === "Swordsman" && alliance3 === "Pirate") {
-     ranks3 = ["Pirate Captain","First Mate","Swordsman"];
-  } else if(rank2 === "Sniper" && alliance3 === "Pirate") {
-     ranks3 = ["Pirate Captain","First Mate","Sniper"];
-  } else if(rank2 === "Martial Artist" && alliance3 === "Pirate") {
-     ranks3 = ["Pirate Captain","First Mate","Martial Artist"];
-  } else if(rank2 === "Navigator" && alliance3 === "Pirate") {
-     ranks3 = ["Pirate Captain","First Mate","Navigator"];
-  } else if(rank2 === "Cook" && alliance3 === "Pirate") {
-     ranks3 = ["Pirate Captain","First Mate","Cook"];
-  } else if(rank2 === "Doctor" && alliance3 === "Pirate") {
-     ranks3 = ["Pirate Captain","First Mate","Doctor"];
-  } else if(rank2 === "Shipwright" && alliance3 === "Pirate") {
-     ranks3 = ["Pirate Captain","First Mate","Shipwright"];
-  } else if(rank2 === "Musician" && alliance3 === "Pirate") {
-     ranks3 = ["Pirate Captain","First Mate","Musician"];
-  } else if(rank2 === "Aprentice" && alliance3 === "Pirate") {
-     ranks3 = ["Pirate Captain","First Mate","Swordsman","Sniper","Martial Artist","Navigator","Cook","Doctor","Shipwright","Musician","Aprentice"];
-  } else if(rank2 === "Pet" && alliance3 === "Pirate") {
-     ranks3 = ["Pirate Captain","First Mate","Pet"];
-
-  } else if(alliance3 === "Pirate") {
-     ranks3 = ["Pirate Captain","First Mate","Swordsman","Sniper","Martial Artist","Navigator","Cook","Doctor","Shipwright","Musician","Aprentice","Pet"];   
-//----------------------------------------------------------------------------
-  } else if(rank2 === "Individual" && alliance3 === "Bounty Hunter") {  // ------------------------- Bounty Hunter
-     ranks3 = ["Individual","Guild Leader","Guild Member"];
-  } else if(rank2 === "Guild Leader" && alliance3 === "Bounty Hunter") {
-     ranks3 = ["Individual","Guild Leader"];
-  } else if(rank2 === "Guild Member" && alliance3 === "Bounty Hunter") {
-     ranks3 = ["Individual","Guild Leader","Guild Member"];
-
-  } else if(alliance3 === "Bounty Hunter") {
-     ranks3 = ["Individual","Guild Leader","Guild Member"];   
-//----------------------------------------------------------------------------
-  } else if(rank2 === "CP0" && alliance3 === "Cipher Pol") {             // ------------------------- Cipher Pol
-     ranks3 = ["CP0"];
-  } else if(rank2 === "CP1" && alliance3 === "Cipher Pol") {            
-     ranks3 = ["CP0","CP1"];
-  } else if(rank2 === "CP2" && alliance3 === "Cipher Pol") {            
-     ranks3 = ["CP0","CP1","CP2"];
-  } else if(rank2 === "CP3" && alliance3 === "Cipher Pol") {            
-     ranks3 = ["CP0","CP1","CP2","CP3"];
-  } else if(rank2 === "CP4" && alliance3 === "Cipher Pol") {            
-     ranks3 = ["CP0","CP1","CP2","CP3","CP4"];
-  } else if(rank2 === "CP5" && alliance3 === "Cipher Pol") {            
-     ranks3 = ["CP0","CP1","CP2","CP3","CP4","CP5"];
-  } else if(rank2 === "CP6" && alliance3 === "Cipher Pol") {            
-     ranks3 = ["CP0","CP1","CP2","CP3","CP4","CP5","CP6"];
-  } else if(rank2 === "CP7" && alliance3 === "Cipher Pol") {            
-     ranks3 = ["CP0","CP1","CP2","CP3","CP4","CP5","CP6","CP7"];
-  } else if(rank2 === "CP8" && alliance3 === "Cipher Pol") {            
-     ranks3 = ["CP0","CP1","CP2","CP3","CP4","CP5","CP6","CP7","CP8"];
-  } else if(rank2 === "CP9" && alliance3 === "Cipher Pol") {            
-     ranks3 = ["CP0","CP1","CP2","CP3","CP4","CP5","CP6","CP7","CP8","CP9"];
-
-  } else if(alliance3 === "Cipher Pol") {            
-     ranks3 = ["CP0","CP1","CP2","CP3","CP4","CP5","CP6","CP7","CP8","CP9"];
-//----------------------------------------------------------------------------
-  } else if(rank2 === "Celestial Dragon" && alliance3 === "World Nobles") { // ------------------------- World Nobles
-     ranks3 = ["Celestial Dragon","King/Queen","Prince/Princess","Noble Commander","Soldier"];
-  } else if(rank2 === "King/Queen" && alliance3 === "World Nobles") {                            
-     ranks3 = ["Celestial Dragon","King/Queen"];
-  } else if(rank2 === "Prince/Princess" && alliance3 === "World Nobles") {                            
-     ranks3 = ["King/Queen","Prince/Princess"];
-  } else if(rank2 === "Noble Commander" && alliance3 === "World Nobles") {                            
-     ranks3 = ["King/Queen","Prince/Princess","Noble Commander"];
-  } else if(rank2 === "Soldier" && alliance3 === "World Nobles") {                            
-     ranks3 = ["King/Queen","Prince/Princess","Noble Commander","Soldier"];
-
-  } else if(alliance3 === "World Nobles") {                            
-     ranks3 = ["King/Queen","Prince/Princess","Noble Commander","Soldier"];
-  }
-
-  rank3 = capFirst(ranks3[getRandomInt(0, ranks3.length + 1)]);
-  document.getElementById("rank3").innerHTML = rank3;
-}
-
 
 // Fighting ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 

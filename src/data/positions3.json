@@ -1,0 +1,362 @@
+{
+   "Revolutionary Army": {
+        "Leader": [
+            "Leader"
+        ],
+        "Chief of Staff": [
+            "Leader",
+            "Chief of Staff"
+        ],
+        "Army Commander": [
+            "Chief of Staff",
+            "Army Commander"
+        ],
+        "Officer": [
+            "Army Commander",
+            "Officer"
+        ],
+        "Member": [
+            "Officer",
+            "Member"
+        ],
+        "Associate": [
+            "Member",
+            "Associate"
+        ]
+    },
+    "Marine": {
+        "Fleet Admiral": [
+            "Fleet Admiral",
+            "Admiral",
+            "Vice Admiral",
+            "Inspector General",
+            "Instructor"
+        ],
+        "Admiral": [
+            "Fleet Admiral",
+            "Admiral",
+            "Vice Admiral",
+            "Inspector General",
+            "Instructor"
+        ],
+        "Vice Admiral": [
+            "Fleet Admiral",
+            "Admiral",
+            "Vice Admiral",
+            "Inspector General",
+            "Instructor"
+        ],
+        "Rear Admiral": [
+            "Fleet Admiral",
+            "Admiral",
+            "Vice Admiral",
+            "Rear Admiral",
+            "Inspector General",
+            "Instructor"
+        ],
+        "Commodore": [
+            "Fleet Admiral",
+            "Admiral",
+            "Vice Admiral",
+            "Rear Admiral",
+            "Commodore",
+            "Inspector General",
+            "Instructor"
+        ],
+        "Captain": [
+            "Fleet Admiral",
+            "Admiral",
+            "Vice Admiral",
+            "Rear Admiral",
+            "Commodore",
+            "Captain",
+            "Inspector General",
+            "Instructor"
+        ],
+        "Commander": [
+            "Fleet Admiral",
+            "Admiral",
+            "Vice Admiral",
+            "Rear Admiral",
+            "Commodore",
+            "Captain",
+            "Commander",
+            "Inspector General",
+            "Instructor"
+        ],
+        "Lieutenant Commander": [
+            "Admiral",
+            "Vice Admiral",
+            "Rear Admiral",
+            "Commodore",
+            "Captain",
+            "Commander",
+            "Lieutenant Commander"
+        ],
+        "Lieutenant": [
+            "Vice Admiral",
+            "Rear Admiral",
+            "Commodore",
+            "Captain",
+            "Commander",
+            "Lieutenant Commander",
+            "Lieutenant"
+        ],
+        "Lieutenant Junior Grade": [
+            "Rear Admiral",
+            "Commodore",
+            "Captain",
+            "Commander",
+            "Lieutenant Commander",
+            "Lieutenant",
+            "Lieutenant Junior Grade"
+        ],
+        "Ensign": [
+            "Commodore",
+            "Captain",
+            "Commander",
+            "Lieutenant Commander",
+            "Lieutenant",
+            "Lieutenant Junior Grade",
+            "Ensign"
+        ],
+        "Warrant Officer": [
+            "Captain",
+            "Commander",
+            "Lieutenant Commander",
+            "Lieutenant",
+            "Lieutenant Junior Grade",
+            "Ensign",
+            "Warrant Officer"
+        ],
+        "Master Chief Petty Officer": [
+            "Commander",
+            "Lieutenant Commander",
+            "Lieutenant",
+            "Lieutenant Junior Grade",
+            "Ensign",
+            "Warrant Officer",
+            "Master Chief Petty Officer"
+        ],
+        "Chief Petty Officer": [
+            "Lieutenant Commander",
+            "Lieutenant",
+            "Lieutenant Junior Grade",
+            "Ensign",
+            "Warrant Officer",
+            "Master Chief Petty Officer",
+            "Chief Petty Officer"
+        ],
+        "Petty Officer": [
+            "Lieutenant",
+            "Lieutenant Junior Grade",
+            "Ensign",
+            "Warrant Officer",
+            "Master Chief Petty Officer",
+            "Chief Petty Officer",
+            "Petty Officer"
+        ],
+        "Seaman First Class": [
+            "Lieutenant Junior Grade",
+            "Ensign",
+            "Warrant Officer",
+            "Master Chief Petty Officer",
+            "Chief Petty Officer",
+            "Petty Officer",
+            "Seaman First Class"
+        ],
+        "Seaman Apprentice": [
+            "Ensign",
+            "Warrant Officer",
+            "Master Chief Petty Officer",
+            "Chief Petty Officer",
+            "Petty Officer",
+            "Seaman First Class",
+            "Seaman Apprentice"
+        ],
+        "Seaman Recruit": [
+            "Warrant Officer",
+            "Master Chief Petty Officer",
+            "Chief Petty Officer",
+            "Petty Officer",
+            "Seaman First Class",
+            "Seaman Apprentice",
+            "Seaman Recruit"
+        ],
+        "Choreboy": [
+            "Master Chief Petty Officer",
+            "Chief Petty Officer",
+            "Petty Officer",
+            "Seaman First Class",
+            "Seaman Apprentice",
+            "Seaman Recruit",
+            "Choreboy"
+        ],
+        "Inspector General": [
+            "Inspector General"
+        ],
+        "Instructor": [
+            "Instructor"
+        ],
+        "Cook": [
+            "Cook"
+        ],
+        "Doctor": [
+            "Doctor"
+        ],
+        "Scientist": [
+            "Scientist"
+        ],
+        "Shipwright": [
+            "Shipwright"
+        ],
+        "Custodian": [
+            "Custodian"
+        ]
+    },
+    "Pirate": {
+        "Shichibukai": [
+            "Pirate Captain"
+        ],
+
+        "Pirate Captain": [
+            "Captain"
+        ],
+        "First Mate": [
+            "Captain",
+            "First Mate"
+        ],
+        "Sniper": [
+            "Captain",
+            "First Mate",
+            "Sniper"
+        ],
+        "Martial Artist": [
+            "Captain",
+            "First Mate",
+            "Martial Artist"
+        ],
+        "Swordfighter": [
+            "Captain",
+            "First Mate",
+            "Swordfighter"
+        ],
+        "Navigator": [
+            "Captain",
+            "First Mate",
+            "Navigator"
+        ],
+        "Musician": [
+            "Musician"
+        ],
+        "Cook": [
+            "Cook"
+        ],
+        "Doctor": [
+            "Doctor"
+        ],
+        "Shipwright": [
+            "Shipwright"
+        ],
+        "Deckhand": [
+            "Musician",
+            "Deckhand"
+        ]
+    },
+    "Bounty Hunter": {
+        "Guild Leader": [
+            "Guild Leader"
+		],
+        "Guild Member": [
+            "Guild Leader",
+            "Guild Member",
+            "Individual"
+		],
+        "Individual": [
+            "Guild Member",
+            "Individual"
+		]
+    },
+    "Cipher Pol": {
+        "CP0": [
+            "CP0",
+            "CP1"
+		],
+        "CP1": [
+            "CP0",
+            "CP1",
+            "CP2"
+		],
+        "CP2": [
+            "CP0",
+            "CP1",
+            "CP2",
+            "CP3"
+		],
+        "CP3": [
+            "CP1",
+            "CP2",
+            "CP3",
+            "CP4"
+		],
+        "CP4": [
+            "CP2",
+            "CP3",
+            "CP4",
+            "CP5"
+		],
+        "CP5": [
+            "CP3",
+            "CP4",
+            "CP5",
+            "CP6"
+		],
+        "CP6": [
+            "CP4",
+            "CP5",
+            "CP6",
+            "CP7"
+		],
+        "CP7": [
+            "CP5",
+            "CP6",
+            "CP7",
+            "CP8"
+		],
+        "CP8": [
+            "CP6",
+            "CP7",
+            "CP8",
+            "CP9"
+		],
+        "CP9": [
+            "CP7",
+            "CP8",
+            "CP9"
+		]
+	},
+    "World Nobles": {
+        "Celestial Dragon": [
+            "Celestial Dragon",
+            "Monarch",
+            "Heir",
+            "Noble Commander",
+            "Soldier"
+		],
+        "Monarch": [
+            "Monarch"
+		],
+        "Heir": [
+            "Monarch",
+            "Heir"
+		],
+        "Noble Commander": [
+            "Noble Commander",
+            "Soldier"
+		],
+        "Soldier": [
+            "Noble Commander",
+            "Soldier"
+		]
+	}
+}
