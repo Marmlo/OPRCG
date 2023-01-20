@@ -271,7 +271,7 @@ export function allowReload() {
 
         topbit = document.getElementById('topbit');
         helptext = document.createElement('div');
-        helptext.innerHTML = '↑ Click the logo instead of reloading if you want to reset the page ↑';
+        helptext.innerHTML = '↑ Click the logo instead of reloading if you want to fully reset the page ↑';
         helptext.className = 'text-[#eeeefff0] italic hover:text-[#eeeeffff] text-sm'
         topbit.appendChild(helptext);
     }

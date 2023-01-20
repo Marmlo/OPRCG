@@ -16,13 +16,13 @@ function makeButtons() {
         "dftype1":"DF Type", "dftype2":"DF Type", "dftype3":"DF Type",
         "df1":"DF Name", "df2":"DF Name", "df3":"DF Name",
         "doriki1":"Dōriki", "doriki2":"Dōriki", "doriki3":"Dōriki",
-        "bounty1":"Bounty", "bounty2":"Bounty", "bounty3":"Bounty", // Later: hide bounty if cannot have bounty!!
+        "bounty1":"Bounty", "bounty2":"Bounty", "bounty3":"Bounty", // Later: hide bounty if cannot have bounty (marines etc)!!
         "export-button":"file"
     };
     for (const [id, name] of Object.entries(buttons)) {
         var button = document.createElement('button');
         var div = document.getElementById(id);
-        button.className = 'font-bold text-orange-50 w-full bg-orange-600 hover:bg-orange-300 hover:text-black hover:border-3 hover:border-orange-600 focus:border-3 focus:border-orange-400 focus:outline-0';
+        button.className = 'font-bold text-orange-50 w-full bg-orange-600 hover:bg-orange-300 hover:text-black hover:border-3 hover:border-orange-600 focus:border-3 focus:border-orange-400 focus:outline-0 py-3';
         if (name === "All") {
             button.className = button.className + ' rounded-t-3xl';
         } else if (id === "export-button") {
@@ -44,6 +44,11 @@ function makeButtons() {
 
     genders = document.getElementById('genders');
     genders.addEventListener('change', () => {
+        for(var i=0; i<genders.length; i++) {
+            if (genders.options[i].value === "QQ") {
+                genders.remove(genders.options[i]);
+            }
+        }
         if (genders.value === "CU"){
             document.getElementById("custom-gender").style.display = "";
         } else {
