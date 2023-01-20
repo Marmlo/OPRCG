@@ -16,33 +16,34 @@ var affiliationWeights = affiliationsJson.main.weights;
 var positionsJson2 = positionsJson.b;
 var positionsJson3 = positionsJson.c;*/
 
-var helptext = "";
-var element = "";
+var helptext = '';
+var element = '';
 
-var race = "";
-var hybrid1 = "";
-var hybrid2 = "";
-var affiliation1 = "";
-var affiliation2 = "";
-var affiliation3 = "";
-var position1 = "";
-var position2 = "";
-var position3 = "";
-var fighting = "";
-var fighting2 = "";
-var fighting3 = "";
-var haki = "";
-var haki2 = "";
-var haki3 = "";
-var devilfruit = "";
-var devilfruit2 = "";
-var devilfruit3 = "";
-var df = "";
-var df2 = "";
-var df3 = "";
-var feat = "";
-var feat2 = "";
-var feat3 = "";
+var race = '';
+var isHuman = '';
+var hybrid1 = '';
+var hybrid2 = '';
+var affiliation1 = '';
+var affiliation2 = '';
+var affiliation3 = '';
+var position1 = '';
+var position2 = '';
+var position3 = '';
+var fighting = '';
+var fighting2 = '';
+var fighting3 = '';
+var haki = '';
+var haki2 = '';
+var haki3 = '';
+var devilfruit = '';
+var devilfruit2 = '';
+var devilfruit3 = '';
+var df = '';
+var df2 = '';
+var df3 = '';
+var feat = '';
+var feat2 = '';
+var feat3 = '';
 
 
 // Probably not going to need these:
@@ -283,7 +284,10 @@ function raceGen(id) {
         element.innerHTML = race;
         if (race === 'Hybrid') {
             document.getElementById('hybrid').style.display = '';
+        } else if (race === 'Human') {
+            isHuman = true;
         }
+    //Later: MAKE IT IMPOSSIBLE TO BE A HYBRID OF THE SAME RACE (e.g human & human)
     } else if (id === 'hybrid1' && !hybrid1) {
         hybrid1 = weightedRandom(hRaces, hRaceWeights);
         element = document.getElementById(id);
@@ -295,17 +299,25 @@ function raceGen(id) {
     } else {
         return;
     }
-    element.className = element.className.replace('text-lg', 'text-xl') + " py-3";
+    element.className = element.className.replace('text-lg', 'text-xl') + ' py-3';
     allowReload();
 }
 
 // Takes a random affiliation
 function affiliationGen1() {
+    if (!race) {
+        return;
+    }
     if (!affiliation1) {
         affiliation1 = weightedRandom(affiliations, affiliationWeights);
+        if (affiliation1 === "World Nobles" && !isHuman) {
+            while (affiliation1 === "World Nobles") {
+                affiliation1 = weightedRandom(affiliations, affiliationWeights);
+            }
+        }
         element = document.getElementById('affiliation1');
         element.innerHTML = affiliation1;
-        element.className = element.className.replace('text-lg', 'text-xl') + " py-3";
+        element.className = element.className.replace('text-lg', 'text-xl') + ' py-3';
         allowReload();
     } else {
         return;
@@ -323,7 +335,7 @@ function affiliationGen2() {
         affiliation2 = weightedRandom(list, weights);
         element = document.getElementById('affiliation2');
         element.innerHTML = affiliation2;
-        element.className = element.className.replace('text-lg', 'text-xl') + " py-3";
+        element.className = element.className.replace('text-lg', 'text-xl') + ' py-3';
         allowReload();
     } else {
         return;
@@ -341,7 +353,7 @@ function affiliationGen3() {
         affiliation3 = weightedRandom(list, weights);
         element = document.getElementById('affiliation3');
         element.innerHTML = affiliation3;
-        element.className = element.className.replace('text-lg', 'text-xl') + " py-3";
+        element.className = element.className.replace('text-lg', 'text-xl') + ' py-3';
         allowReload();
     } else {
         return;
@@ -357,7 +369,7 @@ function positionGen1() {
         position1 = weightedRandom(list, weights);
         element = document.getElementById('position1');
         element.innerHTML = position1;
-        element.className = element.className.replace('text-lg', 'text-xl') + " py-3";
+        element.className = element.className.replace('text-lg', 'text-xl') + ' py-3';
     } else {
         return;
     }
@@ -377,7 +389,7 @@ function positionGen2() {
         }
         element = document.getElementById('position2');
         element.innerHTML = position2;
-        element.className = element.className.replace('text-lg', 'text-xl') + " py-3";
+        element.className = element.className.replace('text-lg', 'text-xl') + ' py-3';
     } else {
         return;
     }
@@ -397,7 +409,7 @@ function positionGen3() {
         }
         element = document.getElementById('position3');
         element.innerHTML = position3;
-        element.className = element.className.replace('text-lg', 'text-xl') + " py-3";
+        element.className = element.className.replace('text-lg', 'text-xl') + ' py-3';
     } else {
         return;
     }
