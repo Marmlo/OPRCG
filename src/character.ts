@@ -1,8 +1,9 @@
 import racesJson from '/src/data/races.json';
 import affiliationsJson from '/src/data/affiliations.json';
-import positionsJson1 from '/src/data/positions1.json';
+import positionsJson from '/src/data/positions.json';
+/*import positionsJson1 from '/src/data/positions1.json';
 import positionsJson2 from '/src/data/positions2.json';
-import positionsJson3 from '/src/data/positions3.json';
+import positionsJson3 from '/src/data/positions3.json';*/
 
 var races = racesJson.allRaces.list;
 var raceWeights = racesJson.allRaces.weights;
@@ -12,9 +13,9 @@ var hRaceWeights = racesJson.nonHybrid.weights;
 var affiliations = affiliationsJson.main.list;
 var affiliationWeights = affiliationsJson.main.weights;
 
-/*var positionsJson1 = positionsJson.a;
+var positionsJson1 = positionsJson.a;
 var positionsJson2 = positionsJson.b;
-var positionsJson3 = positionsJson.c;*/
+var positionsJson3 = positionsJson.c;
 
 var helptext = '';
 var element = '';
@@ -306,7 +307,7 @@ function raceGen(id) {
 // Takes a random affiliation
 function affiliationGen1() {
     if (!race) {
-        return;
+        return; //Later: MAKE TOAST MESSAGE THAT WARN ABOUT NON-GENERATED PREREQUISITES
     }
     if (!affiliation1) {
         affiliation1 = weightedRandom(affiliations, affiliationWeights);

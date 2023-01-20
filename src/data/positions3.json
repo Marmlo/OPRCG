@@ -8,18 +8,22 @@
             "Chief of Staff"
         ],
         "Army Commander": [
+            "Leader",
             "Chief of Staff",
             "Army Commander"
         ],
         "Officer": [
+            "Chief of Staff",
             "Army Commander",
             "Officer"
         ],
         "Member": [
+            "Army Commander",
             "Officer",
             "Member"
         ],
         "Associate": [
+            "Officer",
             "Member",
             "Associate"
         ]
@@ -85,6 +89,7 @@
             "Instructor"
         ],
         "Lieutenant Commander": [
+            "Fleet Admiral",
             "Admiral",
             "Vice Admiral",
             "Rear Admiral",
@@ -94,6 +99,8 @@
             "Lieutenant Commander"
         ],
         "Lieutenant": [
+            "Fleet Admiral",
+            "Admiral",
             "Vice Admiral",
             "Rear Admiral",
             "Commodore",
@@ -103,6 +110,8 @@
             "Lieutenant"
         ],
         "Lieutenant Junior Grade": [
+            "Admiral",
+            "Vice Admiral",
             "Rear Admiral",
             "Commodore",
             "Captain",
@@ -112,6 +121,8 @@
             "Lieutenant Junior Grade"
         ],
         "Ensign": [
+            "Vice Admiral",
+            "Rear Admiral",
             "Commodore",
             "Captain",
             "Commander",
@@ -121,6 +132,8 @@
             "Ensign"
         ],
         "Warrant Officer": [
+            "Rear Admiral",
+            "Commodore",
             "Captain",
             "Commander",
             "Lieutenant Commander",
@@ -130,6 +143,8 @@
             "Warrant Officer"
         ],
         "Master Chief Petty Officer": [
+            "Commodore",
+            "Captain",
             "Commander",
             "Lieutenant Commander",
             "Lieutenant",
@@ -139,6 +154,8 @@
             "Master Chief Petty Officer"
         ],
         "Chief Petty Officer": [
+            "Captain",
+            "Commander",
             "Lieutenant Commander",
             "Lieutenant",
             "Lieutenant Junior Grade",
@@ -148,6 +165,8 @@
             "Chief Petty Officer"
         ],
         "Petty Officer": [
+            "Commander",
+            "Lieutenant Commander",
             "Lieutenant",
             "Lieutenant Junior Grade",
             "Ensign",
@@ -157,6 +176,8 @@
             "Petty Officer"
         ],
         "Seaman First Class": [
+            "Lieutenant Commander",
+            "Lieutenant",
             "Lieutenant Junior Grade",
             "Ensign",
             "Warrant Officer",
@@ -166,6 +187,8 @@
             "Seaman First Class"
         ],
         "Seaman Apprentice": [
+            "Lieutenant",
+            "Lieutenant Junior Grade",
             "Ensign",
             "Warrant Officer",
             "Master Chief Petty Officer",
@@ -175,6 +198,8 @@
             "Seaman Apprentice"
         ],
         "Seaman Recruit": [
+            "Lieutenant Junior Grade",
+            "Ensign",
             "Warrant Officer",
             "Master Chief Petty Officer",
             "Chief Petty Officer",
@@ -184,6 +209,8 @@
             "Seaman Recruit"
         ],
         "Choreboy": [
+            "Ensign",
+            "Warrant Officer",
             "Master Chief Petty Officer",
             "Chief Petty Officer",
             "Petty Officer",
@@ -273,6 +300,7 @@
             "Individual"
 		],
         "Individual": [
+            "Guild Leader"
             "Guild Member",
             "Individual"
 		]
@@ -294,42 +322,49 @@
             "CP3"
 		],
         "CP3": [
+            "CP0",
             "CP1",
             "CP2",
             "CP3",
             "CP4"
 		],
         "CP4": [
+            "CP1",
             "CP2",
             "CP3",
             "CP4",
             "CP5"
 		],
         "CP5": [
+            "CP2",
             "CP3",
             "CP4",
             "CP5",
             "CP6"
 		],
         "CP6": [
+            "CP3",
             "CP4",
             "CP5",
             "CP6",
             "CP7"
 		],
         "CP7": [
+            "CP4",
             "CP5",
             "CP6",
             "CP7",
             "CP8"
 		],
         "CP8": [
+            "CP5",
             "CP6",
             "CP7",
             "CP8",
             "CP9"
 		],
         "CP9": [
+            "CP6",
             "CP7",
             "CP8",
             "CP9"
