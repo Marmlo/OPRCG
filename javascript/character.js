@@ -23,25 +23,36 @@ let feat3 = "";
 
 // Rules ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-// Haki minimo exigido para os ranks mais altos
+// Nível mínimo de haki exigido para os ranks mais altos (1 = Basic, 2 = Advanced, 3 = Master)
 var rankHakiRequirements = {
-  "Yonko": ["Conquerors", "Armament", "Observation"],
-  "Fleet Admiral": ["Armament", "Observation"],
-  "Admiral": ["Armament", "Observation"],
-  "Vice Admiral": ["Armament"],
-  "Inspector General": ["Armament"],
-  "Leader": ["Armament", "Observation"],
-  "Chief of Staff": ["Armament", "Observation"],
-  "Army Commander": ["Armament"],
-  "Shichibukai": ["Armament"],
-  "CP0": ["Armament"]
+  "Yonko":             { Conquerors: 2, Armament: 2, Observation: 1 },
+  "Fleet Admiral":     { Armament: 2, Observation: 2 },
+  "Admiral":           { Armament: 2, Observation: 1 },
+  "Vice Admiral":      { Armament: 1 },
+  "Inspector General": { Armament: 1 },
+  "Leader":            { Armament: 2, Observation: 1 },
+  "Chief of Staff":    { Armament: 1, Observation: 1 },
+  "Army Commander":    { Armament: 1 },
+  "Shichibukai":       { Armament: 1 },
+  "CP0":               { Armament: 1 }
 };
 
-// Haki exigido para alguns feats
-var featHakiRequirements = {
-  "Defeated a Yonko.": ["Conquerors", "Armament", "Observation"],
-  "Defeated an Admiral.": ["Armament", "Observation"]
-};
+// Haki exigido pelos feats: colunas conquerors / armament / observation de data/feats.csv
+
+// Probabilidade de um haki começar logo em Advanced quando é desbloqueado, e de um Basic passar a Advanced em cada período
+var HAKI_ADVANCED_START = 0.12;
+var HAKI_UPGRADE_CHANCE = { 2: 0.35, 3: 0.5 };
+// Probabilidade de um Advanced passar a Master em cada período (Master nunca aparece no 1st Year)
+var HAKI_MASTER_CHANCE = { 2: 0.1, 3: 0.25 };
+
+function noHaki() {
+  return { Conquerors: 0, Armament: 0, Observation: 0 };
+}
+
+// Tipos de haki que o personagem tem, ex: ["Conquerors", "Armament"]
+function hakiTypes(levels) {
+  return HAKI_TYPES.filter(function (t) { return levels && levels[t] > 0; });
+}
 
 function hasHaki(haki, types) {
   return types.every(function (t) { return String(haki).indexOf(t) !== -1; });
@@ -61,19 +72,42 @@ function buildHaki(types) {
 
 // Mantém só os hakis do pool que cumprem o requisito do rank; se nenhum cumpre, junta o haki atual ao mínimo exigido
 function meetRankHaki(rankName, pool, currentHaki) {
-  var req = rankHakiRequirements[rankName];
+  var req = hakiTypes(rankHakiRequirements[rankName]);
   pool = pool || [currentHaki || "None"];
-  if (!req) return pool;
+  if (!req.length) return pool;
   var ok = pool.filter(function (h) { return hasHaki(h, req); });
   if (ok.length) return ok;
-  var types = ["Conquerors", "Armament", "Observation"].filter(function (t) {
+  var types = HAKI_TYPES.filter(function (t) {
     return req.indexOf(t) !== -1 || String(currentHaki).indexOf(t) !== -1;
   });
   return [buildHaki(types)];
 }
 
-function allowedFeats(pool, hakiName) {
-  return pool.filter(function (f) { return !featHakiRequirements[f] || hasHaki(hakiName, featHakiRequirements[f]); });
+// Passa o haki sorteado (ex: "Conquerors + Armament") para níveis. Os hakis que já tinha podem subir de Basic para Advanced,
+// os novos começam em Basic (às vezes logo em Advanced) e no fim aplica-se o nível mínimo do rank
+function rollHakiLevels(hakiName, prevLevels, period, rankName) {
+  var levels = noHaki();
+  var req = rankHakiRequirements[rankName] || {};
+  HAKI_TYPES.forEach(function (t) {
+    var prev = prevLevels ? prevLevels[t] || 0 : 0;
+    if (prev === 2 && Math.random() < (HAKI_MASTER_CHANCE[period] || 0)) prev = 3;
+    else if (prev === 1 && Math.random() < (HAKI_UPGRADE_CHANCE[period] || 0)) prev = 2;
+    if (!prev && String(hakiName).indexOf(t) !== -1) prev = Math.random() < HAKI_ADVANCED_START ? 2 : 1;
+    levels[t] = Math.max(prev, req[t] || 0);
+  });
+  return levels;
+}
+
+function meetsHaki(levels, required) {
+  return HAKI_TYPES.every(function (t) { return (levels && levels[t] || 0) >= (required[t] || 0); });
+}
+
+// Doriki e bounty que o haki dá (valores em data/haki-levels.csv)
+function hakiBonus(levels, field) {
+  return HAKI_TYPES.reduce(function (sum, t) {
+    var lv = hakiLevels[t] && levels && hakiLevels[t][levels[t]];
+    return sum + (lv ? getRandomInt(lv[field + "_min"], lv[field + "_max"] + 1) : 0);
+  }, 0);
 }
 
 // Probabilidade de um pirata se tornar Yonko (só a partir de "After 2 Years")
@@ -86,42 +120,21 @@ function maybeYonko(allianceName, pool) {
 
 var swordStyles = ["Swordsmanship", "Samurai"];
 
-// Doriki e bounty dos feats novos (os antigos continuam nos if/else de cada função)
-var extraFeatDoriki = {
-  "Defeated an Admiral.": [10000, 20000],
-  "Defeated a Yonko Commander.": [3000, 8000],
-  "Took part in the Paramount War.": [500, 2000],
-  "Entered the New World.": [200, 800],
-  "Survived a Buster Call.": [300, 1000],
-  "Defeated a Supernova.": [800, 2500],
-  "Arrested a Supernova.": [800, 2500],
-  "Captured a Supernova.": [800, 2500],
-  "Guarded Impel Down's Level 6.": [500, 1500],
-  "Joined the SWORD unit.": [1000, 3000],
-  "Infiltrated a Yonko crew.": [500, 1500],
-  "Fought in the Wano revolution.": [500, 2000],
-  "Won a Davy Back Fight.": [50, 300]
-};
+// Doriki e bounty de cada feat: colunas doriki_min/max e bounty_min/max de data/feats.csv
+function findFeatIn(list, featName) {
+  for (var i = 0; i < (list || []).length; i++) if (list[i].name === featName) return list[i];
+  return null;
+}
 
-var extraFeatBounty = {
-  "Defeated a Yonko.": [500, 1500],
-  "Defeated an Admiral.": [300, 800],
-  "Defeated a Yonko Commander.": [100, 400],
-  "Punched a Celestial Dragon.": [50, 150],
-  "Declared war on the World Government.": [100, 300],
-  "Burned the World Government's flag.": [50, 150],
-  "Found a Road Poneglyph.": [100, 300],
-  "Took part in the Paramount War.": [50, 200],
-  "Took part in the Reverie raid.": [50, 200],
-  "Infiltrated Mary Geoise.": [50, 200],
-  "Freed a kingdom from a tyrant.": [20, 80],
-  "Freed the slaves at the Sabaody auction house.": [20, 100],
-  "Fought in the Wano revolution.": [50, 200]
-};
+function findFeat(allianceName, featName) {
+  var f = findFeatIn(featsByAlliance[allianceName], featName);
+  for (var a in featsByAlliance) f = f || findFeatIn(featsByAlliance[a], featName);   // feat de outra alliance
+  return f;
+}
 
-function featBonus(table, featName) {
-  var range = table[featName];
-  return range ? getRandomInt(range[0], range[1] + 1) : 0;
+function featBonus(field, featName, allianceName) {
+  var f = findFeat(allianceName, featName);
+  return f ? getRandomInt(f[field + "_min"], f[field + "_max"] + 1) : 0;
 }
 
 function isSwordRank(rankName) {
@@ -745,8 +758,8 @@ function assignhaki(){
 
   hakis = meetRankHaki(rank, hakis, "None");   // Requisito mínimo de haki do rank
 
-  haki = capFirst(hakis[getRandomInt(0, hakis.length)]);
-      document.getElementById("haki").innerHTML = haki;
+  haki = rollHakiLevels(hakis[getRandomInt(0, hakis.length)], null, 1, rank);   // Basic / Advanced de cada haki
+  renderHaki("haki", haki);
 }
 
 	/* 
@@ -775,66 +788,74 @@ function assignhaki(){
       Two Haki    - 3/25 - 12%
       Three Haki  - 1/25 - 04%  
 
+    Levels:
+      Each haki the character unlocks starts Basic (12% chance of starting Advanced).
+      After 2 Years a Basic haki has a 35% chance to become Advanced, after 10 Years 50%.
+      After 2 Years an Advanced haki has a 10% chance to become Master, after 10 Years 25% (one level per period).
+      High ranks force a minimum level (rankHakiRequirements). Doriki/bounty per level: data/haki-levels.csv
+
 	*/
 
 // Haki 2 -----------------
 
 function assignhaki2(){
+  var prevHaki = buildHaki(hakiTypes(haki));   // ex: "Conquerors + Armament"
      
- if (haki === "Conquerors") {
+ if (prevHaki === "Conquerors") {
      hakis2 = ["Conquerors + Armament","Conquerors + Observation","Conquerors + Armament + Observation","Conquerors","Conquerors","Conquerors"];
-  } else if (haki === "Armament"){
+  } else if (prevHaki === "Armament"){
      hakis2 = ["Conquerors + Armament","Observation + Armament","Conquerors + Armament + Observation","Armament","Armament","Armament"];
-  } else if (haki === "Observation"){
+  } else if (prevHaki === "Observation"){
      hakis2 = ["Conquerors + Observation","Observation + Armament","Conquerors + Armament + Observation","Observation","Observation","Observation"];
-  } else if (haki === "Conquerors + Observation"){
+  } else if (prevHaki === "Conquerors + Observation"){
      hakis2 = ["Conquerors + Armament + Observation","Conquerors + Observation","Conquerors + Observation"];               
-  } else if (haki === "Conquerors + Armament"){
+  } else if (prevHaki === "Conquerors + Armament"){
      hakis2 = ["Conquerors + Armament + Observation","Conquerors + Armament","Conquerors + Armament"];
-  } else if (haki === "Observation + Armament"){
+  } else if (prevHaki === "Observation + Armament"){
      hakis2 = ["Conquerors + Armament + Observation","Observation + Armament","Observation + Armament"];                                                          
-  } else if (haki === "Conquerors + Armament + Observation"){
+  } else if (prevHaki === "Conquerors + Armament + Observation"){
      hakis2 = ["Conquerors + Armament + Observation"];                                                          
-  } else if (haki === "None"){
+  } else if (prevHaki === "None"){
      hakis2 = ["None","Conquerors","Observation","Armament","None","Conquerors + Armament","None","Observation + Armament","None",
       "Conquerors + Observation","None","Armament","None","Observation","None","None","None","None","None","None","None","None",
       "None","None","Conquerors + Armament + Observation"];
   } 
 
-  hakis2 = meetRankHaki(rank2, hakis2, haki);   // Requisito mínimo de haki do rank
+  hakis2 = meetRankHaki(rank2, hakis2, prevHaki);   // Requisito mínimo de haki do rank
 
-  haki2 = capFirst(hakis2[getRandomInt(0, hakis2.length)]);
-      document.getElementById("haki2").innerHTML = haki2;
+  haki2 = rollHakiLevels(hakis2[getRandomInt(0, hakis2.length)], haki, 2, rank2);
+  renderHaki("haki2", haki2);
 }
 
 // Haki 3 -----------------
 
 function assignhaki3(){
+  var prevHaki = buildHaki(hakiTypes(haki2));
      
- if (haki2 === "Conquerors") {
+ if (prevHaki === "Conquerors") {
      hakis3 = ["Conquerors + Armament","Conquerors + Observation","Conquerors + Armament + Observation","Conquerors","Conquerors","Conquerors"];
-  } else if (haki2 === "Armament"){
+  } else if (prevHaki === "Armament"){
      hakis3 = ["Conquerors + Armament","Observation + Armament","Conquerors + Armament + Observation","Armament","Armament","Armament"];
-  } else if (haki2 === "Observation"){
+  } else if (prevHaki === "Observation"){
      hakis3 = ["Conquerors + Observation","Observation + Armament","Conquerors + Armament + Observation","Observation","Observation","Observation"];
-  } else if (haki2 === "Conquerors + Observation"){
+  } else if (prevHaki === "Conquerors + Observation"){
      hakis3 = ["Conquerors + Armament + Observation","Conquerors + Observation","Conquerors + Observation"];               
-  } else if (haki2 === "Conquerors + Armament"){
+  } else if (prevHaki === "Conquerors + Armament"){
      hakis3 = ["Conquerors + Armament + Observation","Conquerors + Armament","Conquerors + Armament"];
-  } else if (haki2 === "Observation + Armament"){
+  } else if (prevHaki === "Observation + Armament"){
      hakis3 = ["Conquerors + Armament + Observation","Observation + Armament","Observation + Armament"];                                                          
-  } else if (haki2 === "Conquerors + Armament + Observation"){
+  } else if (prevHaki === "Conquerors + Armament + Observation"){
      hakis3 = ["Conquerors + Armament + Observation"];                                                          
-  } else if (haki2 === "None"){
+  } else if (prevHaki === "None"){
      hakis3 = ["None","Conquerors","Observation","Armament","None","Conquerors + Armament","None","Observation + Armament","None",
       "Conquerors + Observation","None","Armament","None","Observation","None","None","None","None","None","None","None","None",
       "None","None","Conquerors + Armament + Observation"];
   } 
 
-  hakis3 = meetRankHaki(rank3, hakis3, haki2);   // Requisito mínimo de haki do rank
+  hakis3 = meetRankHaki(rank3, hakis3, prevHaki);   // Requisito mínimo de haki do rank
 
-  haki3 = capFirst(hakis3[getRandomInt(0, hakis3.length)]);
-      document.getElementById("haki3").innerHTML = haki3;
+  haki3 = rollHakiLevels(hakis3[getRandomInt(0, hakis3.length)], haki2, 3, rank3);
+  renderHaki("haki3", haki3);
 }
 
 
@@ -915,91 +936,18 @@ function assigndevilfruit3() {
 
 // Feat ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-var featsByAlliance = {
-  "Revolucionary Army": ["None"
-     ,"Attacked a Government country."
-     ,"Leaked sensitive Government information."
-     ,"Stole a rare devil fruit from the Government."
-     ,"Participated in a war."
-     ,"Released slaves from a Government ally."
-     ,"Took part in the Reverie raid."
-     ,"Infiltrated Mary Geoise."
-     ,"Freed a kingdom from a tyrant."
-     ,"Rescued a comrade from Impel Down."
-     ,"Survived a Buster Call."
-     ,"Declared war on the World Government."
-     ,"Defeated an Admiral."],
-  "Marine": ["None"
-     ,"Captured a 40,000,000 bounty pirate all by himself."
-     ,"Defeated a small group of pirates."
-     ,"Helped save a country."
-     ,"Captured a 20,000,000 bounty pirate all by himself."
-     ,"Took part in the Paramount War."
-     ,"Arrested a Supernova."
-     ,"Guarded Impel Down's Level 6."
-     ,"Joined the SWORD unit."
-     ,"Escorted a Celestial Dragon to the Reverie."
-     ,"Participated in a Buster Call."
-     ,"Defeated a Yonko Commander."],
-  "Pirate": ["None"
-     ,"Stole a town's supplies."
-     ,"Defeated a small group of pirates."
-     ,"Defeated a Marine's Captain."
-     ,"Defeated a Shichibukai."
-     ,"Defeated a Yonko."
-     ,"Is investigating the poneglifs."
-     ,"Escaped Impel Down."
-     ,"Stormed a Marine's fortress."
-     ,"Defeated a notorious pirate."
-     ,"Stole a rare devil fruit from the Government."
-     ,"Entered the New World."
-     ,"Reached Fish-Man Island."
-     ,"Survived a Buster Call."
-     ,"Punched a Celestial Dragon."
-     ,"Burned the World Government's flag."
-     ,"Found a Road Poneglyph."
-     ,"Took part in the Paramount War."
-     ,"Won a Davy Back Fight."
-     ,"Defeated a Supernova."
-     ,"Defeated a Yonko Commander."
-     ,"Defeated an Admiral."
-     ,"Fought in the Wano revolution."
-     ,"Freed the slaves at the Sabaody auction house."],
-  "Bounty Hunter": ["None"
-     ,"Captured a 40,000,000 bounty criminal."
-     ,"Defeated a small group of pirates."
-     ,"Defeated a Marine's Captain."
-     ,"Captured a 20,000,000 bounty criminal."
-     ,"Captured a 5,000,000 bounty criminal."
-     ,"Captured a Supernova."
-     ,"Worked as an agent of Baroque Works."
-     ,"Hunted pirates in the New World."
-     ,"Survived the Calm Belt."],
-  "Cipher Pol": ["None"
-     ,"Adquired information about a poneglif."
-     ,"Spied on a Yonko."
-     ,"Contained a possible leak of sensitive Government information."
-     ,"Completed a secret mission from the Government."
-     ,"Defeated a notorious pirate."
-     ,"Infiltrated a Yonko crew."
-     ,"Guarded the Celestial Dragons at the Reverie."
-     ,"Defended the Tower of Justice at Enies Lobby."
-     ,"Tracked down an Ohara survivor."],
-  "World Nobles": ["None"
-     ,"Attacked a neighboring country."
-     ,"Denied his past and royal family."
-     ,"Destroyed an enemy's facility."
-     ,"Allied with pirates."
-     ,"Attended the Reverie."
-     ,"Bought a slave at the Sabaody auction house."
-     ,"Summoned an Admiral to their island."
-     ,"Fled Mary Geoise."]
-};
+// Os feats de cada alliance, a probabilidade (weight), o Doriki/Bounty que dão e o haki que exigem estão em data/feats.csv
 
-// Escolhe um feat da alliance, excluindo os que exigem haki que a personagem não tem
-function pickFeat(allianceName, hakiName) {
-  var pool = allowedFeats(featsByAlliance[allianceName] || ["None"], hakiName);
-  return capFirst(pool[getRandomInt(0, pool.length)]);
+// Sorteia um feat da alliance pelo "weight", excluindo os que exigem haki que a personagem não tem
+function pickFeat(allianceName, levels) {
+  var pool = (featsByAlliance[allianceName] || []).filter(function (f) { return f.weight > 0 && meetsHaki(levels, f.haki); });
+  var total = pool.reduce(function (sum, f) { return sum + f.weight; }, 0);
+  var roll = Math.random() * total;
+  for (var i = 0; i < pool.length; i++) {
+    roll -= pool[i].weight;
+    if (roll < 0) return capFirst(pool[i].name);
+  }
+  return "None";
 }
 
 function assignfeat(){
@@ -1154,41 +1102,11 @@ function doriki() {
      var rankdoriki = getRandomInt(1, 400 + 1);
   }
 
-  if (haki === "Conquerors + Armament + Observation") {   // --- Haki
-     var hakidoriki = getRandomInt(1000, 5000 + 1);
-  } else if(haki === "Observation + Armament") {
-     var hakidoriki = getRandomInt(1000, 3000 + 1);
-  } else if(haki === "Conquerors + Armament") {
-     var hakidoriki = getRandomInt(750, 2500 + 1);
-  } else if(haki === "Conquerors + Observation") {
-     var hakidoriki = getRandomInt(500, 2000 + 1);
-  } else if(haki === "Conquerors") {
-     var hakidoriki = getRandomInt(100, 1000 + 1);
-  } else if(haki === "Armament") {
-     var hakidoriki = getRandomInt(500, 1000 + 1);
-  } else if(haki === "Observation") {
-     var hakidoriki = getRandomInt(100, 300 + 1);
-  } else {
-     var hakidoriki = getRandomInt(0, 0 + 1);
-  }
+  var hakidoriki = hakiBonus(haki, "doriki");   // --- Haki (Basic / Advanced, valores em data/haki-levels.csv)
 
   var devilfruitdoriki = fruitDoriki(devilfruit);            // --- Devilfruit (valores em data/devil-fruit-types.csv)
 
-  if(feat === "Defeated a Marine's Captain.") {    // --- Feat (Feats que valorizam combate/força convertem em doriki) - FEAT
-     var featdoriki = getRandomInt(400, 1000 + 1);
-  } else if(feat === "Defeated a Shichibukai.") {
-     var featdoriki = getRandomInt(1200, 3000 + 1);
-  } else if(feat === "Defeated a Yonko.") {
-     var featdoriki = getRandomInt(20000, 30000 + 1);
-  } else if(feat === "Escaped Impel Down.") {
-     var featdoriki = getRandomInt(100, 700 + 1);
-  } else if(feat === "Stormed a Marine's fortress.") {
-     var featdoriki = getRandomInt(100, 700 + 1);
-  } else if(feat === "Defeated a notorious pirate.") {
-     var featdoriki = getRandomInt(100, 1000 + 1);         
-  } else {
-     var featdoriki = featBonus(extraFeatDoriki, feat);
-  }
+  var featdoriki = featBonus("doriki", feat, alliance);   // --- Feat (valores em data/feats.csv)
 
   dorikifinal = racedoriki + rankdoriki + hakidoriki + devilfruitdoriki + featdoriki
   if (hasWillOfD()) dorikifinal = dorikifinal * (1 + WILL_OF_D_BONUS);   // --- Will of D. (nome com "D.")
@@ -1301,39 +1219,9 @@ function doriki2() {
      var rankdoriki2 = getRandomInt(1, 400 + 1);
   }
 
-  if (haki2 === "Conquerors + Armament + Observation") {   // --- Haki
-     var hakidoriki2 = getRandomInt(1000, 5000 + 1);
-  } else if(haki2 === "Observation + Armament") {
-     var hakidoriki2 = getRandomInt(1000, 3000 + 1);
-  } else if(haki2 === "Conquerors + Armament") {
-     var hakidoriki2 = getRandomInt(750, 2500 + 1);
-  } else if(haki2 === "Conquerors + Observation") {
-     var hakidoriki2 = getRandomInt(500, 2000 + 1);
-  } else if(haki2 === "Conquerors") {
-     var hakidoriki2 = getRandomInt(100, 1000 + 1);
-  } else if(haki2 === "Armament") {
-     var hakidoriki2 = getRandomInt(500, 1000 + 1);
-  } else if(haki2 === "Observation") {
-     var hakidoriki2 = getRandomInt(100, 300 + 1);
-  } else {
-     var hakidoriki2 = getRandomInt(0, 0 + 1);
-  }
+  var hakidoriki2 = hakiBonus(haki2, "doriki");   // --- Haki (Basic / Advanced, valores em data/haki-levels.csv)
 
-  if(feat2 === "Defeated a Marine's Captain.") {    // --- Feat (Feats que valorizam combate/força convertem em doriki) - FEAT
-     var featdoriki2 = getRandomInt(400, 1000 + 1);
-  } else if(feat2 === "Defeated a Shichibukai.") {
-     var featdoriki2 = getRandomInt(1200, 3000 + 1);
-  } else if(feat2 === "Defeated a Yonko.") {
-     var featdoriki2 = getRandomInt(20000, 30000 + 1);
-  } else if(feat2 === "Escaped Impel Down.") {
-     var featdoriki2 = getRandomInt(100, 700 + 1);
-  } else if(feat2 === "Stormed a Marine's fortress.") {
-     var featdoriki2 = getRandomInt(100, 700 + 1);
-  } else if(feat2 === "Defeated a notorious pirate.") {
-     var featdoriki2 = getRandomInt(100, 1000 + 1);         
-  } else {
-     var featdoriki2 = featBonus(extraFeatDoriki, feat2);
-  }
+  var featdoriki2 = featBonus("doriki", feat2, alliance2);   // --- Feat (valores em data/feats.csv)
 
   dorikifinal2 = dorikifinal + rankdoriki2*0.2 + hakidoriki2 + featdoriki2
   adddoriki2 = parseInt(dorikifinal2) - parseInt(dorikifinal) // Calcula a diferença entre os dorikis no anos 1 e 2
@@ -1445,39 +1333,9 @@ function doriki3() {
      var rankdoriki3 = getRandomInt(1, 400 + 1);
   }
 
-  if (haki3 === "Conquerors + Armament + Observation") {   // --- Haki
-     var hakidoriki3 = getRandomInt(1000, 5000 + 1);
-  } else if(haki3 === "Observation + Armament") {
-     var hakidoriki3 = getRandomInt(1000, 3000 + 1);
-  } else if(haki3 === "Conquerors + Armament") {
-     var hakidoriki3 = getRandomInt(750, 2500 + 1);
-  } else if(haki3 === "Conquerors + Observation") {
-     var hakidoriki3 = getRandomInt(500, 2000 + 1);
-  } else if(haki3 === "Conquerors") {
-     var hakidoriki3 = getRandomInt(100, 1000 + 1);
-  } else if(haki3 === "Armament") {
-     var hakidoriki3 = getRandomInt(500, 1000 + 1);
-  } else if(haki3 === "Observation") {
-     var hakidoriki3 = getRandomInt(100, 300 + 1);
-  } else {
-     var hakidoriki3 = getRandomInt(0, 0 + 1);
-  }
+  var hakidoriki3 = hakiBonus(haki3, "doriki");   // --- Haki (Basic / Advanced, valores em data/haki-levels.csv)
 
-  if(feat3 === "Defeated a Marine's Captain.") {    // --- Feat (Feats que valorizam combate/força convertem em doriki) - FEAT
-     var featdoriki3 = getRandomInt(400, 1000 + 1);
-  } else if(feat3 === "Defeated a Shichibukai.") {
-     var featdoriki3 = getRandomInt(1200, 3000 + 1);
-  } else if(feat3 === "Defeated a Yonko.") {
-     var featdoriki3 = getRandomInt(20000, 30000 + 1);
-  } else if(feat3 === "Escaped Impel Down.") {
-     var featdoriki3 = getRandomInt(100, 700 + 1);
-  } else if(feat3 === "Stormed a Marine's fortress.") {
-     var featdoriki3 = getRandomInt(100, 700 + 1);
-  } else if(feat3 === "Defeated a notorious pirate.") {
-     var featdoriki3 = getRandomInt(100, 1000 + 1);         
-  } else {
-     var featdoriki3 = featBonus(extraFeatDoriki, feat3);
-  }
+  var featdoriki3 = featBonus("doriki", feat3, alliance3);   // --- Feat (valores em data/feats.csv)
 
   dorikifinal3 = dorikifinal2 + rankdoriki3*0.2 + hakidoriki3 + featdoriki3
   adddoriki3 = parseInt(dorikifinal3) - parseInt(dorikifinal2) // Calcula a diferença entre os dorikis no anos 2 e 3
@@ -1512,21 +1370,9 @@ function addbounty() {
 
   var devilfruitbounty = fruitBounty(devilfruit);            // --- Devilfruit (valores em data/devil-fruit-types.csv)
 
-  if (feat === "Leaked sensitive Government information.") {    // --- Feat (Feats que valorizam "perigo" convertem em bounty diretamente) - FEAT
-     var featbounty = getRandomInt(5, 25 + 1);
-  } else if(feat === "Is investigating the poneglifs.") {
-     var featbounty = getRandomInt(10, 50 + 1);
-  } else if(feat === "Allied with pirates.") {
-     var featbounty = getRandomInt(5, 10 + 1);
-  } else if(feat === "Denied his past and royal family.") {
-     var featbounty = getRandomInt(0, 5 + 1);
-  } else if(feat === "Attacked a neighboring country.") {
-     var featbounty = getRandomInt(0, 5 + 1);
-  } else if(feat === "Stole a rare devil fruit from the Government.") {
-     var featbounty = getRandomInt(25, 100 + 1);              
-  } else {
-     var featbounty = featBonus(extraFeatBounty, feat);
-  }
+  var featbounty = featBonus("bounty", feat, alliance);   // --- Feat (valores em data/feats.csv)
+
+  var hakibounty = hakiBonus(haki, "bounty");   // --- Haki (valores em data/haki-levels.csv)
 
   dorikibounty = dorikifinal * 0.075
 
@@ -1535,15 +1381,17 @@ function addbounty() {
      var alliancebounty = getRandomInt(0, 0 + 1);
      var devilfruitbounty = getRandomInt(0, 0 + 1);
      var featbounty = getRandomInt(0, 0 + 1);
+     var hakibounty = 0;
   } else if(alliance === "Cipher Pol") {
      var dorikibounty = getRandomInt(0, 0 + 1);
      var alliancebounty = getRandomInt(0, 0 + 1);
      var devilfruitbounty = getRandomInt(0, 0 + 1);
      var featbounty = getRandomInt(0, 0 + 1);
+     var hakibounty = 0;
   }
 
 
-  bountyfinal = dorikibounty + alliancebounty + devilfruitbounty + featbounty
+  bountyfinal = dorikibounty + alliancebounty + devilfruitbounty + featbounty + hakibounty
   var bountyadded = parseInt(bountyfinal);
   document.getElementById("bountyfinal").innerHTML = formatBounty(parseInt(bountyfinal));
   document.getElementById("addbounty").innerHTML = formatBountyChange(bountyadded);
@@ -1569,24 +1417,12 @@ function addbounty2() {
 
   var devilfruitbounty2 = fruitBounty(devilfruit2);            // --- Devilfruit (valores em data/devil-fruit-types.csv)
 
-  if (feat2 === "Leaked sensitive Government information.") {    // --- Feat (Feats que valorizam "perigo" convertem em bounty diretamente) - FEAT
-     var featbounty2 = getRandomInt(5, 25 + 1);
-  } else if(feat2 === "Is investigating the poneglifs.") {
-     var featbounty2 = getRandomInt(10, 50 + 1);
-  } else if(feat2 === "Allied with pirates.") {
-     var featbounty2 = getRandomInt(5, 10 + 1);
-  } else if(feat2 === "Denied his past and royal family.") {
-     var featbounty2 = getRandomInt(0, 5 + 1);
-  } else if(feat2 === "Attacked a neighboring country.") {
-     var featbounty2 = getRandomInt(0, 5 + 1);
-  } else if(feat2 === "Stole a rare devil fruit from the Government.") {
-     var featbounty2 = getRandomInt(25, 100 + 1);              
-  } else {
-     var featbounty2 = featBonus(extraFeatBounty, feat2);
-  }
+  var featbounty2 = featBonus("bounty", feat2, alliance2);   // --- Feat (valores em data/feats.csv)
+
+  var hakibounty2 = hakiBonus(haki2, "bounty");   // --- Haki (valores em data/haki-levels.csv)
 
   dorikibounty2 = dorikifinal2 * 0.075
-  bountyfinal2 = dorikibounty2 + alliancebounty2 + devilfruitbounty2 + featbounty2
+  bountyfinal2 = dorikibounty2 + alliancebounty2 + devilfruitbounty2 + featbounty2 + hakibounty2
   if (rank2 === "Yonko") {   // --- Yonko (bounty na casa dos bilhões)
      bountyfinal2 += getRandomInt(2000, 4000 + 1);
   }
@@ -1620,24 +1456,12 @@ function addbounty3() {
 
   var devilfruitbounty3 = fruitBounty(devilfruit3);            // --- Devilfruit (valores em data/devil-fruit-types.csv)
 
-  if (feat3 === "Leaked sensitive Government information.") {    // --- Feat (Feats que valorizam "perigo" convertem em bounty diretamente) - FEAT
-     var featbounty3 = getRandomInt(5, 25 + 1);
-  } else if(feat3 === "Is investigating the poneglifs.") {
-     var featbounty3 = getRandomInt(10, 50 + 1);
-  } else if(feat3 === "Allied with pirates.") {
-     var featbounty3 = getRandomInt(5, 10 + 1);
-  } else if(feat3 === "Denied his past and royal family.") {
-     var featbounty3 = getRandomInt(0, 5 + 1);
-  } else if(feat3 === "Attacked a neighboring country.") {
-     var featbounty3 = getRandomInt(0, 5 + 1);
-  } else if(feat3 === "Stole a rare devil fruit from the Government.") {
-     var featbounty3 = getRandomInt(25, 100 + 1);              
-  } else {
-     var featbounty3 = featBonus(extraFeatBounty, feat3);
-  }
+  var featbounty3 = featBonus("bounty", feat3, alliance3);   // --- Feat (valores em data/feats.csv)
+
+  var hakibounty3 = hakiBonus(haki3, "bounty");   // --- Haki (valores em data/haki-levels.csv)
 
   dorikibounty3 = dorikifinal3 * 0.075
-  bountyfinal3 = dorikibounty3 + alliancebounty3 + devilfruitbounty3 + featbounty3
+  bountyfinal3 = dorikibounty3 + alliancebounty3 + devilfruitbounty3 + featbounty3 + hakibounty3
   if (rank3 === "Yonko") {   // --- Yonko (bounty na casa dos bilhões)
      bountyfinal3 = Math.max(bountyfinal3 + getRandomInt(2000, 4000 + 1), bountyfinal2);
   }

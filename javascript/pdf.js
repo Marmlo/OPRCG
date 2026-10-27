@@ -36,7 +36,6 @@ function buildPDF(logo) {
     ['Alliance', 'alliance', 'alliance2', 'alliance3'],
     ['Rank (within the alliance)', 'rank', 'rank2', 'rank3'],
     ['Fighting Style', 'fighting', 'fighting2', 'fighting3'],
-    ['Advanced Haki', 'haki', 'haki2', 'haki3'],
     ['Devil-fruit (Type)', 'devilfruit', 'devilfruit2', 'devilfruit3'],
     ['Devil-fruit (specified)', 'df', 'df2', 'df3'],
     ['Feat', 'feat', 'feat2', 'feat3']
@@ -52,6 +51,9 @@ function buildPDF(logo) {
 
   perPeriod.forEach(function (row) {
     body.push([row[0], cellText(row[1]), cellText(row[2]), cellText(row[3])]);
+    if (row[1] === 'fighting') {
+      body.push(['Haki'].concat([haki, haki2, haki3].map(function (h) { return h ? hakiText(h, '\n') : '-'; })));
+    }
   });
 
   body.push(['Doriki'].concat(['', '2', '3'].map(function (n) {
