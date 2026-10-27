@@ -30,12 +30,12 @@ function capFirst(alli) {
 
    
 
-function race(){
+function generateRace(){
       var races = ["Human","Giant","Ancient Giant","Frost Giant","Fishman","Merfolk","Skipean", "Lunarian", "Mink", "Tonnata", "Oni", "Cyborg", "Hybrid"
       ,"Human","Giant","Human","Human","Fishman","Merfolk","Fishman", "Human", "Hybrid", "Fishman", "Human", "Human", "Hybrid"
       ,"Human","Giant","Human","Human"];
 
-      race = capFirst(races[getRandomInt(0, races.length + 1)]);
+      race = capFirst(races[getRandomInt(0, races.length)]);
       document.getElementById("race").innerHTML = race;
     }
 
@@ -73,7 +73,7 @@ function generateAlliance(){
       var alliances = ["Revolucionary Army","Marine","Pirate","Bounty Hunter","Cipher Pol","World Nobles"
       				,"Revolucionary Army","Marine","Pirate","Bounty Hunter","Marine","Pirate"];
 
-      alliance = capFirst(alliances[getRandomInt(0, alliances.length + 1)]);
+      alliance = capFirst(alliances[getRandomInt(0, alliances.length)]);
       document.getElementById("alliance").innerHTML = alliance;
 }
 
@@ -110,7 +110,7 @@ function generateAlliance2(){
      alliances2 = ["World Nobles","World Nobles","Revolucionary Army","Marine","Pirate","Bounty Hunter","Cipher Pol"];
   }
 
-  alliance2 = capFirst(alliances2[getRandomInt(0, alliances2.length + 1)]);
+  alliance2 = capFirst(alliances2[getRandomInt(0, alliances2.length)]);
   document.getElementById("alliance2").innerHTML = alliance2;
 }
 
@@ -131,7 +131,7 @@ function generateAlliance3(){
      alliances3 = ["World Nobles","World Nobles","Revolucionary Army","Marine","Pirate","Bounty Hunter","Cipher Pol"];
   }
 
-  alliance3 = capFirst(alliances3[getRandomInt(0, alliances3.length + 1)]);
+  alliance3 = capFirst(alliances3[getRandomInt(0, alliances3.length)]);
   document.getElementById("alliance3").innerHTML = alliance3;
 }
 
@@ -155,7 +155,7 @@ function assignRank(){
      ranks = ["Celestial Dragon","King/Queen","Prince/Princess","Noble Commander","Soldier"];
   } 
 
-  rank = capFirst(ranks[getRandomInt(0, ranks.length + 1)]);
+  rank = capFirst(ranks[getRandomInt(0, ranks.length)]);
   document.getElementById("rank").innerHTML = rank;
 }
 
@@ -292,7 +292,7 @@ function assignRank2(){
      ranks2 = ["King/Queen","Prince/Princess","Noble Commander","Soldier"];
   }
 
-  rank2 = capFirst(ranks2[getRandomInt(0, ranks2.length + 1)]);
+  rank2 = capFirst(ranks2[getRandomInt(0, ranks2.length)]);
   document.getElementById("rank2").innerHTML = rank2;
 }
 
@@ -428,7 +428,7 @@ function assignRank3(){
      ranks3 = ["King/Queen","Prince/Princess","Noble Commander","Soldier"];
   }
 
-  rank3 = capFirst(ranks3[getRandomInt(0, ranks3.length + 1)]);
+  rank3 = capFirst(ranks3[getRandomInt(0, ranks3.length)]);
   document.getElementById("rank3").innerHTML = rank3;
 }
 
@@ -459,7 +459,7 @@ function generatefighting(){
   	 fightings = ["Swordsmanship","Gunsmanship","Six power","Dragon Claw","Freestyle","Black leg","Fists","Samurai"]
   }
 
-  fighting = capFirst(fightings[getRandomInt(0, fightings.length + 1)]);
+  fighting = capFirst(fightings[getRandomInt(0, fightings.length)]);
   document.getElementById("fighting").innerHTML = fighting;
 }
 
@@ -469,7 +469,7 @@ function generatefighting2(){
 
   fightings2 = [fighting]
 
-  fighting2 = capFirst(fightings2[getRandomInt(0, fightings2.length + 1)]);
+  fighting2 = capFirst(fightings2[getRandomInt(0, fightings2.length)]);
   document.getElementById("fighting2").innerHTML = fighting2;
 }
 
@@ -479,7 +479,7 @@ function generatefighting3(){
 
   fightings3 = [fighting2]
 
-  fighting3 = capFirst(fightings3[getRandomInt(0, fightings3.length + 1)]);
+  fighting3 = capFirst(fightings3[getRandomInt(0, fightings3.length)]);
   document.getElementById("fighting3").innerHTML = fighting3;
 }
 
@@ -528,7 +528,7 @@ function assignhaki(){
       "None","None","Conquerors + Armament + Observation"];
   } 
 
-  haki = capFirst(hakis[getRandomInt(0, hakis.length + 1)]);
+  haki = capFirst(hakis[getRandomInt(0, hakis.length)]);
       document.getElementById("haki").innerHTML = haki;
 }
 
@@ -584,7 +584,7 @@ function assignhaki2(){
       "None","None","Conquerors + Armament + Observation"];
   } 
 
-  haki2 = capFirst(hakis2[getRandomInt(0, hakis2.length + 1)]);
+  haki2 = capFirst(hakis2[getRandomInt(0, hakis2.length)]);
       document.getElementById("haki2").innerHTML = haki2;
 }
 
@@ -612,7 +612,7 @@ function assignhaki3(){
       "None","None","Conquerors + Armament + Observation"];
   } 
 
-  haki3 = capFirst(hakis3[getRandomInt(0, hakis3.length + 1)]);
+  haki3 = capFirst(hakis3[getRandomInt(0, hakis3.length)]);
       document.getElementById("haki3").innerHTML = haki3;
 }
 
@@ -629,7 +629,7 @@ function generatedevilfruit() {
       "No","Zoan","No","Special Paramecia","Mythical Zoan","No","Paramecia","No","Zoan","Mythical Zoan",
       "Ancient Zoan","No","Paramecia","Logia","No"];
 
-      devilfruit = capFirst(devilfruits[getRandomInt(0, devilfruits.length + 1)]);
+      devilfruit = capFirst(devilfruits[getRandomInt(0, devilfruits.length)]);
       document.getElementById("devilfruit").innerHTML = devilfruit;
 }
 
@@ -709,7 +709,7 @@ function assigndevilfruit(){
      dfs = ["None"];
   } 
 
-  df = capFirst(dfs[getRandomInt(0, dfs.length + 1)]);
+  df = capFirst(dfs[getRandomInt(0, dfs.length)]);
   document.getElementById("df").innerHTML = df;
 }
 
@@ -739,7 +739,7 @@ function generatedevilfruit2() {
       "Ancient Zoan","No","Paramecia","Logia","No"];
   }
       
-  devilfruit2 = capFirst(devilfruits2[getRandomInt(0, devilfruits2.length + 1)]);
+  devilfruit2 = capFirst(devilfruits2[getRandomInt(0, devilfruits2.length)]);
       document.getElementById("devilfruit2").innerHTML = devilfruit2;
 
 }
@@ -825,7 +825,7 @@ function assigndevilfruit2(){
      dfs2 = [df];
   }   
 
-  df2 = capFirst(dfs2[getRandomInt(0, dfs2.length + 1)]);
+  df2 = capFirst(dfs2[getRandomInt(0, dfs2.length)]);
   document.getElementById("df2").innerHTML = df2;
 }
     
@@ -855,7 +855,7 @@ function generatedevilfruit3() {
       "Ancient Zoan","No","Paramecia","Logia","No"];
   }
       
-  devilfruit3 = capFirst(devilfruits3[getRandomInt(0, devilfruits3.length + 1)]);
+  devilfruit3 = capFirst(devilfruits3[getRandomInt(0, devilfruits3.length)]);
       document.getElementById("devilfruit3").innerHTML = devilfruit3;
 
 }
@@ -941,7 +941,7 @@ function assigndevilfruit3(){
      dfs3 = [df2];
   }   
 
-  df3 = capFirst(dfs3[getRandomInt(0, dfs3.length + 1)]);
+  df3 = capFirst(dfs3[getRandomInt(0, dfs3.length)]);
   document.getElementById("df3").innerHTML = df3;
 }
 
@@ -996,7 +996,7 @@ function assignfeat(){
      ,"Allied with pirates."];
   } 
 
-  feat = capFirst(feats[getRandomInt(0, feats.length + 1)]);
+  feat = capFirst(feats[getRandomInt(0, feats.length)]);
       document.getElementById("feat").innerHTML = feat;
 }
 
@@ -1051,7 +1051,7 @@ function assignfeat2(){
      ,"Allied with pirates."];
   } 
 
-  feat2 = capFirst(feats2[getRandomInt(0, feats2.length + 1)]);
+  feat2 = capFirst(feats2[getRandomInt(0, feats2.length)]);
       document.getElementById("feat2").innerHTML = feat2;
 }
 
@@ -1106,7 +1106,7 @@ function assignfeat3(){
      ,"Allied with pirates."];
   } 
 
-  feat3 = capFirst(feats3[getRandomInt(0, feats3.length + 1)]);
+  feat3 = capFirst(feats3[getRandomInt(0, feats3.length)]);
       document.getElementById("feat3").innerHTML = feat3;
 }
 
@@ -1584,6 +1584,12 @@ function doriki3() {
 }
 
 
+// Mostra a variação da bounty com o sinal correto, ex: (+5,000,000) ou (-3,000,000)
+function formatBountyChange(value) {
+  var sign = value < 0 ? '-' : '+';
+  return '(' + sign + Math.abs(value) + ',000,000)';
+}
+
 // Bounty New System ----------------------------------------------------------------------------------------------------------------------------------------------------
 
 let dorikibounty = "";
@@ -1650,9 +1656,9 @@ function addbounty() {
 
 
   bountyfinal = dorikibounty + alliancebounty + devilfruitbounty + featbounty
-  addbounty = dorikibounty + alliancebounty + devilfruitbounty + featbounty
-  document.getElementById("bountyfinal").innerHTML = parseInt(bountyfinal) + ',000,000)';
-  document.getElementById("addbounty").innerHTML = '(+' + parseInt(addbounty) + ',000,000)';
+  var bountyadded = parseInt(bountyfinal);
+  document.getElementById("bountyfinal").innerHTML = parseInt(bountyfinal) + ',000,000';
+  document.getElementById("addbounty").innerHTML = formatBountyChange(bountyadded);
 }
 
 // Bounty New System 2 -----------------------------------------------------------------------
@@ -1708,15 +1714,13 @@ function addbounty2() {
   dorikibounty2 = dorikifinal2 * 0.075
   bountyfinal2 = dorikibounty2 + alliancebounty2 + devilfruitbounty2 + featbounty2
 
-  if (alliance2 === "Marine") {                      // --- Block Alliances
-     var bountyfinal2 = bountyfinal;
-  } else if(alliance2 === "Cipher Pol") {
-     var bountyfinal2 = bountyfinal;
+  if (alliance2 === "Marine" || alliance2 === "Cipher Pol") {   // --- Block Alliances (mantém a bounty anterior)
+     bountyfinal2 = bountyfinal;
   }
   
-  addbounty2 = parseInt(bountyfinal2) - parseInt(bountyfinal) // Calcula a diferença entre as bounties no anos 1 e 2
-  document.getElementById("bountyfinal2").innerHTML = parseInt(bountyfinal2) + ',000,000)';
-  document.getElementById("addbounty2").innerHTML = '(+' + parseInt(addbounty2) + ',000,000)';
+  var bountyadded2 = parseInt(bountyfinal2) - parseInt(bountyfinal) // Calcula a diferença entre as bounties no anos 1 e 2
+  document.getElementById("bountyfinal2").innerHTML = parseInt(bountyfinal2) + ',000,000';
+  document.getElementById("addbounty2").innerHTML = formatBountyChange(bountyadded2);
 }
 
 // Bounty New System 3 -----------------------------------------------------------------------
@@ -1772,13 +1776,11 @@ function addbounty3() {
   dorikibounty3 = dorikifinal3 * 0.075
   bountyfinal3 = dorikibounty3 + alliancebounty3 + devilfruitbounty3 + featbounty3
 
-  if (alliance3 === "Marine") {                      // --- Block Alliances
-     var bountyfinal3 = bountyfinal2;
-  } else if(alliance3 === "Cipher Pol") {
-     var bountyfinal3 = bountyfinal2;
+  if (alliance3 === "Marine" || alliance3 === "Cipher Pol") {   // --- Block Alliances (mantém a bounty anterior)
+     bountyfinal3 = bountyfinal2;
   }
   
-  addbounty3 = parseInt(bountyfinal3) - parseInt(bountyfinal2) // Calcula a diferença entre as bounties no anos 2 e 3
-  document.getElementById("bountyfinal3").innerHTML = parseInt(bountyfinal3) + ',000,000)';
-  document.getElementById("addbounty3").innerHTML = '(+' + parseInt(addbounty3) + ',000,000)';
+  var bountyadded3 = parseInt(bountyfinal3) - parseInt(bountyfinal2) // Calcula a diferença entre as bounties no anos 2 e 3
+  document.getElementById("bountyfinal3").innerHTML = parseInt(bountyfinal3) + ',000,000';
+  document.getElementById("addbounty3").innerHTML = formatBountyChange(bountyadded3);
 }
