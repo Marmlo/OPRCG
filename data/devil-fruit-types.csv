@@ -1,0 +1,8 @@
+type;weight;doriki_min;doriki_max;bounty_min;bounty_max;description
+Zoan;4;10;100;5;10;Zoan fruits let the user transform into an animal and a hybrid form, boosting strength, speed, durability and senses.
+Mythical Zoan;2;100;1000;5;40;Mythical Zoan fruits transform the user into a creature of legend. Besides the physical boost, they grant unique supernatural powers tied to that myth.
+Ancient Zoan;2;100;1000;5;30;Ancient Zoan fruits transform the user into a prehistoric creature. They give enormous physical strength and extraordinary endurance and recovery.
+Paramecia;5;10;1000;5;15;Paramecia fruits grant superhuman abilities that affect the user's body, the environment or other people. They are the most common and most varied type of Devil Fruit.
+Special Paramecia;2;50;1000;5;35;Special Paramecia fruits act like Logias: the user can turn their body into a substance and produce it, but they cannot become intangible to dodge attacks.
+Logia;2;50;1000;5;50;Logia fruits let the user create, control and fully transform into a natural element. Most attacks pass straight through them unless the attacker uses Haki.
+No;8;0;0;0;0;
