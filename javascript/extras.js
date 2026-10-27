@@ -21,23 +21,22 @@ function generateAll() {
     assignfeat, doriki, addbounty, generateAlliance2, assignRank2, generatefighting2, assignhaki2, generatedevilfruit2, assigndevilfruit2,
     assignfeat2, doriki2, addbounty2, generateAlliance3, assignRank3, generatefighting3, assignhaki3, generatedevilfruit3, assigndevilfruit3,
     assignfeat3, doriki3, addbounty3];
-  steps.forEach(function (step) {
-    try { step(); } catch (e) { console.error(e); }
+  dataReady.then(function () {
+    steps.forEach(function (step) {
+      try { step(); } catch (e) { console.error(e); }
+    });
   });
 }
 
 // Devil Fruit info ----------------------------------------------------------------------------------------------------------------------------------------------------
 
-var fruitTypeInfo = {
-  "Paramecia": "Paramecia fruits grant superhuman abilities that affect the user's body, the environment or other people. They are the most common and most varied type of Devil Fruit.",
-  "Special Paramecia": "Special Paramecia fruits act like Logias: the user can turn their body into a substance and produce it, but they cannot become intangible to dodge attacks.",
-  "Logia": "Logia fruits let the user create, control and fully transform into a natural element. Most attacks pass straight through them unless the attacker uses Haki.",
-  "Zoan": "Zoan fruits let the user transform into an animal and a hybrid form, boosting strength, speed, durability and senses.",
-  "Ancient Zoan": "Ancient Zoan fruits transform the user into a prehistoric creature. They give enormous physical strength and extraordinary endurance and recovery.",
-  "Mythical Zoan": "Mythical Zoan fruits transform the user into a creature of legend. Besides the physical boost, they grant unique supernatural powers tied to that myth."
-};
+// Explicação de cada tipo: coluna "description" de data/devil-fruit-types.csv
+function fruitTypeInfo(type) {
+  return fruitTypes[type] ? fruitTypes[type].description : "";
+}
 
 function fruitPower(type, fruit) {
+  if (fruitPowers[fruit]) return fruitPowers[fruit];   // coluna "power" de data/devil-fruits.csv
   var model = fruit.match(/Model:\s*(.+)$/);
   var element = fruit.match(/\(([^)]+?)\s*Fu?it\)/i);
   var subject = model ? model[1].trim() : (element ? element[1].trim() : fruit);
@@ -52,8 +51,8 @@ function fruitPower(type, fruit) {
 function fruitData(n) {
   var type = [devilfruit, devilfruit2, devilfruit3][n - 1];
   var fruit = [df, df2, df3][n - 1];
-  if (!fruit || fruit === "None" || !fruitTypeInfo[type]) return null;
-  return { type: type, fruit: fruit, typeText: fruitTypeInfo[type], powerText: fruitPower(type, fruit) };
+  if (!fruit || fruit === "None" || !fruitTypeInfo(type)) return null;
+  return { type: type, fruit: fruit, typeText: fruitTypeInfo(type), powerText: fruitPower(type, fruit) };
 }
 
 function updateFruitInfo(n) {
