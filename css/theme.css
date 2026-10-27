@@ -108,6 +108,16 @@ select option { color: #111; }
 	box-shadow: 0 6px 18px rgba(230, 58, 20, 0.35);
 }
 [type="button"].primary:hover { filter: brightness(1.1); }
+[type="button"].primary.secondary {
+	background: rgba(255, 255, 255, 0.08);
+	border: 1px solid rgba(255, 255, 255, 0.25);
+	box-shadow: none;
+}
+
+/* Bottom buttons (PDF + Reload) */
+.actions { display: flex; gap: 12px; }
+.actions .primary { flex: 3; }
+.actions .secondary { flex: 1; }
 
 /* Know more */
 .know-more {
@@ -291,3 +301,4 @@ select option { color: #111; }
 	to { opacity: 1; transform: none; }
 }
 [type="button"].primary:disabled { cursor: wait; opacity: 0.7; filter: none; }
+[type="button"]:not(.primary):disabled { cursor: not-allowed; opacity: 0.4; background: rgba(230, 58, 20, 0.18); transform: none; }
