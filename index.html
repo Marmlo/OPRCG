@@ -3,7 +3,6 @@
 
 <!-- Links -->
 <link rel="stylesheet" type="text/css" href="css/theme.css" media="all" />
-<script src="javascript/race.js"></script>
 <script src="javascript/character.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jspdf-autotable@3.8.2/dist/jspdf.plugin.autotable.min.js"></script>
@@ -17,7 +16,7 @@
 	<table>
 		<tr>  <!-- BOTAO -->
 			<td colspan="4">
-			<input type="button" value="Generate All" onclick="race(); generateAlliance(); assignRank(); generatefighting(); assignhaki(); generatedevilfruit(); assigndevilfruit(); assignfeat(); doriki(); addbounty(); generateAlliance2();  assignRank2();  generatefighting2();  assignhaki2(); generatedevilfruit2(); assigndevilfruit2();  assignfeat2(); doriki2(); addbounty2(); generateAlliance3();  assignRank3();  generatefighting3();  assignhaki3(); generatedevilfruit3(); assigndevilfruit3(); assignfeat3(); doriki3(); addbounty3();">
+			<input type="button" value="Generate All" onclick="generateRace(); generateAlliance(); assignRank(); generatefighting(); assignhaki(); generatedevilfruit(); assigndevilfruit(); assignfeat(); doriki(); addbounty(); generateAlliance2();  assignRank2();  generatefighting2();  assignhaki2(); generatedevilfruit2(); assigndevilfruit2();  assignfeat2(); doriki2(); addbounty2(); generateAlliance3();  assignRank3();  generatefighting3();  assignhaki3(); generatedevilfruit3(); assigndevilfruit3(); assignfeat3(); doriki3(); addbounty3();">
 			</td> 
 		</tr> <!-- BOTAO -->
 		<tr>
@@ -36,7 +35,7 @@
   		</tr>
   		<tr>
 		    <td>Race</td>
-		    <td colspan="3" style="text-align: center;"><h5 id="race"><input type="button" value="Generate" onclick="race();"/></h5></td>
+		    <td colspan="3" style="text-align: center;"><h5 id="race"><input type="button" value="Generate" onclick="generateRace();"/></h5></td>
   		</tr>
   		<tr>
 		    <td>Gender</td>
