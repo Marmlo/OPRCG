@@ -147,6 +147,57 @@ function resetPage() {
   window.location.reload();
 }
 
+// Haki chart ---------------------------------------------------------------------------------------------------------------------------------------------------------
+// Each haki the character has gets a row with one star per level (Basic, Advanced, Master); no haki = "None"
+
+var HAKI_LABELS = { Conquerors: "Conqueror's", Armament: "Armament", Observation: "Observation" };
+
+function hakiLevelInfo(type, level) {
+  return hakiLevels[type] && hakiLevels[type][level] ? hakiLevels[type][level].description : "";
+}
+
+function renderHaki(id, levels) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  if (!hakiTypes(levels).length) { el.textContent = "None"; return; }
+  var chart = document.createElement("div");
+  chart.className = "haki-chart";
+  chart.setAttribute("role", "img");
+  chart.setAttribute("aria-label", hakiText(levels, ", "));
+  HAKI_TYPES.forEach(function (t) {
+    var level = levels[t] || 0;
+    var row = document.createElement("div");
+    row.className = "haki-row haki-" + t.toLowerCase() + (level ? "" : " haki-none");
+    row.title = hakiLevelInfo(t, level) || "Not unlocked";
+    var name = document.createElement("span");
+    name.className = "haki-name";
+    name.textContent = HAKI_LABELS[t];
+    var bar = document.createElement("span");
+    bar.className = "haki-stars";
+    for (var i = 1; i < HAKI_LEVEL_NAMES.length; i++) {
+      var star = document.createElement("i");
+      star.textContent = "★";
+      if (i <= level) star.className = "on";
+      bar.appendChild(star);
+    }
+    var text = document.createElement("span");
+    text.className = "haki-level";
+    text.textContent = level ? HAKI_LEVEL_NAMES[level] : "—";
+    row.append(name, bar, text);
+    chart.appendChild(row);
+  });
+  el.innerHTML = "";
+  el.appendChild(chart);
+}
+
+// Text version (PDF / screen readers), ex: "Basic Conqueror's, Advanced Armament"
+function hakiText(levels, sep) {
+  var parts = HAKI_TYPES.filter(function (t) { return levels && levels[t]; }).map(function (t) {
+    return HAKI_LEVEL_NAMES[levels[t]] + " " + HAKI_LABELS[t];
+  });
+  return parts.length ? parts.join(sep) : "None";
+}
+
 // Devil Fruit info ----------------------------------------------------------------------------------------------------------------------------------------------------
 
 // Explicação de cada tipo: coluna "description" de data/devil-fruit-types.csv

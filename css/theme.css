@@ -302,3 +302,27 @@ select option { color: #111; }
 }
 [type="button"].primary:disabled { cursor: wait; opacity: 0.7; filter: none; }
 [type="button"]:not(.primary):disabled { cursor: not-allowed; opacity: 0.4; background: rgba(230, 58, 20, 0.18); transform: none; }
+
+/* Haki chart: one row per haki, one star per level (Basic, Advanced, Master) */
+.haki-chart { display: grid; gap: 6px; text-align: left; }
+.haki-row {
+	display: grid;
+	grid-template-columns: 6.2rem 1fr 4.6rem;
+	align-items: center;
+	gap: 8px;
+	font-size: 0.8rem;
+	cursor: help;
+}
+.haki-name { font-weight: 600; color: var(--text); }
+.haki-level { font-weight: 600; text-align: right; color: var(--muted); }
+.haki-stars { display: flex; gap: 2px; font-size: 1.05rem; line-height: 1; }
+.haki-stars i { font-style: normal; color: rgba(255, 255, 255, 0.14); }
+.haki-conquerors { --haki: #c86bff; }
+.haki-armament { --haki: #e63a14; }
+.haki-observation { --haki: #3fb6ff; }
+.haki-stars i.on { color: var(--haki); text-shadow: 0 0 6px color-mix(in srgb, var(--haki) 60%, transparent); }
+.haki-row:not(.haki-none) .haki-level { color: var(--haki); }
+.haki-none .haki-name { color: var(--muted); }
+@media (max-width: 960px) {
+	.haki-row { grid-template-columns: 5.4rem 1fr 4.2rem; font-size: 0.75rem; }
+}
