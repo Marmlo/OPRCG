@@ -23,7 +23,7 @@
 	<table class="sheet">
 		<tr>  <!-- BOTAO -->
 			<td colspan="4">
-			<input type="button" class="primary" value="Generate All" onclick="generateAll();">
+			<input type="button" class="primary" id="generate-all" value="Generate All" onclick="generateAll();">
 			</td> 
 		</tr> <!-- BOTAO -->
 		<tr>
@@ -45,11 +45,16 @@
 		    <td colspan="3" style="text-align: center;"><h5 id="race"><input type="button" value="Generate" onclick="generateRace();"/></h5></td>
   		</tr>
   		<tr>
+		    <td>Region (birthplace)</td>
+		    <td colspan="3" style="text-align: center;"><h5 id="region"><input type="button" value="Generate" onclick="generateRegion();"/></h5></td>
+  		</tr>
+  		<tr>
 		    <td>Gender</td>
 		    <td colspan="3"><select id="gender">
   					<option value="male"><h6>Male</h6></option>
   					<option value="female"><h6>Female</h6></option>
   					<option value="other"><h6>Other</h6></option>
+  					<option value="transsexual"><h6>Transsexual</h6></option>
 				</select>
 			</td>
   		</tr>

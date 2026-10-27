@@ -171,7 +171,94 @@ function getRandomInt(min, max) {
       Tonnata     - 1/30 - 03%  
       Oni       - 1/30 - 04%  
       Cyborg      - 1/30 - 04%  
-      Hybrid            - 3/30 - 09%  
+      Hybrid            - 3/30 - 09%
+
+    */
+
+
+// Region (where the character was born) - depends on the race --------------------------------------------------------------------------------------------------------
+
+let region = "";
+
+var humanRegions = ["East Blue","West Blue","North Blue","South Blue","Grand Line","New World"
+      ,"East Blue","West Blue","North Blue","South Blue","Grand Line","New World"
+      ,"East Blue","North Blue","South Blue","Grand Line"];
+
+var regionsByRace = {
+  "Human":         humanRegions,
+  "Giant":         ["New World (Elbaf)"],
+  "Ancient Giant": ["New World (Elbaf)"],
+  "Frost Giant":   ["New World (Elbaf)"],
+  "Fishman":       ["Fish-Man Island","Fish-Man Island","Fish-Man Island","Grand Line"],
+  "Merfolk":       ["Fish-Man Island","Fish-Man Island","Fish-Man Island","Grand Line"],
+  "Skipean":       ["Sky Islands (Skypiea)"],
+  "Lunarian":      ["Red Line"],
+  "Mink":          ["New World (Zou)"],
+  "Tonnata":       ["New World (Green Bit)"],
+  "Oni":           ["New World (Wano)"],
+  "Cyborg":        humanRegions,
+  "Hybrid":        humanRegions.concat(["Fish-Man Island","New World (Elbaf)","New World (Wano)","New World (Zou)"])
+};
+
+// Celestial Dragons (World Nobles) are always born in Mary Geoise
+var nobleRegion = "Red Line (Mary Geoise)";
+
+function generateRegion(){
+  if (alliance === "World Nobles") {
+     region = nobleRegion;
+  } else {
+     var regions = regionsByRace[race] || humanRegions;
+     region = regions[getRandomInt(0, regions.length)];
+  }
+  document.getElementById("region").innerHTML = region;
+}
+
+// Keeps the region consistent with the 1st year alliance (called after generateAlliance)
+function syncRegion(){
+  if (!region) return;
+  if ((alliance === "World Nobles") !== (region === nobleRegion)) generateRegion();
+}
+
+    /*
+
+    Odds (Human / Cyborg):
+      East Blue    - 3/16 - 19%
+      West Blue    - 2/16 - 12,5%
+      North Blue   - 3/16 - 19%
+      South Blue   - 3/16 - 19%
+      Grand Line   - 3/16 - 19%
+      New World    - 2/16 - 12,5%
+
+    Giant / Ancient Giant / Frost Giant - New World (Elbaf)
+    Fishman / Merfolk                   - Fish-Man Island 75% / Grand Line 25%
+    Skipean                             - Sky Islands (Skypiea)
+    Lunarian                            - Red Line
+    Mink                                - New World (Zou)
+    Tonnata                             - New World (Green Bit)
+    Oni                                 - New World (Wano)
+    Hybrid                              - Human odds + Fish-Man Island, Elbaf, Wano, Zou
+    World Nobles (Celestial Dragons)    - Red Line (Mary Geoise)
+
+    */
+
+
+// Gender ---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+function generateGender(){
+  var genders = ["male","female","other","transsexual"
+      ,"male","female","other","transsexual"
+      ,"male","female","other"];
+
+  document.getElementById("gender").value = genders[getRandomInt(0, genders.length)];
+}
+
+    /*
+
+    Odds:
+      Male          - 3/11 - 27%
+      Female        - 3/11 - 27%
+      Other         - 3/11 - 27%
+      Transsexual   - 2/11 - 18%
 
     */
 
@@ -188,6 +275,7 @@ function generateAlliance(){
 
       alliance = capFirst(alliances[getRandomInt(0, alliances.length)]);
       document.getElementById("alliance").innerHTML = alliance;
+      syncRegion();
 }
 
 function getRandomInt(min, max) {

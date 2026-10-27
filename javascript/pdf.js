@@ -46,6 +46,7 @@ function buildPDF(logo) {
     ['Name', { content: name, colSpan: 3 }],
     ['Nickname', { content: nickname, colSpan: 3 }],
     ['Race', { content: cellText('race'), colSpan: 3 }],
+    ['Region (birthplace)', { content: cellText('region'), colSpan: 3 }],
     ['Gender', { content: genderText, colSpan: 3 }]
   ];
 
