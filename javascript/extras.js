@@ -2,7 +2,7 @@
 
 var firstNames = ["Kaito", "Rin", "Jiro", "Mira", "Sora", "Taro", "Yuki", "Haru", "Nami", "Kenji", "Aya", "Ryo", "Lola", "Marco",
   "Silas", "Vera", "Dante", "Iris", "Bram", "Kira", "Otto", "Luna", "Gus", "Hana", "Zeke", "Tess", "Rex", "Mei", "Basil", "Coral"];
-var lastNames = ["D. Storm", "Kurogane", "Blackwater", "Hayabusa", "Redfield", "Tsunami", "Ironhook", "Saltbeard", "Akagami", "Moriyama",
+var lastNames = ["Storm", "Kurogane", "Blackwater", "Hayabusa", "Redfield", "Tsunami", "Ironhook", "Saltbeard", "Akagami", "Moriyama",
   "Goldtide", "Shirohige", "Ravencrest", "Kazama", "Seaborne", "Thornwood", "Umino", "Grimwave", "Hoshino", "Brassjaw"];
 var nickPrefixes = ["Red", "Iron", "Black", "Storm", "Ghost", "Golden", "Silent", "Crimson", "Mad", "Thunder", "Sea", "Bloody", "Lucky", "White", "Wild"];
 var nickSuffixes = ["Fist", "Fang", "Blade", "Hurricane", "Devil", "Wolf", "Shark", "Dragon", "Reaper", "Tide", "Hawk", "Cannon", "Serpent", "Kraken", "Phantom"];
@@ -11,8 +11,18 @@ function pick(list) {
   return list[Math.floor(Math.random() * list.length)];
 }
 
+// Will of D.: extremely rare "D." between the first and last name (can also be typed by hand)
+var WILL_OF_D_CHANCE = 0.01;
+var WILL_OF_D_BONUS = 0.1;   // +10% Doriki on the 1st year
+
+function hasWillOfD() {
+  var el = document.getElementById("fname");
+  return !!el && /\S\s+D\.?\s+\S/.test(el.value);
+}
+
 function generateIdentity() {
-  document.getElementById("fname").value = pick(firstNames) + " " + pick(lastNames);
+  var middle = Math.random() < WILL_OF_D_CHANCE ? " D. " : " ";
+  document.getElementById("fname").value = pick(firstNames) + middle + pick(lastNames);
   document.getElementById("nickname").value = '"' + pick(nickPrefixes) + " " + pick(nickSuffixes) + '"';
 }
 
@@ -88,6 +98,53 @@ function generateAll() {
       }, delay);
     });
   });
+}
+
+// Period locks -------------------------------------------------------------------------------------------------------------------------------------------------------
+// Region stays locked until the race is generated, the 1st Year until race and region are,
+// "After 2 Years" until the 1st Year is fully generated, and "After 10 Years" until "After 2 Years" is.
+
+function cellDone(id) {
+  var el = document.getElementById(id);
+  return !!el && !el.querySelector("input") && el.textContent.trim() !== "";
+}
+
+function periodDone(s) {
+  return periodSteps(s).every(function (step) { return cellDone(step[1][0]); });
+}
+
+function setCellsLocked(ids, locked, message) {
+  ids.forEach(function (id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    el.querySelectorAll('input[type="button"]').forEach(function (btn) {
+      if (btn.disabled === locked) return;
+      btn.disabled = locked;
+      btn.title = locked ? message : "";
+    });
+  });
+}
+
+function setPeriodLocked(s, locked, message) {
+  periodSteps(s).forEach(function (step) { setCellsLocked(step[1], locked, message); });
+}
+
+function updatePeriodLocks() {
+  setCellsLocked(["region"], !cellDone("race"), "Generate the race first");
+  setPeriodLocked("", !(cellDone("race") && cellDone("region")), "Generate the race and region first");
+  setPeriodLocked("2", !periodDone(""), "Generate the whole 1st Year first");
+  setPeriodLocked("3", !periodDone("2"), "Generate the whole After 2 Years period first");
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  var sheet = document.querySelector(".sheet");
+  if (!sheet) return;
+  updatePeriodLocks();
+  new MutationObserver(updatePeriodLocks).observe(sheet, { childList: true, subtree: true, characterData: true });
+});
+
+function resetPage() {
+  window.location.reload();
 }
 
 // Devil Fruit info ----------------------------------------------------------------------------------------------------------------------------------------------------

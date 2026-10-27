@@ -40,11 +40,12 @@ function loadCSV(url) {
 }
 
 var dataReady = Promise.all([loadCSV("data/devil-fruit-types.csv"), loadCSV("data/devil-fruits.csv")]).then(function (data) {
+  function num(v) { return Number(String(v).replace(",", ".")) || 0; }   // aceita "0,02" (Excel PT)
   data[0].forEach(function (t) {
     fruitTypes[t.type] = {
-      weight: Number(t.weight) || 0,
-      doriki_min: Number(t.doriki_min) || 0, doriki_max: Number(t.doriki_max) || 0,
-      bounty_min: Number(t.bounty_min) || 0, bounty_max: Number(t.bounty_max) || 0,
+      weight: num(t.weight),
+      doriki_min: num(t.doriki_min), doriki_max: num(t.doriki_max),
+      bounty_min: num(t.bounty_min), bounty_max: num(t.bounty_max),
       description: t.description
     };
   });

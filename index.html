@@ -34,11 +34,11 @@
   		</tr>
   		<tr>
 		    <td>Name</td>
-		    <td colspan="3"><input type="text" id="fname" placeholder="Enter or generate a name" name="fname" style="text-align: center;"></td>
+		    <td colspan="3"><input type="text" id="fname" autocomplete="off" placeholder="Enter or generate a name" name="fname" style="text-align: center;"></td>
   		</tr>
   		<tr>
 		    <td>Nickname</td>
-		    <td colspan="3"><input type="text" id="nickname" placeholder="Enter or generate a nickname" name="nickname" style="text-align: center;"></td>
+		    <td colspan="3"><input type="text" id="nickname" autocomplete="off" placeholder="Enter or generate a nickname" name="nickname" style="text-align: center;"></td>
   		</tr>
   		<tr>
 		    <td>Race</td>
@@ -50,7 +50,7 @@
   		</tr>
   		<tr>
 		    <td>Gender</td>
-		    <td colspan="3"><select id="gender">
+		    <td colspan="3"><select id="gender" autocomplete="off">
   					<option value="male"><h6>Male</h6></option>
   					<option value="female"><h6>Female</h6></option>
   					<option value="other"><h6>Other</h6></option>
@@ -175,7 +175,10 @@
   		</tr>
 		<tr>  <!-- PDF -->
 			<td colspan="4">
-			<input type="button" class="primary" value="Export to PDF" onclick="exportPDF();">
+			<div class="actions">
+				<input type="button" class="primary" value="Export to PDF" onclick="exportPDF();">
+				<input type="button" class="primary secondary" value="Reload" title="Start over with a blank sheet" onclick="resetPage();">
+			</div>
 			</td>
 		</tr> <!-- PDF -->
 	</table>

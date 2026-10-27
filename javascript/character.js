@@ -855,7 +855,7 @@ function rollFruitType(prevType) {
   if (prevType && prevType !== "No") return prevType;
   var types = Object.keys(fruitTypes);
   var total = types.reduce(function (sum, t) { return sum + fruitTypes[t].weight; }, 0);
-  var roll = getRandomInt(0, total);
+  var roll = Math.random() * total;   // aceita pesos decimais (ex.: Unknown = 0.02)
   for (var i = 0; i < types.length; i++) {
     roll -= fruitTypes[types[i]].weight;
     if (roll < 0) return types[i];
@@ -1191,7 +1191,8 @@ function doriki() {
   }
 
   dorikifinal = racedoriki + rankdoriki + hakidoriki + devilfruitdoriki + featdoriki
-  adddoriki = racedoriki + rankdoriki + hakidoriki + devilfruitdoriki + featdoriki
+  if (hasWillOfD()) dorikifinal = dorikifinal * (1 + WILL_OF_D_BONUS);   // --- Will of D. (nome com "D.")
+  adddoriki = dorikifinal
   document.getElementById("dorikifinal").innerHTML = parseInt(dorikifinal);
   document.getElementById("adddoriki").innerHTML = '(+' + parseInt(adddoriki) + ')';
 }  
