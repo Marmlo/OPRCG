@@ -5,6 +5,9 @@
 <link rel="stylesheet" type="text/css" href="css/theme.css" media="all" />
 <script src="javascript/race.js"></script>
 <script src="javascript/character.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jspdf-autotable@3.8.2/dist/jspdf.plugin.autotable.min.js"></script>
+<script src="javascript/pdf.js"></script>
 
 <head>
 	<h1><center><img src="images/logo.png" alt="Random character generator" style="max-width: 727px; max-height: 200px;"></center></h1>
@@ -29,7 +32,7 @@
   		</tr>
   		<tr>
 		    <td>Nickname</td>
-		    <td colspan="3"><input type="text" id="fname" name="fname" style="text-align: center;"></td>
+		    <td colspan="3"><input type="text" id="nickname" name="nickname" style="text-align: center;"></td>
   		</tr>
   		<tr>
 		    <td>Race</td>
@@ -156,6 +159,11 @@
 		    	<input type="button" value="Generate" onclick="addbounty3()">
 		    </td>
   		</tr>
+		<tr>  <!-- PDF -->
+			<td colspan="4">
+			<input type="button" value="Export to PDF" onclick="exportPDF();">
+			</td>
+		</tr> <!-- PDF -->
 	</table>
 	</center>
 </body>
