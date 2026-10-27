@@ -16,14 +16,76 @@ function generateIdentity() {
   document.getElementById("nickname").value = '"' + pick(nickPrefixes) + " " + pick(nickSuffixes) + '"';
 }
 
+// Steps of one period (1st year = "", after 2 years = "2", after 10 years = "3"): [function, ids of the cells it fills]
+function periodSteps(s) {
+  return [
+    [window["generateAlliance" + s], ["alliance" + s]],
+    [window["assignRank" + s], ["rank" + s]],
+    [window["generatefighting" + s], ["fighting" + s]],
+    [window["assignhaki" + s], ["haki" + s]],
+    [window["generatedevilfruit" + s], ["devilfruit" + s]],
+    [window["assigndevilfruit" + s], ["df" + s]],
+    [window["assignfeat" + s], ["feat" + s]],
+    [window["doriki" + s], ["dorikifinal" + s, "adddoriki" + s]],
+    [window["addbounty" + s], ["bountyfinal" + s, "addbounty" + s]]
+  ];
+}
+
+var STEP_DELAY = 160;     // ms between each element
+var PERIOD_DELAY = 450;   // extra pause before each new period
+var generating = false;
+
+function reveal(id) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  el.classList.remove("reveal");
+  void el.offsetWidth;   // restart the animation
+  el.classList.add("reveal");
+}
+
 function generateAll() {
-  var steps = [generateIdentity, generateRace, generateAlliance, assignRank, generatefighting, assignhaki, generatedevilfruit, assigndevilfruit,
-    assignfeat, doriki, addbounty, generateAlliance2, assignRank2, generatefighting2, assignhaki2, generatedevilfruit2, assigndevilfruit2,
-    assignfeat2, doriki2, addbounty2, generateAlliance3, assignRank3, generatefighting3, assignhaki3, generatedevilfruit3, assigndevilfruit3,
-    assignfeat3, doriki3, addbounty3];
+  if (generating) return;
+  var periods = [
+    [[generateIdentity, ["fname", "nickname"]], [generateRace, ["race"]], [generateRegion, ["region"]], [generateGender, ["gender"]]].concat(periodSteps("")),
+    periodSteps("2"),
+    periodSteps("3")
+  ];
+  var button = document.getElementById("generate-all");
+
   dataReady.then(function () {
-    steps.forEach(function (step) {
-      try { step(); } catch (e) { console.error(e); }
+    generating = true;
+    if (button) button.disabled = true;
+    alliance = "";
+
+    // Clear the sheet so the new character appears element by element
+    periods.forEach(function (steps) {
+      steps.forEach(function (step) {
+        step[1].forEach(function (id) {
+          var el = document.getElementById(id);
+          if (!el || el.tagName === "SELECT") return;
+          if (el.tagName === "INPUT") el.value = "";
+          else el.innerHTML = "";
+        });
+      });
+    });
+    [1, 2, 3].forEach(function (n) { document.getElementById("dfinfo" + n).hidden = true; });
+
+    var queue = [];
+    periods.forEach(function (steps, p) {
+      steps.forEach(function (step, i) { queue.push({ step: step, pause: p > 0 && i === 0 }); });
+    });
+
+    var delay = 0;
+    queue.forEach(function (item, i) {
+      delay += i === 0 ? 0 : STEP_DELAY + (item.pause ? PERIOD_DELAY : 0);
+      setTimeout(function () {
+        try { item.step[0](); } catch (e) { console.error(e); }
+        item.step[1].forEach(reveal);
+        if (i === queue.length - 1) {
+          generating = false;
+          if (button) button.disabled = false;
+        }
+      }, delay);
     });
   });
 }
