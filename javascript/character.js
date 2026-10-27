@@ -21,6 +21,119 @@ let feat2 = "";
 let feat3 = "";
 
 
+// Rules ---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+// Haki minimo exigido para os ranks mais altos
+var rankHakiRequirements = {
+  "Yonko": ["Conquerors", "Armament", "Observation"],
+  "Fleet Admiral": ["Armament", "Observation"],
+  "Admiral": ["Armament", "Observation"],
+  "Vice Admiral": ["Armament"],
+  "Inspector General": ["Armament"],
+  "Leader": ["Armament", "Observation"],
+  "Chief of Staff": ["Armament", "Observation"],
+  "Army Commander": ["Armament"],
+  "Shichibukai": ["Armament"],
+  "CP0": ["Armament"]
+};
+
+// Haki exigido para alguns feats
+var featHakiRequirements = {
+  "Defeated a Yonko.": ["Conquerors", "Armament", "Observation"],
+  "Defeated an Admiral.": ["Armament", "Observation"]
+};
+
+function hasHaki(haki, types) {
+  return types.every(function (t) { return String(haki).indexOf(t) !== -1; });
+}
+
+function buildHaki(types) {
+  var c = types.indexOf("Conquerors") !== -1, a = types.indexOf("Armament") !== -1, o = types.indexOf("Observation") !== -1;
+  if (c && a && o) return "Conquerors + Armament + Observation";
+  if (a && o) return "Observation + Armament";
+  if (c && a) return "Conquerors + Armament";
+  if (c && o) return "Conquerors + Observation";
+  if (c) return "Conquerors";
+  if (a) return "Armament";
+  if (o) return "Observation";
+  return "None";
+}
+
+// Mantém só os hakis do pool que cumprem o requisito do rank; se nenhum cumpre, junta o haki atual ao mínimo exigido
+function meetRankHaki(rankName, pool, currentHaki) {
+  var req = rankHakiRequirements[rankName];
+  pool = pool || [currentHaki || "None"];
+  if (!req) return pool;
+  var ok = pool.filter(function (h) { return hasHaki(h, req); });
+  if (ok.length) return ok;
+  var types = ["Conquerors", "Armament", "Observation"].filter(function (t) {
+    return req.indexOf(t) !== -1 || String(currentHaki).indexOf(t) !== -1;
+  });
+  return [buildHaki(types)];
+}
+
+function allowedFeats(pool, hakiName) {
+  return pool.filter(function (f) { return !featHakiRequirements[f] || hasHaki(hakiName, featHakiRequirements[f]); });
+}
+
+// Probabilidade de um pirata se tornar Yonko (só a partir de "After 2 Years")
+var YONKO_CHANCE = 0.002;
+
+function maybeYonko(allianceName, pool) {
+  if (allianceName === "Pirate" && Math.random() < YONKO_CHANCE) return ["Yonko"];
+  return pool;
+}
+
+var swordStyles = ["Swordsmanship", "Samurai"];
+
+// Doriki e bounty dos feats novos (os antigos continuam nos if/else de cada função)
+var extraFeatDoriki = {
+  "Defeated an Admiral.": [10000, 20000],
+  "Defeated a Yonko Commander.": [3000, 8000],
+  "Took part in the Paramount War.": [500, 2000],
+  "Entered the New World.": [200, 800],
+  "Survived a Buster Call.": [300, 1000],
+  "Defeated a Supernova.": [800, 2500],
+  "Arrested a Supernova.": [800, 2500],
+  "Captured a Supernova.": [800, 2500],
+  "Guarded Impel Down's Level 6.": [500, 1500],
+  "Joined the SWORD unit.": [1000, 3000],
+  "Infiltrated a Yonko crew.": [500, 1500],
+  "Fought in the Wano revolution.": [500, 2000],
+  "Won a Davy Back Fight.": [50, 300]
+};
+
+var extraFeatBounty = {
+  "Defeated a Yonko.": [500, 1500],
+  "Defeated an Admiral.": [300, 800],
+  "Defeated a Yonko Commander.": [100, 400],
+  "Punched a Celestial Dragon.": [50, 150],
+  "Declared war on the World Government.": [100, 300],
+  "Burned the World Government's flag.": [50, 150],
+  "Found a Road Poneglyph.": [100, 300],
+  "Took part in the Paramount War.": [50, 200],
+  "Took part in the Reverie raid.": [50, 200],
+  "Infiltrated Mary Geoise.": [50, 200],
+  "Freed a kingdom from a tyrant.": [20, 80],
+  "Freed the slaves at the Sabaody auction house.": [20, 100],
+  "Fought in the Wano revolution.": [50, 200]
+};
+
+function featBonus(table, featName) {
+  var range = table[featName];
+  return range ? getRandomInt(range[0], range[1] + 1) : 0;
+}
+
+function isSwordRank(rankName) {
+  return rankName === "Swordsman";
+}
+
+// Formata bounties em milhões com vírgulas, ex: 1500 -> 1,500,000,000
+function formatBounty(millions) {
+  return Math.round(millions).toLocaleString("en-US") + ',000,000';
+}
+
+
 
 // Race ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -292,6 +405,8 @@ function assignRank2(){
      ranks2 = ["King/Queen","Prince/Princess","Noble Commander","Soldier"];
   }
 
+  ranks2 = maybeYonko(alliance2, ranks2);
+
   rank2 = capFirst(ranks2[getRandomInt(0, ranks2.length)]);
   document.getElementById("rank2").innerHTML = rank2;
 }
@@ -428,6 +543,12 @@ function assignRank3(){
      ranks3 = ["King/Queen","Prince/Princess","Noble Commander","Soldier"];
   }
 
+  if (rank2 === "Yonko" && alliance3 === "Pirate") {   // Um Yonko continua Yonko
+     ranks3 = ["Yonko"];
+  } else {
+     ranks3 = maybeYonko(alliance3, ranks3);
+  }
+
   rank3 = capFirst(ranks3[getRandomInt(0, ranks3.length)]);
   document.getElementById("rank3").innerHTML = rank3;
 }
@@ -468,6 +589,9 @@ function generatefighting(){
 function generatefighting2(){
 
   fightings2 = [fighting]
+  if (isSwordRank(rank2) && swordStyles.indexOf(fighting) === -1) {   // Swordsman luta sempre com espadas
+     fightings2 = swordStyles;
+  }
 
   fighting2 = capFirst(fightings2[getRandomInt(0, fightings2.length)]);
   document.getElementById("fighting2").innerHTML = fighting2;
@@ -478,6 +602,9 @@ function generatefighting2(){
 function generatefighting3(){
 
   fightings3 = [fighting2]
+  if (isSwordRank(rank3) && swordStyles.indexOf(fighting2) === -1) {   // Swordsman luta sempre com espadas
+     fightings3 = swordStyles;
+  }
 
   fighting3 = capFirst(fightings3[getRandomInt(0, fightings3.length)]);
   document.getElementById("fighting3").innerHTML = fighting3;
@@ -527,6 +654,8 @@ function assignhaki(){
       "Conquerors + Observation","None","Armament","None","Observation","None","None","None","None","None","None","None","None",
       "None","None","Conquerors + Armament + Observation"];
   } 
+
+  hakis = meetRankHaki(rank, hakis, "None");   // Requisito mínimo de haki do rank
 
   haki = capFirst(hakis[getRandomInt(0, hakis.length)]);
       document.getElementById("haki").innerHTML = haki;
@@ -584,6 +713,8 @@ function assignhaki2(){
       "None","None","Conquerors + Armament + Observation"];
   } 
 
+  hakis2 = meetRankHaki(rank2, hakis2, haki);   // Requisito mínimo de haki do rank
+
   haki2 = capFirst(hakis2[getRandomInt(0, hakis2.length)]);
       document.getElementById("haki2").innerHTML = haki2;
 }
@@ -611,6 +742,8 @@ function assignhaki3(){
       "Conquerors + Observation","None","Armament","None","Observation","None","None","None","None","None","None","None","None",
       "None","None","Conquerors + Armament + Observation"];
   } 
+
+  hakis3 = meetRankHaki(rank3, hakis3, haki2);   // Requisito mínimo de haki do rank
 
   haki3 = capFirst(hakis3[getRandomInt(0, hakis3.length)]);
       document.getElementById("haki3").innerHTML = haki3;
@@ -950,23 +1083,33 @@ function assigndevilfruit3(){
 
 // Feat ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-function assignfeat(){
-     
- if (alliance === "Revolucionary Army") { // ---------------------------------------------- Revolucionary Army
-     feats = ["None"
+var featsByAlliance = {
+  "Revolucionary Army": ["None"
      ,"Attacked a Government country."
      ,"Leaked sensitive Government information."
      ,"Stole a rare devil fruit from the Government."
      ,"Participated in a war."
-     ,"Released slaves from a Government ally."];
-  } else if(alliance === "Marine") { // ---------------------------------------------- Marine
-     feats = ["None"
+     ,"Released slaves from a Government ally."
+     ,"Took part in the Reverie raid."
+     ,"Infiltrated Mary Geoise."
+     ,"Freed a kingdom from a tyrant."
+     ,"Rescued a comrade from Impel Down."
+     ,"Survived a Buster Call."
+     ,"Declared war on the World Government."
+     ,"Defeated an Admiral."],
+  "Marine": ["None"
      ,"Captured a 40,000,000 bounty pirate all by himself."
      ,"Defeated a small group of pirates."
      ,"Helped save a country."
-     ,"Captured a 20,000,000 bounty pirate all by himself."];
-  } else if(alliance === "Pirate") { // ---------------------------------------------- Pirate
-     feats = ["None"
+     ,"Captured a 20,000,000 bounty pirate all by himself."
+     ,"Took part in the Paramount War."
+     ,"Arrested a Supernova."
+     ,"Guarded Impel Down's Level 6."
+     ,"Joined the SWORD unit."
+     ,"Escorted a Celestial Dragon to the Reverie."
+     ,"Participated in a Buster Call."
+     ,"Defeated a Yonko Commander."],
+  "Pirate": ["None"
      ,"Stole a town's supplies."
      ,"Defeated a small group of pirates."
      ,"Defeated a Marine's Captain."
@@ -976,141 +1119,74 @@ function assignfeat(){
      ,"Escaped Impel Down."
      ,"Stormed a Marine's fortress."
      ,"Defeated a notorious pirate."
-     ,"Stole a rare devil fruit from the Government."];
-  } else if(alliance === "Bounty Hunter") { // ---------------------------------------------- Bounty Hunter
-     feats = ["None"
+     ,"Stole a rare devil fruit from the Government."
+     ,"Entered the New World."
+     ,"Reached Fish-Man Island."
+     ,"Survived a Buster Call."
+     ,"Punched a Celestial Dragon."
+     ,"Burned the World Government's flag."
+     ,"Found a Road Poneglyph."
+     ,"Took part in the Paramount War."
+     ,"Won a Davy Back Fight."
+     ,"Defeated a Supernova."
+     ,"Defeated a Yonko Commander."
+     ,"Defeated an Admiral."
+     ,"Fought in the Wano revolution."
+     ,"Freed the slaves at the Sabaody auction house."],
+  "Bounty Hunter": ["None"
      ,"Captured a 40,000,000 bounty criminal."
      ,"Defeated a small group of pirates."
      ,"Defeated a Marine's Captain."
      ,"Captured a 20,000,000 bounty criminal."
-     ,"Captured a 5,000,000 bounty criminal."];
-  } else if(alliance === "Cipher Pol") { // ---------------------------------------------- Cipher Pol
-     feats = ["None"
+     ,"Captured a 5,000,000 bounty criminal."
+     ,"Captured a Supernova."
+     ,"Worked as an agent of Baroque Works."
+     ,"Hunted pirates in the New World."
+     ,"Survived the Calm Belt."],
+  "Cipher Pol": ["None"
      ,"Adquired information about a poneglif."
      ,"Spied on a Yonko."
      ,"Contained a possible leak of sensitive Government information."
      ,"Completed a secret mission from the Government."
-     ,"Defeated a notorious pirate."];
-  } else if(alliance === "World Nobles") { // ---------------------------------------------- World Nobles
-     feats = ["None"
+     ,"Defeated a notorious pirate."
+     ,"Infiltrated a Yonko crew."
+     ,"Guarded the Celestial Dragons at the Reverie."
+     ,"Defended the Tower of Justice at Enies Lobby."
+     ,"Tracked down an Ohara survivor."],
+  "World Nobles": ["None"
      ,"Attacked a neighboring country."
      ,"Denied his past and royal family."
      ,"Destroyed an enemy's facility."
-     ,"Allied with pirates."];
-  } 
+     ,"Allied with pirates."
+     ,"Attended the Reverie."
+     ,"Bought a slave at the Sabaody auction house."
+     ,"Summoned an Admiral to their island."
+     ,"Fled Mary Geoise."]
+};
 
-  feat = capFirst(feats[getRandomInt(0, feats.length)]);
-      document.getElementById("feat").innerHTML = feat;
+// Escolhe um feat da alliance, excluindo os que exigem haki que a personagem não tem
+function pickFeat(allianceName, hakiName) {
+  var pool = allowedFeats(featsByAlliance[allianceName] || ["None"], hakiName);
+  return capFirst(pool[getRandomInt(0, pool.length)]);
+}
+
+function assignfeat(){
+  feat = pickFeat(alliance, haki);
+  document.getElementById("feat").innerHTML = feat;
 }
 
 // Feat 2 -----
 
 function assignfeat2(){
-     
- if (alliance2 === "Revolucionary Army") { // ---------------------------------------------- Revolucionary Army
-     feats2 = ["None"
-     ,"Attacked a Government country."
-     ,"Leaked sensitive Government information."
-     ,"Stole a rare devil fruit from the Government."
-     ,"Participated in a war."
-     ,"Released slaves from a Government ally."];
-  } else if(alliance2 === "Marine") { // ---------------------------------------------- Marine
-     feats2 = ["None"
-     ,"Captured a 40,000,000 bounty pirate all by himself."
-     ,"Defeated a small group of pirates."
-     ,"Helped save a country."
-     ,"Captured a 20,000,000 bounty pirate all by himself."];
-  } else if(alliance2 === "Pirate") { // ---------------------------------------------- Pirate
-     feats2 = ["None"
-     ,"Stole a town's supplies."
-     ,"Defeated a small group of pirates."
-     ,"Defeated a Marine's Captain."
-     ,"Defeated a Shichibukai."
-     ,"Defeated a Yonko."
-     ,"Is investigating the poneglifs."
-     ,"Escaped Impel Down."
-     ,"Stormed a Marine's fortress."
-     ,"Defeated a notorious pirate."
-     ,"Stole a rare devil fruit from the Government."];
-  } else if(alliance2 === "Bounty Hunter") { // ---------------------------------------------- Bounty Hunter
-     feats2 = ["None"
-     ,"Captured a 40,000,000 bounty criminal."
-     ,"Defeated a small group of pirates."
-     ,"Defeated a Marine's Captain."
-     ,"Captured a 20,000,000 bounty criminal."
-     ,"Captured a 5,000,000 bounty criminal."];
-  } else if(alliance2 === "Cipher Pol") { // ---------------------------------------------- Cipher Pol
-     feats2 = ["None"
-     ,"Adquired information about a poneglif."
-     ,"Spied on a Yonko."
-     ,"Contained a possible leak of sensitive Government information."
-     ,"Completed a secret mission from the Government."
-     ,"Defeated a notorious pirate."];
-  } else if(alliance2 === "World Nobles") { // ---------------------------------------------- World Nobles
-     feats2 = ["None"
-     ,"Attacked a neighboring country."
-     ,"Denied his past and royal family."
-     ,"Destroyed an enemy's facility."
-     ,"Allied with pirates."];
-  } 
-
-  feat2 = capFirst(feats2[getRandomInt(0, feats2.length)]);
-      document.getElementById("feat2").innerHTML = feat2;
+  feat2 = pickFeat(alliance2, haki2);
+  document.getElementById("feat2").innerHTML = feat2;
 }
 
 // Feat 3 -----
 
 function assignfeat3(){
-     
- if (alliance3 === "Revolucionary Army") { // ---------------------------------------------- Revolucionary Army
-     feats3 = ["None"
-     ,"Attacked a Government country."
-     ,"Leaked sensitive Government information."
-     ,"Stole a rare devil fruit from the Government."
-     ,"Participated in a war."
-     ,"Released slaves from a Government ally."];
-  } else if(alliance3 === "Marine") { // ---------------------------------------------- Marine
-     feats3 = ["None"
-     ,"Captured a 40,000,000 bounty pirate all by himself."
-     ,"Defeated a small group of pirates."
-     ,"Helped save a country."
-     ,"Captured a 20,000,000 bounty pirate all by himself."];
-  } else if(alliance3 === "Pirate") { // ---------------------------------------------- Pirate
-     feats3 = ["None"
-     ,"Stole a town's supplies."
-     ,"Defeated a small group of pirates."
-     ,"Defeated a Marine's Captain."
-     ,"Defeated a Shichibukai."
-     ,"Defeated a Yonko."
-     ,"Is investigating the poneglifs."
-     ,"Escaped Impel Down."
-     ,"Stormed a Marine's fortress."
-     ,"Defeated a notorious pirate."
-     ,"Stole a rare devil fruit from the Government."];
-  } else if(alliance3 === "Bounty Hunter") { // ---------------------------------------------- Bounty Hunter
-     feats3 = ["None"
-     ,"Captured a 40,000,000 bounty criminal."
-     ,"Defeated a small group of pirates."
-     ,"Defeated a Marine's Captain."
-     ,"Captured a 20,000,000 bounty criminal."
-     ,"Captured a 5,000,000 bounty criminal."];
-  } else if(alliance3 === "Cipher Pol") { // ---------------------------------------------- Cipher Pol
-     feats3 = ["None"
-     ,"Adquired information about a poneglif."
-     ,"Spied on a Yonko."
-     ,"Contained a possible leak of sensitive Government information."
-     ,"Completed a secret mission from the Government."
-     ,"Defeated a notorious pirate."];
-  } else if(alliance3 === "World Nobles") { // ---------------------------------------------- World Nobles
-     feats3 = ["None"
-     ,"Attacked a neighboring country."
-     ,"Denied his past and royal family."
-     ,"Destroyed an enemy's facility."
-     ,"Allied with pirates."];
-  } 
-
-  feat3 = capFirst(feats3[getRandomInt(0, feats3.length)]);
-      document.getElementById("feat3").innerHTML = feat3;
+  feat3 = pickFeat(alliance3, haki3);
+  document.getElementById("feat3").innerHTML = feat3;
 }
 
 
@@ -1293,7 +1369,7 @@ function doriki() {
   } else if(feat === "Defeated a notorious pirate.") {
      var featdoriki = getRandomInt(100, 1000 + 1);         
   } else {
-     var featdoriki = getRandomInt(0, 0 + 1);
+     var featdoriki = featBonus(extraFeatDoriki, feat);
   }
 
   dorikifinal = racedoriki + rankdoriki + hakidoriki + devilfruitdoriki + featdoriki
@@ -1314,7 +1390,9 @@ let adddoriki2 = "";
 
 function doriki2() {
 
-  if (rank2 === "Leader") {                            // --- Rank Revolucionary Army
+  if (rank2 === "Yonko") {                             // --- Rank Pirate (Yonko)
+     var rankdoriki2 = getRandomInt(60000, 100000 + 1);
+  } else if (rank2 === "Leader") {                            // --- Rank Revolucionary Army
      var rankdoriki2 = getRandomInt(20000, 50000 + 1);
   } else if(rank2 === "Chief of Staff") {
      var rankdoriki2 = getRandomInt(10000, 15000 + 1);
@@ -1435,7 +1513,7 @@ function doriki2() {
   } else if(feat2 === "Defeated a notorious pirate.") {
      var featdoriki2 = getRandomInt(100, 1000 + 1);         
   } else {
-     var featdoriki2 = getRandomInt(0, 0 + 1);
+     var featdoriki2 = featBonus(extraFeatDoriki, feat2);
   }
 
   dorikifinal2 = dorikifinal + rankdoriki2*0.2 + hakidoriki2 + featdoriki2
@@ -1456,7 +1534,9 @@ let adddoriki3 = "";
 
 function doriki3() {
 
-  if (rank3 === "Leader") {                            // --- Rank Revolucionary Army
+  if (rank3 === "Yonko") {                             // --- Rank Pirate (Yonko)
+     var rankdoriki3 = getRandomInt(60000, 100000 + 1);
+  } else if (rank3 === "Leader") {                            // --- Rank Revolucionary Army
      var rankdoriki3 = getRandomInt(20000, 50000 + 1);
   } else if(rank3 === "Chief of Staff") {
      var rankdoriki3 = getRandomInt(10000, 15000 + 1);
@@ -1577,7 +1657,7 @@ function doriki3() {
   } else if(feat3 === "Defeated a notorious pirate.") {
      var featdoriki3 = getRandomInt(100, 1000 + 1);         
   } else {
-     var featdoriki3 = getRandomInt(0, 0 + 1);
+     var featdoriki3 = featBonus(extraFeatDoriki, feat3);
   }
 
   dorikifinal3 = dorikifinal2 + rankdoriki3*0.2 + hakidoriki3 + featdoriki3
@@ -1590,7 +1670,7 @@ function doriki3() {
 // Mostra a variação da bounty com o sinal correto, ex: (+5,000,000) ou (-3,000,000)
 function formatBountyChange(value) {
   var sign = value < 0 ? '-' : '+';
-  return '(' + sign + Math.abs(value) + ',000,000)';
+  return '(' + sign + formatBounty(Math.abs(value)) + ')';
 }
 
 // Bounty New System ----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1640,7 +1720,7 @@ function addbounty() {
   } else if(feat === "Stole a rare devil fruit from the Government.") {
      var featbounty = getRandomInt(25, 100 + 1);              
   } else {
-     var featbounty = getRandomInt(0, 0 + 1);
+     var featbounty = featBonus(extraFeatBounty, feat);
   }
 
   dorikibounty = dorikifinal * 0.075
@@ -1660,7 +1740,7 @@ function addbounty() {
 
   bountyfinal = dorikibounty + alliancebounty + devilfruitbounty + featbounty
   var bountyadded = parseInt(bountyfinal);
-  document.getElementById("bountyfinal").innerHTML = parseInt(bountyfinal) + ',000,000';
+  document.getElementById("bountyfinal").innerHTML = formatBounty(parseInt(bountyfinal));
   document.getElementById("addbounty").innerHTML = formatBountyChange(bountyadded);
 }
 
@@ -1711,18 +1791,21 @@ function addbounty2() {
   } else if(feat2 === "Stole a rare devil fruit from the Government.") {
      var featbounty2 = getRandomInt(25, 100 + 1);              
   } else {
-     var featbounty2 = getRandomInt(0, 0 + 1);
+     var featbounty2 = featBonus(extraFeatBounty, feat2);
   }
 
   dorikibounty2 = dorikifinal2 * 0.075
   bountyfinal2 = dorikibounty2 + alliancebounty2 + devilfruitbounty2 + featbounty2
+  if (rank2 === "Yonko") {   // --- Yonko (bounty na casa dos bilhões)
+     bountyfinal2 += getRandomInt(2000, 4000 + 1);
+  }
 
   if (alliance2 === "Marine" || alliance2 === "Cipher Pol") {   // --- Block Alliances (mantém a bounty anterior)
      bountyfinal2 = bountyfinal;
   }
   
   var bountyadded2 = parseInt(bountyfinal2) - parseInt(bountyfinal) // Calcula a diferença entre as bounties no anos 1 e 2
-  document.getElementById("bountyfinal2").innerHTML = parseInt(bountyfinal2) + ',000,000';
+  document.getElementById("bountyfinal2").innerHTML = formatBounty(parseInt(bountyfinal2));
   document.getElementById("addbounty2").innerHTML = formatBountyChange(bountyadded2);
 }
 
@@ -1773,17 +1856,20 @@ function addbounty3() {
   } else if(feat3 === "Stole a rare devil fruit from the Government.") {
      var featbounty3 = getRandomInt(25, 100 + 1);              
   } else {
-     var featbounty3 = getRandomInt(0, 0 + 1);
+     var featbounty3 = featBonus(extraFeatBounty, feat3);
   }
 
   dorikibounty3 = dorikifinal3 * 0.075
   bountyfinal3 = dorikibounty3 + alliancebounty3 + devilfruitbounty3 + featbounty3
+  if (rank3 === "Yonko") {   // --- Yonko (bounty na casa dos bilhões)
+     bountyfinal3 = Math.max(bountyfinal3 + getRandomInt(2000, 4000 + 1), bountyfinal2);
+  }
 
   if (alliance3 === "Marine" || alliance3 === "Cipher Pol") {   // --- Block Alliances (mantém a bounty anterior)
      bountyfinal3 = bountyfinal2;
   }
   
   var bountyadded3 = parseInt(bountyfinal3) - parseInt(bountyfinal2) // Calcula a diferença entre as bounties no anos 2 e 3
-  document.getElementById("bountyfinal3").innerHTML = parseInt(bountyfinal3) + ',000,000';
+  document.getElementById("bountyfinal3").innerHTML = formatBounty(parseInt(bountyfinal3));
   document.getElementById("addbounty3").innerHTML = formatBountyChange(bountyadded3);
 }
