@@ -711,6 +711,7 @@ function assigndevilfruit(){
 
   df = capFirst(dfs[getRandomInt(0, dfs.length)]);
   document.getElementById("df").innerHTML = df;
+  updateFruitInfo(1);
 }
 
 // Devil Fruit 2 -----
@@ -827,6 +828,7 @@ function assigndevilfruit2(){
 
   df2 = capFirst(dfs2[getRandomInt(0, dfs2.length)]);
   document.getElementById("df2").innerHTML = df2;
+  updateFruitInfo(2);
 }
     
 // Devil Fruit 3 -----
@@ -943,6 +945,7 @@ function assigndevilfruit3(){
 
   df3 = capFirst(dfs3[getRandomInt(0, dfs3.length)]);
   document.getElementById("df3").innerHTML = df3;
+  updateFruitInfo(3);
 }
 
 // Feat ---------------------------------------------------------------------------------------------------------------------------------------------------------------

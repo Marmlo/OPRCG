@@ -1,22 +1,28 @@
 <!DOCTYPE html>
-<HTML lang="en">
-
-<!-- Links -->
-<link rel="stylesheet" type="text/css" href="css/theme.css" media="all" />
-<script src="javascript/character.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jspdf-autotable@3.8.2/dist/jspdf.plugin.autotable.min.js"></script>
-<script src="javascript/pdf.js"></script>
-
+<html lang="en">
 <head>
-	<h1><center><img src="images/logo.png" alt="Random character generator" style="max-width: 727px; max-height: 200px;"></center></h1>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>One Piece Character Generator</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/theme.css" media="all" />
+	<script src="javascript/character.js"></script>
+	<script src="javascript/extras.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/jspdf-autotable@3.8.2/dist/jspdf.plugin.autotable.min.js"></script>
+	<script src="javascript/pdf.js"></script>
 </head>
-<body style="background-image: url('images/wallpaper.jpg'); background-repeat:repeat; background-size: 100%">
-	<center>
-	<table>
+<body>
+	<header class="hero">
+		<img src="images/Logo.png" alt="Random character generator" class="logo">
+		<p class="tagline">Roll a new adventurer and follow their journey across the Grand Line.</p>
+	</header>
+	<main class="card">
+	<table class="sheet">
 		<tr>  <!-- BOTAO -->
 			<td colspan="4">
-			<input type="button" value="Generate All" onclick="generateRace(); generateAlliance(); assignRank(); generatefighting(); assignhaki(); generatedevilfruit(); assigndevilfruit(); assignfeat(); doriki(); addbounty(); generateAlliance2();  assignRank2();  generatefighting2();  assignhaki2(); generatedevilfruit2(); assigndevilfruit2();  assignfeat2(); doriki2(); addbounty2(); generateAlliance3();  assignRank3();  generatefighting3();  assignhaki3(); generatedevilfruit3(); assigndevilfruit3(); assignfeat3(); doriki3(); addbounty3();">
+			<input type="button" class="primary" value="Generate All" onclick="generateAll();">
 			</td> 
 		</tr> <!-- BOTAO -->
 		<tr>
@@ -27,11 +33,11 @@
   		</tr>
   		<tr>
 		    <td>Name</td>
-		    <td colspan="3"><input type="text" id="fname" name="fname" style="text-align: center;"></td>
+		    <td colspan="3"><input type="text" id="fname" placeholder="Enter or generate a name" name="fname" style="text-align: center;"></td>
   		</tr>
   		<tr>
 		    <td>Nickname</td>
-		    <td colspan="3"><input type="text" id="nickname" name="nickname" style="text-align: center;"></td>
+		    <td colspan="3"><input type="text" id="nickname" placeholder="Enter or generate a nickname" name="nickname" style="text-align: center;"></td>
   		</tr>
   		<tr>
 		    <td>Race</td>
@@ -110,12 +116,15 @@
 		    <td>Devil-fruit (specified)</td>
 		    <td>
 		    	<h5 id="df"><input type="button" value="Generate" onclick="assigndevilfruit()"></h5>
+		    	<button type="button" class="know-more" id="dfinfo1" hidden onclick="openFruitInfo(1)">&#9432; Know more</button>
 		    </td>
 		    <td>
 		    	<h5 id="df2"><input type="button" value="Generate" onclick="assigndevilfruit2()"></h5>
+		    	<button type="button" class="know-more" id="dfinfo2" hidden onclick="openFruitInfo(2)">&#9432; Know more</button>
 		    </td>
 		    <td>
 		    	<h5 id="df3"><input type="button" value="Generate" onclick="assigndevilfruit3()"></h5>
+		    	<button type="button" class="know-more" id="dfinfo3" hidden onclick="openFruitInfo(3)">&#9432; Know more</button>
 		    </td>
   		</tr>
   		<tr>
@@ -160,10 +169,22 @@
   		</tr>
 		<tr>  <!-- PDF -->
 			<td colspan="4">
-			<input type="button" value="Export to PDF" onclick="exportPDF();">
+			<input type="button" class="primary" value="Export to PDF" onclick="exportPDF();">
 			</td>
 		</tr> <!-- PDF -->
 	</table>
-	</center>
+	</main>
+
+	<div id="fruit-modal" class="modal" hidden onclick="if (event.target === this) closeFruitInfo();">
+		<div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+			<button type="button" class="modal-close" onclick="closeFruitInfo()" aria-label="Close">&times;</button>
+			<span class="badge" id="modal-type"></span>
+			<h2 id="modal-title"></h2>
+			<h3>Type</h3>
+			<p id="modal-type-text"></p>
+			<h3>Powers</h3>
+			<p id="modal-power-text"></p>
+		</div>
+	</div>
 </body>
 </html>
