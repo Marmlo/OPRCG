@@ -1,18 +1,63 @@
+
+# ==========================================================
+# ONE PIECE CHARACTER GENERATOR — FIGHTING STYLES
+# ==========================================================
+# period = generation period (empty = any period)
+# alliance = required alliance (empty = any alliance)
+# rank = required rank (empty = any rank)
+# race = required race (empty = any race)
+# style = fighting style
+# weight = relative probability
+#
+# Empty fields act as unrestricted filters.
+# Keep names consistent with the other CSV files.
+# ==========================================================
+
 period;alliance;rank;race;style;weight
+
+# ==========================================================
+# ALLIANCE-SPECIFIC STYLES
+# ==========================================================
+
+# --- CIPHER POL ---
 1;Cipher Pol;;;Six power;1
+
+
+# ==========================================================
+# RANK-SPECIFIC STYLES
+# ==========================================================
+
+# --- SEAMAN ---
 1;;Seaman;;Gunsmanship;1
 1;;Seaman;;Swordsmanship;1
+
+# --- CHOREBOY ---
 1;;Choreboy;;Gunsmanship;1
 1;;Choreboy;;Swordsmanship;1
 1;;Choreboy;;Fists;1
+
+# --- SWORDSMAN ---
 ;;Swordsman;;Swordsmanship;1
 ;;Swordsman;;Samurai;1
+
+# --- SNIPER ---
 1;;Sniper;;Gunsmanship;1
+
+# --- MARTIAL ARTIST ---
 1;;Martial Artist;;Six power;1
 1;;Martial Artist;;Dragon Claw;1
 1;;Martial Artist;;Fishman karate;1
+
+# --- SOLDIER ---
 1;;Soldier;;Gunsmanship;1
 1;;Soldier;;Swordsmanship;1
+
+
+# ==========================================================
+# RACE-SPECIFIC STYLES
+# ==========================================================
+
+# --- FISHMAN ---
 1;;;Fishman;Fishman karate;1
 1;;;Fishman;Swordsmanship;1
 1;;;Fishman;Gunsmanship;1
@@ -22,6 +67,8 @@ period;alliance;rank;race;style;weight
 1;;;Fishman;Black leg;1
 1;;;Fishman;Fists;1
 1;;;Fishman;Samurai;1
+
+# --- MERFOLK ---
 1;;;Merfolk;Fishman karate;1
 1;;;Merfolk;Swordsmanship;1
 1;;;Merfolk;Gunsmanship;1
@@ -31,6 +78,14 @@ period;alliance;rank;race;style;weight
 1;;;Merfolk;Black leg;1
 1;;;Merfolk;Fists;1
 1;;;Merfolk;Samurai;1
+
+
+# ==========================================================
+# GENERAL FIGHTING STYLES
+# ==========================================================
+# Available without alliance, rank or race restrictions.
+# Currently restricted to period 1.
+
 1;;;;Swordsmanship;1
 1;;;;Gunsmanship;1
 1;;;;Six power;1
@@ -39,3 +94,4 @@ period;alliance;rank;race;style;weight
 1;;;;Black leg;1
 1;;;;Fists;1
 1;;;;Samurai;1
+
