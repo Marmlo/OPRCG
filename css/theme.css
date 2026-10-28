@@ -29,7 +29,7 @@ body {
 /* Site header: logo, tagline and menu on one row; Generate All underneath (generator page only) */
 .site-header {
 	position: relative;
-	max-width: 1100px;
+	max-width: 1240px;
 	margin: 0 auto 22px;
 	display: grid;
 	grid-template-columns: auto minmax(0, 1fr) auto;
@@ -88,7 +88,7 @@ body {
 .nav-toggle svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
 
 /* Layout: identity card + timeline + bottom panels, stacked */
-.sheet { max-width: 1100px; margin: 0 auto; display: grid; gap: 18px; }
+.sheet { max-width: 1240px; margin: 0 auto; display: grid; gap: 18px; }
 .page { max-width: 760px; margin: 0 auto; display: grid; gap: 18px; }
 
 .card, .period, .panel {
@@ -106,7 +106,7 @@ body {
 	align-items: center;
 	gap: 12px;
 	padding: 10px 18px;
-	background: rgba(0, 0, 0, 0.35);
+	background: linear-gradient(90deg, rgba(230, 58, 20, 0.22), rgba(0, 0, 0, 0.35) 70%);
 	border-bottom: 2px solid var(--red);
 }
 .period-title {
@@ -117,6 +117,7 @@ body {
 	line-height: 1.2;
 	letter-spacing: 1px;
 	color: var(--gold);
+	overflow-wrap: anywhere;
 }
 .period-badge {
 	padding: 2px 10px;
@@ -133,6 +134,10 @@ body {
 /* Fields: small label above its value */
 .field { min-width: 0; display: grid; gap: 4px; align-content: start; }
 .field-label {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 4px;
 	font-size: 0.72rem;
 	font-weight: 600;
 	text-transform: uppercase;
@@ -155,25 +160,25 @@ body {
 }
 .org-icon { display: inline-block; width: 0.85em; height: 0.85em; margin-right: 0.3em; vertical-align: -0.08em; }
 
-/* Character card: portrait, identity and statistics; tablet and phones reflow them with grid areas */
+/* Character card: portrait and identity on top, then the Haki, Doriki and Bounty strip across the full width; tablet and phones reflow them with grid areas */
 .identity-body {
 	display: grid;
-	grid-template-columns: 240px minmax(0, 1fr) 300px;
-	grid-template-areas: "portrait ident stats";
-	align-items: stretch;
-	gap: 18px;
-	padding: 18px;
+	grid-template-columns: 240px minmax(0, 1fr);
+	grid-template-areas: "portrait ident" "stats stats";
+	align-items: start;
+	gap: 20px;
+	padding: 20px;
 	transition: filter 0.4s, opacity 0.4s;
 }
 .dash-portrait { grid-area: portrait; margin: 0; min-width: 0; }
-.dash-ident { grid-area: ident; display: grid; gap: 12px; align-content: start; min-width: 0; }
+.dash-ident { grid-area: ident; display: grid; gap: 14px; align-content: start; min-width: 0; }
 /* Name is the headline, the nickname sits under it, then the affiliation chips and the facts */
 .dash-name { display: grid; gap: 2px; min-width: 0; }
 .dash-name input { height: auto; padding: 2px 0; background: transparent; border: 0; border-bottom: 1px solid rgba(245, 184, 46, 0.35); border-radius: 0; }
 .dash-name input:focus { background: transparent; border-color: var(--gold); }
-#fname { font-family: "Bangers", "Inter", sans-serif; font-size: 1.9rem; line-height: 1.1; letter-spacing: 1px; color: var(--gold); }
+#fname { font-family: "Bangers", "Inter", sans-serif; font-size: 2rem; line-height: 1.1; letter-spacing: 1px; color: var(--gold); }
 #nickname { font-size: 0.95rem; font-style: italic; color: var(--muted); }
-.dash-facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px 14px; margin: 0; padding-top: 12px; border-top: 1px solid var(--line); }
+.dash-facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px 16px; margin: 0; padding-top: 14px; border-top: 1px solid var(--line); }
 .fact { display: grid; gap: 3px; align-content: start; min-width: 0; }
 .fact dt, .fact dt label { font-size: 0.66rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); }
 .fact dd { margin: 0; min-width: 0; font-size: 0.95rem; overflow-wrap: anywhere; }
@@ -183,7 +188,8 @@ body {
 .fact-wide { grid-column: 1 / -1; }
 .fact .fruit-row { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; }
 .fact .fruit-row small { font-size: 0.8rem; color: var(--muted); }
-.dash-stats { grid-area: stats; display: grid; gap: 12px; align-content: start; min-width: 0; }
+/* Haki, Doriki and Bounty: one strip of three cards, in that order */
+.dash-stats { grid-area: stats; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; align-items: stretch; min-width: 0; }
 
 /* Portrait: square frame, uploader on top of the picture */
 .portrait-frame {
@@ -375,6 +381,9 @@ body {
 }
 .group + .group { border-left: 1px solid var(--line); }
 .group-title {
+	display: flex;
+	align-items: center;
+	gap: 8px;
 	margin: 0;
 	font-size: 0.75rem;
 	font-weight: 700;
@@ -382,7 +391,12 @@ body {
 	letter-spacing: 1px;
 	color: var(--gold);
 }
+/* Each section title is a small banner: a diamond, then a fading rule */
+.group-title::before { content: "◆"; font-size: 0.6rem; color: var(--red); }
+.group-title::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, rgba(245, 184, 46, 0.45), transparent); }
 .field-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+/* Doriki and Bounty read as two stat plates */
+.field-row > .field { padding: 10px 12px; background: rgba(0, 0, 0, 0.28); border: 1px solid rgba(245, 184, 46, 0.22); border-radius: 12px; }
 
 h5, h6 { margin: 0; font-weight: 500; }
 h5 { font-size: 1rem; }
@@ -562,7 +576,7 @@ input[type="checkbox"] { width: 20px; height: 20px; padding: 0; flex: none; acce
 
 /* Credits footer */
 .credits {
-	max-width: 1100px;
+	max-width: 1240px;
 	margin: 28px auto 0;
 	display: flex;
 	flex-wrap: wrap;
@@ -600,7 +614,8 @@ input[type="checkbox"] { width: 20px; height: 20px; padding: 0; flex: none; acce
 /* Pending cards: content blurred behind a single Generate button. The character portrait and its uploader stay usable */
 .period-content { position: relative; overflow: hidden; border-radius: 0 0 17px 17px; flex: 1; display: flex; flex-direction: column; }
 .period-body { flex: 1; transition: filter 0.4s, opacity 0.4s; }
-.pending .period-body, .pending .identity-body > .dash-ident, .pending .identity-body > .dash-stats {
+.pending .period-body, .pending .identity-body > .dash-ident, .pending .identity-body > .dash-stats,
+.pending .identity-body > .dash-name, .pending .identity-body > .dash-badges, .pending .identity-body > .dash-facts {
 	filter: blur(5px);
 	opacity: 0.45;
 	pointer-events: none;
@@ -626,15 +641,16 @@ input[type="checkbox"] { width: 20px; height: 20px; padding: 0; flex: none; acce
 [type="button"].period-generate:disabled { cursor: not-allowed; opacity: 0.55; box-shadow: none; }
 .period-lock { margin: 0; min-height: 1.2em; font-size: 0.8rem; font-weight: 600; color: var(--muted); }
 
-/* Mini "i" button next to Doriki / Bounty */
+/* Mini "i" button next to Doriki / Bounty. Its tap area reaches about 40px without changing the circle */
 .info-btn {
+	position: relative;
 	display: inline-grid;
 	place-items: center;
 	width: 16px;
 	height: 16px;
-	margin-left: 4px;
+	margin-left: 0;
 	padding: 0;
-	vertical-align: 1px;
+	vertical-align: middle;
 	font: italic 700 0.65rem/1 Georgia, serif;
 	color: var(--gold);
 	background: transparent;
@@ -642,7 +658,10 @@ input[type="checkbox"] { width: 20px; height: 20px; padding: 0; flex: none; acce
 	border-radius: 50%;
 	cursor: pointer;
 }
+.info-btn::after { content: ""; position: absolute; inset: -12px; }
 .info-btn:hover { background: rgba(245, 184, 46, 0.18); }
+/* Details button: only on phones, where period cards collapse their repeated parts */
+.more-toggle { display: none; }
 
 /* Breakdown pop-up */
 .breakdown { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
@@ -729,7 +748,7 @@ input[type="checkbox"] { width: 20px; height: 20px; padding: 0; flex: none; acce
 
 /* Timeline modes: All Years (period cards) and Milestones (key moments from the same data) */
 .timeline[hidden], .milestones[hidden] { display: none; }
-.milestones { display: grid; gap: 14px; }
+.milestones { display: grid; gap: 14px; align-items: start; }
 .ms-period {
 	padding: 14px 18px 16px;
 	background: var(--panel);
@@ -737,8 +756,9 @@ input[type="checkbox"] { width: 20px; height: 20px; padding: 0; flex: none; acce
 	border-left: 4px solid var(--red);
 	border-radius: 14px;
 	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+	min-width: 0;
 }
-.ms-head { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+.ms-head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin-bottom: 12px; }
 .ms-title {
 	margin: 0;
 	font-family: "Bangers", "Inter", sans-serif;
@@ -746,13 +766,29 @@ input[type="checkbox"] { width: 20px; height: 20px; padding: 0; flex: none; acce
 	font-size: 1.35rem;
 	letter-spacing: 1px;
 	color: var(--gold);
+	overflow-wrap: anywhere;
 }
-.ms-events { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
-.ms-event { display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 10px; align-items: start; }
+/* One progression line runs through every event of a period; each event's icon sits on it */
+.ms-events { position: relative; margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+.ms-events::before {
+	content: "";
+	position: absolute;
+	left: 14px;
+	top: 15px;
+	bottom: 15px;
+	width: 2px;
+	background: linear-gradient(180deg, rgba(230, 58, 20, 0.7), rgba(245, 184, 46, 0.35));
+	border-radius: 2px;
+}
+.ms-event { position: relative; display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 12px; align-items: start; }
 .ms-event > div { display: grid; gap: 2px; min-width: 0; }
 .ms-event strong { font-weight: 600; overflow-wrap: anywhere; }
 .ms-event > div > span { font-size: 0.85rem; color: var(--muted); overflow-wrap: anywhere; }
+/* Kind label in the event's own colour, so the kind is also readable as text */
+.ms-kind { font-style: normal; font-size: 0.66rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: color-mix(in srgb, var(--ms, var(--red)) 45%, #fff); }
 .ms-icon {
+	position: relative;
+	z-index: 1;
 	display: grid;
 	place-items: center;
 	width: 30px;
@@ -761,7 +797,7 @@ input[type="checkbox"] { width: 20px; height: 20px; padding: 0; flex: none; acce
 	font-size: 0.85rem;
 	color: #fff;
 	background: var(--ms, var(--red));
-	box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.04);
+	box-shadow: 0 0 0 3px #0b0f19;
 }
 .kind-affiliation { --ms: #2f7fc1; }
 .kind-rank { --ms: #c98d17; }
@@ -831,12 +867,14 @@ input[type="checkbox"] { width: 20px; height: 20px; padding: 0; flex: none; acce
 }
 .reduce-motion *, .reduce-motion *::before, .reduce-motion *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 
-/* Desktop: the period cards sit side by side as horizontal cards */
+/* Desktop: the period cards sit side by side as horizontal cards, and the milestone panels use the same three columns */
 @media (min-width: 961px) {
 	.timeline { grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: stretch; gap: 18px; padding-left: 0; }
 	.timeline::before, .period::before { display: none; }
 	.period-body { grid-template-columns: minmax(0, 1fr); }
 	.group + .group { border-left: 0; border-top: 1px solid var(--line); }
+	.milestones { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+	.ms-empty { grid-column: 1 / -1; }
 }
 
 /* Tablet: identity and statistics fill two columns, timeline and bottom panels reflow */
@@ -866,10 +904,10 @@ input[type="checkbox"] { width: 20px; height: 20px; padding: 0; flex: none; acce
 		font-size: 16px;
 		background-attachment: scroll;
 	}
-	.site-header { grid-template-columns: 1fr auto; grid-template-areas: "brand nav" "tagline tagline" "menu menu" "actions actions"; gap: 10px; margin-bottom: 14px; }
-	.logo { width: 170px; }
+	.site-header { grid-template-columns: 1fr auto; grid-template-areas: "brand nav" "tagline tagline" "menu menu" "actions actions"; gap: 6px; margin-bottom: 12px; }
+	.logo { width: 200px; filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.55)) drop-shadow(0 6px 18px rgba(0, 0, 0, 0.6)); }
 	.nav-toggle { display: grid; }
-	.tagline { font-size: 0.9rem; padding: 0 8px; }
+	.tagline { font-size: 0.8rem; line-height: 1.35; padding: 0; }
 	.site-nav { display: none; grid-area: menu; flex-direction: column; align-items: stretch; gap: 0; padding: 6px 0 0; }
 	.site-nav.open { display: flex; }
 	.site-nav .nav-link, .site-nav .nav-button { padding: 12px 4px; border-bottom: 1px solid var(--line); text-align: left; }
@@ -890,28 +928,61 @@ input[type="checkbox"] { width: 20px; height: 20px; padding: 0; flex: none; acce
 	.period-identity { padding: 7px 14px; gap: 2px 14px; font-size: 0.75rem; }
 	[type="button"].period-generate { min-width: 0; width: 100%; max-width: 300px; font-size: 1.2rem; }
 
-	/* Character card on phones: portrait beside the name, then race, gender and birthplace, then the statistics */
+	/* Character card on phones: a compact header (portrait beside the name, nickname and chips), the facts in two columns, then Haki and the statistics */
 	.identity-body {
-		grid-template-columns: minmax(0, 1fr);
-		grid-template-areas: "portrait" "ident" "stats";
-		gap: 14px;
-		padding: 14px;
+		grid-template-columns: 112px minmax(0, 1fr);
+		grid-template-areas: "portrait name" "portrait badges" "facts facts" "stats stats";
+		gap: 12px 14px;
+		padding: 12px;
 	}
-	.identity-body .dash-portrait { width: 180px; justify-self: center; }
-	.dash-facts { grid-template-columns: minmax(0, 1fr); }
-	.identity-body .dash-portrait { align-self: start; }
+	.identity-body .dash-ident { display: contents; }
+	.identity-body .dash-portrait { width: 112px; align-self: start; }
+	.identity-body .dash-name { grid-area: name; align-self: start; }
+	.identity-body .dash-badges { grid-area: badges; align-self: start; }
+	.identity-body .dash-facts { grid-area: facts; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 12px; padding-top: 10px; }
+	.identity-body .fact dd { font-size: 0.9rem; }
+	.identity-body #fname { font-size: 1.6rem; }
+	.identity-body #region { white-space: normal; }
+	.identity-body .portrait-upload { left: 6px; right: 6px; bottom: 6px; width: auto; transform: none; padding: 5px 4px; font-size: 0.68rem; white-space: normal; text-align: center; }
 	.identity-body .dash-stats { grid-template-columns: 1fr 1fr; gap: 10px; }
+	.identity-body .stat-haki { grid-column: 1 / -1; }
 	.identity-body .stat { grid-template-columns: 40px minmax(0, 1fr); padding: 10px; gap: 8px; }
 	.identity-body .stat-icon { width: 40px; height: 40px; }
 	.identity-body .stat-icon svg { width: 20px; height: 20px; }
 	.identity-body .stat-value { font-size: 1.9rem; }
 	.identity-body .stat-bounty .stat-value { font-size: 1.3rem; }
-	.identity-body .field-value { min-height: 44px; }
 	.haki-orb { width: 48px; height: 48px; }
 	.haki-orb svg { width: 22px; height: 22px; }
 
+	/* Period cards on phones: the title, affiliation, rank, Doriki and Bounty, feats and the Devil Fruit show at once. The repeated identity and the secondary attributes wait behind "Show details" */
+	.period:not(.show-more) .more-part { display: none; }
+	.period-body .group { gap: 10px; }
+	.more-toggle {
+		display: block;
+		width: 100%;
+		min-height: 44px;
+		margin: 0;
+		padding: 10px 14px;
+		font-size: 0.85rem;
+		letter-spacing: 0.5px;
+		color: var(--gold);
+		background: rgba(255, 255, 255, 0.03);
+		border: 0;
+		border-top: 1px solid var(--line);
+		border-radius: 0;
+	}
+	.more-toggle::after { content: "Show details ▾"; }
+	.more-toggle[aria-expanded="true"]::after { content: "Hide details ▴"; }
+	.pending .more-toggle { visibility: hidden; }
+
+
 	.dash-bottom { grid-template-columns: 1fr; grid-template-areas: "poster" "evo"; }
-	.poster-row { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr); }
+	/* Poster first and large; its controls sit below it in two columns, so no button gets too narrow */
+	.poster-row { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+	.poster-thumb { width: 100%; max-width: 360px; justify-self: center; }
+	.poster-actions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+	.poster-actions .poster-export { grid-column: 1 / -1; }
+	.poster-actions .export-tool { padding: 10px 8px; min-width: 0; }
 	.timeline-head { gap: 10px; }
 	.view-switch { margin-left: 0; }
 
@@ -922,6 +993,8 @@ input[type="checkbox"] { width: 20px; height: 20px; padding: 0; flex: none; acce
 
 	input, select { padding: 12px 14px; font-size: 16px; }
 	[type="button"] { min-height: 44px; }
+	/* The info buttons and the minimize button keep their round size; their tap area is extended instead (see .info-btn) */
+	.info-btn, .race-info, .collapse-btn { min-height: 0; }
 	[type="button"].primary { padding: 14px; font-size: 1.35rem; }
 	.actions [type="button"].primary { padding: 10px 18px; font-size: 1.05rem; min-height: 40px; }
 	.setting { flex-direction: column; align-items: stretch; }

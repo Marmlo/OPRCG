@@ -151,7 +151,9 @@ function showAllYears() {
 // SVG line chart of the generated periods only. Values are the ones the period cards show (same rounding)
 function evolutionSvg(ns) {
   if (!ns.length) return '<p class="evo-empty">Generate a period to see how the character changes over time.</p>';
-  var W = 600, H = 280, L = 104, R = 28, T = 26, B = 40, PH = H - T - B, PW = W - L - R;
+  // On phones the drawing is narrower, so it scales down less and the axis labels stay readable
+  var small = mobileQuery.matches;
+  var W = small ? 420 : 600, H = small ? 260 : 280, L = small ? 92 : 104, R = small ? 20 : 28, T = 26, B = 40, PH = H - T - B, PW = W - L - R;
   var x = { 1: L + PW / 6, 2: L + PW / 2, 3: L + PW * 5 / 6 };
   var series, max, tick, fmt, label;
 
@@ -212,6 +214,7 @@ function renderEvolution(available) {
 
 // Milestones ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 // Key moments found by comparing each generated period with the one before it (the same data the period cards show)
+var MILESTONE_KINDS = { affiliation: "Affiliation", rank: "Rank", haki: "Haki", fruit: "Devil Fruit", feat: "Feat" };
 
 function milestoneEvents(n) {
   var p = periods[n], before = n > 1 ? periods[n - 1] : {}, out = [];
@@ -248,8 +251,8 @@ function renderMilestones(available) {
     html += '<article class="ms-period"><header class="ms-head"><span class="period-badge">' + (n === 1 ? "Start" : "Timeskip") + '</span>' +
       '<h3 class="ms-title">' + PERIOD_NAMES[n] + '</h3></header><ul class="ms-events">' +
       events[n].map(function (e) {
-        return '<li class="ms-event kind-' + e.kind + '"><span class="ms-icon" aria-hidden="true"></span><div><strong>' +
-          esc(e.title) + '</strong><span>' + esc(e.detail) + '</span></div></li>';
+        return '<li class="ms-event kind-' + e.kind + '"><span class="ms-icon" aria-hidden="true"></span><div><em class="ms-kind">' +
+          MILESTONE_KINDS[e.kind] + '</em><strong>' + esc(e.title) + '</strong><span>' + esc(e.detail) + '</span></div></li>';
       }).join("") + '</ul></article>';
   });
   setHtml(document.getElementById("milestones"), html || '<p class="ms-empty">Generate a period to see its milestones.</p>');
@@ -277,6 +280,14 @@ document.addEventListener("click", function (e) {
   if (evo) { evoMetric = evo.getAttribute("data-metric"); syncDashboard(); return; }
   var view = t.closest(".view-btn");
   if (view) { setView(view.getAttribute("data-view")); return; }
+  // Phones: "Show details" reveals the repeated identity and the secondary attributes of a period card
+  var more = t.closest(".more-toggle");
+  if (more) {
+    var open = more.getAttribute("aria-expanded") !== "true";
+    more.setAttribute("aria-expanded", String(open));
+    more.closest(".period").classList.toggle("show-more", open);
+    return;
+  }
   // On phones a period card is tapped to show or hide its details (its summary stays in the header)
   var head = t.closest(".period .period-head");
   if (head && !t.closest("button") && mobileQuery.matches) toggleCard(Number(head.parentElement.id.split("-")[1]));
@@ -287,5 +298,6 @@ document.addEventListener("DOMContentLoaded", function () {
   if (!sheet) return;
   setView(timelineView);
   syncDashboard(true);
+  mobileQuery.addEventListener("change", function () { syncDashboard(true); });   // the chart is drawn for the current width
   new MutationObserver(function () { syncDashboard(); }).observe(sheet, { childList: true, subtree: true, characterData: true });
 });
