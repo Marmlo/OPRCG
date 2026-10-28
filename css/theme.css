@@ -83,7 +83,20 @@ body {
 	color: var(--muted);
 }
 .field-value { min-width: 0; overflow-wrap: anywhere; }
-.field-value .know-more { justify-self: start; }
+
+/* Organization, rank, doriki and bounty: the main values of each period, in the display font */
+.key-value {
+	margin: 0;
+	font-family: "Bangers", "Inter", sans-serif;
+	font-weight: 400;
+	font-size: 1.4rem;
+	line-height: 1.1;
+	letter-spacing: 1px;
+	color: var(--gold);
+	text-shadow: 0 2px 12px rgba(245, 184, 46, 0.25);
+	overflow-wrap: break-word;
+}
+.org-icon { display: inline-block; width: 0.85em; height: 0.85em; margin-right: 0.3em; vertical-align: -0.08em; }
 
 /* Identity: one compact row on desktop, reflowed by grid areas on tablet and mobile */
 .identity-body {
@@ -232,20 +245,10 @@ select option { color: #111; }
 .actions .primary { flex: 3; }
 .actions .secondary { flex: 1; }
 
-/* Know more */
-.know-more {
-	margin-top: 8px;
-	padding: 4px 12px;
-	font: inherit;
-	font-size: 0.8rem;
-	font-weight: 600;
-	color: var(--gold);
-	background: transparent;
-	border: 1px solid rgba(245, 184, 46, 0.5);
-	border-radius: 999px;
-	cursor: pointer;
-}
-.know-more:hover { background: rgba(245, 184, 46, 0.15); }
+/* Know more: the same "i" as Doriki and Bounty, at the right end of the fruit's row */
+.fruit-value { display: flex; align-items: center; }
+.fruit-value h5 { flex: 1 1 auto; min-width: 0; }
+.know-more { flex: none; }
 .know-more[hidden] { display: none; }
 
 /* Modal */
@@ -278,7 +281,7 @@ select option { color: #111; }
 	position: absolute;
 	top: 10px;
 	right: 14px;
-	font-size: 1.6rem;
+	font-size: 1.4rem;
 	color: var(--muted);
 	background: none;
 	border: 0;
@@ -378,7 +381,7 @@ select option { color: #111; }
 	pointer-events: none;
 	user-select: none;
 }
-.pending .field-value h5:empty::before { content: "? ? ? ? ?"; color: var(--muted); }
+.pending .field-value :is(h4, h5):empty::before { content: "? ? ? ? ?"; color: var(--muted); }
 .period-cover {
 	position: absolute;
 	inset: 0;
@@ -433,6 +436,7 @@ select option { color: #111; }
 	.group + .group { border-left: 0; border-top: 1px solid var(--line); }
 	.field-row { grid-column: span 2; }
 	[type="button"].primary { font-size: 1.3rem; }
+	.key-value { font-size: 1.2rem; }
 }
 
 /* Mobile: everything stacks in one column */
@@ -469,6 +473,7 @@ select option { color: #111; }
 	.field-row { grid-column: auto; }
 
 	h5 { font-size: 0.95rem; }
+	.key-value { font-size: 1.25rem; }
 
 	input, select { padding: 12px 14px; font-size: 16px; }
 	[type="button"] { min-height: 44px; }

@@ -11,6 +11,7 @@
 	<script src="javascript/character.js"></script>
 	<script src="javascript/extras.js"></script>
 	<script src="javascript/race-popover.js"></script>
+	<script src="javascript/organization-icons.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
 	<script src="javascript/export.js"></script>
 	<script src="javascript/export-poster.js"></script>
@@ -70,25 +71,25 @@
 					<section class="group">
 						<h3 class="group-title">Affiliation</h3>
 						<div class="field"><span class="field-label">Main affiliation</span><div class="field-value"><h5 id="main-alliance"></h5></div></div>
-						<div class="field"><span class="field-label">Organization</span><div class="field-value"><h5 id="alliance"></h5></div></div>
-						<div class="field"><span class="field-label">Rank (within the organization)</span><div class="field-value"><h5 id="rank"></h5></div></div>
+						<div class="field"><span class="field-label">Organization</span><div class="field-value"><h4 id="alliance" class="key-value"></h4></div></div>
+						<div class="field"><span class="field-label">Rank (within the organization)</span><div class="field-value"><h4 id="rank" class="key-value"></h4></div></div>
 					</section>
 					<section class="group">
 						<h3 class="group-title">Powers</h3>
 						<div class="field"><span class="field-label">Fighting Style</span><div class="field-value"><h5 id="fighting"></h5></div></div>
 						<div class="field"><span class="field-label">Haki</span><div class="field-value"><h5 id="haki"></h5></div></div>
 						<div class="field"><span class="field-label">Devil-fruit (Type)</span><div class="field-value"><h5 id="devilfruit"></h5></div></div>
-						<div class="field"><span class="field-label">Devil-fruit (specified)</span><div class="field-value">
+						<div class="field"><span class="field-label">Devil-fruit (specified)</span><div class="field-value fruit-value">
 							<h5 id="df"></h5>
-							<button type="button" class="know-more" id="dfinfo1" hidden onclick="openFruitInfo(1)">&#9432; Know more</button>
+							<button type="button" class="info-btn know-more" id="dfinfo1" hidden aria-label="Know more" title="Know more" onclick="openFruitInfo(1)">i</button>
 						</div></div>
 					</section>
 					<section class="group">
 						<h3 class="group-title">Record</h3>
 						<div class="field"><span class="field-label">Feats</span><div class="field-value"><h5 id="feat"></h5></div></div>
 						<div class="field-row">
-							<div class="field"><span class="field-label">Doriki <button type="button" class="info-btn" onclick="openBreakdown('doriki', 1)" aria-label="How the doriki is calculated" title="How is this calculated?">i</button></span><div class="field-value"><h5 id="dorikifinal"></h5><h6 id="adddoriki" style="color: green;"></h6></div></div>
-							<div class="field"><span class="field-label">Bounty <button type="button" class="info-btn" onclick="openBreakdown('bounty', 1)" aria-label="How the bounty is calculated" title="How is this calculated?">i</button></span><div class="field-value"><h5 id="bountyfinal"></h5><h6 id="addbounty" style="color: green;"></h6></div></div>
+							<div class="field"><span class="field-label">Doriki <button type="button" class="info-btn" onclick="openBreakdown('doriki', 1)" aria-label="How the doriki is calculated" title="How is this calculated?">i</button></span><div class="field-value"><h4 id="dorikifinal" class="key-value"></h4><h6 id="adddoriki" style="color: green;"></h6></div></div>
+							<div class="field"><span class="field-label">Bounty <button type="button" class="info-btn" onclick="openBreakdown('bounty', 1)" aria-label="How the bounty is calculated" title="How is this calculated?">i</button></span><div class="field-value"><h4 id="bountyfinal" class="key-value"></h4><h6 id="addbounty" style="color: green;"></h6></div></div>
 						</div>
 					</section>
 				</div>
@@ -116,25 +117,25 @@
 					<section class="group">
 						<h3 class="group-title">Affiliation</h3>
 						<div class="field"><span class="field-label">Main affiliation</span><div class="field-value"><h5 id="main-alliance2"></h5></div></div>
-						<div class="field"><span class="field-label">Organization</span><div class="field-value"><h5 id="alliance2"></h5></div></div>
-						<div class="field"><span class="field-label">Rank (within the organization)</span><div class="field-value"><h5 id="rank2"></h5></div></div>
+						<div class="field"><span class="field-label">Organization</span><div class="field-value"><h4 id="alliance2" class="key-value"></h4></div></div>
+						<div class="field"><span class="field-label">Rank (within the organization)</span><div class="field-value"><h4 id="rank2" class="key-value"></h4></div></div>
 					</section>
 					<section class="group">
 						<h3 class="group-title">Powers</h3>
 						<div class="field"><span class="field-label">Fighting Style</span><div class="field-value"><h5 id="fighting2"></h5></div></div>
 						<div class="field"><span class="field-label">Haki</span><div class="field-value"><h5 id="haki2"></h5></div></div>
 						<div class="field"><span class="field-label">Devil-fruit (Type)</span><div class="field-value"><h5 id="devilfruit2"></h5></div></div>
-						<div class="field"><span class="field-label">Devil-fruit (specified)</span><div class="field-value">
+						<div class="field"><span class="field-label">Devil-fruit (specified)</span><div class="field-value fruit-value">
 							<h5 id="df2"></h5>
-							<button type="button" class="know-more" id="dfinfo2" hidden onclick="openFruitInfo(2)">&#9432; Know more</button>
+							<button type="button" class="info-btn know-more" id="dfinfo2" hidden aria-label="Know more" title="Know more" onclick="openFruitInfo(2)">i</button>
 						</div></div>
 					</section>
 					<section class="group">
 						<h3 class="group-title">Record</h3>
 						<div class="field"><span class="field-label">Feats</span><div class="field-value"><h5 id="feat2"></h5></div></div>
 						<div class="field-row">
-							<div class="field"><span class="field-label">Doriki <button type="button" class="info-btn" onclick="openBreakdown('doriki', 2)" aria-label="How the doriki is calculated" title="How is this calculated?">i</button></span><div class="field-value"><h5 id="dorikifinal2"></h5><h6 id="adddoriki2" style="color: green;"></h6></div></div>
-							<div class="field"><span class="field-label">Bounty <button type="button" class="info-btn" onclick="openBreakdown('bounty', 2)" aria-label="How the bounty is calculated" title="How is this calculated?">i</button></span><div class="field-value"><h5 id="bountyfinal2"></h5><h6 id="addbounty2" style="color: green;"></h6></div></div>
+							<div class="field"><span class="field-label">Doriki <button type="button" class="info-btn" onclick="openBreakdown('doriki', 2)" aria-label="How the doriki is calculated" title="How is this calculated?">i</button></span><div class="field-value"><h4 id="dorikifinal2" class="key-value"></h4><h6 id="adddoriki2" style="color: green;"></h6></div></div>
+							<div class="field"><span class="field-label">Bounty <button type="button" class="info-btn" onclick="openBreakdown('bounty', 2)" aria-label="How the bounty is calculated" title="How is this calculated?">i</button></span><div class="field-value"><h4 id="bountyfinal2" class="key-value"></h4><h6 id="addbounty2" style="color: green;"></h6></div></div>
 						</div>
 					</section>
 				</div>
@@ -162,25 +163,25 @@
 					<section class="group">
 						<h3 class="group-title">Affiliation</h3>
 						<div class="field"><span class="field-label">Main affiliation</span><div class="field-value"><h5 id="main-alliance3"></h5></div></div>
-						<div class="field"><span class="field-label">Organization</span><div class="field-value"><h5 id="alliance3"></h5></div></div>
-						<div class="field"><span class="field-label">Rank (within the organization)</span><div class="field-value"><h5 id="rank3"></h5></div></div>
+						<div class="field"><span class="field-label">Organization</span><div class="field-value"><h4 id="alliance3" class="key-value"></h4></div></div>
+						<div class="field"><span class="field-label">Rank (within the organization)</span><div class="field-value"><h4 id="rank3" class="key-value"></h4></div></div>
 					</section>
 					<section class="group">
 						<h3 class="group-title">Powers</h3>
 						<div class="field"><span class="field-label">Fighting Style</span><div class="field-value"><h5 id="fighting3"></h5></div></div>
 						<div class="field"><span class="field-label">Haki</span><div class="field-value"><h5 id="haki3"></h5></div></div>
 						<div class="field"><span class="field-label">Devil-fruit (Type)</span><div class="field-value"><h5 id="devilfruit3"></h5></div></div>
-						<div class="field"><span class="field-label">Devil-fruit (specified)</span><div class="field-value">
+						<div class="field"><span class="field-label">Devil-fruit (specified)</span><div class="field-value fruit-value">
 							<h5 id="df3"></h5>
-							<button type="button" class="know-more" id="dfinfo3" hidden onclick="openFruitInfo(3)">&#9432; Know more</button>
+							<button type="button" class="info-btn know-more" id="dfinfo3" hidden aria-label="Know more" title="Know more" onclick="openFruitInfo(3)">i</button>
 						</div></div>
 					</section>
 					<section class="group">
 						<h3 class="group-title">Record</h3>
 						<div class="field"><span class="field-label">Feats</span><div class="field-value"><h5 id="feat3"></h5></div></div>
 						<div class="field-row">
-							<div class="field"><span class="field-label">Doriki <button type="button" class="info-btn" onclick="openBreakdown('doriki', 3)" aria-label="How the doriki is calculated" title="How is this calculated?">i</button></span><div class="field-value"><h5 id="dorikifinal3"></h5><h6 id="adddoriki3" style="color: green;"></h6></div></div>
-							<div class="field"><span class="field-label">Bounty <button type="button" class="info-btn" onclick="openBreakdown('bounty', 3)" aria-label="How the bounty is calculated" title="How is this calculated?">i</button></span><div class="field-value"><h5 id="bountyfinal3"></h5><h6 id="addbounty3" style="color: green;"></h6></div></div>
+							<div class="field"><span class="field-label">Doriki <button type="button" class="info-btn" onclick="openBreakdown('doriki', 3)" aria-label="How the doriki is calculated" title="How is this calculated?">i</button></span><div class="field-value"><h4 id="dorikifinal3" class="key-value"></h4><h6 id="adddoriki3" style="color: green;"></h6></div></div>
+							<div class="field"><span class="field-label">Bounty <button type="button" class="info-btn" onclick="openBreakdown('bounty', 3)" aria-label="How the bounty is calculated" title="How is this calculated?">i</button></span><div class="field-value"><h4 id="bountyfinal3" class="key-value"></h4><h6 id="addbounty3" style="color: green;"></h6></div></div>
 						</div>
 					</section>
 				</div>

@@ -189,7 +189,7 @@ function generateAlliance(n) {
   }
   p.mainAlliance = allianceInfo(n).main_alliance || "";
   show("main-alliance", n, p.mainAlliance);
-  show("alliance", n, p.alliance);
+  show("alliance", n, organizationHtml(p.alliance));
   if (n === 1) syncRegion();
 }
 
