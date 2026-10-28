@@ -31,42 +31,114 @@ body {
 .logo { width: 100%; max-width: 560px; height: auto; filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.6)); }
 .tagline { margin: 4px 0 0; color: var(--muted); font-size: 1rem; }
 
-/* Card */
-.card {
-	max-width: 1100px;
-	margin: 0 auto;
+/* Layout: identity card + one horizontal card per period, stacked chronologically */
+.sheet { max-width: 1100px; margin: 0 auto; display: grid; gap: 18px; }
+
+.card, .period {
 	background: var(--panel);
 	border: 1px solid var(--line);
 	border-radius: 18px;
 	box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
 	backdrop-filter: blur(6px);
-	overflow-x: auto;
+	overflow: hidden;
+	min-width: 0;
 }
 
-/* Table */
-.sheet { width: 100%; min-width: 760px; border-collapse: collapse; text-align: center; }
-.sheet th {
-	padding: 14px 12px;
-	font-family: "Bangers", "Inter", sans-serif;
-	font-weight: 400;
-	font-size: 1.35rem;
-	letter-spacing: 1px;
-	color: var(--gold);
+.period-head {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	padding: 10px 18px;
 	background: rgba(0, 0, 0, 0.35);
 	border-bottom: 2px solid var(--red);
 }
-.sheet td { padding: 12px; border-bottom: 1px solid var(--line); vertical-align: middle; }
-.sheet tr:last-child td, .sheet tr:first-child td { border-bottom: 0; }
-.sheet tr:hover td { background: rgba(255, 255, 255, 0.025); }
-.sheet td:first-child {
-	text-align: left;
-	font-weight: 600;
-	font-size: 0.8rem;
+.period-title {
+	margin: 0;
+	font-family: "Bangers", "Inter", sans-serif;
+	font-weight: 400;
+	font-size: 1.5rem;
+	line-height: 1.2;
+	letter-spacing: 1px;
+	color: var(--gold);
+}
+.period-badge {
+	padding: 2px 10px;
+	font-size: 0.7rem;
+	font-weight: 700;
 	text-transform: uppercase;
 	letter-spacing: 0.8px;
 	color: var(--muted);
-	width: 16%;
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	border-radius: 999px;
 }
+.timeskip .period-badge { color: var(--gold); border-color: rgba(245, 184, 46, 0.55); background: rgba(245, 184, 46, 0.1); }
+
+/* Fields: small label above its value */
+.field { min-width: 0; display: grid; gap: 4px; align-content: start; }
+.field-label {
+	font-size: 0.72rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.8px;
+	color: var(--muted);
+}
+.field-value { min-width: 0; overflow-wrap: anywhere; }
+.field-value .know-more { justify-self: start; }
+
+/* Identity */
+.identity-body {
+	display: grid;
+	grid-template-columns: 1.6fr 1.6fr 1fr 1fr 1fr;
+	gap: 14px 16px;
+	padding: 14px 18px 16px;
+}
+
+/* Timeline: a vertical line connects the period cards */
+.timeline { position: relative; display: grid; gap: 18px; padding-left: 26px; }
+.timeline::before {
+	content: "";
+	position: absolute;
+	left: 8px;
+	top: 24px;
+	bottom: 24px;
+	width: 2px;
+	background: linear-gradient(180deg, var(--red), rgba(245, 184, 46, 0.6));
+	border-radius: 2px;
+}
+.period { position: relative; overflow: visible; }
+.period-head { border-radius: 17px 17px 0 0; }
+.period::before {
+	content: "";
+	position: absolute;
+	left: -24px;
+	top: 18px;
+	width: 14px;
+	height: 14px;
+	background: var(--ink);
+	border: 3px solid var(--red);
+	border-radius: 50%;
+}
+.timeskip::before { border-color: var(--gold); }
+
+/* Period content: three groups side by side */
+.period-body { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.3fr) minmax(0, 1fr); }
+.group {
+	display: grid;
+	gap: 12px;
+	align-content: start;
+	padding: 14px 18px 16px;
+	min-width: 0;
+}
+.group + .group { border-left: 1px solid var(--line); }
+.group-title {
+	margin: 0;
+	font-size: 0.75rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	color: var(--gold);
+}
+.field-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 
 h5, h6 { margin: 0; font-weight: 500; }
 h5 { font-size: 1rem; }
@@ -182,14 +254,148 @@ select option { color: #111; }
 	border-radius: 999px;
 }
 
-/* Tablet */
+/* Minimize button + summary shown while a period card is minimized */
+.collapse-btn {
+	margin-left: auto;
+	flex: none;
+	display: grid;
+	place-items: center;
+	width: 30px;
+	height: 30px;
+	padding: 0;
+	font-size: 0.9rem;
+	color: var(--muted);
+	background: rgba(255, 255, 255, 0.05);
+	border: 1px solid rgba(255, 255, 255, 0.15);
+	border-radius: 50%;
+	cursor: pointer;
+	transition: transform 0.2s, color 0.2s, background 0.2s;
+}
+.collapse-btn:hover { color: #fff; background: rgba(255, 255, 255, 0.12); }
+.collapsed .collapse-btn { transform: rotate(-90deg); }
+.period-summary {
+	min-width: 0;
+	margin-left: auto;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	font-size: 0.8rem;
+	color: var(--muted);
+}
+.period-summary:empty { display: none; }
+.period-summary:not(:empty) + .collapse-btn { margin-left: 0; }
+.collapsed .period-identity, .collapsed .period-content { display: none; }
+.collapsed .period-head { border-bottom: 0; border-radius: 17px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* Feats: one per line */
+.feat-list { margin: 0; padding: 0; list-style: none; display: grid; gap: 4px; }
+.feat-list li { position: relative; padding-left: 12px; }
+.feat-list li::before { content: ""; position: absolute; left: 0; top: 0.6em; width: 5px; height: 5px; background: var(--red); border-radius: 50%; }
+
+/* Credits footer */
+.credits {
+	max-width: 1100px;
+	margin: 28px auto 0;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 4px 18px;
+	font-size: 0.78rem;
+	color: var(--muted);
+}
+.credits span:first-child { font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--gold); }
+.credits small { margin-left: 3px; font-size: inherit; opacity: 0.7; }
+
+/* Character info repeated on each period card: smaller strip above the content */
+.period-identity {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 4px 18px;
+	padding: 7px 18px;
+	font-size: 0.8rem;
+	color: var(--text);
+	background: rgba(255, 255, 255, 0.03);
+	border-bottom: 1px solid var(--line);
+}
+.period-identity > span { min-width: 0; overflow-wrap: anywhere; }
+.period-identity b {
+	margin-right: 4px;
+	font-size: 0.65rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.8px;
+	color: var(--muted);
+}
+
+/* Pending cards: content blurred behind a single Generate button */
+.period-content { position: relative; overflow: hidden; border-radius: 0 0 17px 17px; }
+.period-body, .identity-body { transition: filter 0.4s, opacity 0.4s; }
+.pending .period-body, .pending .identity-body {
+	filter: blur(5px);
+	opacity: 0.45;
+	pointer-events: none;
+	user-select: none;
+}
+.pending .field-value h5:empty::before { content: "? ? ? ? ?"; color: var(--muted); }
+.period-cover {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	padding: 16px;
+	text-align: center;
+}
+:not(.pending) > .period-content > .period-cover { display: none; }
+[type="button"].period-generate { width: auto; min-width: 240px; padding: 12px 28px; font-size: 1.3rem; }
+[type="button"].period-generate:disabled { cursor: not-allowed; opacity: 0.55; box-shadow: none; }
+.period-lock { margin: 0; min-height: 1.2em; font-size: 0.8rem; font-weight: 600; color: var(--muted); }
+
+/* Mini "i" button next to Doriki / Bounty */
+.info-btn {
+	display: inline-grid;
+	place-items: center;
+	width: 16px;
+	height: 16px;
+	margin-left: 4px;
+	padding: 0;
+	vertical-align: 1px;
+	font: italic 700 0.65rem/1 Georgia, serif;
+	color: var(--gold);
+	background: transparent;
+	border: 1px solid rgba(245, 184, 46, 0.6);
+	border-radius: 50%;
+	cursor: pointer;
+}
+.info-btn:hover { background: rgba(245, 184, 46, 0.18); }
+
+/* Breakdown pop-up */
+.breakdown { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+.breakdown th, .breakdown td { padding: 7px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+.breakdown th { text-align: left; font-weight: 600; }
+.breakdown th small { display: block; font-size: 0.75rem; font-weight: 400; color: var(--muted); overflow-wrap: anywhere; }
+.breakdown td { padding-left: 12px; text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.breakdown .total th, .breakdown .total td { color: var(--gold); font-weight: 700; border-top: 2px solid var(--red); border-bottom: 0; }
+.breakdown .change th, .breakdown .change td { padding-top: 0; border-bottom: 0; color: #3ec46d; font-size: 0.8rem; }
+.breakdown-note { margin-top: 10px !important; font-size: 0.8rem; color: var(--muted) !important; }
+.breakdown-note:empty { display: none; }
+
+/* Tablet: groups stack, fields inside each group sit side by side */
 @media (max-width: 960px) {
-	.sheet th { font-size: 1.15rem; padding: 12px 8px; }
-	.sheet td { padding: 10px 8px; }
+	.identity-body { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+	.identity-body .field:last-child { grid-column: 1 / -1; }
+	.period-body { grid-template-columns: 1fr; }
+	.group { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+	.group-title { grid-column: 1 / -1; }
+	.group + .group { border-left: 0; border-top: 1px solid var(--line); }
+	.field-row { grid-column: span 2; }
 	[type="button"].primary { font-size: 1.3rem; }
 }
 
-/* Mobile: each row becomes a card, periods stack with their own label */
+/* Mobile: everything stacks in one column */
 @media (max-width: 720px) {
 	body {
 		padding: 16px 10px 32px;
@@ -200,80 +406,28 @@ select option { color: #111; }
 	.logo { max-width: 340px; }
 	.tagline { font-size: 0.9rem; padding: 0 8px; }
 
-	.card {
-		background: transparent;
-		border: 0;
-		border-radius: 0;
-		box-shadow: none;
-		backdrop-filter: none;
-		overflow: visible;
-	}
+	.sheet, .timeline { gap: 14px; }
+	.toolbar { position: sticky; top: 8px; z-index: 10; }
+	.timeline { padding-left: 0; }
+	.timeline::before, .period::before { display: none; }
+	.card, .period { border-radius: 14px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); }
+	.period-head { padding: 10px 14px; border-radius: 13px 13px 0 0; flex-wrap: wrap; }
+	.collapsed .period-head { border-radius: 13px; }
+	.period-summary { order: 3; flex-basis: 100%; margin-left: 0; white-space: normal; }
+	.period-summary:not(:empty) + .collapse-btn { margin-left: auto; }
+	.info-btn, .collapse-btn { min-height: 0; }
+	.info-btn { width: 20px; height: 20px; }
+	.collapse-btn { width: 34px; height: 34px; }
+	.period-title { font-size: 1.3rem; }
+	.pending .period-body, .pending .identity-body { max-height: 200px; overflow: hidden; }
+	.period-identity { padding: 7px 14px; gap: 2px 14px; font-size: 0.75rem; }
+	[type="button"].period-generate { min-width: 0; width: 100%; max-width: 300px; font-size: 1.2rem; }
 
-	.sheet, .sheet tbody, .sheet tr, .sheet td { display: block; width: 100% !important; min-width: 0; }
-	.sheet tr:has(th) { display: none; }
-	.sheet th { display: none; }
+	.identity-body { grid-template-columns: 1fr; padding: 12px 14px 14px; }
+	.group { grid-template-columns: 1fr; padding: 12px 14px 14px; }
+	.field-row { grid-column: auto; }
 
-	.sheet tr {
-		margin-bottom: 12px;
-		background: var(--panel);
-		border: 1px solid var(--line);
-		border-radius: 14px;
-		overflow: hidden;
-		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-	}
-	.sheet tr:hover td { background: transparent; }
-
-	/* Action rows (Generate All / Export) */
-	.sheet tr:first-child, .sheet tr:last-child {
-		background: transparent;
-		border: 0;
-		box-shadow: none;
-	}
-	.sheet tr:first-child td, .sheet tr:last-child td { padding: 0; }
-	.sheet tr:first-child { position: sticky; top: 8px; z-index: 10; }
-
-	.sheet td { padding: 10px 14px; border-bottom: 1px solid var(--line); }
-	.sheet td:last-child { border-bottom: 0; }
-
-	/* Attribute title */
-	.sheet td:first-child {
-		padding: 10px 14px;
-		font-family: "Bangers", "Inter", sans-serif;
-		font-weight: 400;
-		font-size: 1.2rem;
-		letter-spacing: 1px;
-		text-transform: none;
-		color: var(--gold);
-		background: rgba(0, 0, 0, 0.35);
-		border-bottom: 2px solid var(--red);
-	}
-
-	/* Period cells: label on the left, value on the right */
-	.sheet td:not(:first-child):not([colspan]) {
-		display: grid;
-		grid-template-columns: 6.5rem 1fr;
-		column-gap: 10px;
-		align-items: center;
-		text-align: left;
-	}
-	.sheet td:not(:first-child):not([colspan]) > * { grid-column: 2; }
-	.sheet td:not(:first-child):not([colspan])::before {
-		grid-column: 1;
-		grid-row: 1 / span 3;
-		font-size: 0.7rem;
-		font-weight: 700;
-		text-transform: uppercase;
-		letter-spacing: 0.8px;
-		color: var(--muted);
-	}
-	.sheet td:nth-child(2):not([colspan])::before { content: "1st Year"; }
-	.sheet td:nth-child(3):not([colspan])::before { content: "After 2 Years"; }
-	.sheet td:nth-child(4):not([colspan])::before { content: "After 10 Years"; }
-
-	.sheet td[colspan="3"] { text-align: center; }
-
-	h5 { font-size: 0.95rem; word-break: break-word; }
-	.know-more { justify-self: start; }
+	h5 { font-size: 0.95rem; }
 
 	input, select { padding: 12px 14px; font-size: 16px; }
 	[type="button"] { min-height: 44px; }
@@ -290,8 +444,8 @@ select option { color: #111; }
 }
 
 @media (max-width: 380px) {
-	.sheet td:not(:first-child):not([colspan]) { grid-template-columns: 5.2rem 1fr; }
-	.sheet td:first-child { font-size: 1.1rem; }
+	.field-row { grid-template-columns: 1fr; }
+	.haki-row { grid-template-columns: 5rem 1fr 4rem; }
 }
 
 /* Generate All: each element appears one after the other */
@@ -314,15 +468,14 @@ select option { color: #111; }
 	cursor: help;
 }
 .haki-name { font-weight: 600; color: var(--text); }
-.haki-level { font-weight: 600; text-align: right; color: var(--muted); }
+.haki-level { font-weight: 600; text-align: right; }
 .haki-stars { display: flex; gap: 2px; font-size: 1.05rem; line-height: 1; }
 .haki-stars i { font-style: normal; color: rgba(255, 255, 255, 0.14); }
 .haki-conquerors { --haki: #c86bff; }
 .haki-armament { --haki: #e63a14; }
 .haki-observation { --haki: #3fb6ff; }
 .haki-stars i.on { color: var(--haki); text-shadow: 0 0 6px color-mix(in srgb, var(--haki) 60%, transparent); }
-.haki-row:not(.haki-none) .haki-level { color: var(--haki); }
-.haki-none .haki-name { color: var(--muted); }
+.haki-level { color: var(--haki); }
 @media (max-width: 960px) {
 	.haki-row { grid-template-columns: 5.4rem 1fr 4.2rem; font-size: 0.75rem; }
 }

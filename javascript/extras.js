@@ -53,56 +53,114 @@ function reveal(id) {
   el.classList.add("reveal");
 }
 
+// Cards: 0 = Character, 1 = 1st Year, 2 = After 2 Years, 3 = After 10 Years.
+// Each card starts blurred with its own button; the button fills the whole card one element at a time.
+var PERIOD_SUFFIX = [null, "", "2", "3"];
+var LOCK_MESSAGES = ["", "Generate the character first", "Generate the 1st Year first", "Generate After 2 Years first"];
+
+// Keeps a name / nickname typed by hand
+function generateIdentityKeepTyped() {
+  var name = document.getElementById("fname").value, nick = document.getElementById("nickname").value;
+  generateIdentity();
+  if (name.trim()) document.getElementById("fname").value = name;
+  if (nick.trim()) document.getElementById("nickname").value = nick;
+}
+
+function stepsFor(p) {
+  if (p === 0) return [[generateIdentityKeepTyped, ["fname", "nickname"]], [generateRace, ["race"]], [generateRegion, ["region"]], [generateGender, ["gender"]]];
+  return periodSteps(PERIOD_SUFFIX[p]);
+}
+
+function cardDone(p) {
+  return p === 0 ? cellDone("race") && cellDone("region") : periodDone(PERIOD_SUFFIX[p]);
+}
+
+// Minimize / expand a period card; minimized cards show a one-line summary in the header
+function toggleCard(n, collapsed) {
+  var card = document.getElementById("card-" + n);
+  if (collapsed === undefined) collapsed = !card.classList.contains("collapsed");
+  card.classList.toggle("collapsed", collapsed);
+  var btn = card.querySelector(".collapse-btn");
+  btn.setAttribute("aria-expanded", String(!collapsed));
+  btn.title = collapsed ? "Expand" : "Minimize";
+  var s = PERIOD_SUFFIX[n], summary = card.querySelector(".period-summary");
+  if (!summary) {
+    summary = document.createElement("span");
+    summary.className = "period-summary";
+    card.querySelector(".period-head").insertBefore(summary, btn);
+  }
+  var parts = cardDone(n) ? [
+    document.getElementById("alliance" + s).textContent, document.getElementById("rank" + s).textContent,
+    "Doriki " + document.getElementById("dorikifinal" + s).textContent, "Bounty " + document.getElementById("bountyfinal" + s).textContent
+  ] : ["Not generated yet"];
+  summary.textContent = collapsed ? parts.join(" · ") : "";
+}
+
+function setPending(p, pending) {
+  document.getElementById("card-" + p).classList.toggle("pending", pending);
+}
+
+function clearCard(p) {
+  stepsFor(p).forEach(function (step) {
+    step[1].forEach(function (id) {
+      var el = document.getElementById(id);
+      if (!el || el.tagName === "SELECT") return;
+      if (el.tagName === "INPUT") el.value = "";
+      else el.innerHTML = "";
+    });
+  });
+  if (p) document.getElementById("dfinfo" + p).hidden = true;
+  setPending(p, true);
+}
+
+// Runs the steps of the given cards one after the other, revealing each element
+function runCards(cards) {
+  generating = true;
+  updatePeriodLocks();
+  var queue = [];
+  cards.forEach(function (p, k) {
+    stepsFor(p).forEach(function (step, i) { queue.push({ card: p, step: step, first: i === 0, pause: k > 0 && i === 0 }); });
+  });
+
+  var delay = 0;
+  queue.forEach(function (item, i) {
+    delay += i === 0 ? 0 : STEP_DELAY + (item.pause ? PERIOD_DELAY : 0);
+    setTimeout(function () {
+      if (item.first) {
+        setPending(item.card, false);
+        if (item.card) toggleCard(item.card, false);
+      }
+      try { item.step[0](); } catch (e) { console.error(e); }
+      item.step[1].forEach(reveal);
+      syncIdentity();
+      if (i === queue.length - 1) {
+        generating = false;
+        updatePeriodLocks();
+      }
+    }, delay);
+  });
+}
+
+function generatePeriod(p) {
+  if (generating || document.getElementById("generate-" + p).disabled) return;
+  dataReady.then(function () { runCards([p]); });
+}
+
 function generateAll() {
   if (generating) return;
-  var periods = [
-    [[generateIdentity, ["fname", "nickname"]], [generateRace, ["race"]], [generateRegion, ["region"]], [generateGender, ["gender"]]].concat(periodSteps("")),
-    periodSteps("2"),
-    periodSteps("3")
-  ];
-  var button = document.getElementById("generate-all");
-
   dataReady.then(function () {
-    generating = true;
-    if (button) button.disabled = true;
     alliance = "";
-
     // Clear the sheet so the new character appears element by element
-    periods.forEach(function (steps) {
-      steps.forEach(function (step) {
-        step[1].forEach(function (id) {
-          var el = document.getElementById(id);
-          if (!el || el.tagName === "SELECT") return;
-          if (el.tagName === "INPUT") el.value = "";
-          else el.innerHTML = "";
-        });
-      });
-    });
-    [1, 2, 3].forEach(function (n) { document.getElementById("dfinfo" + n).hidden = true; });
-
-    var queue = [];
-    periods.forEach(function (steps, p) {
-      steps.forEach(function (step, i) { queue.push({ step: step, pause: p > 0 && i === 0 }); });
-    });
-
-    var delay = 0;
-    queue.forEach(function (item, i) {
-      delay += i === 0 ? 0 : STEP_DELAY + (item.pause ? PERIOD_DELAY : 0);
-      setTimeout(function () {
-        try { item.step[0](); } catch (e) { console.error(e); }
-        item.step[1].forEach(reveal);
-        if (i === queue.length - 1) {
-          generating = false;
-          if (button) button.disabled = false;
-        }
-      }, delay);
-    });
+    document.getElementById("fname").value = "";
+    document.getElementById("nickname").value = "";
+    [0, 1, 2, 3].forEach(clearCard);
+    runCards([0, 1, 2, 3]);
   });
 }
 
 // Period locks -------------------------------------------------------------------------------------------------------------------------------------------------------
-// Region stays locked until the race is generated, the 1st Year until race and region are,
-// "After 2 Years" until the 1st Year is fully generated, and "After 10 Years" until "After 2 Years" is.
+// The 1st Year stays locked until the character is generated, "After 2 Years" until the 1st Year is
+// and "After 10 Years" until "After 2 Years" is.
 
 function cellDone(id) {
   var el = document.getElementById(id);
@@ -113,34 +171,45 @@ function periodDone(s) {
   return periodSteps(s).every(function (step) { return cellDone(step[1][0]); });
 }
 
-function setCellsLocked(ids, locked, message) {
-  ids.forEach(function (id) {
-    var el = document.getElementById(id);
-    if (!el) return;
-    el.querySelectorAll('input[type="button"]').forEach(function (btn) {
-      if (btn.disabled === locked) return;
-      btn.disabled = locked;
-      btn.title = locked ? message : "";
-    });
-  });
-}
-
-function setPeriodLocked(s, locked, message) {
-  periodSteps(s).forEach(function (step) { setCellsLocked(step[1], locked, message); });
+function setText(el, text) {
+  if (el && el.textContent !== text) el.textContent = text;   // avoids re-triggering the observer
 }
 
 function updatePeriodLocks() {
-  setCellsLocked(["region"], !cellDone("race"), "Generate the race first");
-  setPeriodLocked("", !(cellDone("race") && cellDone("region")), "Generate the race and region first");
-  setPeriodLocked("2", !periodDone(""), "Generate the whole 1st Year first");
-  setPeriodLocked("3", !periodDone("2"), "Generate the whole After 2 Years period first");
+  var all = document.getElementById("generate-all");
+  if (all) all.disabled = generating;
+  [0, 1, 2, 3].forEach(function (p) {
+    var btn = document.getElementById("generate-" + p);
+    var locked = p > 0 && !cardDone(p - 1);
+    btn.disabled = generating || locked;
+    btn.title = locked ? LOCK_MESSAGES[p] : "";
+    setText(document.getElementById("lock-" + p), locked ? LOCK_MESSAGES[p] : "");
+  });
+}
+
+// Character info repeated at the top of every period card
+function syncIdentity() {
+  var gender = document.getElementById("gender");
+  var values = {
+    fname: document.getElementById("fname").value.trim(),
+    nickname: document.getElementById("nickname").value.trim(),
+    race: cellDone("race") ? document.getElementById("race").textContent.trim() : "",
+    region: cellDone("region") ? document.getElementById("region").textContent.trim() : "",
+    gender: gender.options[gender.selectedIndex].text
+  };
+  document.querySelectorAll("[data-mirror]").forEach(function (el) {
+    setText(el, values[el.getAttribute("data-mirror")] || "—");
+  });
 }
 
 document.addEventListener("DOMContentLoaded", function () {
   var sheet = document.querySelector(".sheet");
   if (!sheet) return;
   updatePeriodLocks();
-  new MutationObserver(updatePeriodLocks).observe(sheet, { childList: true, subtree: true, characterData: true });
+  syncIdentity();
+  new MutationObserver(function () { updatePeriodLocks(); syncIdentity(); }).observe(sheet, { childList: true, subtree: true, characterData: true });
+  ["fname", "nickname"].forEach(function (id) { document.getElementById(id).addEventListener("input", syncIdentity); });
+  document.getElementById("gender").addEventListener("change", syncIdentity);
 });
 
 function resetPage() {
@@ -148,7 +217,7 @@ function resetPage() {
 }
 
 // Haki chart ---------------------------------------------------------------------------------------------------------------------------------------------------------
-// Each haki the character has gets a row with one star per level (Basic, Advanced, Master); no haki = "None"
+// Each haki the character has gets a row with one star per level (Basic, Advanced, Master); hakis without stars are hidden, no haki = "None"
 
 var HAKI_LABELS = { Conquerors: "Conqueror's", Armament: "Armament", Observation: "Observation" };
 
@@ -164,11 +233,11 @@ function renderHaki(id, levels) {
   chart.className = "haki-chart";
   chart.setAttribute("role", "img");
   chart.setAttribute("aria-label", hakiText(levels, ", "));
-  HAKI_TYPES.forEach(function (t) {
-    var level = levels[t] || 0;
+  hakiTypes(levels).forEach(function (t) {
+    var level = levels[t];
     var row = document.createElement("div");
-    row.className = "haki-row haki-" + t.toLowerCase() + (level ? "" : " haki-none");
-    row.title = hakiLevelInfo(t, level) || "Not unlocked";
+    row.className = "haki-row haki-" + t.toLowerCase();
+    row.title = hakiLevelInfo(t, level);
     var name = document.createElement("span");
     name.className = "haki-name";
     name.textContent = HAKI_LABELS[t];
@@ -182,7 +251,7 @@ function renderHaki(id, levels) {
     }
     var text = document.createElement("span");
     text.className = "haki-level";
-    text.textContent = level ? HAKI_LEVEL_NAMES[level] : "—";
+    text.textContent = HAKI_LEVEL_NAMES[level];
     row.append(name, bar, text);
     chart.appendChild(row);
   });
@@ -244,6 +313,62 @@ function closeFruitInfo() {
   document.getElementById("fruit-modal").hidden = true;
 }
 
+// Doriki / Bounty breakdown -----------------------------------------------------------------------------------------------------------------------------------------
+// character.js saves the parts of each sum here when it calculates them: rows = [label, detail, value]
+
+var PERIOD_NAMES = ["", "1st Year", "After 2 Years", "After 10 Years"];
+var breakdowns = {};
+
+function setBreakdown(kind, n, rows, total, change, note) {
+  breakdowns[kind + n] = { rows: rows, total: total, change: change, note: note || "" };
+}
+
+function formatPart(kind, value) {
+  if (kind === "bounty") return Math.round(value * 1000000).toLocaleString("en-US");
+  return (Math.round(value * 10) / 10).toLocaleString("en-US");
+}
+
+function openBreakdown(kind, n) {
+  var data = breakdowns[kind + n];
+  var title = kind === "bounty" ? "Bounty" : "Doriki";
+  document.getElementById("breakdown-period").textContent = PERIOD_NAMES[n];
+  document.getElementById("breakdown-title").textContent = "How the " + title + " is calculated";
+  var body = document.getElementById("breakdown-rows");
+  body.innerHTML = "";
+  function addRow(label, detail, value, cls) {
+    var tr = document.createElement("tr");
+    if (cls) tr.className = cls;
+    var th = document.createElement("th");
+    th.textContent = label;
+    if (detail) {
+      var small = document.createElement("small");
+      small.textContent = detail;
+      th.appendChild(small);
+    }
+    var td = document.createElement("td");
+    td.textContent = value;
+    tr.append(th, td);
+    body.appendChild(tr);
+  }
+  if (!data) {
+    addRow("Not generated yet", "", "");
+    document.getElementById("breakdown-note").textContent = "";
+  } else {
+    data.rows.forEach(function (r, i) {
+      addRow(r[0], r[1], (i ? "+ " : "") + formatPart(kind, r[2]));
+    });
+    addRow("Total", kind === "bounty" ? (data.pet ? "rounded down to the thousand" : "rounded down to the million") : "rounded down",
+      kind === "bounty" ? formatBounty(data.total) : data.total.toLocaleString("en-US"), "total");
+    addRow("Change from the previous period", "", kind === "bounty" ? formatBountyChange(data.change) : "(+" + data.change.toLocaleString("en-US") + ")", "change");
+    document.getElementById("breakdown-note").textContent = data.note;
+  }
+  document.getElementById("breakdown-modal").hidden = false;
+}
+
+function closeBreakdown() {
+  document.getElementById("breakdown-modal").hidden = true;
+}
+
 document.addEventListener("keydown", function (e) {
-  if (e.key === "Escape") closeFruitInfo();
+  if (e.key === "Escape") { closeFruitInfo(); closeBreakdown(); }
 });
