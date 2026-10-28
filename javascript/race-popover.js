@@ -1,5 +1,5 @@
 // Race details popover ----------------------------------------------------------------------------------------------------------------------------------------------------
-// Only hybrids have one: the "i" next to the race name. Click or tap opens it and a second click closes it.
+// Hybrids and clones have one: the "i" next to the race name. Click or tap opens it and a second click closes it.
 // With a mouse it also opens on hover, until it is clicked. Outside click, Escape or a new race closes it.
 // It is position: fixed because the character card has overflow: hidden, which would clip it.
 
@@ -7,26 +7,32 @@ var racePopover = { anchor: null, pinned: false };   // anchor = the "i" button 
 
 function racePopoverEl() { return document.getElementById("race-popover"); }
 
-// Type, components and description of the current hybrid (text only, no HTML)
+// Title, classification, components (hybrids), origin, artificial subtype and description of the current race (text only, no HTML)
 function fillRacePopover() {
   var pop = racePopoverEl();
   pop.textContent = "";
   var title = document.createElement("p");
   title.className = "race-popover-title";
-  title.textContent = race.name;
+  title.textContent = raceTitle();
+  var rows = [["Classification", race.type]];
+  if (race.components.length > 1) rows.push(["Components", componentsText()]);
+  rows.push(["Origin", race.origin]);
+  if (race.subtype) rows.push(["Artificial subtype", race.subtype]);
   var list = document.createElement("dl");
-  [["Type", race.type], ["Components", componentsText()]].forEach(function (row) {
+  rows.forEach(function (row) {
     var dt = document.createElement("dt"), dd = document.createElement("dd");
     dt.textContent = row[0];
     dd.textContent = row[1];
     list.appendChild(dt);
     list.appendChild(dd);
   });
-  var text = document.createElement("p");
-  text.textContent = race.description;
   pop.appendChild(title);
   pop.appendChild(list);
-  pop.appendChild(text);
+  if (race.description) {
+    var text = document.createElement("p");
+    text.textContent = race.description;
+    pop.appendChild(text);
+  }
 }
 
 function openRacePopover(btn, pinned) {

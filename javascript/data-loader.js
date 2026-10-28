@@ -10,7 +10,7 @@
  // Paramecia;Bara Bara no Mi;Body separation;1
 
 var DATA_FILES = [
-  "settings", "names", "genders", "races", "hybrids", "regions", "alliances", "alliance-changes", "ranks", "rank-changes",
+  "settings", "names", "genders", "races", "hybrids", "clones", "regions", "alliances", "alliance-changes", "ranks", "rank-changes",
   "fighting-styles", "haki-chances", "haki-level-chances", "haki-levels", "devil-fruit-types", "devil-fruits", "feats", "feat-counts"
 ];
 
@@ -247,13 +247,25 @@ function matchRule(groups, ctx) {
 
 function raceKind(row) { return String(row.kind || "").trim().toLowerCase(); }
 
+// Chave de um par de componentes, sem ordem: Human + Giant = Giant + Human (race_b vazio = raça pura)
+function pairKey(a, b) {
+  return [a, b].map(function (v) { return String(v || "").trim().toLowerCase(); }).sort().join("|");
+}
+
+function findHybridRow(a, b) {
+  for (var i = 0; i < DATA.hybrids.length; i++) {
+    if (pairKey(DATA.hybrids[i].race_a, DATA.hybrids[i].race_b) === pairKey(a, b)) return DATA.hybrids[i];
+  }
+  return null;
+}
+
 function checkHybrids() {
   var races = {}, pairs = {}, names = {};
   DATA.races.forEach(function (r) { races[r.race.toLowerCase()] = r; names[r.race.toLowerCase()] = true; });
 
   DATA.hybrids = DATA.hybrids.filter(function (h) {
     var a = races[String(h.race_a).toLowerCase()], b = races[String(h.race_b).toLowerCase()];
-    var key = [String(h.race_a), String(h.race_b)].map(function (v) { return v.toLowerCase(); }).sort().join("|");
+    var key = pairKey(h.race_a, h.race_b);
     var problem = "";
     if (!a || !b) problem = "unknown race";
     else if (a === b) problem = "a race combined with itself";
@@ -268,6 +280,28 @@ function checkHybrids() {
     }
     pairs[key] = true;
     names[h.hybrid_name.toLowerCase()] = true;
+    return true;
+  });
+}
+
+// data/clones.csv: um clone é uma origem. Tem uma raça pura biológica (race_a) ou um híbrido válido (race_a + race_b).
+// O subtipo artificial (Seraphim-type) só existe em híbridos. Linhas inválidas são retiradas e avisadas na consola
+function checkClones() {
+  var pairs = {};
+  DATA.clones = DATA.clones.filter(function (c) {
+    var a = findRow(DATA.races, "race", c.race_a);
+    var key = pairKey(c.race_a, c.race_b);
+    var problem = "";
+    if (!a) problem = "unknown race";
+    else if (!c.race_b && raceKind(a) !== "biological") problem = "only biological races can be cloned";
+    else if (!c.race_b && c.subtype) problem = "a subtype needs a hybrid";
+    else if (c.race_b && !findHybridRow(c.race_a, c.race_b)) problem = "the pair is not a valid hybrid";
+    else if (pairs[key]) problem = "the clone is already defined";
+    if (problem) {
+      console.warn("Clone ignored (" + problem + "): " + c.race_a + " " + c.race_b);
+      return false;
+    }
+    pairs[key] = true;
     return true;
   });
 }
@@ -318,6 +352,7 @@ var dataReady = Promise.all(DATA_FILES.map(function (name) { return loadCSV("dat
 
   checkAlliances();
   checkHybrids();
+  checkClones();
   inheritRows(DATA.ranks, DATA.alliances);
   inheritRows(DATA["rank-changes"], DATA.alliances);
 

@@ -4,7 +4,8 @@
 # race_a / race_b = the two components (names from races.csv). The order does not matter: Human;Giant = Giant;Human
 # hybrid_name = display name (unique, and not the name of a race)
 # description = English description shown on the character sheet (no semicolons)
-# weight = relative probability inside the Hybrid category of races.csv (empty = 1, 0 = never)
+# weight = relative probability inside the Hybrid category of races.csv (empty = 1, 0 = never rolled as a natural hybrid;
+#          it can still be a clone, see clones.csv)
 #
 # Type: Artificial Hybrid if one component is Artificial in races.csv, otherwise Hybrid.
 # Doriki and bounty = the average of both components, see the README.
@@ -25,6 +26,9 @@ Human;Mink;Human-Mink Hybrid;A descendant of Humans and Minks, combining charact
 Human;Tonnata;Human-Tonnata Hybrid;A descendant of Humans and Tonnata, combining characteristics of both species.;1
 Human;Oni;Half-Oni;A descendant of Humans and Oni, combining characteristics of both species.;1
 Giant;Fishman;Giant Fish-Man Hybrid;A descendant of Giants and Fish-Men, combining characteristics of both species.;1
+
+# --- CLONE ONLY (weight 0: never a natural hybrid, used by clones.csv as a Seraphim-type) ---
+Fishman;Lunarian;Fish-Man-Lunarian Hybrid;A descendant of Fish-Men and Lunarians, combining characteristics of both species.;0
 
 # --- ARTIFICIAL HYBRIDS (biological species + Machine) ---
 Human;Machine;Cyborg;A Human whose body has been enhanced with mechanical components.;1
