@@ -1,6 +1,13 @@
-// Data files --------------------------------------------------------------------------------------------------------------------------------------------------------
-// Todos os valores e probabilidades do gerador vivem em data/*.csv (abrem no Excel). Ver data/README.md.
-// Para adicionar, alterar ou remover basta mexer nas linhas dos ficheiros, o código só aplica as regras.
+
+ // Data files --------------------------------------------------------------------------------------------------------------------------------------------------------
+ // Todos os valores e probabilidades do gerador vivem em data/*.csv (abrem no Excel). Ver data/README.md.
+ // Para adicionar, alterar ou remover basta mexer nas linhas dos ficheiros, o código só aplica as regras.
+ //
+ // Os CSV aceitam comentários em linhas começadas por # e linhas em branco.
+ // Os comentários não são interpretados como dados.
+ // Exemplo:
+ // # === PARAMECIA ===
+ // Paramecia;Bara Bara no Mi;Body separation;1
 
 var DATA_FILES = [
   "settings", "names", "genders", "races", "regions", "alliances", "alliance-changes", "ranks", "rank-changes",
@@ -41,29 +48,116 @@ function hakiOf(row) {
   return { Conquerors: hakiLevel(row.conquerors), Armament: hakiLevel(row.armament), Observation: hakiLevel(row.observation) };
 }
 
-// Lê CSV separado por ";" (ou "," se o Excel o gravar assim), com suporte para campos entre aspas
+// Lê CSV separado por ";" (ou "," se o Excel o gravar assim), com suporte para campos entre aspas.
+//
+// ADICIONADO:
+// - Ignora linhas começadas por # (mesmo com espaços antes).
+// - Ignora linhas vazias.
+// - Permite comentários antes do cabeçalho e entre os dados.
+// - Preserva # e quebras de linha dentro de campos entre aspas.
+// - Identifica o separador através da primeira linha válida.
+//
+// IMPORTANTE: os comentários devem ocupar uma linha própria.
+// Não adicionar comentários no fim de linhas de dados.
 function parseCSV(text) {
-  text = text.replace(/^﻿/, "");
-  var sep = text.split(/\r?\n/)[0].indexOf(";") >= 0 ? ";" : ",";
-  var rows = [], row = [], field = "", quoted = false;
+  text = String(text || "").replace(/^\uFEFF/, "");
+
+  // Remove comentários e linhas vazias, sem alterar o conteúdo
+  // de campos entre aspas (que podem ocupar várias linhas).
+  var lines = [];
+  var currentLine = "";
+  var quoted = false;
+
   for (var i = 0; i < text.length; i++) {
     var c = text[i];
-    if (quoted) {
-      if (c === '"' && text[i + 1] === '"') { field += '"'; i++; }
-      else if (c === '"') quoted = false;
-      else field += c;
-    } else if (c === '"') quoted = true;
-    else if (c === sep) { row.push(field); field = ""; }
-    else if (c === "\n" || c === "\r") {
+
+    if (c === '"') {
+      if (quoted && text[i + 1] === '"') {
+        currentLine += '""';
+        i++;
+        continue;
+      }
+      quoted = !quoted;
+      currentLine += c;
+    } else if ((c === "\n" || c === "\r") && !quoted) {
       if (c === "\r" && text[i + 1] === "\n") i++;
-      row.push(field); rows.push(row); row = []; field = "";
-    } else field += c;
+
+      var trimmed = currentLine.trim();
+
+      if (trimmed && trimmed.charAt(0) !== "#") {
+        lines.push(currentLine);
+      }
+
+      currentLine = "";
+    } else {
+      currentLine += c;
+    }
   }
-  if (field || row.length) { row.push(field); rows.push(row); }
-  var header = rows.shift().map(function (h) { return h.trim().toLowerCase(); });
-  return rows.filter(function (r) { return r.join("").trim(); }).map(function (r) {
+
+  // Última linha (mesmo sem quebra de linha no final).
+  var trimmed = currentLine.trim();
+
+  if (trimmed && trimmed.charAt(0) !== "#") {
+    lines.push(currentLine);
+  }
+
+  if (!lines.length) return [];
+
+  // Mantém a identificação automática do separador.
+  var sep = lines[0].indexOf(";") >= 0 ? ";" : ",";
+
+  // Parser CSV original, agora sobre o texto sem comentários.
+  var cleaned = lines.join("\n");
+  var rows = [], row = [], field = "", inQuotes = false;
+
+  for (var j = 0; j < cleaned.length; j++) {
+    var ch = cleaned[j];
+
+    if (inQuotes) {
+      if (ch === '"' && cleaned[j + 1] === '"') {
+        field += '"';
+        j++;
+      } else if (ch === '"') {
+        inQuotes = false;
+      } else {
+        field += ch;
+      }
+    } else if (ch === '"') {
+      inQuotes = true;
+    } else if (ch === sep) {
+      row.push(field);
+      field = "";
+    } else if (ch === "\n" || ch === "\r") {
+      if (ch === "\r" && cleaned[j + 1] === "\n") j++;
+      row.push(field);
+      rows.push(row);
+      row = [];
+      field = "";
+    } else {
+      field += ch;
+    }
+  }
+
+  if (field || row.length) {
+    row.push(field);
+    rows.push(row);
+  }
+
+  if (!rows.length) return [];
+
+  var header = rows.shift().map(function (h) {
+    return h.trim().toLowerCase();
+  });
+
+  return rows.filter(function (r) {
+    return r.join("").trim();
+  }).map(function (r) {
     var obj = {};
-    header.forEach(function (h, j) { obj[h] = (r[j] || "").trim(); });
+
+    header.forEach(function (h, k) {
+      obj[h] = (r[k] || "").trim();
+    });
+
     return obj;
   });
 }
@@ -161,15 +255,19 @@ var dataReady = Promise.all(DATA_FILES.map(function (name) { return loadCSV("dat
       description: t.description
     };
   });
+
   DATA["devil-fruits"].forEach(function (f) {
     if (!f.type || !f.name) return;
     (fruitsByType[f.type] = fruitsByType[f.type] || []).push(f.name);
     if (f.power) fruitPowers[f.name] = f.power;
   });
+
   // Feats: uma linha por feat. alliance "Any" = disponível para todas as alliances de data/alliances.csv
   var allianceNames = DATA.alliances.map(function (a) { return a.alliance; });
+
   DATA.feats.forEach(function (f) {
     if (!f.alliance || !f.feat) return;
+
     var feat = {
       name: f.feat,
       weight: weightOf(f),
@@ -177,12 +275,18 @@ var dataReady = Promise.all(DATA_FILES.map(function (name) { return loadCSV("dat
       bounty_min: num(f.bounty_min), bounty_max: num(f.bounty_max),
       haki: hakiOf(f)
     };
+
     var alliances = f.alliance.toLowerCase() === "any" ? allianceNames : [f.alliance];
-    alliances.forEach(function (a) { (featsByAlliance[a] = featsByAlliance[a] || []).push(feat); });
+
+    alliances.forEach(function (a) {
+      (featsByAlliance[a] = featsByAlliance[a] || []).push(feat);
+    });
   });
+
   DATA["haki-levels"].forEach(function (h) {
     var level = hakiLevel(h.level);
     if (!h.haki || !level) return;
+
     (hakiLevels[h.haki] = hakiLevels[h.haki] || {})[level] = {
       doriki_min: num(h.doriki_min), doriki_max: num(h.doriki_max),
       bounty_min: num(h.bounty_min), bounty_max: num(h.bounty_max),
