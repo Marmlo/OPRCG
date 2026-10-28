@@ -486,7 +486,7 @@ function assignRank2(){
      ranks2 = ["Fleet Admiral","Admiral","Vice Admiral","Rear Admiral","Commodore","Captain","Commander","Lieutenant","Ensign","Petty Officer","Seaman","Choreboy","Inspector General","Instructor"];   
 //----------------------------------------------------------------------------
   } else if(rank === "Pirate Captain" && alliance2 === "Pirate") {  // ------------------------- Pirate
-     ranks2 = ["Pirate Captain"];
+     ranks2 = ["Yonko","Pirate Captain","Pirate Captain","Pirate Captain"];
   } else if(rank === "First Mate" && alliance2 === "Pirate") {
      ranks2 = ["Pirate Captain","First Mate"];
   } else if(rank === "Swordsman" && alliance2 === "Pirate") {
@@ -624,7 +624,7 @@ function assignRank3(){
      ranks3 = ["Fleet Admiral","Admiral","Vice Admiral","Rear Admiral","Commodore","Captain","Commander","Lieutenant","Ensign","Petty Officer","Seaman","Choreboy","Inspector General","Instructor"];   
 //----------------------------------------------------------------------------
   } else if(rank2 === "Pirate Captain" && alliance3 === "Pirate") {  // ------------------------- Pirate
-     ranks3 = ["Pirate Captain"];
+     ranks3 = ["Yonko","Pirate Captain","Pirate Captain","Pirate Captain"];
   } else if(rank2 === "First Mate" && alliance3 === "Pirate") {
      ranks3 = ["Pirate Captain","First Mate"];
   } else if(rank2 === "Swordsman" && alliance3 === "Pirate") {
