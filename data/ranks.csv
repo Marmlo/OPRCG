@@ -1,10 +1,48 @@
+
+# ==========================================================
+# ONE PIECE CHARACTER GENERATOR — RANKS DATABASE
+# ==========================================================
+# alliance = faction or organisation
+# rank = character rank or role
+# weight = relative probability (0 = disabled)
+# doriki_min / doriki_max = Doriki range
+# bounty_min / bounty_max = Bounty range
+# conquerors / armament / observation = Haki levels
+# timeskip_jump_chance = chance of a rank jump
+# bounty_in_thousands = special bounty formatting
+# keeps_higher_bounty = preserve a higher existing bounty
+#
+# Empty fields use the generator's default behaviour.
+# Keep alliance and rank names consistent across CSV files.
+# ==========================================================
+
 alliance;rank;weight;doriki_min;doriki_max;bounty_min;bounty_max;conquerors;armament;observation;timeskip_jump_chance;bounty_in_thousands;keeps_higher_bounty
+
+# ==========================================================
+# REVOLUCIONARY ARMY
+# ==========================================================
+
+# --- LEADERSHIP ---
+Revolucionary Army;Leader;0;20000;50000;0;0;;Advanced;Basic;;;
 Revolucionary Army;Chief of Staff;1;10000;15000;0;0;;Basic;Basic;;;
 Revolucionary Army;Army Commander;3;2500;10000;0;0;;Basic;;;;
+
+# --- OFFICERS & MEMBERS ---
 Revolucionary Army;Officer;5;400;2000;0;0;;;;;;
 Revolucionary Army;Member;7;10;100;0;0;;;;;;
 Revolucionary Army;Associate;7;10;3500;0;0;;;;;;
-Revolucionary Army;Leader;0;20000;50000;0;0;;Advanced;Basic;;;
+
+
+# ==========================================================
+# MARINE
+# ==========================================================
+
+# --- SUPREME COMMAND ---
+Marine;Commander-in-chief;0;40000;70000;0;0;Basic;Advanced;Basic;;;
+Marine;Fleet Admiral;0;30000;60000;0;0;;Advanced;Advanced;;;
+Marine;Admiral;0;30000;50000;0;0;;Advanced;Basic;;;
+
+# --- HIGH-RANKING OFFICERS ---
 Marine;Vice Admiral;1;8000;15000;0;0;;Basic;;;;
 Marine;Rear Admiral;1;3000;8000;0;0;;;;;;
 Marine;Commodore;1;1000;3000;0;0;;;;;;
@@ -12,46 +50,104 @@ Marine;Captain;1;400;1000;0;0;;;;;;
 Marine;Commander;1;200;400;0;0;;;;;;
 Marine;Lieutenant;1;100;200;0;0;;;;;;
 Marine;Ensign;1;30;50;0;0;;;;;;
+
+# --- ENLISTED PERSONNEL ---
 Marine;Petty Officer;1;10;30;0;0;;;;;;
 Marine;Seaman;1;5;10;0;0;;;;;;
 Marine;Choreboy;1;1;5;0;0;;;;;;
+
+# --- SPECIAL POSITIONS ---
 Marine;Inspector General;1;3000;15000;0;0;;Basic;;;;
 Marine;Instructor;1;1500;10000;0;0;;;;;;
 Marine;Shichibukai;1;1000;4000;0;0;;Basic;;;;
-Marine;Fleet Admiral;0;30000;60000;0;0;;Advanced;Advanced;;;
-Marine;Admiral;0;30000;50000;0;0;;Advanced;Basic;;;
-Marine;Commander-in-chief;0;40000;70000;0;0;Basic;Advanced;Basic;;;
+
+
+# ==========================================================
+# PIRATE
+# ==========================================================
+
+# --- EMPEROR ---
+Pirate;Yonko;0;60000;100000;2000;4000;Advanced;Advanced;Basic;0.02;;Yes
+
+# --- CREW LEADERSHIP ---
 Pirate;Pirate Captain;1;500;15000;0;0;;;;;;
 Pirate;First Mate;2;200;10000;0;0;;;;;;
+
+# --- COMBAT SPECIALISTS ---
 Pirate;Swordsman;3;1;400;0;0;;;;;;
 Pirate;Sniper;3;1;400;0;0;;;;;;
 Pirate;Martial Artist;3;1;400;0;0;;;;;;
+
+# --- CREW SUPPORT ---
 Pirate;Navigator;3;1;400;0;0;;;;;;
 Pirate;Cook;3;1;400;0;0;;;;;;
 Pirate;Doctor;3;1;400;0;0;;;;;;
 Pirate;Shipwright;3;1;400;0;0;;;;;;
 Pirate;Musician;3;1;400;0;0;;;;;;
+
+# --- OTHER CREW MEMBERS ---
 Pirate;Aprentice;3;1;400;0;0;;;;;;
 Pirate;Pet;3;1;400;0;0;;;;;Yes;
-Pirate;Yonko;0;60000;100000;2000;4000;Advanced;Advanced;Basic;0.02;;Yes
+
+
+# ==========================================================
+# BOUNTY HUNTER
+# ==========================================================
+
+# --- INDEPENDENT ---
 Bounty Hunter;Individual;1;10;1500;0;0;;;;;;
+
+# --- GUILD ---
 Bounty Hunter;Guild Leader;1;100;1500;0;0;;;;;;
 Bounty Hunter;Guild Member;1;10;1000;0;0;;;;;;
+
+
+# ==========================================================
+# CIPHER POL
+# ==========================================================
+
+# --- CP0 ---
+Cipher Pol;CP0;0;20000;25000;0;0;;Basic;;;;
+
+# --- CP1–CP4 ---
+Cipher Pol;CP1;0;18000;20000;0;0;;;;;;
+Cipher Pol;CP2;0;16000;18000;0;0;;;;;;
+Cipher Pol;CP3;0;14000;16000;0;0;;;;;;
+Cipher Pol;CP4;0;12000;14000;0;0;;;;;;
+
+# --- CP5–CP9 ---
 Cipher Pol;CP5;1;10000;12000;0;0;;;;;;
 Cipher Pol;CP6;1;8000;10000;0;0;;;;;;
 Cipher Pol;CP7;1;6000;8000;0;0;;;;;;
 Cipher Pol;CP8;1;4000;6000;0;0;;;;;;
 Cipher Pol;CP9;1;500;4000;0;0;;;;;;
-Cipher Pol;CP0;0;20000;25000;0;0;;Basic;;;;
-Cipher Pol;CP1;0;18000;20000;0;0;;;;;;
-Cipher Pol;CP2;0;16000;18000;0;0;;;;;;
-Cipher Pol;CP3;0;14000;16000;0;0;;;;;;
-Cipher Pol;CP4;0;12000;14000;0;0;;;;;;
+
+
+# ==========================================================
+# WORLD GOVERNMENT
+# ==========================================================
+
+# --- SUPREME AUTHORITY ---
 World Government;King of the World;0.01;100000;130000;0;0;Master;Master;Advanced;;;
+
+# --- FIVE ELDERS ---
 World Government;Five Elders;0.05;80000;100000;0;0;Advanced;Advanced;Basic;;;
+
+# --- HOLY KNIGHTS ---
 World Government;Holy Knights;0.1;75000;90000;0;0;Advanced;Advanced;Basic;;;
+
+
+# ==========================================================
+# WORLD NOBLES
+# ==========================================================
+
+# --- CELESTIAL DRAGONS ---
 World Nobles;Celestial Dragon;1;1;10;0;0;;;;;;
+
+# --- ROYAL FAMILY ---
 World Nobles;King/Queen;1;10;200;0;0;;;;;;
 World Nobles;Prince/Princess;1;1;400;0;0;;;;;;
+
+# --- MILITARY ---
 World Nobles;Noble Commander;1;10;500;0;0;;;;;;
 World Nobles;Soldier;1;10;20;0;0;;;;;;
