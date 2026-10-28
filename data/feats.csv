@@ -30,12 +30,12 @@ Revolucionary Army;Declared war on the World Government.;1;0;0;100;300;;;
 # --- LIBERATION & RESCUE ---
 Revolucionary Army;Released slaves from a Government ally.;1;0;0;0;0;;;
 Revolucionary Army;Freed a kingdom from a tyrant.;1;0;0;20;80;;;
-Revolucionary Army;Rescued a comrade from Impel Down.;1;0;0;0;0;;;
+Revolucionary Army;Rescued a comrade from Impel Down.;1;0;0;10;25;;;
 
 # --- COMBAT & SURVIVAL ---
-Revolucionary Army;Participated in a war.;1;0;0;0;0;;;
-Revolucionary Army;Survived a Buster Call.;1;300;1000;0;0;;;
-Revolucionary Army;Defeated an Vice-Admiral.;1;3000;8000;300;800;;Basic;Basic
+Revolucionary Army;Participated in a war.;1;200;500;0;0;;;
+Revolucionary Army;Survived a Buster Call.;1;100;200;0;0;;;
+Revolucionary Army;Defeated an Vice-Admiral.;1;3000;8000;200;500;;Basic;Basic
 Revolucionary Army;Defeated an Admiral.;1;10000;20000;300;800;Basic;Advanced;Basic
 
 
@@ -47,18 +47,18 @@ Revolucionary Army;Defeated an Admiral.;1;10000;20000;300;800;Basic;Advanced;Bas
 Marine;None;3;0;0;0;0;;;
 
 # --- CAPTURES & ARRESTS ---
-Marine;Captured a 20,000,000 bounty pirate all by himself.;1;0;0;0;0;;;
-Marine;Captured a 50,000,000 bounty pirate all by himself.;1;0;0;0;0;;;
-Marine;Captured a 100,000,000 bounty pirate all by himself.;1;0;0;0;0;;;
-Marine;Captured a 300,000,000 bounty pirate all by himself.;1;0;0;0;0;;;
-Marine;Captured a 500,000,000 bounty pirate all by himself.;1;0;0;0;0;;;
+Marine;Captured a 20,000,000 bounty pirate all by himself.;1;20;50;0;0;;;
+Marine;Captured a 50,000,000 bounty pirate all by himself.;1;50;100;0;0;;;
+Marine;Captured a 100,000,000 bounty pirate all by himself.;1;100;300;0;0;;;
+Marine;Captured a 300,000,000 bounty pirate all by himself.;1;300;500;0;0;;;
+Marine;Captured a 500,000,000 bounty pirate all by himself.;1;500;1200;0;0;;;
 Marine;Arrested a Supernova.;1;800;2500;0;0;;;
 
 # --- COMBAT & WARFARE ---
-Marine;Defeated a small group of pirates.;1;0;0;0;0;;;
-Marine;Defeated a Yonko Commander.;1;3000;8000;100;400;;Basic;
-Marine;Defeated a Yonko.;1;20000;30000;500;1500;Advanced;Advanced;Basic
-Marine;Took part in the Paramount War.;1;500;2000;50;200;;;
+Marine;Defeated a small group of pirates.;1;50;200;0;0;;;
+Marine;Defeated a Yonko Commander.;1;3000;8000;0;0;;Basic;
+Marine;Defeated a Yonko.;1;20000;40000;0;0;Advanced;Advanced;Basic
+Marine;Took part in the Paramount War.;1;500;2000;;;;;
 Marine;Participated in a Buster Call.;1;0;0;0;0;;;
 
 # --- SECURITY & SPECIAL UNITS ---
@@ -96,7 +96,7 @@ Pirate;Defeated a Supernova.;1;800;2500;200;400;;;
 Pirate;Defeated an Vice-Admiral.;1;3000;8000;300;800;;Basic;Basic
 Pirate;Defeated an Admiral.;1;10000;20000;300;800;;Advanced;Basic
 Pirate;Defeated a Yonko Commander.;1;5000;10000;100;400;;Basic;Basic
-Pirate;Defeated a Yonko.;1;20000;30000;500;1500;Advanced;Advanced;Basic
+Pirate;Defeated a Yonko.;1;20000;40000;500;1500;Advanced;Advanced;Basic
 
 # --- CRIMES & CONFRONTATIONS ---
 Pirate;Stole a town's supplies.;1;0;0;0;0;;;
@@ -108,7 +108,7 @@ Pirate;Burned the World Government's flag.;1;0;0;50;150;;;
 
 # --- EXPLORATION & DISCOVERIES ---
 Pirate;Is investigating the Poneglifs.;1;0;0;10;50;;;
-Pirate;Found a Road Poneglyph.;0.3;0;0;100;300;;;
+Pirate;Found a Road Poneglyph.;0.3;500;1000;100;300;;;
 Pirate;Entered the Grand Line.;1;100;400;0;0;;;
 Pirate;Entered the New World.;1;200;800;0;0;;;
 Pirate;Reached Fish-Man Island.;1;0;0;0;0;;;
