@@ -29,13 +29,13 @@ Revolucionary Army;Chief of Staff;Chief of Staff;3
 # --- PREVIOUS: ARMY COMMANDER ---
 Revolucionary Army;Army Commander;Leader;1
 Revolucionary Army;Army Commander;Chief of Staff;3
-Revolucionary Army;Army Commander;Army Commander;5
+Revolucionary Army;Army Commander;Army Commander;3
 
 # --- PREVIOUS: OFFICER ---
 Revolucionary Army;Officer;Leader;0
 Revolucionary Army;Officer;Chief of Staff;1
 Revolucionary Army;Officer;Army Commander;3
-Revolucionary Army;Officer;Officer;5
+Revolucionary Army;Officer;Officer;3
 
 # --- INITIAL / FALLBACK ---
 Revolucionary Army;;Leader;0
@@ -75,7 +75,7 @@ Marine;Vice Admiral;Instructor;1
 Marine;Rear Admiral;Fleet Admiral;0
 Marine;Rear Admiral;Admiral;0
 Marine;Rear Admiral;Vice Admiral;1
-Marine;Rear Admiral;Rear Admiral;3
+Marine;Rear Admiral;Rear Admiral;1
 Marine;Rear Admiral;Inspector General;1
 Marine;Rear Admiral;Instructor;1
 
@@ -167,7 +167,7 @@ Marine;Seaman;Instructor;1
 Marine;Inspector General;Fleet Admiral;0.1
 Marine;Inspector General;Admiral;0.2
 Marine;Inspector General;Vice Admiral;1
-Marine;Inspector General;Inspector General;3
+Marine;Inspector General;Inspector General;2
 Marine;Inspector General;Instructor;1
 
 # --- PREVIOUS: INSTRUCTOR ---
@@ -207,7 +207,7 @@ Pirate;Yonko;Yonko;1
 
 # --- PREVIOUS: PIRATE CAPTAIN ---
 Pirate;Pirate Captain;Yonko;1
-Pirate;Pirate Captain;Pirate Captain;3
+Pirate;Pirate Captain;Pirate Captain;10
 
 # --- PREVIOUS: FIRST MATE ---
 Pirate;First Mate;Pirate Captain;1
@@ -369,11 +369,11 @@ Cipher Pol;CP8;CP7;1
 Cipher Pol;CP8;CP8;1
 
 # --- INITIAL / FALLBACK ---
-Cipher Pol;;CP0;1
-Cipher Pol;;CP1;1
-Cipher Pol;;CP2;1
-Cipher Pol;;CP3;1
-Cipher Pol;;CP4;1
+Cipher Pol;;CP0;0
+Cipher Pol;;CP1;0
+Cipher Pol;;CP2;0
+Cipher Pol;;CP3;0
+Cipher Pol;;CP4;0
 Cipher Pol;;CP5;1
 Cipher Pol;;CP6;1
 Cipher Pol;;CP7;1
