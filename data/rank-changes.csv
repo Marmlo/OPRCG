@@ -269,11 +269,12 @@ Pirate;Aprentice;Aprentice;1
 # --- PREVIOUS: PET ---
 Pirate;Pet;Pirate Captain;1
 Pirate;Pet;First Mate;1
-Pirate;Pet;Pet;1
+Pirate;Pet;Doctor;5
+Pirate;Pet;Pet;10
 
 # --- INITIAL / FALLBACK ---
-Pirate;;Pirate Captain;1
-Pirate;;First Mate;1
+Pirate;;Pirate Captain;0.3
+Pirate;;First Mate;0.5
 Pirate;;Swordsman;1
 Pirate;;Sniper;1
 Pirate;;Martial Artist;1
