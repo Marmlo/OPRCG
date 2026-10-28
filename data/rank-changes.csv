@@ -1,41 +1,85 @@
+
+# ==========================================================
+# ONE PIECE CHARACTER GENERATOR — RANK CHANGES DATABASE
+# ==========================================================
+# alliance = character's alliance
+# previous_rank = rank before the timeskip
+# rank = possible rank after the timeskip
+# weight = relative probability (0 = disabled)
+#
+# Empty previous_rank = initial rank selection / fallback
+# Same previous_rank and rank = character retains their rank
+#
+# Keep names consistent with ranks.csv.
+# ==========================================================
+
 alliance;previous_rank;rank;weight
+
+# ==========================================================
+# REVOLUCIONARY ARMY
+# ==========================================================
+
+# --- PREVIOUS: LEADER ---
 Revolucionary Army;Leader;Leader;1
+
+# --- PREVIOUS: CHIEF OF STAFF ---
 Revolucionary Army;Chief of Staff;Leader;1
 Revolucionary Army;Chief of Staff;Chief of Staff;3
+
+# --- PREVIOUS: ARMY COMMANDER ---
 Revolucionary Army;Army Commander;Leader;1
 Revolucionary Army;Army Commander;Chief of Staff;3
 Revolucionary Army;Army Commander;Army Commander;5
+
+# --- PREVIOUS: OFFICER ---
 Revolucionary Army;Officer;Leader;0
 Revolucionary Army;Officer;Chief of Staff;1
 Revolucionary Army;Officer;Army Commander;3
 Revolucionary Army;Officer;Officer;5
+
+# --- INITIAL / FALLBACK ---
 Revolucionary Army;;Leader;0
 Revolucionary Army;;Chief of Staff;0
 Revolucionary Army;;Army Commander;1
 Revolucionary Army;;Officer;1
 Revolucionary Army;;Member;3
 Revolucionary Army;;Associate;3
+
+
+# ==========================================================
+# MARINE
+# ==========================================================
+
+# --- PREVIOUS: FLEET ADMIRAL ---
 Marine;Fleet Admiral;Fleet Admiral;5
 Marine;Fleet Admiral;Admiral;1
 Marine;Fleet Admiral;Vice Admiral;1
 Marine;Fleet Admiral;Inspector General;1
 Marine;Fleet Admiral;Instructor;1
+
+# --- PREVIOUS: ADMIRAL ---
 Marine;Admiral;Fleet Admiral;1
 Marine;Admiral;Admiral;3
 Marine;Admiral;Vice Admiral;1
 Marine;Admiral;Inspector General;1
 Marine;Admiral;Instructor;1
+
+# --- PREVIOUS: VICE ADMIRAL ---
 Marine;Vice Admiral;Fleet Admiral;0.2
 Marine;Vice Admiral;Admiral;1
 Marine;Vice Admiral;Vice Admiral;3
 Marine;Vice Admiral;Inspector General;1
 Marine;Vice Admiral;Instructor;1
+
+# --- PREVIOUS: REAR ADMIRAL ---
 Marine;Rear Admiral;Fleet Admiral;0
 Marine;Rear Admiral;Admiral;0
 Marine;Rear Admiral;Vice Admiral;1
 Marine;Rear Admiral;Rear Admiral;3
 Marine;Rear Admiral;Inspector General;1
 Marine;Rear Admiral;Instructor;1
+
+# --- PREVIOUS: COMMODORE ---
 Marine;Commodore;Fleet Admiral;0
 Marine;Commodore;Admiral;0
 Marine;Commodore;Vice Admiral;0
@@ -43,6 +87,8 @@ Marine;Commodore;Rear Admiral;1
 Marine;Commodore;Commodore;1
 Marine;Commodore;Inspector General;1
 Marine;Commodore;Instructor;1
+
+# --- PREVIOUS: CAPTAIN ---
 Marine;Captain;Fleet Admiral;0
 Marine;Captain;Admiral;0
 Marine;Captain;Vice Admiral;0
@@ -51,6 +97,8 @@ Marine;Captain;Commodore;1
 Marine;Captain;Captain;1
 Marine;Captain;Inspector General;1
 Marine;Captain;Instructor;1
+
+# --- PREVIOUS: COMMANDER ---
 Marine;Commander;Fleet Admiral;0
 Marine;Commander;Admiral;0
 Marine;Commander;Vice Admiral;0
@@ -60,6 +108,8 @@ Marine;Commander;Captain;1
 Marine;Commander;Commander;1
 Marine;Commander;Inspector General;1
 Marine;Commander;Instructor;1
+
+# --- PREVIOUS: LIEUTENANT ---
 Marine;Lieutenant;Fleet Admiral;0
 Marine;Lieutenant;Admiral;0
 Marine;Lieutenant;Vice Admiral;0
@@ -70,6 +120,8 @@ Marine;Lieutenant;Commander;1
 Marine;Lieutenant;Lieutenant;1
 Marine;Lieutenant;Inspector General;1
 Marine;Lieutenant;Instructor;1
+
+# --- PREVIOUS: ENSIGN ---
 Marine;Ensign;Fleet Admiral;0
 Marine;Ensign;Admiral;0
 Marine;Ensign;Vice Admiral;0
@@ -81,6 +133,8 @@ Marine;Ensign;Lieutenant;1
 Marine;Ensign;Ensign;1
 Marine;Ensign;Inspector General;1
 Marine;Ensign;Instructor;1
+
+# --- PREVIOUS: PETTY OFFICER ---
 Marine;Petty Officer;Fleet Admiral;0
 Marine;Petty Officer;Admiral;0
 Marine;Petty Officer;Vice Admiral;0
@@ -93,6 +147,8 @@ Marine;Petty Officer;Ensign;1
 Marine;Petty Officer;Petty Officer;1
 Marine;Petty Officer;Inspector General;1
 Marine;Petty Officer;Instructor;1
+
+# --- PREVIOUS: SEAMAN ---
 Marine;Seaman;Fleet Admiral;0
 Marine;Seaman;Admiral;0
 Marine;Seaman;Vice Admiral;0
@@ -106,18 +162,26 @@ Marine;Seaman;Petty Officer;1
 Marine;Seaman;Seaman;1
 Marine;Seaman;Inspector General;1
 Marine;Seaman;Instructor;1
+
+# --- PREVIOUS: INSPECTOR GENERAL ---
 Marine;Inspector General;Fleet Admiral;0.1
 Marine;Inspector General;Admiral;0.2
 Marine;Inspector General;Vice Admiral;1
 Marine;Inspector General;Inspector General;3
 Marine;Inspector General;Instructor;1
+
+# --- PREVIOUS: INSTRUCTOR ---
 Marine;Instructor;Fleet Admiral;0
 Marine;Instructor;Admiral;0
 Marine;Instructor;Vice Admiral;1
 Marine;Instructor;Rear Admiral;1
 Marine;Instructor;Inspector General;1
 Marine;Instructor;Instructor;1
+
+# --- SPECIAL TRANSITION: PIRATE CAPTAIN ---
 Marine;Pirate Captain;Shichibukai;1
+
+# --- INITIAL / FALLBACK ---
 Marine;;Fleet Admiral;0
 Marine;;Admiral;0
 Marine;;Vice Admiral;0
@@ -132,35 +196,64 @@ Marine;;Seaman;1
 Marine;;Choreboy;1
 Marine;;Inspector General;1
 Marine;;Instructor;1
+
+
+# ==========================================================
+# PIRATE
+# ==========================================================
+
+# --- PREVIOUS: YONKO ---
 Pirate;Yonko;Yonko;1
+
+# --- PREVIOUS: PIRATE CAPTAIN ---
 Pirate;Pirate Captain;Yonko;1
 Pirate;Pirate Captain;Pirate Captain;3
+
+# --- PREVIOUS: FIRST MATE ---
 Pirate;First Mate;Pirate Captain;1
 Pirate;First Mate;First Mate;3
+
+# --- PREVIOUS: SWORDSMAN ---
 Pirate;Swordsman;Pirate Captain;1
 Pirate;Swordsman;First Mate;1
 Pirate;Swordsman;Swordsman;2
+
+# --- PREVIOUS: SNIPER ---
 Pirate;Sniper;Pirate Captain;1
 Pirate;Sniper;First Mate;1
 Pirate;Sniper;Sniper;1
+
+# --- PREVIOUS: MARTIAL ARTIST ---
 Pirate;Martial Artist;Pirate Captain;1
 Pirate;Martial Artist;First Mate;1
 Pirate;Martial Artist;Martial Artist;1
+
+# --- PREVIOUS: NAVIGATOR ---
 Pirate;Navigator;Pirate Captain;1
 Pirate;Navigator;First Mate;1
 Pirate;Navigator;Navigator;1
+
+# --- PREVIOUS: COOK ---
 Pirate;Cook;Pirate Captain;1
 Pirate;Cook;First Mate;1
 Pirate;Cook;Cook;1
+
+# --- PREVIOUS: DOCTOR ---
 Pirate;Doctor;Pirate Captain;1
 Pirate;Doctor;First Mate;1
 Pirate;Doctor;Doctor;1
+
+# --- PREVIOUS: SHIPWRIGHT ---
 Pirate;Shipwright;Pirate Captain;1
 Pirate;Shipwright;First Mate;1
 Pirate;Shipwright;Shipwright;1
+
+# --- PREVIOUS: MUSICIAN ---
 Pirate;Musician;Pirate Captain;1
 Pirate;Musician;First Mate;1
 Pirate;Musician;Musician;1
+
+# --- PREVIOUS: APRENTICE ---
 Pirate;Aprentice;Pirate Captain;1
 Pirate;Aprentice;First Mate;1
 Pirate;Aprentice;Swordsman;1
@@ -172,9 +265,13 @@ Pirate;Aprentice;Doctor;1
 Pirate;Aprentice;Shipwright;1
 Pirate;Aprentice;Musician;1
 Pirate;Aprentice;Aprentice;1
+
+# --- PREVIOUS: PET ---
 Pirate;Pet;Pirate Captain;1
 Pirate;Pet;First Mate;1
 Pirate;Pet;Pet;1
+
+# --- INITIAL / FALLBACK ---
 Pirate;;Pirate Captain;1
 Pirate;;First Mate;1
 Pirate;;Swordsman;1
@@ -187,32 +284,60 @@ Pirate;;Shipwright;1
 Pirate;;Musician;1
 Pirate;;Aprentice;1
 Pirate;;Pet;1
+
+
+# ==========================================================
+# BOUNTY HUNTER
+# ==========================================================
+
+# --- PREVIOUS: GUILD LEADER ---
 Bounty Hunter;Guild Leader;Individual;1
 Bounty Hunter;Guild Leader;Guild Leader;1
+
+# --- INITIAL / FALLBACK ---
 Bounty Hunter;;Individual;1
 Bounty Hunter;;Guild Leader;1
 Bounty Hunter;;Guild Member;1
+
+
+# ==========================================================
+# CIPHER POL
+# ==========================================================
+
+# --- PREVIOUS: CP0 ---
 Cipher Pol;CP0;CP0;1
+
+# --- PREVIOUS: CP1 ---
 Cipher Pol;CP1;CP0;1
 Cipher Pol;CP1;CP1;1
+
+# --- PREVIOUS: CP2 ---
 Cipher Pol;CP2;CP0;1
 Cipher Pol;CP2;CP1;1
 Cipher Pol;CP2;CP2;1
+
+# --- PREVIOUS: CP3 ---
 Cipher Pol;CP3;CP0;1
 Cipher Pol;CP3;CP1;1
 Cipher Pol;CP3;CP2;1
 Cipher Pol;CP3;CP3;1
+
+# --- PREVIOUS: CP4 ---
 Cipher Pol;CP4;CP0;1
 Cipher Pol;CP4;CP1;1
 Cipher Pol;CP4;CP2;1
 Cipher Pol;CP4;CP3;1
 Cipher Pol;CP4;CP4;1
+
+# --- PREVIOUS: CP5 ---
 Cipher Pol;CP5;CP0;1
 Cipher Pol;CP5;CP1;1
 Cipher Pol;CP5;CP2;1
 Cipher Pol;CP5;CP3;1
 Cipher Pol;CP5;CP4;1
 Cipher Pol;CP5;CP5;1
+
+# --- PREVIOUS: CP6 ---
 Cipher Pol;CP6;CP0;1
 Cipher Pol;CP6;CP1;1
 Cipher Pol;CP6;CP2;1
@@ -220,6 +345,8 @@ Cipher Pol;CP6;CP3;1
 Cipher Pol;CP6;CP4;1
 Cipher Pol;CP6;CP5;1
 Cipher Pol;CP6;CP6;1
+
+# --- PREVIOUS: CP7 ---
 Cipher Pol;CP7;CP0;1
 Cipher Pol;CP7;CP1;1
 Cipher Pol;CP7;CP2;1
@@ -228,6 +355,8 @@ Cipher Pol;CP7;CP4;1
 Cipher Pol;CP7;CP5;1
 Cipher Pol;CP7;CP6;1
 Cipher Pol;CP7;CP7;1
+
+# --- PREVIOUS: CP8 ---
 Cipher Pol;CP8;CP0;1
 Cipher Pol;CP8;CP1;1
 Cipher Pol;CP8;CP2;1
@@ -237,6 +366,8 @@ Cipher Pol;CP8;CP5;1
 Cipher Pol;CP8;CP6;1
 Cipher Pol;CP8;CP7;1
 Cipher Pol;CP8;CP8;1
+
+# --- INITIAL / FALLBACK ---
 Cipher Pol;;CP0;1
 Cipher Pol;;CP1;1
 Cipher Pol;;CP2;1
@@ -247,23 +378,49 @@ Cipher Pol;;CP6;1
 Cipher Pol;;CP7;1
 Cipher Pol;;CP8;1
 Cipher Pol;;CP9;1
+
+
+# ==========================================================
+# WORLD GOVERNMENT
+# ==========================================================
+
+# --- PREVIOUS: KING OF THE WORLD ---
 World Government;King of the World;King of the World;1
+
+# --- PREVIOUS: FIVE ELDERS ---
 World Government;Five Elders;King of the World;0.1
 World Government;Five Elders;Five Elders;1
+
+# --- PREVIOUS: HOLY KNIGHTS ---
 World Government;Holy Knights;Five Elders;0.1
 World Government;Holy Knights;Holy Knights;1
+
+
+# ==========================================================
+# WORLD NOBLES
+# ==========================================================
+
+# --- PREVIOUS: CELESTIAL DRAGON ---
 World Nobles;Celestial Dragon;Celestial Dragon;1
 World Nobles;Celestial Dragon;King/Queen;1
 World Nobles;Celestial Dragon;Prince/Princess;1
 World Nobles;Celestial Dragon;Noble Commander;1
 World Nobles;Celestial Dragon;Soldier;1
+
+# --- PREVIOUS: KING / QUEEN ---
 World Nobles;King/Queen;Celestial Dragon;1
 World Nobles;King/Queen;King/Queen;1
+
+# --- PREVIOUS: PRINCE / PRINCESS ---
 World Nobles;Prince/Princess;King/Queen;1
 World Nobles;Prince/Princess;Prince/Princess;1
+
+# --- PREVIOUS: NOBLE COMMANDER ---
 World Nobles;Noble Commander;King/Queen;1
 World Nobles;Noble Commander;Prince/Princess;1
 World Nobles;Noble Commander;Noble Commander;1
+
+# --- INITIAL / FALLBACK ---
 World Nobles;;King/Queen;1
 World Nobles;;Prince/Princess;1
 World Nobles;;Noble Commander;1
