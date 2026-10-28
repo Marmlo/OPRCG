@@ -11,7 +11,6 @@
 	<script src="javascript/character.js"></script>
 	<script src="javascript/extras.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/jspdf-autotable@3.8.2/dist/jspdf.plugin.autotable.min.js"></script>
 	<script src="javascript/pdf.js"></script>
 </head>
 <body>
@@ -19,170 +18,185 @@
 		<img src="images/Logo.png" alt="Random character generator" class="logo">
 		<p class="tagline">Roll a new adventurer and follow their journey across the Grand Line.</p>
 	</header>
-	<main class="card">
-	<table class="sheet">
-		<tr>  <!-- BOTAO -->
-			<td colspan="4">
+	<main class="sheet">
+		<div class="toolbar">
 			<input type="button" class="primary" id="generate-all" value="Generate All" onclick="generateAll();">
-			</td> 
-		</tr> <!-- BOTAO -->
-		<tr>
-			<th style="width: 16%;">Info</th>
-		    <th style="width: 28%;">1st Year</th>
-		    <th style="width: 28%;">After 2 Years</th>
-		    <th style="width: 28%;">After 10 years</th>
-  		</tr>
-  		<tr>
-		    <td>Name</td>
-		    <td colspan="3"><input type="text" id="fname" autocomplete="off" placeholder="Enter or generate a name" name="fname" style="text-align: center;"></td>
-  		</tr>
-  		<tr>
-		    <td>Nickname</td>
-		    <td colspan="3"><input type="text" id="nickname" autocomplete="off" placeholder="Enter or generate a nickname" name="nickname" style="text-align: center;"></td>
-  		</tr>
-  		<tr>
-		    <td>Race</td>
-		    <td colspan="3" style="text-align: center;"><h5 id="race"><input type="button" value="Generate" onclick="generateRace();"/></h5></td>
-  		</tr>
-  		<tr>
-		    <td>Region (birthplace)</td>
-		    <td colspan="3" style="text-align: center;"><h5 id="region"><input type="button" value="Generate" onclick="generateRegion();"/></h5></td>
-  		</tr>
-  		<tr>
-		    <td>Gender</td>
-		    <td colspan="3"><select id="gender" autocomplete="off">
-  					<option value="male"><h6>Male</h6></option>
-  					<option value="female"><h6>Female</h6></option>
-  					<option value="other"><h6>Other</h6></option>
-  					<option value="transsexual"><h6>Transsexual</h6></option>
-				</select>
-			</td>
-  		</tr>
-  		<tr>
-		    <td>Alliance</td>
-		    <td>
-		    	<h5 id="alliance"><input type="button" value="Generate" onclick="generateAlliance();" /></h5>
-		    </td>
-		    <td>
-		    	<h5 id="alliance2"><input type="button" value="Generate" onclick="generateAlliance2();" /></h5>
-		    </td>
-		    <td>
-		    	<h5 id="alliance3"><input type="button" value="Generate" onclick="generateAlliance3();" /></h5>
-		    </td>
-  		</tr>
-  		<tr>
-		    <td>Rank (within the alliance)</td>
-		    <td>
-		    	<h5 id="rank"><input type="button" value="Generate" onclick="assignRank();"/></h5>
-		    </td>
-		    <td>
-		    	<h5 id="rank2"><input type="button" value="Generate" onclick="assignRank2();"/></h5>
-		    </td>
-		    <td>
-		    	<h5 id="rank3"><input type="button" value="Generate" onclick="assignRank3();"/></h5>
-		    </td>
-  		</tr>
-  		<tr>
-		    <td>Fighting Style</td>
-		    <td>
-		    	<h5 id="fighting"><input type="button" value="Generate" onclick="generatefighting()"></h5>
-		    </td>
-		    <td>
-		    	<h5 id="fighting2"><input type="button" value="Generate" onclick="generatefighting2()"></h5>
-		    </td>
-		    <td>
-		    	<h5 id="fighting3"><input type="button" value="Generate" onclick="generatefighting3()"></h5>
-		    </td>
-  		</tr>
-  		<tr>
-		    <td>Haki</td>
-		    <td>
-		    	<h5 id="haki"><input type="button" value="Generate" onclick="assignhaki();"/></h5>
-		    </td>
-		    <td>
-		    	<h5 id="haki2"><input type="button" value="Generate" onclick="assignhaki2();"/></h5>
-		    </td>
-		    <td>
-		    	<h5 id="haki3"><input type="button" value="Generate" onclick="assignhaki3();"/></h5>
-		    </td>
-  		</tr>
-  		<tr>
-		    <td>Devil-fruit (Type)</td>
-		    <td>
-		    	<h5 id="devilfruit"><input type="button" value="Generate" onclick="generatedevilfruit();"/></h5>
-		    </td>
-		    <td>
-		    	<h5 id="devilfruit2"><input type="button" value="Generate" onclick="generatedevilfruit2();"/></h5>
-		    </td>
-		    <td>
-		    	<h5 id="devilfruit3"><input type="button" value="Generate" onclick="generatedevilfruit3();"/></h5>
-		    </td>
-  		</tr>
-  		<tr>
-		    <td>Devil-fruit (specified)</td>
-		    <td>
-		    	<h5 id="df"><input type="button" value="Generate" onclick="assigndevilfruit()"></h5>
-		    	<button type="button" class="know-more" id="dfinfo1" hidden onclick="openFruitInfo(1)">&#9432; Know more</button>
-		    </td>
-		    <td>
-		    	<h5 id="df2"><input type="button" value="Generate" onclick="assigndevilfruit2()"></h5>
-		    	<button type="button" class="know-more" id="dfinfo2" hidden onclick="openFruitInfo(2)">&#9432; Know more</button>
-		    </td>
-		    <td>
-		    	<h5 id="df3"><input type="button" value="Generate" onclick="assigndevilfruit3()"></h5>
-		    	<button type="button" class="know-more" id="dfinfo3" hidden onclick="openFruitInfo(3)">&#9432; Know more</button>
-		    </td>
-  		</tr>
-  		<tr>
-		    <td>Feat</td>
-		    <td>
-		    	<h5 id="feat"><input type="button" value="Generate" onclick="assignfeat()">
-		    </td>
-		    <td>
-		    	<h5 id="feat2"><input type="button" value="Generate" onclick="assignfeat2()">
-		    </td>
-		    <td>
-		    	<h5 id="feat3"><input type="button" value="Generate" onclick="assignfeat3()">
-		    </td>
-  		</tr>
-  		<tr>
-		    <td>Doriki</td>
-		    <td>
-		    	<h5 id="dorikifinal"></h5><h6 id="adddoriki" style="color: green;">
-		    	<input type="button" value="Generate" onclick="doriki()">
-		    <td>
-		    	<h5 id="dorikifinal2"></h5><h6 id="adddoriki2" style="color: green;">
-		    	<input type="button" value="Generate" onclick="doriki2()">
-		    </td>
-		    <td>
-		    	<h5 id="dorikifinal3"></h5><h6 id="adddoriki3" style="color: green;">
-		    	<input type="button" value="Generate" onclick="doriki3()">
-		    </td>
-  		</tr>
-  		<tr>
-		    <td>Bounty</td>
-		    <td>
-		    	<h5 id="bountyfinal"></h5><h6 id="addbounty" style="color: green;">
-		    	<input type="button" value="Generate" onclick="addbounty()">
-		    <td>
-		    	<h5 id="bountyfinal2"></h5><h6 id="addbounty2" style="color: green;">
-		    	<input type="button" value="Generate" onclick="addbounty2()">
-		    </td>
-		    <td>
-		    	<h5 id="bountyfinal3"></h5><h6 id="addbounty3" style="color: green;">
-		    	<input type="button" value="Generate" onclick="addbounty3()">
-		    </td>
-  		</tr>
-		<tr>  <!-- PDF -->
-			<td colspan="4">
-			<div class="actions">
-				<input type="button" class="primary" value="Export to PDF" onclick="exportPDF();">
-				<input type="button" class="primary secondary" value="Reload" title="Start over with a blank sheet" onclick="resetPage();">
+		</div>
+
+		<section class="card identity pending" id="card-0" aria-labelledby="identity-title">
+			<header class="period-head">
+				<span class="period-badge">Info</span>
+				<h2 class="period-title" id="identity-title">Character</h2>
+			</header>
+			<div class="period-content">
+				<div class="identity-body">
+					<div class="field field-name"><label class="field-label" for="fname">Name</label><div class="field-value"><input type="text" id="fname" autocomplete="off" placeholder="Enter or generate a name" name="fname"></div></div>
+					<div class="field field-name"><label class="field-label" for="nickname">Nickname</label><div class="field-value"><input type="text" id="nickname" autocomplete="off" placeholder="Enter or generate a nickname" name="nickname"></div></div>
+					<div class="field"><span class="field-label">Race</span><div class="field-value"><h5 id="race"></h5></div></div>
+					<div class="field"><span class="field-label">Region (birthplace)</span><div class="field-value"><h5 id="region"></h5></div></div>
+					<div class="field"><label class="field-label" for="gender">Gender</label><div class="field-value"><select id="gender" autocomplete="off">
+						<option value="male">Male</option>
+						<option value="female">Female</option>
+						<option value="other">Other</option>
+					</select></div></div>
+				</div>
+				<div class="period-cover">
+					<input type="button" class="primary period-generate" id="generate-0" value="Generate Character" onclick="generatePeriod(0);">
+					<p class="period-lock" id="lock-0"></p>
+				</div>
 			</div>
-			</td>
-		</tr> <!-- PDF -->
-	</table>
+		</section>
+
+		<div class="timeline">
+		<article class="period pending" id="card-1" aria-labelledby="period-title-1">
+			<header class="period-head">
+				<span class="period-badge">Start</span>
+				<h2 class="period-title" id="period-title-1">1st Year</h2>
+				<button type="button" class="collapse-btn" aria-expanded="true" aria-controls="card-1" title="Minimize" onclick="toggleCard(1)"><span aria-hidden="true">&#9662;</span><span class="sr-only">Minimize 1st Year</span></button>
+			</header>
+			<div class="period-identity" aria-label="Character">
+				<span><b>Name</b> <span data-mirror="fname">—</span></span>
+				<span><b>Nickname</b> <span data-mirror="nickname">—</span></span>
+				<span><b>Race</b> <span data-mirror="race">—</span></span>
+				<span><b>Region</b> <span data-mirror="region">—</span></span>
+				<span><b>Gender</b> <span data-mirror="gender">—</span></span>
+			</div>
+			<div class="period-content">
+				<div class="period-body">
+					<section class="group">
+						<h3 class="group-title">Affiliation</h3>
+						<div class="field"><span class="field-label">Alliance</span><div class="field-value"><h5 id="alliance"></h5></div></div>
+						<div class="field"><span class="field-label">Rank (within the alliance)</span><div class="field-value"><h5 id="rank"></h5></div></div>
+					</section>
+					<section class="group">
+						<h3 class="group-title">Powers</h3>
+						<div class="field"><span class="field-label">Fighting Style</span><div class="field-value"><h5 id="fighting"></h5></div></div>
+						<div class="field"><span class="field-label">Haki</span><div class="field-value"><h5 id="haki"></h5></div></div>
+						<div class="field"><span class="field-label">Devil-fruit (Type)</span><div class="field-value"><h5 id="devilfruit"></h5></div></div>
+						<div class="field"><span class="field-label">Devil-fruit (specified)</span><div class="field-value">
+							<h5 id="df"></h5>
+							<button type="button" class="know-more" id="dfinfo1" hidden onclick="openFruitInfo(1)">&#9432; Know more</button>
+						</div></div>
+					</section>
+					<section class="group">
+						<h3 class="group-title">Record</h3>
+						<div class="field"><span class="field-label">Feats</span><div class="field-value"><h5 id="feat"></h5></div></div>
+						<div class="field-row">
+							<div class="field"><span class="field-label">Doriki <button type="button" class="info-btn" onclick="openBreakdown('doriki', 1)" aria-label="How the doriki is calculated" title="How is this calculated?">i</button></span><div class="field-value"><h5 id="dorikifinal"></h5><h6 id="adddoriki" style="color: green;"></h6></div></div>
+							<div class="field"><span class="field-label">Bounty <button type="button" class="info-btn" onclick="openBreakdown('bounty', 1)" aria-label="How the bounty is calculated" title="How is this calculated?">i</button></span><div class="field-value"><h5 id="bountyfinal"></h5><h6 id="addbounty" style="color: green;"></h6></div></div>
+						</div>
+					</section>
+				</div>
+				<div class="period-cover">
+					<input type="button" class="primary period-generate" id="generate-1" value="Generate 1st Year" onclick="generatePeriod(1);">
+					<p class="period-lock" id="lock-1"></p>
+				</div>
+			</div>
+		</article>
+		<article class="period pending timeskip" id="card-2" aria-labelledby="period-title-2">
+			<header class="period-head">
+				<span class="period-badge">Timeskip</span>
+				<h2 class="period-title" id="period-title-2">After 2 Years</h2>
+				<button type="button" class="collapse-btn" aria-expanded="true" aria-controls="card-2" title="Minimize" onclick="toggleCard(2)"><span aria-hidden="true">&#9662;</span><span class="sr-only">Minimize After 2 Years</span></button>
+			</header>
+			<div class="period-identity" aria-label="Character">
+				<span><b>Name</b> <span data-mirror="fname">—</span></span>
+				<span><b>Nickname</b> <span data-mirror="nickname">—</span></span>
+				<span><b>Race</b> <span data-mirror="race">—</span></span>
+				<span><b>Region</b> <span data-mirror="region">—</span></span>
+				<span><b>Gender</b> <span data-mirror="gender">—</span></span>
+			</div>
+			<div class="period-content">
+				<div class="period-body">
+					<section class="group">
+						<h3 class="group-title">Affiliation</h3>
+						<div class="field"><span class="field-label">Alliance</span><div class="field-value"><h5 id="alliance2"></h5></div></div>
+						<div class="field"><span class="field-label">Rank (within the alliance)</span><div class="field-value"><h5 id="rank2"></h5></div></div>
+					</section>
+					<section class="group">
+						<h3 class="group-title">Powers</h3>
+						<div class="field"><span class="field-label">Fighting Style</span><div class="field-value"><h5 id="fighting2"></h5></div></div>
+						<div class="field"><span class="field-label">Haki</span><div class="field-value"><h5 id="haki2"></h5></div></div>
+						<div class="field"><span class="field-label">Devil-fruit (Type)</span><div class="field-value"><h5 id="devilfruit2"></h5></div></div>
+						<div class="field"><span class="field-label">Devil-fruit (specified)</span><div class="field-value">
+							<h5 id="df2"></h5>
+							<button type="button" class="know-more" id="dfinfo2" hidden onclick="openFruitInfo(2)">&#9432; Know more</button>
+						</div></div>
+					</section>
+					<section class="group">
+						<h3 class="group-title">Record</h3>
+						<div class="field"><span class="field-label">Feats</span><div class="field-value"><h5 id="feat2"></h5></div></div>
+						<div class="field-row">
+							<div class="field"><span class="field-label">Doriki <button type="button" class="info-btn" onclick="openBreakdown('doriki', 2)" aria-label="How the doriki is calculated" title="How is this calculated?">i</button></span><div class="field-value"><h5 id="dorikifinal2"></h5><h6 id="adddoriki2" style="color: green;"></h6></div></div>
+							<div class="field"><span class="field-label">Bounty <button type="button" class="info-btn" onclick="openBreakdown('bounty', 2)" aria-label="How the bounty is calculated" title="How is this calculated?">i</button></span><div class="field-value"><h5 id="bountyfinal2"></h5><h6 id="addbounty2" style="color: green;"></h6></div></div>
+						</div>
+					</section>
+				</div>
+				<div class="period-cover">
+					<input type="button" class="primary period-generate" id="generate-2" value="Generate After 2 Years" onclick="generatePeriod(2);">
+					<p class="period-lock" id="lock-2"></p>
+				</div>
+			</div>
+		</article>
+		<article class="period pending timeskip" id="card-3" aria-labelledby="period-title-3">
+			<header class="period-head">
+				<span class="period-badge">Timeskip</span>
+				<h2 class="period-title" id="period-title-3">After 10 Years</h2>
+				<button type="button" class="collapse-btn" aria-expanded="true" aria-controls="card-3" title="Minimize" onclick="toggleCard(3)"><span aria-hidden="true">&#9662;</span><span class="sr-only">Minimize After 10 Years</span></button>
+			</header>
+			<div class="period-identity" aria-label="Character">
+				<span><b>Name</b> <span data-mirror="fname">—</span></span>
+				<span><b>Nickname</b> <span data-mirror="nickname">—</span></span>
+				<span><b>Race</b> <span data-mirror="race">—</span></span>
+				<span><b>Region</b> <span data-mirror="region">—</span></span>
+				<span><b>Gender</b> <span data-mirror="gender">—</span></span>
+			</div>
+			<div class="period-content">
+				<div class="period-body">
+					<section class="group">
+						<h3 class="group-title">Affiliation</h3>
+						<div class="field"><span class="field-label">Alliance</span><div class="field-value"><h5 id="alliance3"></h5></div></div>
+						<div class="field"><span class="field-label">Rank (within the alliance)</span><div class="field-value"><h5 id="rank3"></h5></div></div>
+					</section>
+					<section class="group">
+						<h3 class="group-title">Powers</h3>
+						<div class="field"><span class="field-label">Fighting Style</span><div class="field-value"><h5 id="fighting3"></h5></div></div>
+						<div class="field"><span class="field-label">Haki</span><div class="field-value"><h5 id="haki3"></h5></div></div>
+						<div class="field"><span class="field-label">Devil-fruit (Type)</span><div class="field-value"><h5 id="devilfruit3"></h5></div></div>
+						<div class="field"><span class="field-label">Devil-fruit (specified)</span><div class="field-value">
+							<h5 id="df3"></h5>
+							<button type="button" class="know-more" id="dfinfo3" hidden onclick="openFruitInfo(3)">&#9432; Know more</button>
+						</div></div>
+					</section>
+					<section class="group">
+						<h3 class="group-title">Record</h3>
+						<div class="field"><span class="field-label">Feats</span><div class="field-value"><h5 id="feat3"></h5></div></div>
+						<div class="field-row">
+							<div class="field"><span class="field-label">Doriki <button type="button" class="info-btn" onclick="openBreakdown('doriki', 3)" aria-label="How the doriki is calculated" title="How is this calculated?">i</button></span><div class="field-value"><h5 id="dorikifinal3"></h5><h6 id="adddoriki3" style="color: green;"></h6></div></div>
+							<div class="field"><span class="field-label">Bounty <button type="button" class="info-btn" onclick="openBreakdown('bounty', 3)" aria-label="How the bounty is calculated" title="How is this calculated?">i</button></span><div class="field-value"><h5 id="bountyfinal3"></h5><h6 id="addbounty3" style="color: green;"></h6></div></div>
+						</div>
+					</section>
+				</div>
+				<div class="period-cover">
+					<input type="button" class="primary period-generate" id="generate-3" value="Generate After 10 Years" onclick="generatePeriod(3);">
+					<p class="period-lock" id="lock-3"></p>
+				</div>
+			</div>
+		</article>
+		</div>
+
+		<div class="actions">
+			<input type="button" class="primary" value="Export to PDF" onclick="exportPDF();">
+			<input type="button" class="primary secondary" value="Reload" title="Start over with a blank sheet" onclick="resetPage();">
+		</div>
 	</main>
+
+	<footer class="credits">
+		<span>Credits</span>
+		<span>João Marmelo <small>since 2021</small></span>
+		<span>Meekas <small>since 2021</small></span>
+		<span>Cláudio "Claude" <small>2026</small></span>
+	</footer>
 
 	<div id="fruit-modal" class="modal" hidden onclick="if (event.target === this) closeFruitInfo();">
 		<div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modal-title">
@@ -193,6 +207,15 @@
 			<p id="modal-type-text"></p>
 			<h3>Powers</h3>
 			<p id="modal-power-text"></p>
+		</div>
+	</div>
+	<div id="breakdown-modal" class="modal" hidden onclick="if (event.target === this) closeBreakdown();">
+		<div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="breakdown-title">
+			<button type="button" class="modal-close" onclick="closeBreakdown()" aria-label="Close">&times;</button>
+			<span class="badge" id="breakdown-period"></span>
+			<h2 id="breakdown-title"></h2>
+			<table class="breakdown"><tbody id="breakdown-rows"></tbody></table>
+			<p class="breakdown-note" id="breakdown-note"></p>
 		</div>
 	</div>
 </body>

@@ -16,9 +16,9 @@ let devilfruit3 = "";
 let df = "";
 let df2 = "";
 let df3 = "";
-let feat = "";
-let feat2 = "";
-let feat3 = "";
+let feat = [];
+let feat2 = [];
+let feat3 = [];
 
 
 // Rules ---------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -39,11 +39,29 @@ var rankHakiRequirements = {
 
 // Haki exigido pelos feats: colunas conquerors / armament / observation de data/feats.csv
 
-// Probabilidade de um haki começar logo em Advanced quando é desbloqueado, e de um Basic passar a Advanced em cada período
-var HAKI_ADVANCED_START = 0.12;
-var HAKI_UPGRADE_CHANCE = { 2: 0.35, 3: 0.5 };
-// Probabilidade de um Advanced passar a Master em cada período (Master nunca aparece no 1st Year)
-var HAKI_MASTER_CHANCE = { 2: 0.1, 3: 0.25 };
+// Probabilidade de cada nível quando um haki é desbloqueado, por período (quanto mais alto o nível, mais raro).
+// Master nunca aparece no 1st Year. Os valores de cada período somam 1.
+var HAKI_START_ODDS = {
+  1: { 1: 0.9,  2: 0.1,  3: 0    },
+  2: { 1: 0.8,  2: 0.17, 3: 0.03 },
+  3: { 1: 0.7,  2: 0.23, 3: 0.07 }
+};
+// Probabilidade de um haki que já tinha subir um nível em cada período (1 = Basic -> Advanced, 2 = Advanced -> Master)
+var HAKI_UPGRADE_ODDS = {
+  2: { 1: 0.3,  2: 0.08 },
+  3: { 1: 0.45, 2: 0.2  }
+};
+
+// Sorteia o nível inicial de um haki novo pelas probabilidades do período
+function rollStartLevel(period) {
+  var odds = HAKI_START_ODDS[period] || HAKI_START_ODDS[1];
+  var roll = Math.random();
+  for (var lv = 3; lv > 1; lv--) {
+    if (roll < odds[lv]) return lv;
+    roll -= odds[lv];
+  }
+  return 1;
+}
 
 function noHaki() {
   return { Conquerors: 0, Armament: 0, Observation: 0 };
@@ -84,15 +102,14 @@ function meetRankHaki(rankName, pool, currentHaki) {
 }
 
 // Passa o haki sorteado (ex: "Conquerors + Armament") para níveis. Os hakis que já tinha podem subir de Basic para Advanced,
-// os novos começam em Basic (às vezes logo em Advanced) e no fim aplica-se o nível mínimo do rank
+// os novos começam num nível sorteado por HAKI_START_ODDS e no fim aplica-se o nível mínimo do rank
 function rollHakiLevels(hakiName, prevLevels, period, rankName) {
   var levels = noHaki();
   var req = rankHakiRequirements[rankName] || {};
   HAKI_TYPES.forEach(function (t) {
     var prev = prevLevels ? prevLevels[t] || 0 : 0;
-    if (prev === 2 && Math.random() < (HAKI_MASTER_CHANCE[period] || 0)) prev = 3;
-    else if (prev === 1 && Math.random() < (HAKI_UPGRADE_CHANCE[period] || 0)) prev = 2;
-    if (!prev && String(hakiName).indexOf(t) !== -1) prev = Math.random() < HAKI_ADVANCED_START ? 2 : 1;
+    if (prev && prev < 3 && Math.random() < ((HAKI_UPGRADE_ODDS[period] || {})[prev] || 0)) prev++;
+    if (!prev && String(hakiName).indexOf(t) !== -1) prev = rollStartLevel(period);
     levels[t] = Math.max(prev, req[t] || 0);
   });
   return levels;
@@ -137,13 +154,46 @@ function featBonus(field, featName, allianceName) {
   return f ? getRandomInt(f[field + "_min"], f[field + "_max"] + 1) : 0;
 }
 
+// Soma o Doriki/Bounty de todos os feats do período (1 a 3). detail = texto para o pop-up, ex: "Feat A (+120), Feat B (+40)"
+function featParts(field, feats, allianceName, unit) {
+  var values = feats.map(function (name) { return featBonus(field, name, allianceName); });
+  var total = values.reduce(function (sum, v) { return sum + v; }, 0);
+  var detail = feats.map(function (name, i) {
+    return name + " (+" + (unit === "bounty" ? formatBounty(values[i]) : values[i]) + ")";
+  }).join(", ");
+  return { total: total, detail: detail || "None", names: feats.join(", ") || "None" };
+}
+
 function isSwordRank(rankName) {
   return rankName === "Swordsman";
 }
 
-// Formata bounties em milhões com vírgulas, ex: 1500 -> 1,500,000,000
+// Formata bounties em milhões com vírgulas, ex: 1500 -> 1,500,000,000 (0.25 -> 250,000 para os Pets)
 function formatBounty(millions) {
-  return Math.round(millions).toLocaleString("en-US") + ',000,000';
+  return Math.round(millions * 1000000).toLocaleString("en-US");
+}
+
+// Bounty mostrada: arredonda ao milhão, ou ao milhar quando é inferior a um milhão (Pets)
+function roundBounty(millions) {
+  return millions >= 1 ? Math.floor(millions) : Math.floor(millions * 1000) / 1000;
+}
+
+// Pets dos piratas valem milhares e não milhões: cada milhão calculado conta como mil (entre 1,000 e 999,000)
+var PET_BOUNTY_MIN = 1, PET_BOUNTY_MAX = 999;   // em milhares
+function isPet(rankName, allianceName) {
+  return rankName === "Pet" && allianceName === "Pirate";
+}
+function petBounty(millions) {
+  return Math.min(Math.max(Math.floor(millions), PET_BOUNTY_MIN), PET_BOUNTY_MAX) / 1000;
+}
+function petBreakdown(n) {
+  var b = breakdowns["bounty" + n];
+  b.rows = b.rows.map(function (r) {
+    var detail = String(r[1]).replace(/\(\+([\d,]+)\)/g, function (m, v) { return "(+" + formatBounty(Number(v.replace(/,/g, "")) / 1e9) + ")"; });
+    return [r[0], detail, r[2] / 1000];
+  });
+  b.pet = true;
+  b.note = "Pirate pets are worth thousands, not millions: every million above counts as a thousand (between 1,000 and 999,000).";
 }
 
 
@@ -258,9 +308,7 @@ function syncRegion(){
 // Gender ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 function generateGender(){
-  var genders = ["male","female","other","transsexual"
-      ,"male","female","other","transsexual"
-      ,"male","female","other"];
+  var genders = ["male","female","other"];
 
   document.getElementById("gender").value = genders[getRandomInt(0, genders.length)];
 }
@@ -268,10 +316,9 @@ function generateGender(){
     /*
 
     Odds:
-      Male          - 3/11 - 27%
-      Female        - 3/11 - 27%
-      Other         - 3/11 - 27%
-      Transsexual   - 2/11 - 18%
+      Male          - 1/3 - 33,3%
+      Female        - 1/3 - 33,3%
+      Other         - 1/3 - 33,3%
 
     */
 
@@ -307,6 +354,15 @@ function getRandomInt(min, max) {
 
 	*/
 
+// Probabilidade de manter a alliance do período anterior; se mudar, sorteia uma das outras da lista
+var ALLIANCE_STAY_CHANCE = 0.8;
+
+function rollNextAlliance(prev, pool) {
+  var others = pool.filter(function (a) { return a !== prev; });
+  if (!others.length || Math.random() < ALLIANCE_STAY_CHANCE) return prev;
+  return others[getRandomInt(0, others.length)];
+}
+
 // Alliance2 -----
 
 function generateAlliance2(){
@@ -324,7 +380,7 @@ function generateAlliance2(){
      alliances2 = ["World Nobles","World Nobles","Revolucionary Army","Marine","Pirate","Bounty Hunter","Cipher Pol"];
   }
 
-  alliance2 = capFirst(alliances2[getRandomInt(0, alliances2.length)]);
+  alliance2 = capFirst(rollNextAlliance(alliance, alliances2));   // 80% mantém a alliance
   document.getElementById("alliance2").innerHTML = alliance2;
 }
 
@@ -345,7 +401,7 @@ function generateAlliance3(){
      alliances3 = ["World Nobles","World Nobles","Revolucionary Army","Marine","Pirate","Bounty Hunter","Cipher Pol"];
   }
 
-  alliance3 = capFirst(alliances3[getRandomInt(0, alliances3.length)]);
+  alliance3 = capFirst(rollNextAlliance(alliance2, alliances3));   // 80% mantém a alliance
   document.getElementById("alliance3").innerHTML = alliance3;
 }
 
@@ -789,9 +845,13 @@ function assignhaki(){
       Three Haki  - 1/25 - 04%  
 
     Levels:
-      Each haki the character unlocks starts Basic (12% chance of starting Advanced).
-      After 2 Years a Basic haki has a 35% chance to become Advanced, after 10 Years 50%.
-      After 2 Years an Advanced haki has a 10% chance to become Master, after 10 Years 25% (one level per period).
+      A newly unlocked haki starts at (HAKI_START_ODDS):
+        1st Year:       Basic 90% / Advanced 10% / Master 0%
+        After 2 Years:  Basic 80% / Advanced 17% / Master 3%
+        After 10 Years: Basic 70% / Advanced 23% / Master 7%
+      A haki the character already had can go up one level per period (HAKI_UPGRADE_ODDS):
+        After 2 Years:  Basic -> Advanced 30%, Advanced -> Master 8%
+        After 10 Years: Basic -> Advanced 45%, Advanced -> Master 20%
       High ranks force a minimum level (rankHakiRequirements). Doriki/bounty per level: data/haki-levels.csv
 
 	*/
@@ -938,9 +998,23 @@ function assigndevilfruit3() {
 
 // Os feats de cada alliance, a probabilidade (weight), o Doriki/Bounty que dão e o haki que exigem estão em data/feats.csv
 
+// Número de feats por período: 1 (60%), 2 (30%) ou 3 (10%). As linhas "None" de data/feats.csv já não são sorteadas
+var FEAT_COUNT_ODDS = { 1: 0.6, 2: 0.3, 3: 0.1 };
+
+function rollFeatCount() {
+  var roll = Math.random();
+  for (var n = 3; n > 1; n--) {
+    if (roll < FEAT_COUNT_ODDS[n]) return n;
+    roll -= FEAT_COUNT_ODDS[n];
+  }
+  return 1;
+}
+
 // Sorteia um feat da alliance pelo "weight", excluindo os que exigem haki que a personagem não tem
-function pickFeat(allianceName, levels) {
-  var pool = (featsByAlliance[allianceName] || []).filter(function (f) { return f.weight > 0 && meetsHaki(levels, f.haki); });
+function pickFeat(allianceName, levels, exclude) {
+  var pool = (featsByAlliance[allianceName] || []).filter(function (f) {
+    return f.weight > 0 && meetsHaki(levels, f.haki) && f.name.toLowerCase() !== "none" && (exclude || []).indexOf(capFirst(f.name)) === -1;
+  });
   var total = pool.reduce(function (sum, f) { return sum + f.weight; }, 0);
   var roll = Math.random() * total;
   for (var i = 0; i < pool.length; i++) {
@@ -950,23 +1024,48 @@ function pickFeat(allianceName, levels) {
   return "None";
 }
 
+// Sorteia 1 a 3 feats diferentes (lista vazia se a alliance não tiver feats possíveis)
+function pickFeats(allianceName, levels) {
+  var feats = [];
+  for (var i = rollFeatCount(); i > 0; i--) {
+    var f = pickFeat(allianceName, levels, feats);
+    if (f === "None") break;
+    feats.push(f);
+  }
+  return feats;
+}
+
+function showFeats(id, feats) {
+  var el = document.getElementById(id);
+  if (!feats.length) { el.textContent = "None"; return; }
+  var list = document.createElement("ul");
+  list.className = "feat-list";
+  feats.forEach(function (f) {
+    var li = document.createElement("li");
+    li.textContent = f;
+    list.appendChild(li);
+  });
+  el.innerHTML = "";
+  el.appendChild(list);
+}
+
 function assignfeat(){
-  feat = pickFeat(alliance, haki);
-  document.getElementById("feat").innerHTML = feat;
+  feat = pickFeats(alliance, haki);
+  showFeats("feat", feat);
 }
 
 // Feat 2 -----
 
 function assignfeat2(){
-  feat2 = pickFeat(alliance2, haki2);
-  document.getElementById("feat2").innerHTML = feat2;
+  feat2 = pickFeats(alliance2, haki2);
+  showFeats("feat2", feat2);
 }
 
 // Feat 3 -----
 
 function assignfeat3(){
-  feat3 = pickFeat(alliance3, haki3);
-  document.getElementById("feat3").innerHTML = feat3;
+  feat3 = pickFeats(alliance3, haki3);
+  showFeats("feat3", feat3);
 }
 
 
@@ -1106,11 +1205,17 @@ function doriki() {
 
   var devilfruitdoriki = fruitDoriki(devilfruit);            // --- Devilfruit (valores em data/devil-fruit-types.csv)
 
-  var featdoriki = featBonus("doriki", feat, alliance);   // --- Feat (valores em data/feats.csv)
+  var featpartsdoriki = featParts("doriki", feat, alliance);
+  var featdoriki = featpartsdoriki.total;   // --- Feat (valores em data/feats.csv)
 
   dorikifinal = racedoriki + rankdoriki + hakidoriki + devilfruitdoriki + featdoriki
+  var dorikibase = dorikifinal
   if (hasWillOfD()) dorikifinal = dorikifinal * (1 + WILL_OF_D_BONUS);   // --- Will of D. (nome com "D.")
   adddoriki = dorikifinal
+  setBreakdown("doriki", 1, [
+    ["Race", race, racedoriki], ["Rank", rank, rankdoriki], ["Haki", hakiText(haki, ", "), hakidoriki],
+    ["Devil fruit", devilfruit, devilfruitdoriki], ["Feats", featpartsdoriki.detail, featdoriki]
+  ].concat(hasWillOfD() ? [["Will of D.", "+10% of " + dorikibase, dorikifinal - dorikibase]] : []), parseInt(dorikifinal), parseInt(adddoriki));
   document.getElementById("dorikifinal").innerHTML = parseInt(dorikifinal);
   document.getElementById("adddoriki").innerHTML = '(+' + parseInt(adddoriki) + ')';
 }  
@@ -1221,10 +1326,15 @@ function doriki2() {
 
   var hakidoriki2 = hakiBonus(haki2, "doriki");   // --- Haki (Basic / Advanced, valores em data/haki-levels.csv)
 
-  var featdoriki2 = featBonus("doriki", feat2, alliance2);   // --- Feat (valores em data/feats.csv)
+  var featpartsdoriki2 = featParts("doriki", feat2, alliance2);
+  var featdoriki2 = featpartsdoriki2.total;   // --- Feat (valores em data/feats.csv)
 
   dorikifinal2 = dorikifinal + rankdoriki2*0.2 + hakidoriki2 + featdoriki2
-  adddoriki2 = parseInt(dorikifinal2) - parseInt(dorikifinal) // Calcula a diferença entre os dorikis no anos 1 e 2
+  adddoriki2 = parseInt(dorikifinal2) - parseInt(dorikifinal)
+  setBreakdown("doriki", 2, [
+    ["Doriki from 1st Year", "", dorikifinal], ["Rank", rank2 + " (20% of " + rankdoriki2 + ")", rankdoriki2*0.2],
+    ["Haki", hakiText(haki2, ", "), hakidoriki2], ["Feats", featpartsdoriki2.detail, featdoriki2]
+  ], parseInt(dorikifinal2), adddoriki2); // Calcula a diferença entre os dorikis no anos 1 e 2
   document.getElementById("dorikifinal2").innerHTML = parseInt(dorikifinal2);
   document.getElementById("adddoriki2").innerHTML = '(+' + parseInt(adddoriki2) + ')';
 }
@@ -1335,10 +1445,15 @@ function doriki3() {
 
   var hakidoriki3 = hakiBonus(haki3, "doriki");   // --- Haki (Basic / Advanced, valores em data/haki-levels.csv)
 
-  var featdoriki3 = featBonus("doriki", feat3, alliance3);   // --- Feat (valores em data/feats.csv)
+  var featpartsdoriki3 = featParts("doriki", feat3, alliance3);
+  var featdoriki3 = featpartsdoriki3.total;   // --- Feat (valores em data/feats.csv)
 
   dorikifinal3 = dorikifinal2 + rankdoriki3*0.2 + hakidoriki3 + featdoriki3
-  adddoriki3 = parseInt(dorikifinal3) - parseInt(dorikifinal2) // Calcula a diferença entre os dorikis no anos 2 e 3
+  adddoriki3 = parseInt(dorikifinal3) - parseInt(dorikifinal2)
+  setBreakdown("doriki", 3, [
+    ["Doriki from After 2 Years", "", dorikifinal2], ["Rank", rank3 + " (20% of " + rankdoriki3 + ")", rankdoriki3*0.2],
+    ["Haki", hakiText(haki3, ", "), hakidoriki3], ["Feats", featpartsdoriki3.detail, featdoriki3]
+  ], parseInt(dorikifinal3), adddoriki3); // Calcula a diferença entre os dorikis no anos 2 e 3
   document.getElementById("dorikifinal3").innerHTML = parseInt(dorikifinal3);
   document.getElementById("adddoriki3").innerHTML = '(+' + parseInt(adddoriki3) + ')';
 }
@@ -1370,7 +1485,8 @@ function addbounty() {
 
   var devilfruitbounty = fruitBounty(devilfruit);            // --- Devilfruit (valores em data/devil-fruit-types.csv)
 
-  var featbounty = featBonus("bounty", feat, alliance);   // --- Feat (valores em data/feats.csv)
+  var featpartsbounty = featParts("bounty", feat, alliance, "bounty");
+  var featbounty = featpartsbounty.total;   // --- Feat (valores em data/feats.csv)
 
   var hakibounty = hakiBonus(haki, "bounty");   // --- Haki (valores em data/haki-levels.csv)
 
@@ -1392,8 +1508,16 @@ function addbounty() {
 
 
   bountyfinal = dorikibounty + alliancebounty + devilfruitbounty + featbounty + hakibounty
-  var bountyadded = parseInt(bountyfinal);
-  document.getElementById("bountyfinal").innerHTML = formatBounty(parseInt(bountyfinal));
+  var pet1 = isPet(rank, alliance)
+  if (pet1) bountyfinal = petBounty(bountyfinal);   // --- Pet dos piratas (bounty nos milhares)
+  var bountyadded = roundBounty(bountyfinal);
+  setBreakdown("bounty", 1, [
+    ["Doriki", "7.5% of " + parseInt(dorikifinal), dorikibounty], ["Alliance", alliance, alliancebounty],
+    ["Devil fruit", devilfruit, devilfruitbounty], ["Feats", featbounty ? featpartsbounty.detail : featpartsbounty.names, featbounty], ["Haki", hakiText(haki, ", "), hakibounty]
+  ], roundBounty(bountyfinal), bountyadded,
+    alliance === "Marine" || alliance === "Cipher Pol" ? alliance + " members have no bounty." : "");
+  if (pet1) petBreakdown(1);
+  document.getElementById("bountyfinal").innerHTML = formatBounty(roundBounty(bountyfinal));
   document.getElementById("addbounty").innerHTML = formatBountyChange(bountyadded);
 }
 
@@ -1417,22 +1541,35 @@ function addbounty2() {
 
   var devilfruitbounty2 = fruitBounty(devilfruit2);            // --- Devilfruit (valores em data/devil-fruit-types.csv)
 
-  var featbounty2 = featBonus("bounty", feat2, alliance2);   // --- Feat (valores em data/feats.csv)
+  var featpartsbounty2 = featParts("bounty", feat2, alliance2, "bounty");
+  var featbounty2 = featpartsbounty2.total;   // --- Feat (valores em data/feats.csv)
 
   var hakibounty2 = hakiBonus(haki2, "bounty");   // --- Haki (valores em data/haki-levels.csv)
 
   dorikibounty2 = dorikifinal2 * 0.075
   bountyfinal2 = dorikibounty2 + alliancebounty2 + devilfruitbounty2 + featbounty2 + hakibounty2
+  var yonkobounty2 = 0
+  var yonkokept2 = false
   if (rank2 === "Yonko") {   // --- Yonko (bounty na casa dos bilhões)
-     bountyfinal2 += getRandomInt(2000, 4000 + 1);
+     yonkobounty2 = getRandomInt(2000, 4000 + 1);
+     bountyfinal2 += yonkobounty2;
   }
 
   if (alliance2 === "Marine" || alliance2 === "Cipher Pol") {   // --- Block Alliances (mantém a bounty anterior)
      bountyfinal2 = bountyfinal;
   }
   
-  var bountyadded2 = parseInt(bountyfinal2) - parseInt(bountyfinal) // Calcula a diferença entre as bounties no anos 1 e 2
-  document.getElementById("bountyfinal2").innerHTML = formatBounty(parseInt(bountyfinal2));
+  var pet2 = isPet(rank2, alliance2)
+  if (pet2) bountyfinal2 = petBounty(bountyfinal2);   // --- Pet dos piratas (bounty nos milhares)
+  var bountyadded2 = roundBounty(bountyfinal2) - roundBounty(bountyfinal)
+  var blocked2 = alliance2 === "Marine" || alliance2 === "Cipher Pol"
+  setBreakdown("bounty", 2, blocked2 || yonkokept2 ? [["Bounty from 1st Year", "", bountyfinal]] : [
+    ["Doriki", "7.5% of " + parseInt(dorikifinal2), dorikibounty2], ["Alliance", alliance2, alliancebounty2],
+    ["Devil fruit", devilfruit2, devilfruitbounty2], ["Feats", featbounty2 ? featpartsbounty2.detail : featpartsbounty2.names, featbounty2], ["Haki", hakiText(haki2, ", "), hakibounty2]
+  ].concat(yonkobounty2 ? [["Yonko", "", yonkobounty2]] : []), roundBounty(bountyfinal2), bountyadded2,
+    blocked2 ? alliance2 + " members keep the bounty they already had." : "The bounty is recalculated each period from the current Doriki, alliance, fruit, feat and haki."); // Calcula a diferença entre as bounties no anos 1 e 2
+  if (pet2) petBreakdown(2);
+  document.getElementById("bountyfinal2").innerHTML = formatBounty(roundBounty(bountyfinal2));
   document.getElementById("addbounty2").innerHTML = formatBountyChange(bountyadded2);
 }
 
@@ -1456,21 +1593,35 @@ function addbounty3() {
 
   var devilfruitbounty3 = fruitBounty(devilfruit3);            // --- Devilfruit (valores em data/devil-fruit-types.csv)
 
-  var featbounty3 = featBonus("bounty", feat3, alliance3);   // --- Feat (valores em data/feats.csv)
+  var featpartsbounty3 = featParts("bounty", feat3, alliance3, "bounty");
+  var featbounty3 = featpartsbounty3.total;   // --- Feat (valores em data/feats.csv)
 
   var hakibounty3 = hakiBonus(haki3, "bounty");   // --- Haki (valores em data/haki-levels.csv)
 
   dorikibounty3 = dorikifinal3 * 0.075
   bountyfinal3 = dorikibounty3 + alliancebounty3 + devilfruitbounty3 + featbounty3 + hakibounty3
+  var yonkobounty3 = 0
+  var yonkokept3 = false
   if (rank3 === "Yonko") {   // --- Yonko (bounty na casa dos bilhões)
-     bountyfinal3 = Math.max(bountyfinal3 + getRandomInt(2000, 4000 + 1), bountyfinal2);
+     yonkobounty3 = getRandomInt(2000, 4000 + 1);
+     yonkokept3 = bountyfinal3 + yonkobounty3 < bountyfinal2;
+     bountyfinal3 = Math.max(bountyfinal3 + yonkobounty3, bountyfinal2);
   }
 
   if (alliance3 === "Marine" || alliance3 === "Cipher Pol") {   // --- Block Alliances (mantém a bounty anterior)
      bountyfinal3 = bountyfinal2;
   }
   
-  var bountyadded3 = parseInt(bountyfinal3) - parseInt(bountyfinal2) // Calcula a diferença entre as bounties no anos 2 e 3
-  document.getElementById("bountyfinal3").innerHTML = formatBounty(parseInt(bountyfinal3));
+  var pet3 = isPet(rank3, alliance3)
+  if (pet3) bountyfinal3 = petBounty(bountyfinal3);   // --- Pet dos piratas (bounty nos milhares)
+  var bountyadded3 = roundBounty(bountyfinal3) - roundBounty(bountyfinal2)
+  var blocked3 = alliance3 === "Marine" || alliance3 === "Cipher Pol"
+  setBreakdown("bounty", 3, blocked3 || yonkokept3 ? [["Bounty from After 2 Years", "", bountyfinal2]] : [
+    ["Doriki", "7.5% of " + parseInt(dorikifinal3), dorikibounty3], ["Alliance", alliance3, alliancebounty3],
+    ["Devil fruit", devilfruit3, devilfruitbounty3], ["Feats", featbounty3 ? featpartsbounty3.detail : featpartsbounty3.names, featbounty3], ["Haki", hakiText(haki3, ", "), hakibounty3]
+  ].concat(yonkobounty3 ? [["Yonko", "", yonkobounty3]] : []), roundBounty(bountyfinal3), bountyadded3,
+    blocked3 ? alliance3 + " members keep the bounty they already had." : yonkokept3 ? "The new bounty would be lower, so the Yonko keeps the bounty from After 2 Years." : "The bounty is recalculated each period from the current Doriki, alliance, fruit, feat and haki."); // Calcula a diferença entre as bounties no anos 2 e 3
+  if (pet3) petBreakdown(3);
+  document.getElementById("bountyfinal3").innerHTML = formatBounty(roundBounty(bountyfinal3));
   document.getElementById("addbounty3").innerHTML = formatBountyChange(bountyadded3);
 }
