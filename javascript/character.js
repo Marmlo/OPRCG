@@ -330,7 +330,7 @@ function capFirst(alli) {
 }
 
 function generateAlliance(){
-      var alliances = ["Revolucionary Army","Marine","Pirate","Bounty Hunter","Cipher Pol","World Nobles"
+      var alliances = ["Revolucionary Army","Marine","Pirate","Pirate","Pirate","Pirate","Pirate","Pirate","Pirate","Pirate","Bounty Hunter","Cipher Pol","World Nobles"
       				,"Revolucionary Army","Marine","Pirate","Bounty Hunter","Marine","Pirate"];
 
       alliance = capFirst(alliances[getRandomInt(0, alliances.length)]);
