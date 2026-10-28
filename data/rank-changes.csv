@@ -414,11 +414,8 @@ Government;;Holy Knights;1
 # ==========================================================
 
 # --- PREVIOUS: CELESTIAL DRAGON ---
-World Nobles;Celestial Dragon;Celestial Dragon;1
-World Nobles;Celestial Dragon;King/Queen;1
-World Nobles;Celestial Dragon;Prince/Princess;1
-World Nobles;Celestial Dragon;Noble Commander;1
-World Nobles;Celestial Dragon;Soldier;1
+World Nobles;Celestial Dragon;Celestial Dragon;2
+Government;Celestial Dragon;Holy Knights;1
 
 # --- PREVIOUS: KING / QUEEN ---
 World Nobles;King/Queen;Celestial Dragon;1
