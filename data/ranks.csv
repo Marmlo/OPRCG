@@ -69,7 +69,8 @@ Marine;Shichibukai;1;1000;4000;0;0;;Basic;;;;
 # ==========================================================
 
 # --- EMPEROR ---
-Pirate;Yonko;0;60000;100000;2000;4000;Advanced;Advanced;Basic;0.02;;Yes
+Pirate;Yonko;0;60000;100000;2000;4000;Master;Advanced;Advanced;0.02;;Yes
+Pirate;Yonko Commander;0;10000;300000;900;1500;Advanced;Advanced;Basic;0.1;;Yes
 
 # --- CREW LEADERSHIP ---
 Pirate;Pirate Captain;1;500;15000;0;0;;;;;;
