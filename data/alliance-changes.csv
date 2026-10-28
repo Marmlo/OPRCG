@@ -1,30 +1,32 @@
 previous_alliance;alliance;weight
-Revolucionary Army;Revolucionary Army;8
+Revolucionary Army;Revolucionary Army;10
 Revolucionary Army;Pirate;1
 Revolucionary Army;Bounty Hunter;1
 Marine;Marine;16
 Marine;Revolucionary Army;1
 Marine;Pirate;1
 Marine;Bounty Hunter;1
-Marine;Cipher Pol;1
-Pirate;Pirate;12
+Marine;Cipher Pol;2
+Pirate;Pirate;15
 Pirate;Revolucionary Army;1
 Pirate;Bounty Hunter;1
-Pirate;Marine;1
+Pirate;Marine;0.5
 Bounty Hunter;Bounty Hunter;8
 Bounty Hunter;Revolucionary Army;1
 Bounty Hunter;Pirate;1
+Bounty Hunter;Marine;1
 Cipher Pol;Cipher Pol;4
 Cipher Pol;Marine;1
 World Government;World Government;20
 World Government;World Nobles;0.5
 World Government;Cipher Pol;0.5
 World Government;Marine;0.5
-World Government;Revolucionary Army;0.2
-World Government;Pirate;0.2
+World Government;Revolucionary Army;0.1
+World Government;Pirate;0.1
 World Nobles;World Nobles;20
+World Nobles;World Government;3
 World Nobles;Revolucionary Army;1
-World Nobles;Marine;1
+World Nobles;Marine;3
 World Nobles;Pirate;1
 World Nobles;Bounty Hunter;1
 World Nobles;Cipher Pol;1
