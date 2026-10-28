@@ -128,7 +128,7 @@ function hakiBonus(levels, field) {
 }
 
 // Probabilidade de um pirata se tornar Yonko (só a partir de "After 2 Years")
-var YONKO_CHANCE = 0.002;
+var YONKO_CHANCE = 0.02;
 
 function maybeYonko(allianceName, pool) {
   if (allianceName === "Pirate" && Math.random() < YONKO_CHANCE) return ["Yonko"];
@@ -179,7 +179,7 @@ function roundBounty(millions) {
 }
 
 // Pets dos piratas valem milhares e não milhões: cada milhão calculado conta como mil (entre 1,000 e 999,000)
-var PET_BOUNTY_MIN = 1, PET_BOUNTY_MAX = 999;   // em milhares
+var PET_BOUNTY_MIN = 1, PET_BOUNTY_MAX = 100;   // em milhares
 function isPet(rankName, allianceName) {
   return rankName === "Pet" && allianceName === "Pirate";
 }
@@ -330,7 +330,7 @@ function capFirst(alli) {
 }
 
 function generateAlliance(){
-      var alliances = ["Revolucionary Army","Marine","Pirate","Pirate","Pirate","Pirate","Pirate","Pirate","Pirate","Pirate","Bounty Hunter","Cipher Pol","World Nobles"
+      var alliances = ["Revolucionary Army","Marine","Pirate","Bounty Hunter","Cipher Pol","World Nobles"
       				,"Revolucionary Army","Marine","Pirate","Bounty Hunter","Marine","Pirate"];
 
       alliance = capFirst(alliances[getRandomInt(0, alliances.length)]);
@@ -411,16 +411,16 @@ function generateAlliance3(){
 function assignRank(){
      
  if (alliance === "Revolucionary Army") {
-     ranks = ["Leader","Chief of Staff","Army Commander","Officer","Member","Associate"];
+     ranks = ["Chief of Staff","Army Commander","Officer","Member","Associate"];
   } else if(alliance === "Marine") {
-     ranks = ["Fleet Admiral","Admiral","Vice Admiral","Rear Admiral","Commodore","Captain","Commander",
+     ranks = ["Vice Admiral","Rear Admiral","Commodore","Captain","Commander",
      "Lieutenant","Ensign","Petty Officer","Seaman","Choreboy","Inspector General","Instructor","Shichibukai"];
   } else if(alliance === "Pirate") {
      ranks = ["Pirate Captain","First Mate","Swordsman","Sniper","Martial Artist","Navigator","Cook","Doctor","Shipwright","Musician","Aprentice","Pet"];
   } else if(alliance === "Bounty Hunter") {
      ranks = ["Individual","Guild Leader","Guild Member"];
   } else if(alliance === "Cipher Pol") {
-     ranks = ["CP0","CP1","CP2","CP3","CP4","CP5","CP6","CP7","CP8","CP9"];
+     ranks = ["CP5","CP6","CP7","CP8","CP9"];
   } else if(alliance === "World Nobles") {
      ranks = ["Celestial Dragon","King/Queen","Prince/Princess","Noble Commander","Soldier"];
   } 
