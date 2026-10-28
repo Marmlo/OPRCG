@@ -1,288 +1,329 @@
-type;name;power
-Zoan;Batto-Batto no Mi (Bat Fruit);Transforms the user into a bat or hybrid form with wings and fangs. Biting and drinking blood can incapacitate a target.
-Zoan;Hebi-Hebi no Mi - Model: Anaconda;Transforms the user into an anaconda or a hybrid form, granting the animal's physical traits and abilities.
-Zoan;Hebi-Hebi no Mi - Model: King Cobra;Transforms the user into a king cobra or a hybrid form, granting the animal's physical traits and abilities.
-Zoan;Hito-Hito no Mi - Model: Human;Transforms the user into a human or hybrid form and grants human intelligence and speech to an animal user.
-Zoan;Inu-Inu no Mi - Model: Dachshund;Transforms the user into a dachshund or a hybrid form, granting the animal's physical traits and abilities.
-Zoan;Inu-Inu no Mi - Model: Hound;Transforms the user into a hound or a hybrid form, granting the animal's physical traits and abilities.
-Zoan;Inu-Inu no Mi - Model: Jackal;Transforms the user into a jackal or a hybrid form, granting the animal's physical traits and abilities.
-Zoan;Inu-Inu no Mi - Model: Tanuki;Transforms the user into a tanuki or a hybrid form, granting the animal's physical traits and abilities.
-Zoan;Inu-Inu no Mi - Model: Wolf;Transforms the user into a wolf or a hybrid form, granting the animal's physical traits and abilities.
-Zoan;Kame-Kame no Mi (Turtle Fruit);Transforms the user into a turtle or hybrid form with a highly protective shell.
-Zoan;Mogu-Mogu no Mi (Mole Fruit);Transforms the user into a mole or hybrid form with claws suited to burrowing through the ground.
-Zoan;Mushi-Mushi no Mi - Model: Kabutomushi;Transforms the user into a rhinoceros beetle or a hybrid form, granting the animal's physical traits and abilities.
-Zoan;Mushi-Mushi no Mi - Model: Suzumebachi;Transforms the user into a hornet or a hybrid form, granting the animal's physical traits and abilities.
-Zoan;Neko-Neko no Mi - Model: Leopard;Transforms the user into a leopard or a hybrid form, granting the animal's physical traits and abilities.
-Zoan;Rako-Rako no Mi (Otter Fruit);Transforms the user into a sea otter or hybrid form.
-Zoan;Sara-Sara no Mi - Model: Axolotl;Transforms the user into an axolotl or a hybrid form, granting the animal's physical traits and abilities.
-Zoan;Tama-Tama no Mi (Egg Fruit);Gives an egg-like body that hatches into a chick form and then a stronger rooster form when broken.
-Zoan;Tori-Tori no Mi - Model: Albatross;Transforms the user into an albatross or a hybrid form, granting the animal's physical traits and abilities.
-Zoan;Tori-Tori no Mi - Model: Falcon;Transforms the user into a falcon or a hybrid form, granting the animal's physical traits and abilities.
-Zoan;Uma-Uma no Mi (Horse Fruit);Transforms the user into a horse or hybrid form, increasing running strength and mobility.
-Zoan;Unnamed Devil Fruit (Dalmatian);Grants Dalmatian dog-like transformation and physical traits. The fruit's official name has not been revealed.
-Zoan;Unnamed Devil Fruit (Epoida);Grants caterpillar-like transformation and physical traits. The fruit's official name has not been revealed.
-Zoan;Unnamed Devil Fruit (Minochihuahua);Grants chihuahua-like transformation and physical traits. The fruit's official name has not been revealed.
-Zoan;Unnamed Devil Fruit (Minokoala);Grants koala-like transformation and physical traits. The fruit's official name has not been revealed.
-Zoan;Unnamed Devil Fruit (Minorhinoceros);Grants rhinoceros-like transformation and physical traits. The fruit's official name has not been revealed.
-Zoan;Unnamed Devil Fruit (Minotaurus);Grants Holstein cow-like transformation and physical traits. The fruit's official name has not been revealed.
-Zoan;Unnamed Devil Fruit (Minozebra);Grants zebra-like transformation and physical traits. The fruit's official name has not been revealed.
-Zoan;Unnamed Devil Fruit (Onigumo);Grants spider-like transformation and physical traits. The fruit's official name has not been revealed.
-Zoan;Ushi-Ushi no Mi - Model: Bison;Transforms the user into a bison or a hybrid form, granting the animal's physical traits and abilities.
-Zoan;Ushi-Ushi no Mi - Model: Giraffe;Transforms the user into a giraffe or a hybrid form, granting the animal's physical traits and abilities.
-Zoan;Zou-Zou no Mi (Elephant Fruit);Transforms the user into an elephant or hybrid form with great strength, a trunk and tusks.
-Mythical Zoan;Hebi-Hebi no Mi - Model: Yamata no Orochi;Transforms the user into an eight-headed serpent, allowing multiple heads to attack and survive individual decapitations.
-Mythical Zoan;Hito-Hito no Mi - Model: Daibutsu;Transforms the user into a giant golden Buddha with immense strength and shock-wave attacks.
-Mythical Zoan;Hito-Hito no Mi - Model: Nika;Gives the body rubber properties. Awakening grants the Nika form, extreme bodily freedom and the ability to rubberise surroundings and other bodies. Also known as the Gomu-Gomu no Mi.
-Mythical Zoan;Hito-Hito no Mi - Model: Onyudo;Transforms the user into a large onyudo monk or hybrid form.
-Mythical Zoan;Inu-Inu no Mi - Model: Kyubi no Kitsune;Transforms the user into a nine-tailed fox or hybrid form and copies other people's appearances.
-Mythical Zoan;Inu-Inu no Mi - Model: Okuchi no Makami;Transforms the user into a divine wolf or hybrid form with ice-generating abilities.
-Mythical Zoan;Risu-Risu no Mi - Model: Ratatoskr;Transforms the user into the mythical squirrel Ratatoskr and generates ice and snow.
-Mythical Zoan;Ryu-Ryu no Mi - Model: Kirin;Transforms the user into a kirin, flies, induces sleep and manifests dreams as physical creatures.
-Mythical Zoan;Ryu-Ryu no Mi - Model: Nidhöggr;Transforms the user into the enormous dragon Nidhöggr and unleashes lightning breath.
-Mythical Zoan;Tori-Tori no Mi - Model: Phoenix;Transforms the user into a phoenix or hybrid form with flight and blue flames that regenerate injuries and can heal others.
-Mythical Zoan;Uma-Uma no Mi - Model: Pegasus;Transforms the user into a winged horse or hybrid form capable of flight.
-Mythical Zoan;Unnamed Devil Fruit (Cerberus);Transforms Shamrock's sword into a three-headed dog whose heads can detach and attack.
-Mythical Zoan;Unnamed Devil Fruit (Ethanbaron V. Nusjuro);Takes the form of a skeletal horse-like bakotsu and uses freezing attacks.
-Mythical Zoan;Unnamed Devil Fruit (Jaygarcia Saturn);Takes the form of a gyuki-like horned spider creature with venom and powerful gaze-based attacks.
-Mythical Zoan;Unnamed Devil Fruit (Marcus Mars);Takes the form of an itsumade-like bird capable of flight and mouth-fired attacks.
-Mythical Zoan;Unnamed Devil Fruit (Shepherd Ju Peter);Takes the form of a giant sandworm that tunnels and inhales targets with powerful suction.
-Mythical Zoan;Unnamed Devil Fruit (Topman Warcury);Takes the form of a giant fengxi-like boar with exceptional toughness and blade-like tusks.
-Mythical Zoan;Uo-Uo no Mi - Model: Seiryu;Transforms the user into an azure dragon or hybrid form, with flame clouds for flight, fire breath and powerful wind attacks.
-Ancient Zoan;Kumo-Kumo no Mi - Model: Rosamygale Grauvogeli;Transforms the user into a Rosamygale grauvogeli spider or hybrid form, granting the prehistoric animal's physical traits, strength and endurance.
-Ancient Zoan;Neko-Neko no Mi - Model: Saber Tiger;Transforms the user into a sabre-toothed tiger or hybrid form, granting the prehistoric animal's physical traits, strength and endurance.
-Ancient Zoan;Ryu-Ryu no Mi - Model: Allosaurus;Transforms the user into an allosaurus or hybrid form, granting the prehistoric animal's physical traits, strength and endurance.
-Ancient Zoan;Ryu-Ryu no Mi - Model: Brachiosaurus;Transforms the user into a brachiosaurus or hybrid form, granting the prehistoric animal's physical traits, strength and endurance.
-Ancient Zoan;Ryu-Ryu no Mi - Model: Pachycephalosaurus;Transforms the user into a pachycephalosaurus or hybrid form, granting the prehistoric animal's physical traits, strength and endurance.
-Ancient Zoan;Ryu-Ryu no Mi - Model: Pteranodon;Transforms the user into a pteranodon or hybrid form, granting the prehistoric animal's physical traits, strength and endurance.
-Ancient Zoan;Ryu-Ryu no Mi - Model: Spinosaurus;Transforms the user into a spinosaurus or hybrid form, granting the prehistoric animal's physical traits, strength and endurance.
-Ancient Zoan;Ryu-Ryu no Mi - Model: Triceratops;Transforms the user into a triceratops or hybrid form, granting the prehistoric animal's physical traits, strength and endurance.
-Ancient Zoan;Zou-Zou no Mi - Model: Mammoth;Transforms the user into a mammoth or hybrid form, granting the prehistoric animal's physical traits, strength and endurance.
-Artificial Zoan;Artificial Uo-Uo no Mi - Model: Seiryu (Vegapunk);Replicates the azure dragon power as a pink dragon, including flame clouds for flight and fire breath.
-Artificial Zoan;SMILE;Artificial animal fruits with varied animal transformations. Only a minority grant powers, while failures remove swimming ability and cause uncontrollable smiling and laughter.
-Paramecia;Aro-Aro no Mi (Arrow Fruit);Creates arrows that guide movement along chosen paths.
-Paramecia;Ato-Ato No Mi (Art Fruit);Changes people and objects into distorted artworks, interfering with their normal functions.
-Paramecia;Awa-Awa no Mi (Bubble Fruit);Produces soap bubbles that clean surfaces and drain an opponent's strength.
-Paramecia;Baku-Baku no Mi (Munch Fruit);Eats normally inedible materials and incorporates consumed objects into the body or combines them.
-Paramecia;Bane-Bane No Mi (Springs Fruit);Changes limbs into springs to store force and launch bouncing attacks.
-Paramecia;Bara-Bara no Mi (Chop Fruit);Separates the body into controllable floating pieces and resists cutting attacks.
-Paramecia;Bari-Bari No Mi (Barrier Fruit);Creates and shapes highly resistant barriers by crossing the fingers.
-Paramecia;Bata-Bata no Mi (Butter Fruit);Produces and controls butter to bind targets.
-Paramecia;Beri-Beri no Mi (Berry Fruit);Divides the body into round berry-like pieces that can move independently.
-Paramecia;Beta-Beta no Mi (Sticky Fruit);Produces and controls adhesive, flammable mucus.
-Paramecia;Bisu-Bisu No Mi (Biscuit Fruit);Creates and shapes biscuits into weapons, armour and soldiers.
-Paramecia;Bomu-Bomu no Mi (Bomb Fruit);Makes body parts and bodily substances explosive without injuring the user with their own explosions.
-Paramecia;Buki-Buki no Mi (Arms Fruit);Changes the body into weapons, including blades, firearms and explosives.
-Paramecia;Buku-Buku no Mi (Book Fruit);Controls books, creates book-based illusions and imprisons living beings inside pages.
-Paramecia;Chiyu-Chiyu No Mi (Heal Fruit);Heals injuries through restorative bodily fluids, including tears.
-Paramecia;Choki-Choki no Mi (Snip Fruit);Turns body parts into scissors and allows cut materials to be handled like paper.
-Paramecia;Deka-Deka no Mi (Huge Fruit);Enlarges the user's body to gigantic proportions.
-Paramecia;Doa-Doa no Mi (Door Fruit);Creates doors in solid surfaces or in the air, allowing passage through a separate space.
-Paramecia;Doku-Doku No Mi (Venom Fruit);Produces and controls poisons and grants resistance to poisoning.
-Paramecia;Doru-Doru no Mi (Wax Fruit);Produces mouldable wax that hardens into durable structures, weapons and restraints.
-Paramecia;Fude-Fude no Mi (Brush Fruit);Brings drawings to life as three-dimensional ink creations under the user's control.
-Paramecia;Fuku-Fuku no Mi (Garb Fruit);Creates clothing and disguises from objects placed on a person's head.
-Paramecia;Fuwa-Fuwa no Mi (Float Fruit);Levitates the user and non-living matter previously touched, allowing controlled flight and movement.
-Paramecia;Gabu-Gabu no Mi (Liquor Fruit);Grants alcohol-related abilities, including producing liquor for attacks.
-Paramecia;Giro-Giro no Mi (Glare Fruit);Sees through objects and across great distances and reads other people's thoughts and memories.
-Paramecia;Gocha-Gocha no Mi (Pile Fruit);Fuses the user's body with other people into a larger combined body.
-Paramecia;Gura-Gura no Mi (Tremor Fruit);Generates powerful vibrations that produce shock waves, earthquakes and tsunamis.
-Paramecia;Guru-Guru no Mi (Spin Fruit);Rotates body parts like propellers for flight and spinning attacks.
-Paramecia;Hana-Hana No Mi (Flower Fruit);Sprouts copies of body parts on surfaces and other bodies, combining them into larger limbs or doubles.
-Paramecia;Hira-Hira no Mi (Ripple Fruit);Makes the user and touched objects flexible and fluttering like fabric while retaining their material properties.
-Paramecia;Hobi-Hobi no Mi (Hobby Fruit);Turns touched beings into obedient toys, erases others' memories of them and stops the user's physical ageing.
-Paramecia;Horo-Horo No Mi (Ghost/Hollow Fruit);Creates ghosts that induce extreme negativity or explode and allows the user's spirit to leave the body.
-Paramecia;Horu-Horu No Mi (Hormones Fruit);Creates hormones that alter bodily functions, appearance, sex characteristics, growth and recovery.
-Paramecia;Hoya-Hoya no Mi (Puff Fruit);Summons a large armed genie by rubbing the user's torso.
-Paramecia;Iba-Iba no Mi (Thorn Fruit);Generates and manipulates thorns and thorn-covered vines.
-Paramecia;Iku-Iku no Mi (Grow Fruit);Enlarges inanimate objects that remain under the user's care.
-Paramecia;Ishi-Ishi no Mi (Stone Fruit);Merges with existing stone and controls its shape and movement.
-Paramecia;Ito-Ito No Mi (Strings Fruit);Creates and controls sharp threads for cutting, binding, puppet control and other constructs.
-Paramecia;Jake-Jake no Mi (Jacket Fruit);Turns the user into a jacket that takes control of whoever wears it and uses their physical strength.
-Paramecia;Jiki-Jiki No Mi (Magnet Fruit);Generates magnetic forces to attract and repel metal. Awakening can assign magnetism to other targets.
-Paramecia;Juku-Juku no Mi (Ripe Fruit);Permanently ages touched living beings and objects, maturing bodies or decaying materials.
-Paramecia;Kage-Kage no Mi (Shadow Fruit);Manipulates and steals shadows, implants them into corpses to create zombies and absorbs them for strength.
-Paramecia;Kibi-Kibi no Mi (Millet Fruit);Produces cheek dumplings that tame animals and animal-based SMILE users who eat them.
-Paramecia;Kira-Kira no Mi (Diamond Fruit);Transforms the body into exceptionally hard diamond.
-Paramecia;Kiro-Kiro no Mi (Kilo Fruit);Changes the user's weight between one and ten thousand kilograms without changing body size.
-Paramecia;Kobu-Kobu no Mi (Pump Fruit);Uses encouragement to awaken other people's courage and latent physical strength.
-Paramecia;Kuku-Kuku no Mi (Cook Fruit);Turns non-living objects into edible food.
-Paramecia;Kuri-Kuri no Mi (Cream Fruit);Produces and manipulates cream that can burn targets.
-Paramecia;Maki-Maki no Mi (Scroll Fruit);Creates scrolls that store objects or attacks and release them later.
-Paramecia;Mane-Mane No Mi (Clone Fruit);Copies the appearance and voice of someone whose face the user has touched, without copying their powers.
-Paramecia;Mato-Mato no Mi (Mark Fruit);Makes thrown objects home in on a target previously touched with the corresponding hand.
-Paramecia;Memo-Memo no Mi (Memory Fruit);Extracts memories as film strips and edits, removes or replaces their contents.
-Paramecia;Mero-Mero no Mi (Love Fruit);Petrifies attracted targets with a beam and can petrify targets through particular physical or projectile attacks.
-Paramecia;Mira-Mira no Mi (Mirror Fruit);Creates mirrors, reflects attacks and appearances, and travels through a world connected to mirrors.
-Paramecia;Muchi-Muchi no Mi (Whip Fruit);Makes people or objects obey commands after striking them with a whip.
-Paramecia;Nagi-Nagi no Mi (Calm Fruit);Suppresses sound around the user or selected targets, creating areas of silence.
-Paramecia;Netsu-Netsu no Mi (Heat Fruit);Heats the body and transfers intense heat to nearby or touched matter.
-Paramecia;Nikyu-Nikyu no Mi (Paw Fruit);Repels targets with palm pads, including air, people and extracted pain or memories.
-Paramecia;Nomi-Nomi no Mi (Brain Fruit);Stores an enormous and continually growing amount of knowledge as the user's brain expands.
-Paramecia;Nori-Nori no Mi (Ride Fruit);Takes control of a creature or object by mounting and riding it.
-Paramecia;Noro-Noro no Mi (Slow Fruit);Fires beams that slow affected targets for thirty seconds.
-Paramecia;Nui-Nui no Mi (Stitch Fruit);Stitches objects and living beings together or onto surfaces without ordinary puncture injuries.
-Paramecia;Ope-Ope no Mi (Op Fruit);Creates a ROOM in which targets can be moved, separated and surgically rearranged. Can grant perpetual youth at the user's life cost.
-Paramecia;Ori-Ori no Mi (Bind Fruit);Produces iron restraints that bind targets passing through the user's body or arms.
-Paramecia;Oshi-Oshi no Mi (Push Fruit);Pushes and reshapes the ground as if it were soft clay.
-Paramecia;Oto-Oto no Mi (Sound Fruit);Transforms body parts into instruments and damages listeners through the resulting sounds.
-Paramecia;Pamu-Pamu no Mi (Pop Fruit);Swells and bursts the user's body or touched inorganic objects, producing explosions.
-Paramecia;Pero-Pero No Mi (Lick Fruit);Produces and shapes hardened candy into weapons, structures and restraints.
-Paramecia;Poke-Poke no Mi (Pocket Fruit);Creates body pockets that store objects much larger than their openings.
-Paramecia;Riki-Riki no Mi (Strong Fruit);Greatly amplifies physical strength, allowing the user to lift and throw enormous masses.
-Paramecia;Sabi-Sabi No Mi (Rust Fruit);Rusts and corrodes metal through contact.
-Paramecia;Shari-Shari no Mi (Wheel Fruit);Changes limbs into rapidly rotating wheels.
-Paramecia;Shibo-Shibo no Mi (Wring Fruit);Squeezes liquid from targets and absorbs it to increase the user's size and strength.
-Paramecia;Shiku-Shiku no Mi (Sick Fruit);Creates and spreads diseases with varied effects on infected targets.
-Paramecia;Shima-Shima no Mi (Island Fruit);Merges with an island and manipulates its terrain and structures as an extension of the body.
-Paramecia;Shiro-Shiro no Mi (Castle Fruit);Turns the body into a fortress whose interior houses miniaturised people, weapons and equipment.
-Paramecia;Soru-Soru No Mi (Soul Fruit);Manipulates lifespan and soul fragments, taking them from frightened targets and animating objects or animals as homies.
-Paramecia;Sube-Sube no Mi (Slip Fruit);Makes the skin extremely smooth so attacks and objects slide off it.
-Paramecia;Sui-Sui no Mi (Swim Fruit);Allows the user to swim through solid ground and walls as though they were liquid.
-Paramecia;Suke-Suke No Mi (Invisible Fruit);Makes the user and touched targets invisible.
-Paramecia;Supa-Supa no Mi (Dice Fruit);Turns body parts into steel blades and gives the body steel-like hardness.
-Paramecia;Toge-Toge no Mi (Spike Fruit);Grows sharp spikes from any part of the body.
-Paramecia;Toki-Toki no Mi (Time Fruit);Sends the user or other people forward in time, but cannot send them into the past.
-Paramecia;Ton-Ton no Mi (Ton Fruit);Increases the user's weight by huge amounts measured in metric tonnes.
-Paramecia;Toshi-Toshi no Mi (Age Fruit);Changes the age of people and objects and can temporarily realise imagined possible future forms.
-Paramecia;Tsutsu-Tsutsu no Mi (Barrel Fruit);Transforms body parts into cannon barrels that fire projectiles.
-Paramecia;Unnamed Devil Fruit (Urouge);Converts damage sustained into increased physical strength and body size.
-Paramecia;Wapu-Wapu no Mi (Warp Fruit);Teleports the user and other people between locations.
-Paramecia;Wara-Wara No Mi (Straw Fruit);Controls straw, forms a straw avatar and transfers injuries to other people through linked straw dolls.
-Paramecia;Woshu-Woshu no Mi (Wash Fruit);Washes and hangs people or objects like laundry, weakening and subduing affected opponents.
-Paramecia;Yomi-Yomi No Mi (Revive Fruit);Revives the user once after death and grants later control of their soul and the cold of the underworld.
-Paramecia;Zushi-Zushi no Mi (Gravity Fruit);Manipulates gravity to increase weight, lift matter and draw down meteors.
-Special Paramecia;Mochi-Mochi No Mi (Mochi Fruit);Creates, controls and transforms the body into mochi, allowing reshaping, trapping and powerful elastic attacks.
-Logia;Gasu-Gasu no Mi (Gas Fruit);Creates, controls and becomes gas, manipulating surrounding gases and oxygen concentration.
-Logia;Goro-Goro no Mi (Lightning Fruit);Creates, controls and becomes lightning, enabling electrical attacks and rapid movement.
-Logia;Hie-Hie no Mi (Ice Fruit);Creates, controls and becomes ice, freezing water, surfaces and living targets.
-Logia;Magu-Magu no Mi (Magma Fruit);Creates, controls and becomes magma, releasing molten attacks with extreme heat.
-Logia;Mera-Mera no Mi (Fire Fruit);Creates, controls and becomes fire, unleashing flames and heat.
-Logia;Moku-Moku no Mi (Smoke Fruit);Creates, controls and becomes smoke, allowing dispersal, flight and smothering restraints.
-Logia;Mori-Mori no Mi (Forest Fruit);Creates, controls and becomes plant life, growing roots and trees and draining nutrients from targets.
-Logia;Numa-Numa no Mi (Mud Fruit);Creates, controls and becomes swamp-like mud, trapping targets and storing objects inside the body.
-Logia;Pika-Pika no Mi (Light Fruit);Creates, controls and becomes light, firing lasers and travelling along light paths.
-Logia;Suna-Suna no Mi (Sand Fruit);Creates, controls and becomes sand, produces sandstorms and dries targets through contact.
-Logia;Susu-Susu no Mi (Soot Fruit);Creates, controls and becomes soot, separating it into controllable shapes such as crows.
-Logia;Yami-Yami no Mi (Darkness Fruit);Creates and controls darkness that draws in and absorbs matter. Physical contact suppresses another user's Devil Fruit ability.
-Logia;Yuki-Yuki no Mi (Snow Fruit);Creates, controls and becomes snow, forming blizzards and snow constructs.
-Unknown;Akuma no Mi (Devil Fruit);Grants demonic transformation and powers that can be shared through covenants, including supernatural regeneration, transport and control over covenant recipients.
-Zoan;Croco-Croco no Mi - Model: Alligator;Transforms the user into a alligator or hybrid form, granting the animal's characteristic anatomy, senses and physical abilities.
-Zoan;Hebi-Hebi no Mi - Model: Black Mamba;Transforms the user into a black mamba or hybrid form, granting the animal's characteristic anatomy, senses and physical abilities.
-Zoan;Hebi-Hebi no Mi - Model: Python;Transforms the user into a python or hybrid form, granting the animal's characteristic anatomy, senses and physical abilities.
-Zoan;Hebi-Hebi no Mi - Model: Viper;Transforms the user into a viper or hybrid form, granting the animal's characteristic anatomy, senses and physical abilities.
-Zoan;Inu-Inu no Mi - Model: Blood Hound;Transforms the user into a blood hound or hybrid form, granting the animal's characteristic anatomy, senses and physical abilities.
-Zoan;Inu-Inu no Mi - Model: Golden Retriever;Transforms the user into a golden retriever or hybrid form, granting the animal's characteristic anatomy, senses and physical abilities.
-Zoan;Inu-Inu no Mi - Model: Husky;Transforms the user into a husky or hybrid form, granting the animal's characteristic anatomy, senses and physical abilities.
-Zoan;Kame-Kame no Mi - Model: Tortoise;Transforms the user into a tortoise or hybrid form, granting the animal's characteristic anatomy, senses and physical abilities.
-Zoan;Kani-Kani no Mi - Model: Hermit Crab;Transforms the user into a hermit crab or hybrid form, granting the animal's characteristic anatomy, senses and physical abilities.
-Zoan;Kuma-Kuma no Mi - Model: Black Bear;Transforms the user into a black bear or hybrid form, granting the animal's characteristic anatomy, senses and physical abilities.
-Zoan;Kuma-Kuma no Mi - Model: Polar Bear;Transforms the user into a polar bear or hybrid form, granting the animal's characteristic anatomy, senses and physical abilities.
-Zoan;Mushi-Mushi no Mi - Model: Bee;Transforms the user into a bee or hybrid form, granting the animal's characteristic anatomy, senses and physical abilities.
-Zoan;Mushi-Mushi no Mi - Model: Scorpion;Transforms the user into a scorpion or hybrid form, granting the animal's characteristic anatomy, senses and physical abilities.
-Zoan;Neko-Neko no Mi - Model: Panther;Transforms the user into a panther or hybrid form, granting the animal's characteristic anatomy, senses and physical abilities.
-Zoan;Neko-Neko no Mi - Model: Puma;Transforms the user into a puma or hybrid form, granting the animal's characteristic anatomy, senses and physical abilities.
-Zoan;Neko-Neko no Mi - Model: Tiger;Transforms the user into a tiger or hybrid form, granting the animal's characteristic anatomy, senses and physical abilities.
-Zoan;Prima-Prima no Mi - Model: Gorilla;Transforms the user into a gorilla or hybrid form, granting the animal's characteristic anatomy, senses and physical abilities.
-Zoan;Tori-Tori no Mi - Model: Duck;Transforms the user into a duck or hybrid form, granting the animal's characteristic anatomy, senses and physical abilities.
-Zoan;Tori-Tori no Mi - Model: Flamingo;Transforms the user into a flamingo or hybrid form, granting the animal's characteristic anatomy, senses and physical abilities.
-Zoan;Tori-Tori no Mi - Model: Raven;Transforms the user into a raven or hybrid form, granting the animal's characteristic anatomy, senses and physical abilities.
-Zoan;Uma-Uma no Mi - Model: Antelope;Transforms the user into a antelope or hybrid form, granting the animal's characteristic anatomy, senses and physical abilities.
-Zoan;Uma-Uma no Mi - Model: Pony;Transforms the user into a pony or hybrid form, granting the animal's characteristic anatomy, senses and physical abilities.
-Zoan;Ushi-Ushi no Mi - Model: Reindeer;Transforms the user into a reindeer or hybrid form, granting the animal's characteristic anatomy, senses and physical abilities.
-Zoan;Webbo-Webbo no Mi - Model: Black Widow;Transforms the user into a black widow or hybrid form, granting the animal's characteristic anatomy, senses and physical abilities.
-Mythical Zoan;Aku-Aku no Mi - Model: Asura;Transforms into a multi-armed asura or hybrid form, increasing strength and simultaneous striking ability.
-Mythical Zoan;Aku-Aku no Mi - Model: Imp;Transforms into a small winged imp or hybrid form with claws and deceptive illusions.
-Mythical Zoan;Aku-Aku no Mi - Model: Suuccubus;Transforms into a succubus or hybrid form with wings, charm abilities and life-energy draining.
-Mythical Zoan;Hito-Hito no Mi - Model: Angel;Transforms into an angel or hybrid form with feathered wings and radiant energy abilities.
-Mythical Zoan;Hito-Hito no Mi - Model: Zombie;Transforms into an undead form that continues moving despite severe injuries and has reduced pain sensitivity.
-Mythical Zoan;Inu-Inu no Mi - Model: Cerberus;Transforms into a three-headed hellhound or hybrid form with powerful jaws and heightened senses.
-Mythical Zoan;Inu-Inu no Mi - Model: Fenrir Wolf;Transforms into a gigantic mythical wolf or hybrid form with overwhelming strength and powerful jaws.
-Mythical Zoan;Inu-Inu no Mi - Model: Moon Wolf;Transforms into a moon wolf or hybrid form with heightened senses and moonlight-based attacks.
-Mythical Zoan;Kame-Kame no Mi - Model: Colossal Turtle;Transforms into an enormous mythical turtle or hybrid form with immense strength and a protective shell.
-Mythical Zoan;Neko-Neko no Mi - Model: Griffin;Transforms into a griffin or hybrid form with flight, talons and leonine strength.
-Mythical Zoan;Neko-Neko no Mi - Model: Sphinx;Transforms into a sphinx or hybrid form with leonine strength and wings for flight.
-Mythical Zoan;Neko-Neko no Mi - Model: Unicorn;Transforms into a unicorn or hybrid form with a magical horn and healing abilities.
-Mythical Zoan;Prima-Prima no Mi - Model: Yeti;Transforms into a yeti or hybrid form with great strength, thick fur and resistance to cold.
-Mythical Zoan;Ryu-Ryu no Mi - Model: Western Dragon;Transforms into a winged western dragon or hybrid form with armoured scales and fire breath.
-Mythical Zoan;Tori-Tori no Mi - Model: Thunderbird;Transforms into a giant thunderbird or hybrid form with flight and lightning attacks.
-Mythical Zoan;Tori-Tori no Mi - Model: Tripodero;Transforms into a tripodero or hybrid form with extensible legs and a tube-like snout that fires projectiles.
-Ancient Zoan;Hito-Hito no Mi - Model: Neanderthal;Transforms the user into a neanderthal or hybrid form, granting the animal's characteristic anatomy, senses and physical abilities.
-Ancient Zoan;Inu-Inu no Mi - Model: Dire Wolf;Transforms the user into a dire wolf or hybrid form, granting the animal's characteristic anatomy, senses and physical abilities.
-Ancient Zoan;Mushi-Mushi no Mi - Model: Gastropod;Transforms the user into a gastropod or hybrid form, granting the animal's characteristic anatomy, senses and physical abilities.
-Ancient Zoan;Mushi-Mushi no Mi - Model: Meganeura;Transforms the user into a meganeura or hybrid form, granting the animal's characteristic anatomy, senses and physical abilities.
-Ancient Zoan;Neko-Neko no Mi - Model: Xenosmilus;Transforms the user into a xenosmilus or hybrid form, granting the animal's characteristic anatomy, senses and physical abilities.
-Ancient Zoan;Ryu-Ryu no Mi - Model: Megaraptor;Transforms the user into a megaraptor or hybrid form, granting the animal's characteristic anatomy, senses and physical abilities.
-Ancient Zoan;Ryu-Ryu no Mi - Model: Pterodactyl;Transforms the user into a pterodactyl or hybrid form, granting the animal's characteristic anatomy, senses and physical abilities.
-Ancient Zoan;Ryu-Ryu no Mi - Model: Tyrannosaurus Rex;Transforms the user into a tyrannosaurus rex or hybrid form, granting the animal's characteristic anatomy, senses and physical abilities.
-Ancient Zoan;Ryu-Ryu no Mi - Model: Veolociraptor;Transforms the user into a velociraptor or hybrid form, granting the animal's characteristic anatomy, senses and physical abilities.
-Ancient Zoan;Tori-Tori no Mi - Model: Dodo Bird;Transforms the user into a dodo bird or hybrid form, granting the animal's characteristic anatomy, senses and physical abilities.
-Ancient Zoan;Uma-Uma no Mi - Model: Giant Deer;Transforms the user into a giant deer or hybrid form, granting the animal's characteristic anatomy, senses and physical abilities.
-Ancient Zoan;Webbo-Webbo no Mi - Model: Megarachne;Transforms the user into a megarachne or hybrid form, granting the animal's characteristic anatomy, senses and physical abilities.
-Paramecia;Alco-Alco No Mi (Alcohol Fruit);Produces and manipulates alcohol, causing intoxication or creating flammable attacks.
-Paramecia;Ana-Ana no Mi (Hole Fruit);Opens holes through solid surfaces for passage, traps and concealment.
-Paramecia;Caro-Caro No Mi (Vehicle Fruit);Transforms the body into vehicle forms for transport and charging attacks.
-Paramecia;Choco-Choco no Mi (Chocolate Fruit);Creates and shapes chocolate into edible objects, weapons and restraints.
-Paramecia;Dragu-Dragu No Mi (Drugs Fruit);Produces substances that alter sensation, alertness and bodily performance.
-Paramecia;Foldu-Foldu No Mi (Fold-Fold Fruit);Folds touched objects into compact shapes and unfolds them again.
-Paramecia;Gane-Gane No Mi (Steel Body Fruit);Turns the body into solid steel, increasing weight and resistance to damage.
-Paramecia;Gera-Gera No Mi (Gear Fruit);Creates gears and turns body parts into geared mechanisms for mechanical motion.
-Paramecia;Glasa-Glasa No Mi (Glass Fruit);Creates and shapes glass into transparent structures, cutting edges and projectiles.
-Paramecia;Goru-Goru No Mi (Gold Fruit);Controls existing gold that the user has touched, reshaping and moving it without creating new gold.
-Paramecia;Hamma-Hamma No Mi (Hammer Fruit);Transforms body parts into hammers for heavy impact attacks.
-Paramecia;Hoshi-Hoshi no Mi (Star Fuit);Creates luminous star-shaped energy constructs and launches them as projectiles.
-Paramecia;Kawai-Kawai No Mi (Cute-Cute Fruit);Uses an irresistibly cute appearance to distract targets and reduce their hostility.
-Paramecia;Kaya-Kaya No Mi (Gunpowder Fruit);Produces and controls gunpowder for explosive charges and blasts.
-Paramecia;Kini-Kini No Mi (Muscle Fruit);Expands and strengthens muscles, increasing physical power and body mass.
-Paramecia;Kyara-Kyara no Mi (Character Fruit);Gives consciousness to non-living souls and allows souls to merge.
-Paramecia;Naiha-Naiha no Mi (Implosian Man Fruit);Creates inward-directed pressure that crushes targets toward a central point.
-Paramecia;Nichi-Nichi No Mi (2D Fruit);Flattens the body into a two-dimensional form to slip through narrow gaps and move along surfaces.
-Paramecia;Obbi-Obbi No Mi (Obsidian Fruit);Creates and shapes obsidian into sharp weapons and protective structures.
-Paramecia;Oru-Oru No Mi (Origami Fruit);Folds objects into origami shapes and controls the resulting constructs.
-Paramecia;Peto-Peto No Mi (Pet Fruit);Creates collars that force creatures wearing them to obey the user's spoken commands.
-Paramecia;Rubi-Rubi no Mi (Ruby Fruit);Produces and shapes hard ruby crystals into armour, blades and projectiles.
-Paramecia;Soda-Soda no Mi (Soda Fruit);Produces and controls carbonated drinks, using compressed fizz for bursts and propulsion.
-Paramecia;Susu-Susu No Mi (SuperSpeed Fruit);Accelerates bodily movement to superhuman speed for rapid travel and attacks.
-Paramecia;Vibro-Vibro No Mi (Vibration Fruit);Generates vibrations through the body and touched surfaces to shake or fracture targets.
-Paramecia;Wara-Wara no Mi (Laugh Fruit);Forces targets into bouts of laughter that disrupt movement, breathing and concentration.
-Paramecia;Yari-Yari No Mi (Spikes Fruit);Grows sharp spikes from the body and shapes them for stabbing or defence.
-Paramecia;Yume-Yume no Mi (Dream Fruit);Enters and shapes dreams, creating dream scenes and influencing sleeping targets.
-Special Paramecia;Huni-Huni no Mi (Honey Fruit);Creates, controls and transforms the body into sticky honey.
-Special Paramecia;Jero-Jero no Mi (Gelatin Fruit);Creates, controls and transforms the body into gelatin, forming elastic shapes and absorbing impacts.
-Special Paramecia;Ki-Ki no Mi (Tree Fruit);Creates, controls and transforms the body into trees and wood.
-Special Paramecia;Nori-Nori No Mi (Glue Fruit);Creates, controls and transforms the body into adhesive glue.
-Special Paramecia;Toryo-Toryo no Mi (Paint Fruit);Creates, controls and transforms the body into paint, coating surfaces and forming coloured constructs.
-Logia;Ame-Ame no Mi (Candy Syrup Fruit);Creates, controls and transforms the body into candy syrup that can bind targets and harden.
-Logia;Choku-Choku no Mi (Chalk Fruit);Creates, controls and transforms the body into chalk.
-Logia;Doro-Doro no Mi (Dirt Fruit);Creates, controls and transforms the body into earth.
-Logia;Enso-Enso no Mi (Chlorine Fruit);Creates, controls and transforms the body into chlorine.
-Logia;Foru-Foru no Mi (Phosphorus Fruit);Creates, controls and transforms the body into phosphorus.
-Logia;Genyu-Genyu no Mi (Crude Oil Fruit);Creates, controls and transforms the body into crude oil.
-Logia;Gino-Gino no Mi (Silver Fruit);Creates, controls and transforms the body into silver.
-Logia;Hoko-Hoko no Mi (Dust Fruit);Creates, controls and transforms the body into dust.
-Logia;Hone-Hone no Mi (Calcium/Bone Fruit);Creates, controls and transforms the body into bone and calcium.
-Logia;Inku-Inku no Mi (Ink Fruit);Creates, controls and transforms the body into ink.
-Logia;Iwa-Iwa no Mi (Stone Fruit);Creates, controls and transforms the body into stone.
-Logia;Jushi-Jushi no Mi (Resin Fruit);Creates, controls and transforms the body into resin.
-Logia;Kaze-Kaze no Mi (Wind Fruit);Creates, controls and transforms the body into wind.
-Logia;Kessho-Kessho no Mi (Crystal Fruit);Creates, controls and transforms the body into crystal.
-Logia;Ketsu-Ketsu no Mi (Blood Fruit);Creates, controls and transforms the body into blood.
-Logia;Kusa-Kusa no Mi (Grass Fruit);Creates, controls and transforms the body into grass.
-Logia;Moku-Moku no Mi (Wood Fruit);Creates, controls and transforms the body into wood.
-Logia;Nama-Nama no Mi (Lead Fruit);Creates, controls and transforms the body into lead.
-Logia;Nendo-Nendo no Mi (Clay Fruit);Creates, controls and transforms the body into clay.
-Logia;Noni-Noni no Mi (Neon Fruit);Creates, controls and transforms the body into neon.
-Logia;Nuclee-Nuclee no Mi (Nuclear Energy Fruit);Creates, controls and transforms the body into nuclear energy.
-Logia;Pasa-Pasa no Mi (Paper Fruit);Creates, controls and transforms the body into paper sheets that can fold, scatter and form cutting attacks.
-Logia;Plazu-Plazu no Mi (Plasma Fruit);Creates, controls and transforms the body into plasma.
-Logia;Salti-Salti no Mi (Salt Fruit);Creates, controls and transforms the body into salt.
-Logia;Shibo-Shibo no Mi (Fatty Oil Fruit);Creates, controls and transforms the body into fatty oil.
-Logia;Sido-Sido no Mi (Acid Fruit);Creates, controls and transforms the body into acid.
-Logia;Sora-Sora no Mi (Coulds Fruit);Creates, controls and transforms the body into clouds.
-Logia;Suigi-Suigi no Mi (Mercury Fruit);Creates, controls and transforms the body into mercury.
-Logia;Sulfu-Sulfu no Mi (Sulfur Fruit);Creates, controls and transforms the body into sulfur.
-Logia;Suraimu-Suraimu no Mi (Slime Fruit);Creates, controls and transforms the body into slime.
-Logia;Tanso-Tanso no Mi (Coal/Carbon Fruit);Creates, controls and transforms the body into carbon.
-Logia;Taru-Taru no Mi (Tar Fruit);Creates, controls and transforms the body into tar.
-Logia;Tassi-Tassi no Mi (Patassium Fruit);Creates, controls and transforms the body into potassium.
-Logia;Toro-Toro no Mi (Unknown Liquid Fruit);Creates, controls and transforms the body into a liquid that can spread out and flow through narrow gaps.
-Logia;Unchi-Unchi no Mi (Waste Fruit);Creates, controls and transforms the body into waste.
+# ONE PIECE CHARACTER GENERATOR — DEVIL FRUITS	
+# Format: type;name;power	
+# Lines beginning with # are ignored by the updated data-loader.js.	
+# Original entries and descriptions preserved; grouped by source section and type.	
+# NOTE: The first section is from the original list; canon status has not been independently verified.	
+type;name;power	
+	
+# ==========================================================	
+# ORIGINAL DATASET	
+# ==========================================================	
+	
+# === ZOAN (31) ===	
+Zoan;Batto-Batto no Mi (Bat Fruit);Transforms the user into a bat or hybrid form with wings and fangs. Biting and drinking blood can incapacitate a target.	
+Zoan;Hebi-Hebi no Mi - Model: Anaconda;Transforms the user into an anaconda or a hybrid form granting powerful coils that constrict opponents
+Zoan;Hebi-Hebi no Mi - Model: King Cobra;Transforms the user into a king cobra or a hybrid form	 granting venomous fangs
+Zoan;Hito-Hito no Mi - Model: Human;Transforms the user into a human or hybrid form and grants human intelligence and speech to an animal user.	
+Zoan;Inu-Inu no Mi - Model: Dachshund;Transforms the user into a dachshund or a hybrid form	 granting keen scent tracking
+Zoan;Inu-Inu no Mi - Model: Hound;Transforms the user into a hound or a hybrid form	 granting exceptional scent tracking
+Zoan;Inu-Inu no Mi - Model: Jackal;Transforms the user into a jackal or a hybrid form	 granting sharp hearing
+Zoan;Inu-Inu no Mi - Model: Tanuki;Transforms the user into a tanuki or a hybrid form	 granting nimble paws
+Zoan;Inu-Inu no Mi - Model: Wolf;Transforms the user into a wolf or a hybrid form	 granting keen smell
+Zoan;Kame-Kame no Mi (Turtle Fruit);Transforms the user into a turtle or hybrid form with a highly protective shell.	
+Zoan;Mogu-Mogu no Mi (Mole Fruit);Transforms the user into a mole or hybrid form with claws suited to burrowing through the ground.	
+Zoan;Mushi-Mushi no Mi - Model: Kabutomushi;Transforms the user into a kabutomushi or a hybrid form	 granting a hard beetle shell
+Zoan;Mushi-Mushi no Mi - Model: Suzumebachi;Transforms the user into a suzumebachi or a hybrid form	 granting rapid flight
+Zoan;Neko-Neko no Mi - Model: Leopard;Transforms the user into a leopard or a hybrid form	 granting explosive speed
+Zoan;Rako-Rako no Mi (Otter Fruit);Transforms the user into a sea otter or hybrid form.	
+Zoan;Sara-Sara no Mi - Model: Axolotl;Transforms the user into an axolotl or a hybrid form granting aquatic movement
+Zoan;Tama-Tama no Mi (Egg Fruit);Gives an egg-like body that hatches into a chick form and then a stronger rooster form when broken.	
+Zoan;Tori-Tori no Mi - Model: Albatross;Transforms the user into an albatross or a hybrid form	 granting long-distance soaring
+Zoan;Tori-Tori no Mi - Model: Falcon;Transforms the user into a falcon or a hybrid form	 granting high-speed dives
+Zoan;Uma-Uma no Mi (Horse Fruit);Transforms the user into a horse or hybrid form	 increasing running strength and mobility.
+Zoan;Unnamed Devil Fruit (Dalmatian);Grants Dalmatian dog-like transformation and physical traits. The fruit's official name has not been revealed.	
+Zoan;Unnamed Devil Fruit (Epoida);Grants caterpillar-like transformation and physical traits. The fruit's official name has not been revealed.	
+Zoan;Unnamed Devil Fruit (Minochihuahua);Grants chihuahua-like transformation and physical traits. The fruit's official name has not been revealed.	
+Zoan;Unnamed Devil Fruit (Minokoala);Grants koala-like transformation and physical traits. The fruit's official name has not been revealed.	
+Zoan;Unnamed Devil Fruit (Minorhinoceros);Grants rhinoceros-like transformation and physical traits. The fruit's official name has not been revealed.	
+Zoan;Unnamed Devil Fruit (Minotaurus);Grants Holstein cow-like transformation and physical traits. The fruit's official name has not been revealed.	
+Zoan;Unnamed Devil Fruit (Minozebra);Grants zebra-like transformation and physical traits. The fruit's official name has not been revealed.	
+Zoan;Unnamed Devil Fruit (Onigumo);Grants spider-like transformation and physical traits. The fruit's official name has not been revealed.	
+Zoan;Ushi-Ushi no Mi - Model: Bison;Transforms the user into a bison or a hybrid form	 granting massive shoulder strength
+Zoan;Ushi-Ushi no Mi - Model: Giraffe;Transforms the user into a giraffe or a hybrid form	 granting a long neck
+Zoan;Zou-Zou no Mi (Elephant Fruit);Transforms the user into an elephant or hybrid form with great strength	 a trunk and tusks.
+	
+# === MYTHICAL ZOAN (18) ===	
+Mythical Zoan;Hebi-Hebi no Mi - Model: Yamata no Orochi;Transforms the user into an eight-headed serpent allowing multiple heads to attack and survive individual decapitations.
+Mythical Zoan;Hito-Hito no Mi - Model: Daibutsu;Transforms the user into a giant golden Buddha with immense strength and shock-wave attacks.	
+Mythical Zoan;Hito-Hito no Mi - Model: Nika;Gives the body rubber properties. Awakening grants the Nika form extreme bodily freedom and the ability to rubberise surroundings and other bodies. Also known as the Gomu-Gomu no Mi.
+Mythical Zoan;Hito-Hito no Mi - Model: Onyudo;Transforms the user into a large onyudo monk or hybrid form.	
+Mythical Zoan;Inu-Inu no Mi - Model: Kyubi no Kitsune;Transforms the user into a nine-tailed fox or hybrid form and copies other people's appearances.	
+Mythical Zoan;Inu-Inu no Mi - Model: Okuchi no Makami;Transforms the user into a divine wolf or hybrid form with ice-generating abilities.	
+Mythical Zoan;Risu-Risu no Mi - Model: Ratatoskr;Transforms the user into the mythical squirrel Ratatoskr and generates ice and snow.	
+Mythical Zoan;Ryu-Ryu no Mi - Model: Kirin;Transforms the user into a kirin	 flies
+Mythical Zoan;Ryu-Ryu no Mi - Model: Nidhöggr;Transforms the user into the enormous dragon Nidhöggr and unleashes lightning breath.	
+Mythical Zoan;Tori-Tori no Mi - Model: Phoenix;Transforms the user into a phoenix or hybrid form with flight and blue flames that regenerate injuries and can heal others.	
+Mythical Zoan;Uma-Uma no Mi - Model: Pegasus;Transforms the user into a winged horse or hybrid form capable of flight.	
+Mythical Zoan;Unnamed Devil Fruit (Cerberus);Transforms Shamrock's sword into a three-headed dog whose heads can detach and attack.	
+Mythical Zoan;Unnamed Devil Fruit (Ethanbaron V. Nusjuro);Takes the form of a skeletal horse-like bakotsu and uses freezing attacks.	
+Mythical Zoan;Unnamed Devil Fruit (Jaygarcia Saturn);Takes the form of a gyuki-like horned spider creature with venom and powerful gaze-based attacks.	
+Mythical Zoan;Unnamed Devil Fruit (Marcus Mars);Takes the form of an itsumade-like bird capable of flight and mouth-fired attacks.	
+Mythical Zoan;Unnamed Devil Fruit (Shepherd Ju Peter);Takes the form of a giant sandworm that tunnels and inhales targets with powerful suction.	
+Mythical Zoan;Unnamed Devil Fruit (Topman Warcury);Takes the form of a giant fengxi-like boar with exceptional toughness and blade-like tusks.	
+Mythical Zoan;Uo-Uo no Mi - Model: Seiryu;Transforms the user into an azure dragon or hybrid form	 with flame clouds for flight
+	
+# === ANCIENT ZOAN (9) ===	
+Ancient Zoan;Kumo-Kumo no Mi - Model: Rosamygale Grauvogeli;Transforms the user into a rosamygale grauvogeli or a hybrid form	 granting prehistoric spider limbs
+Ancient Zoan;Neko-Neko no Mi - Model: Saber Tiger;Transforms the user into a saber tiger or a hybrid form	 granting enormous saber-like fangs
+Ancient Zoan;Ryu-Ryu no Mi - Model: Allosaurus;Transforms the user into an allosaurus or a hybrid form	 granting serrated teeth
+Ancient Zoan;Ryu-Ryu no Mi - Model: Brachiosaurus;Transforms the user into a brachiosaurus or a hybrid form	 granting colossal size
+Ancient Zoan;Ryu-Ryu no Mi - Model: Pachycephalosaurus;Transforms the user into a pachycephalosaurus or a hybrid form	 granting a thick domed skull for crushing headbutts and strong legs.
+Ancient Zoan;Ryu-Ryu no Mi - Model: Pteranodon;Transforms the user into a pteranodon or a hybrid form	 granting flight
+Ancient Zoan;Ryu-Ryu no Mi - Model: Spinosaurus;Transforms the user into a spinosaurus or a hybrid form	 granting enormous jaws
+Ancient Zoan;Ryu-Ryu no Mi - Model: Triceratops;Transforms the user into a triceratops or a hybrid form	 granting three horns
+Ancient Zoan;Zou-Zou no Mi - Model: Mammoth;Transforms the user into a mammoth or a hybrid form	 granting colossal strength
+	
+# === ARTIFICIAL ZOAN (2) ===	
+Artificial Zoan;Artificial Uo-Uo no Mi - Model: Seiryu (Vegapunk);Replicates the azure dragon power as a pink dragon	 including flame clouds for flight and fire breath.
+Artificial Zoan;SMILE;Artificial animal fruits with varied animal transformations. Only a minority grant powers	 while failures remove swimming ability and cause uncontrollable smiling and laughter.
+	
+# === PARAMECIA (92) ===	
+Paramecia;Aro-Aro no Mi (Arrow Fruit);Creates arrows that guide movement along chosen paths.	
+Paramecia;Ato-Ato No Mi (Art Fruit);Changes people and objects into distorted artworks	 interfering with their normal functions.
+Paramecia;Awa-Awa no Mi (Bubble Fruit);Produces soap bubbles that clean surfaces and drain an opponent's strength.	
+Paramecia;Baku-Baku no Mi (Munch Fruit);Eats normally inedible materials and incorporates consumed objects into the body or combines them.	
+Paramecia;Bane-Bane No Mi (Springs Fruit);Changes limbs into springs to store force and launch bouncing attacks.	
+Paramecia;Bara-Bara no Mi (Chop Fruit);Separates the body into controllable floating pieces and resists cutting attacks.	
+Paramecia;Bari-Bari No Mi (Barrier Fruit);Creates and shapes highly resistant barriers by crossing the fingers.	
+Paramecia;Bata-Bata no Mi (Butter Fruit);Produces and controls butter to bind targets.	
+Paramecia;Beri-Beri no Mi (Berry Fruit);Divides the body into round berry-like pieces that can move independently.	
+Paramecia;Beta-Beta no Mi (Sticky Fruit);Produces and controls adhesive	 flammable mucus.
+Paramecia;Bisu-Bisu No Mi (Biscuit Fruit);Creates and shapes biscuits into weapons	 armour and soldiers.
+Paramecia;Bomu-Bomu no Mi (Bomb Fruit);Makes body parts and bodily substances explosive without injuring the user with their own explosions.	
+Paramecia;Buki-Buki no Mi (Arms Fruit);Changes the body into weapons	 including blades
+Paramecia;Buku-Buku no Mi (Book Fruit);Controls books	 creates book-based illusions and imprisons living beings inside pages.
+Paramecia;Chiyu-Chiyu No Mi (Heal Fruit);Heals injuries through restorative bodily fluids	 including tears.
+Paramecia;Choki-Choki no Mi (Snip Fruit);Turns body parts into scissors and allows cut materials to be handled like paper.	
+Paramecia;Deka-Deka no Mi (Huge Fruit);Enlarges the user's body to gigantic proportions.	
+Paramecia;Doa-Doa no Mi (Door Fruit);Creates doors in solid surfaces or in the air	 allowing passage through a separate space.
+Paramecia;Doku-Doku No Mi (Venom Fruit);Produces and controls poisons and grants resistance to poisoning.	
+Paramecia;Doru-Doru no Mi (Wax Fruit);Produces mouldable wax that hardens into durable structures	 weapons and restraints.
+Paramecia;Fude-Fude no Mi (Brush Fruit);Brings drawings to life as three-dimensional ink creations under the user's control.	
+Paramecia;Fuku-Fuku no Mi (Garb Fruit);Creates clothing and disguises from objects placed on a person's head.	
+Paramecia;Fuwa-Fuwa no Mi (Float Fruit);Levitates the user and non-living matter previously touched	 allowing controlled flight and movement.
+Paramecia;Gabu-Gabu no Mi (Liquor Fruit);Grants alcohol-related abilities	 including producing liquor for attacks.
+Paramecia;Giro-Giro no Mi (Glare Fruit);Sees through objects and across great distances and reads other people's thoughts and memories.	
+Paramecia;Gocha-Gocha no Mi (Pile Fruit);Fuses the user's body with other people into a larger combined body.	
+Paramecia;Gura-Gura no Mi (Tremor Fruit);Generates powerful vibrations that produce shock waves	 earthquakes and tsunamis.
+Paramecia;Guru-Guru no Mi (Spin Fruit);Rotates body parts like propellers for flight and spinning attacks.	
+Paramecia;Hana-Hana No Mi (Flower Fruit);Sprouts copies of body parts on surfaces and other bodies	 combining them into larger limbs or doubles.
+Paramecia;Hira-Hira no Mi (Ripple Fruit);Makes the user and touched objects flexible and fluttering like fabric while retaining their material properties.	
+Paramecia;Hobi-Hobi no Mi (Hobby Fruit);Turns touched beings into obedient toys	 erases others' memories of them and stops the user's physical ageing.
+Paramecia;Horo-Horo No Mi (Ghost/Hollow Fruit);Creates ghosts that induce extreme negativity or explode and allows the user's spirit to leave the body.	
+Paramecia;Horu-Horu No Mi (Hormones Fruit);Creates hormones that alter bodily functions	 appearance
+Paramecia;Hoya-Hoya no Mi (Puff Fruit);Summons a large armed genie by rubbing the user's torso.	
+Paramecia;Iba-Iba no Mi (Thorn Fruit);Generates and manipulates thorns and thorn-covered vines.	
+Paramecia;Iku-Iku no Mi (Grow Fruit);Enlarges inanimate objects that remain under the user's care.	
+Paramecia;Ishi-Ishi no Mi (Stone Fruit);Merges with existing stone and controls its shape and movement.	
+Paramecia;Ito-Ito No Mi (Strings Fruit);Creates and controls sharp threads for cutting	 binding
+Paramecia;Jake-Jake no Mi (Jacket Fruit);Turns the user into a jacket that takes control of whoever wears it and uses their physical strength.	
+Paramecia;Jiki-Jiki No Mi (Magnet Fruit);Generates magnetic forces to attract and repel metal. Awakening can assign magnetism to other targets.	
+Paramecia;Juku-Juku no Mi (Ripe Fruit);Permanently ages touched living beings and objects	 maturing bodies or decaying materials.
+Paramecia;Kage-Kage no Mi (Shadow Fruit);Manipulates and steals shadows	 implants them into corpses to create zombies and absorbs them for strength.
+Paramecia;Kibi-Kibi no Mi (Millet Fruit);Produces cheek dumplings that tame animals and animal-based SMILE users who eat them.	
+Paramecia;Kira-Kira no Mi (Diamond Fruit);Transforms the body into exceptionally hard diamond.	
+Paramecia;Kiro-Kiro no Mi (Kilo Fruit);Changes the user's weight between one and ten thousand kilograms without changing body size.	
+Paramecia;Kobu-Kobu no Mi (Pump Fruit);Uses encouragement to awaken other people's courage and latent physical strength.	
+Paramecia;Kuku-Kuku no Mi (Cook Fruit);Turns non-living objects into edible food.	
+Paramecia;Kuri-Kuri no Mi (Cream Fruit);Produces and manipulates cream that can burn targets.	
+Paramecia;Maki-Maki no Mi (Scroll Fruit);Creates scrolls that store objects or attacks and release them later.	
+Paramecia;Mane-Mane No Mi (Clone Fruit);Copies the appearance and voice of someone whose face the user has touched	 without copying their powers.
+Paramecia;Mato-Mato no Mi (Mark Fruit);Makes thrown objects home in on a target previously touched with the corresponding hand.	
+Paramecia;Memo-Memo no Mi (Memory Fruit);Extracts memories as film strips and edits	 removes or replaces their contents.
+Paramecia;Mero-Mero no Mi (Love Fruit);Petrifies attracted targets with a beam and can petrify targets through particular physical or projectile attacks.	
+Paramecia;Mira-Mira no Mi (Mirror Fruit);Creates mirrors reflects attacks and appearances
+Paramecia;Muchi-Muchi no Mi (Whip Fruit);Makes people or objects obey commands after striking them with a whip.	
+Paramecia;Nagi-Nagi no Mi (Calm Fruit);Suppresses sound around the user or selected targets	 creating areas of silence.
+Paramecia;Netsu-Netsu no Mi (Heat Fruit);Heats the body and transfers intense heat to nearby or touched matter.	
+Paramecia;Nikyu-Nikyu no Mi (Paw Fruit);Repels targets with palm pads	 including air
+Paramecia;Nomi-Nomi no Mi (Brain Fruit);Stores an enormous and continually growing amount of knowledge as the user's brain expands.	
+Paramecia;Nori-Nori no Mi (Ride Fruit);Takes control of a creature or object by mounting and riding it.	
+Paramecia;Noro-Noro no Mi (Slow Fruit);Fires beams that slow affected targets for thirty seconds.	
+Paramecia;Nui-Nui no Mi (Stitch Fruit);Stitches objects and living beings together or onto surfaces without ordinary puncture injuries.	
+Paramecia;Ope-Ope no Mi (Op Fruit);Creates a ROOM in which targets can be moved	 separated and surgically rearranged. Can grant perpetual youth at the user's life cost.
+Paramecia;Ori-Ori no Mi (Bind Fruit);Produces iron restraints that bind targets passing through the user's body or arms.	
+Paramecia;Oshi-Oshi no Mi (Push Fruit);Pushes and reshapes the ground as if it were soft clay.	
+Paramecia;Oto-Oto no Mi (Sound Fruit);Transforms body parts into instruments and damages listeners through the resulting sounds.	
+Paramecia;Pamu-Pamu no Mi (Pop Fruit);Swells and bursts the user's body or touched inorganic objects	 producing explosions.
+Paramecia;Pero-Pero No Mi (Lick Fruit);Produces and shapes hardened candy into weapons	 structures and restraints.
+Paramecia;Poke-Poke no Mi (Pocket Fruit);Creates body pockets that store objects much larger than their openings.	
+Paramecia;Riki-Riki no Mi (Strong Fruit);Greatly amplifies physical strength	 allowing the user to lift and throw enormous masses.
+Paramecia;Sabi-Sabi No Mi (Rust Fruit);Rusts and corrodes metal through contact.	
+Paramecia;Shari-Shari no Mi (Wheel Fruit);Changes limbs into rapidly rotating wheels.	
+Paramecia;Shibo-Shibo no Mi (Wring Fruit);Squeezes liquid from targets and absorbs it to increase the user's size and strength.	
+Paramecia;Shiku-Shiku no Mi (Sick Fruit);Creates and spreads diseases with varied effects on infected targets.	
+Paramecia;Shima-Shima no Mi (Island Fruit);Merges with an island and manipulates its terrain and structures as an extension of the body.	
+Paramecia;Shiro-Shiro no Mi (Castle Fruit);Turns the body into a fortress whose interior houses miniaturised people	 weapons and equipment.
+Paramecia;Soru-Soru No Mi (Soul Fruit);Manipulates lifespan and soul fragments	 taking them from frightened targets and animating objects or animals as homies.
+Paramecia;Sube-Sube no Mi (Slip Fruit);Makes the skin extremely smooth so attacks and objects slide off it.	
+Paramecia;Sui-Sui no Mi (Swim Fruit);Allows the user to swim through solid ground and walls as though they were liquid.	
+Paramecia;Suke-Suke No Mi (Invisible Fruit);Makes the user and touched targets invisible.	
+Paramecia;Supa-Supa no Mi (Dice Fruit);Turns body parts into steel blades and gives the body steel-like hardness.	
+Paramecia;Toge-Toge no Mi (Spike Fruit);Grows sharp spikes from any part of the body.	
+Paramecia;Toki-Toki no Mi (Time Fruit);Sends the user or other people forward in time but cannot send them into the past.
+Paramecia;Ton-Ton no Mi (Ton Fruit);Increases the user's weight by huge amounts measured in metric tonnes.	
+Paramecia;Toshi-Toshi no Mi (Age Fruit);Changes the age of people and objects and can temporarily realise imagined possible future forms.	
+Paramecia;Tsutsu-Tsutsu no Mi (Barrel Fruit);Transforms body parts into cannon barrels that fire projectiles.	
+Paramecia;Unnamed Devil Fruit (Urouge);Converts damage sustained into increased physical strength and body size.	
+Paramecia;Wapu-Wapu no Mi (Warp Fruit);Teleports the user and other people between locations.	
+Paramecia;Wara-Wara No Mi (Straw Fruit);Controls straw	 forms a straw avatar and transfers injuries to other people through linked straw dolls.
+Paramecia;Woshu-Woshu no Mi (Wash Fruit);Washes and hangs people or objects like laundry weakening and subduing affected opponents.
+Paramecia;Yomi-Yomi No Mi (Revive Fruit);Revives the user once after death and grants later control of their soul and the cold of the underworld.	
+Paramecia;Zushi-Zushi no Mi (Gravity Fruit);Manipulates gravity to increase weight lift matter and draw down meteors.
+	
+# === SPECIAL PARAMECIA (1) ===	
+Special Paramecia;Mochi-Mochi No Mi (Mochi Fruit);Creates	 controls and transforms the body into mochi
+	
+# === LOGIA (13) ===	
+Logia;Gasu-Gasu no Mi (Gas Fruit);Creates	 controls and becomes gas
+Logia;Goro-Goro no Mi (Lightning Fruit);Creates	 controls and becomes lightning
+Logia;Hie-Hie no Mi (Ice Fruit);Creates	 controls and becomes ice
+Logia;Magu-Magu no Mi (Magma Fruit);Creates	 controls and becomes magma
+Logia;Mera-Mera no Mi (Fire Fruit);Creates	 controls and becomes fire
+Logia;Moku-Moku no Mi (Smoke Fruit);Creates	 controls and becomes smoke
+Logia;Mori-Mori no Mi (Forest Fruit);Creates	 controls and becomes plant life
+Logia;Numa-Numa no Mi (Mud Fruit);Creates	 controls and becomes swamp-like mud
+Logia;Pika-Pika no Mi (Light Fruit);Creates	 controls and becomes light
+Logia;Suna-Suna no Mi (Sand Fruit);Creates	 controls and becomes sand
+Logia;Susu-Susu no Mi (Soot Fruit);Creates	 controls and becomes soot
+Logia;Yami-Yami no Mi (Darkness Fruit);Creates and controls darkness that draws in and absorbs matter. Physical contact suppresses another user's Devil Fruit ability.	
+Logia;Yuki-Yuki no Mi (Snow Fruit);Creates	 controls and becomes snow
+	
+# === UNKNOWN (1) ===	
+Unknown;Akuma no Mi (Devil Fruit);Grants demonic transformation and powers that can be shared through covenants including supernatural regeneration
+	
+# ==========================================================	
+# ADDITIONAL / FAN-MADE ENTRIES	
+# ==========================================================	
+	
+# === ZOAN (24) ===	
+Zoan;Croco-Croco no Mi - Model: Alligator;Transforms the user into an alligator or a hybrid form granting armoured scales
+Zoan;Hebi-Hebi no Mi - Model: Black Mamba;Transforms the user into a black mamba or a hybrid form granting fast movement
+Zoan;Hebi-Hebi no Mi - Model: Python;Transforms the user into a python or a hybrid form	 granting strong constricting coils
+Zoan;Hebi-Hebi no Mi - Model: Viper;Transforms the user into a viper or a hybrid form	 granting venomous fangs
+Zoan;Inu-Inu no Mi - Model: Blood Hound;Transforms the user into a blood hound or a hybrid form granting extraordinary scent tracking
+Zoan;Inu-Inu no Mi - Model: Golden Retriever;Transforms the user into a golden retriever or a hybrid form	 granting keen smell
+Zoan;Inu-Inu no Mi - Model: Husky;Transforms the user into a husky or a hybrid form	 granting cold-weather endurance
+Zoan;Kame-Kame no Mi - Model: Tortoise;Transforms the user into a tortoise or a hybrid form granting a heavy defensive shell
+Zoan;Kani-Kani no Mi - Model: Hermit Crab;Transforms the user into a hermit crab or a hybrid form granting protective shell use
+Zoan;Kuma-Kuma no Mi - Model: Black Bear;Transforms the user into a black bear or a hybrid form granting powerful forelimbs
+Zoan;Kuma-Kuma no Mi - Model: Polar Bear;Transforms the user into a polar bear or a hybrid form granting enormous strength
+Zoan;Mushi-Mushi no Mi - Model: Bee;Transforms the user into a bee or a hybrid form	 granting flight
+Zoan;Mushi-Mushi no Mi - Model: Scorpion;Transforms the user into a scorpion or a hybrid form granting armoured pincers
+Zoan;Neko-Neko no Mi - Model: Panther;Transforms the user into a panther or a hybrid form granting silent stalking
+Zoan;Neko-Neko no Mi - Model: Puma;Transforms the user into a puma or a hybrid form	 granting long-distance leaps
+Zoan;Neko-Neko no Mi - Model: Tiger;Transforms the user into a tiger or a hybrid form	 granting great muscular strength
+Zoan;Prima-Prima no Mi - Model: Gorilla;Transforms the user into a gorilla or a hybrid form granting immense upper-body strength
+Zoan;Tori-Tori no Mi - Model: Duck;Transforms the user into a duck or a hybrid form	 granting webbed feet
+Zoan;Tori-Tori no Mi - Model: Flamingo;Transforms the user into a flamingo or a hybrid form granting long wading legs
+Zoan;Tori-Tori no Mi - Model: Raven;Transforms the user into a raven or a hybrid form	 granting flight
+Zoan;Uma-Uma no Mi - Model: Antelope;Transforms the user into an antelope or a hybrid form granting swift sprinting
+Zoan;Uma-Uma no Mi - Model: Pony;Transforms the user into a pony or a hybrid form	 granting sure-footed running
+Zoan;Ushi-Ushi no Mi - Model: Reindeer;Transforms the user into a reindeer or a hybrid form granting cold-weather stamina
+Zoan;Webbo-Webbo no Mi - Model: Black Widow;Transforms the user into a black widow or a hybrid form	 granting silk webs for trapping prey and a venomous bite.
+	
+# === MYTHICAL ZOAN (16) ===	
+Mythical Zoan;Aku-Aku no Mi - Model: Asura;Transforms into a multi-armed asura or hybrid form	 increasing strength and simultaneous striking ability.
+Mythical Zoan;Aku-Aku no Mi - Model: Imp;Transforms into a small winged imp or hybrid form with claws and deceptive illusions.	
+Mythical Zoan;Aku-Aku no Mi - Model: Suuccubus;Transforms into a succubus or hybrid form with wings	 charm abilities and life-energy draining.
+Mythical Zoan;Hito-Hito no Mi - Model: Angel;Transforms into an angel or hybrid form with feathered wings and radiant energy abilities.	
+Mythical Zoan;Hito-Hito no Mi - Model: Zombie;Transforms into an undead form that continues moving despite severe injuries and has reduced pain sensitivity.	
+Mythical Zoan;Inu-Inu no Mi - Model: Cerberus;Transforms into a three-headed hellhound or hybrid form with powerful jaws and heightened senses.	
+Mythical Zoan;Inu-Inu no Mi - Model: Fenrir Wolf;Transforms into a gigantic mythical wolf or hybrid form with overwhelming strength and powerful jaws.	
+Mythical Zoan;Inu-Inu no Mi - Model: Moon Wolf;Transforms into a moon wolf or hybrid form with heightened senses and moonlight-based attacks.	
+Mythical Zoan;Kame-Kame no Mi - Model: Colossal Turtle;Transforms into an enormous mythical turtle or hybrid form with immense strength and a protective shell.	
+Mythical Zoan;Neko-Neko no Mi - Model: Griffin;Transforms into a griffin or hybrid form with flight	 talons and leonine strength.
+Mythical Zoan;Neko-Neko no Mi - Model: Sphinx;Transforms into a sphinx or hybrid form with leonine strength and wings for flight.	
+Mythical Zoan;Neko-Neko no Mi - Model: Unicorn;Transforms into a unicorn or hybrid form with a magical horn and healing abilities.	
+Mythical Zoan;Prima-Prima no Mi - Model: Yeti;Transforms into a yeti or hybrid form with great strength	 thick fur and resistance to cold.
+Mythical Zoan;Ryu-Ryu no Mi - Model: Western Dragon;Transforms into a winged western dragon or hybrid form with armoured scales and fire breath.	
+Mythical Zoan;Tori-Tori no Mi - Model: Thunderbird;Transforms into a giant thunderbird or hybrid form with flight and lightning attacks.	
+Mythical Zoan;Tori-Tori no Mi - Model: Tripodero;Transforms into a tripodero or hybrid form with extensible legs and a tube-like snout that fires projectiles.	
+	
+# === ANCIENT ZOAN (12) ===	
+Ancient Zoan;Hito-Hito no Mi - Model: Neanderthal;Transforms the user into a neanderthal or a hybrid form	 granting a robust prehistoric human physique
+Ancient Zoan;Inu-Inu no Mi - Model: Dire Wolf;Transforms the user into a dire wolf or a hybrid form	 granting large jaws
+Ancient Zoan;Mushi-Mushi no Mi - Model: Gastropod;Transforms the user into a gastropod or a hybrid form granting a soft flexible body
+Ancient Zoan;Mushi-Mushi no Mi - Model: Meganeura;Transforms the user into a meganeura or a hybrid form granting large insect wings
+Ancient Zoan;Neko-Neko no Mi - Model: Xenosmilus;Transforms the user into a xenosmilus or a hybrid form granting saber-like teeth
+Ancient Zoan;Ryu-Ryu no Mi - Model: Megaraptor;Transforms the user into a megaraptor or a hybrid form granting large grasping claws
+Ancient Zoan;Ryu-Ryu no Mi - Model: Pterodactyl;Transforms the user into a pterodactyl or a hybrid form granting flight
+Ancient Zoan;Ryu-Ryu no Mi - Model: Tyrannosaurus Rex;Transforms the user into a tyrannosaurus rex or a hybrid form granting colossal jaws
+Ancient Zoan;Ryu-Ryu no Mi - Model: Veolociraptor;Transforms the user into a veolociraptor or a hybrid form granting high-speed pursuit
+Ancient Zoan;Tori-Tori no Mi - Model: Dodo Bird;Transforms the user into a dodo bird or a hybrid form granting a sturdy flightless bird body
+Ancient Zoan;Uma-Uma no Mi - Model: Giant Deer;Transforms the user into a giant deer or a hybrid form granting huge branching antlers
+Ancient Zoan;Webbo-Webbo no Mi - Model: Megarachne;Transforms the user into a megarachne or a hybrid form granting a large prehistoric arthropod body
+	
+# === PARAMECIA (28) ===	
+Paramecia;Alco-Alco No Mi (Alcohol Fruit);Produces and manipulates alcohol causing intoxication or creating flammable attacks.
+Paramecia;Ana-Ana no Mi (Hole Fruit);Opens holes through solid surfaces for passage traps and concealment.
+Paramecia;Caro-Caro No Mi (Vehicle Fruit);Transforms the body into vehicle forms for transport and charging attacks.	
+Paramecia;Choco-Choco no Mi (Chocolate Fruit);Creates and shapes chocolate into edible objects weapons and restraints.
+Paramecia;Dragu-Dragu No Mi (Drugs Fruit);Produces substances that alter sensation alertness and bodily performance.
+Paramecia;Foldu-Foldu No Mi (Fold-Fold Fruit);Folds touched objects into compact shapes and unfolds them again.	
+Paramecia;Gane-Gane No Mi (Steel Body Fruit);Turns the body into solid steel increasing weight and resistance to damage.
+Paramecia;Gera-Gera No Mi (Gear Fruit);Creates gears and turns body parts into geared mechanisms for mechanical motion.	
+Paramecia;Glasa-Glasa No Mi (Glass Fruit);Creates and shapes glass into transparent structures cutting edges and projectiles.
+Paramecia;Goru-Goru No Mi (Gold Fruit);Controls existing gold that the user has touched	 reshaping and moving it without creating new gold.
+Paramecia;Hamma-Hamma No Mi (Hammer Fruit);Transforms body parts into hammers for heavy impact attacks.	
+Paramecia;Hoshi-Hoshi no Mi (Star Fuit);Creates luminous star-shaped energy constructs and launches them as projectiles.	
+Paramecia;Kawai-Kawai No Mi (Cute-Cute Fruit);Uses an irresistibly cute appearance to distract targets and reduce their hostility.	
+Paramecia;Kaya-Kaya No Mi (Gunpowder Fruit);Produces and controls gunpowder for explosive charges and blasts.	
+Paramecia;Kini-Kini No Mi (Muscle Fruit);Expands and strengthens muscles increasing physical power and body mass.
+Paramecia;Kyara-Kyara no Mi (Character Fruit);Gives consciousness to non-living souls and allows souls to merge.	
+Paramecia;Naiha-Naiha no Mi (Implosian Man Fruit);Creates inward-directed pressure that crushes targets toward a central point.	
+Paramecia;Nichi-Nichi No Mi (2D Fruit);Flattens the body into a two-dimensional form to slip through narrow gaps and move along surfaces.	
+Paramecia;Obbi-Obbi No Mi (Obsidian Fruit);Creates and shapes obsidian into sharp weapons and protective structures.	
+Paramecia;Oru-Oru No Mi (Origami Fruit);Folds objects into origami shapes and controls the resulting constructs.	
+Paramecia;Peto-Peto No Mi (Pet Fruit);Creates collars that force creatures wearing them to obey the user's spoken commands.	
+Paramecia;Rubi-Rubi no Mi (Ruby Fruit);Produces and shapes hard ruby crystals into armour	 blades and projectiles.
+Paramecia;Soda-Soda no Mi (Soda Fruit);Produces and controls carbonated drinks	 using compressed fizz for bursts and propulsion.
+Paramecia;Susu-Susu No Mi (SuperSpeed Fruit);Accelerates bodily movement to superhuman speed for rapid travel and attacks.	
+Paramecia;Vibro-Vibro No Mi (Vibration Fruit);Generates vibrations through the body and touched surfaces to shake or fracture targets.	
+Paramecia;Wara-Wara no Mi (Laugh Fruit);Forces targets into bouts of laughter that disrupt movement	 breathing and concentration.
+Paramecia;Yari-Yari No Mi (Spikes Fruit);Grows sharp spikes from the body and shapes them for stabbing or defence.	
+Paramecia;Yume-Yume no Mi (Dream Fruit);Enters and shapes dreams	 creating dream scenes and influencing sleeping targets.
+	
+# === SPECIAL PARAMECIA (5) ===	
+Special Paramecia;Huni-Huni no Mi (Honey Fruit);Creates controls and transforms the body into sticky honey.
+Special Paramecia;Jero-Jero no Mi (Gelatin Fruit);Creates controls and transforms the body into gelatin
+Special Paramecia;Ki-Ki no Mi (Tree Fruit);Creates controls and transforms the body into trees and wood.
+Special Paramecia;Nori-Nori No Mi (Glue Fruit);Creates controls and transforms the body into adhesive glue.
+Special Paramecia;Toryo-Toryo no Mi (Paint Fruit);Creates controls and transforms the body into paint
+	
+# === LOGIA (35) ===	
+Logia;Ame-Ame no Mi (Candy Syrup Fruit);Creates controls and transforms the body into candy syrup that can bind targets and harden.
+Logia;Choku-Choku no Mi (Chalk Fruit);Creates controls and transforms the body into chalk.
+Logia;Doro-Doro no Mi (Dirt Fruit);Creates controls and transforms the body into earth.
+Logia;Enso-Enso no Mi (Chlorine Fruit);Creates controls and transforms the body into chlorine.
+Logia;Foru-Foru no Mi (Phosphorus Fruit);Creates controls and transforms the body into phosphorus.
+Logia;Genyu-Genyu no Mi (Crude Oil Fruit);Creates controls and transforms the body into crude oil.
+Logia;Gino-Gino no Mi (Silver Fruit);Creates controls and transforms the body into silver.
+Logia;Hoko-Hoko no Mi (Dust Fruit);Creates controls and transforms the body into dust.
+Logia;Hone-Hone no Mi (Calcium/Bone Fruit);Creates	 controls and transforms the body into bone and calcium.
+Logia;Inku-Inku no Mi (Ink Fruit);Creates controls and transforms the body into ink.
+Logia;Iwa-Iwa no Mi (Stone Fruit);Creates controls and transforms the body into stone.
+Logia;Jushi-Jushi no Mi (Resin Fruit);Creates controls and transforms the body into resin.
+Logia;Kaze-Kaze no Mi (Wind Fruit);Creates controls and transforms the body into wind.
+Logia;Kessho-Kessho no Mi (Crystal Fruit);Creates controls and transforms the body into crystal.
+Logia;Ketsu-Ketsu no Mi (Blood Fruit);Creates controls and transforms the body into blood.
+Logia;Kusa-Kusa no Mi (Grass Fruit);Creates	controls and transforms the body into grass.
+Logia;Moku-Moku no Mi (Wood Fruit);Creates controls and transforms the body into wood.
+Logia;Nama-Nama no Mi (Lead Fruit);Creates controls and transforms the body into lead.
+Logia;Nendo-Nendo no Mi (Clay Fruit);Creates controls and transforms the body into clay.
+Logia;Noni-Noni no Mi (Neon Fruit);Creates controls and transforms the body into neon.
+Logia;Nuclee-Nuclee no Mi (Nuclear Energy Fruit);Creates controls and transforms the body into nuclear energy.
+Logia;Pasa-Pasa no Mi (Paper Fruit);Creates controls and transforms the body into paper sheets that can fold
+Logia;Plazu-Plazu no Mi (Plasma Fruit);Creates controls and transforms the body into plasma.
+Logia;Salti-Salti no Mi (Salt Fruit);Creates controls and transforms the body into salt.
+Logia;Shibo-Shibo no Mi (Fatty Oil Fruit);Creates controls and transforms the body into fatty oil.
+Logia;Sido-Sido no Mi (Acid Fruit);Creates controls and transforms the body into acid.
+Logia;Sora-Sora no Mi (Coulds Fruit);Creates controls and transforms the body into clouds.
+Logia;Suigi-Suigi no Mi (Mercury Fruit);Creates controls and transforms the body into mercury.
+Logia;Sulfu-Sulfu no Mi (Sulfur Fruit);Creates controls and transforms the body into sulfur.
+Logia;Suraimu-Suraimu no Mi (Slime Fruit);Creates controls and transforms the body into slime.
+Logia;Tanso-Tanso no Mi (Coal/Carbon Fruit);Creates controls and transforms the body into carbon.
+Logia;Taru-Taru no Mi (Tar Fruit);Creates controls and transforms the body into tar.
+Logia;Tassi-Tassi no Mi (Patassium Fruit);Creates controls and transforms the body into potassium.
+Logia;Toro-Toro no Mi (Unknown Liquid Fruit);Creates controls and transforms the body into a liquid that can spread out and flow through narrow gaps.
+Logia;Unchi-Unchi no Mi (Waste Fruit);Creates controls and transforms the body into waste.
