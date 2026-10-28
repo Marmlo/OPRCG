@@ -396,6 +396,8 @@ World Government;Five Elders;Five Elders;1
 World Government;Holy Knights;Five Elders;0.1
 World Government;Holy Knights;Holy Knights;1
 
+# --- INITIAL / FALLBACK ---
+World Government;;Holy Knights;1
 
 # ==========================================================
 # WORLD NOBLES
