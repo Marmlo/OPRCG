@@ -94,14 +94,13 @@ Cipher Pol;Tracked down an Ohara survivor.;1;0;0;0;0;;;
 World Government;None;3;0;0;0;0;;;
 World Government;Enforced a secret decree from the Five Elders.;1;200;600;0;0;;;
 World Government;Eliminated a high-ranking Revolutionary Army officer.;1;1000;3000;0;0;;Basic;Basic
-World Government;Participated in a Holy Knights' expedition.;1;1500;4000;0;0;;Basic;Basic
+World Government;Participated in a expedition.;1;1500;4000;0;0;;Basic;Basic
 World Government;Suppressed a rebellion against the World Government.;1;2000;5000;0;0;;Basic;Basic
-World Government;Defeated a Yonko Commander under the Five Elders' orders.;1;5000;10000;0;0;;Advanced;Basic
-World Government;Carried out a Holy Knights' judgment against a rebellious kingdom.;1;6000;12000;0;0;Basic;Advanced;Basic
+World Government;Defeated a Yonko Commander.;1;5000;10000;0;0;;Advanced;Basic
+World Government;Carried out a World Governments judgment against a rebellious kingdom.;1;6000;12000;0;0;Basic;Advanced;Basic
 World Government;Survived a confrontation with a Yonko.;1;8000;15000;0;0;;Advanced;Advanced
-World Government;Received an extraordinary power directly from Imu.;0.5;10000;20000;0;0;Basic;Advanced;Advanced
-World Government;Defeated an Admiral while enforcing the authority of the Five Elders.;0.5;15000;25000;0;0;Basic;Advanced;Advanced
-World Government;Participated in the destruction of an island under Imu's orders.;0.3;20000;30000;0;0;Advanced;Advanced;Advanced
+World Government;Defeated an Admiral while enforcing the authority of the World Government.;0.5;15000;25000;0;0;Basic;Advanced;Advanced
+World Government;Participated in the destruction of an island.;0.3;20000;30000;0;0;Advanced;Advanced;Advanced
 World Nobles;None;3;0;0;0;0;;;
 World Nobles;Attacked a neighboring country.;1;0;0;0;5;;;
 World Nobles;Denied his past and royal family.;1;0;0;0;5;;;
