@@ -1,14 +1,31 @@
-race;weight;doriki_min;doriki_max
-Human;20;1;10
-Giant;3;10;100
-Ancient Giant;1;100;500
-Frost Giant;1;10;50
-Fishman;4;10;50
-Merfolk;2;10;100
-Skipean;1;1;50
-Lunarian;1;1;50
-Mink;1;100;300
-Tonnata;1;5;30
-Oni;1;50;500
-Cyborg;1;10;300
-Hybrid;3;10;100
+# ==========================================================
+# ONE PIECE CHARACTER GENERATOR — RACES DATABASE
+# ==========================================================
+# race = race name (a Hybrid name is in hybrids.csv)
+# weight = relative probability (0 = never rolled as a pure race, but can be a hybrid component)
+# doriki_min / doriki_max = Doriki range given in the 1st Year
+# bounty_min / bounty_max = racial bounty range (0 = none). Hybrids inherit 50% of each component
+# kind = Biological / Artificial (mechanical component, only inside hybrids) / Category (the row Hybrid rolls a hybrid from hybrids.csv)
+#
+# A hybrid has no row here: its Doriki and bounty are the average of its two components (see hybrids.csv).
+# ==========================================================
+
+race;weight;doriki_min;doriki_max;bounty_min;bounty_max;kind
+
+Human;20;1;10;0;0;Biological
+Giant;3;10;100;0;0;Biological
+Ancient Giant;1;100;500;0;0;Biological
+Frost Giant;1;10;50;0;0;Biological
+Fishman;4;10;50;0;0;Biological
+Merfolk;2;10;100;0;0;Biological
+Skipean;1;1;50;0;0;Biological
+Lunarian;1;1;50;0;0;Biological
+Mink;1;100;300;0;0;Biological
+Tonnata;1;5;30;0;0;Biological
+Oni;1;50;500;0;0;Biological
+
+# Machine is only a component (weight 0). Its Doriki (19 to 590) makes Human + Machine = Cyborg keep the old Cyborg range (10 to 300)
+Machine;0;19;590;0;0;Artificial
+
+# Weight 4 = the old Hybrid (3) + the old Cyborg (1), so the share of hybrids does not change
+Hybrid;4;;;;;Category

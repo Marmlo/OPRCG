@@ -14,23 +14,25 @@
 #
 # Empty fields use the generator's default behaviour.
 # Keep alliance and rank names consistent across CSV files.
+# An alliance with no rows here uses the ranks of its ranks_from alliance (data/alliances.csv),
+# without the ranks_exclude ones. Add rows for it to give it its own ranks.
 # ==========================================================
 
 alliance;rank;weight;doriki_min;doriki_max;bounty_min;bounty_max;conquerors;armament;observation;timeskip_jump_chance;bounty_in_thousands;keeps_higher_bounty
 
 # ==========================================================
-# REVOLUCIONARY ARMY
+# REVOLUTIONARY ARMY
 # ==========================================================
 
 # --- LEADERSHIP ---
-Revolucionary Army;Leader;0;20000;50000;0;0;;Advanced;Basic;;;
-Revolucionary Army;Chief of Staff;1;10000;15000;0;0;;Basic;Basic;;;
-Revolucionary Army;Army Commander;3;2500;10000;0;0;;Basic;;;;
+Revolutionary Army;Leader;0;20000;50000;0;0;;Advanced;Basic;;;
+Revolutionary Army;Chief of Staff;1;10000;15000;0;0;;Basic;Basic;;;
+Revolutionary Army;Army Commander;3;2500;10000;0;0;;Basic;;;;
 
 # --- OFFICERS & MEMBERS ---
-Revolucionary Army;Officer;5;400;2000;0;0;;;;;;
-Revolucionary Army;Member;7;10;100;0;0;;;;;;
-Revolucionary Army;Associate;7;10;3500;0;0;;;;;;
+Revolutionary Army;Officer;5;400;2000;0;0;;;;;;
+Revolutionary Army;Member;7;10;100;0;0;;;;;;
+Revolutionary Army;Associate;7;10;3500;0;0;;;;;;
 
 
 # ==========================================================
@@ -124,17 +126,17 @@ Cipher Pol;CP9;1;500;4000;0;0;;;;;;
 
 
 # ==========================================================
-# WORLD GOVERNMENT
+# GOVERNMENT
 # ==========================================================
 
 # --- SUPREME AUTHORITY ---
-World Government;King of the World;0.01;100000;130000;0;0;Master;Master;Advanced;;;
+Government;King of the World;0.01;100000;130000;0;0;Master;Master;Advanced;;;
 
 # --- FIVE ELDERS ---
-World Government;Five Elders;0.05;80000;100000;0;0;Advanced;Advanced;Basic;;;
+Government;Five Elders;0.05;80000;100000;0;0;Advanced;Advanced;Basic;;;
 
 # --- HOLY KNIGHTS ---
-World Government;Holy Knights;0.1;75000;90000;0;0;Advanced;Advanced;Basic;;;
+Government;Holy Knights;0.1;75000;90000;0;0;Advanced;Advanced;Basic;;;
 
 
 # ==========================================================

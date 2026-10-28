@@ -122,7 +122,7 @@ function drawPosterInfo(ctx, character, snap, rand) {
 
   var x = POSTER_MARGIN_X + 301 + 28, w = POSTER_W - POSTER_MARGIN_X - x;
   var rows = [
-    ["Race", character.race], ["Alliance", snap.alliance], ["Rank", snap.rank],
+    ["Race", character.race], ["Affiliation", snap.affiliation], ["Rank", snap.rank],
     ["Fighting style", snap.fighting], ["Doriki", snap.doriki.toLocaleString("en-US")]
   ];
   ctx.textAlign = "left";

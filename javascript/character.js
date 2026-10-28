@@ -2,12 +2,12 @@
 // Os valores e probabilidades estão todos em data/*.csv (ver data/README.md); aqui ficam só as regras que os ligam.
 // Cada período tem o seu estado: 1 = 1st Year, 2 = After 2 Years, 3 = After 10 Years.
 
-var race = "";
+var race = null;   // { name, type: "Pure" | "Hybrid" | "Artificial Hybrid", components: [linhas de races.csv], description }
 var region = "";
-var periods = [null, {}, {}, {}];   // { alliance, rank, fighting, haki, fruitType, fruit, feats, doriki, bounty }
+var periods = [null, {}, {}, {}];   // { mainAlliance, alliance, rank, fighting, haki, fruitType, fruit, feats, doriki, bounty }
 
 function resetCharacter() {
-  race = ""; region = "";
+  race = null; region = "";
   periods = [null, {}, {}, {}];
 }
 
@@ -20,7 +20,7 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-// Valor entre as colunas <field>_min e <field>_max de uma linha, ex: rollRange(race, "doriki")
+// Valor entre as colunas <field>_min e <field>_max de uma linha, ex: rollRange(raceInfo(), "doriki")
 function rollRange(row, field) {
   return row ? getRandomInt(num(row[field + "_min"]), num(row[field + "_max"]) + 1) : 0;
 }
@@ -34,7 +34,6 @@ function findRow(rows, column, value) {
   return null;
 }
 
-function raceInfo() { return findRow(DATA.races, "race", race); }
 function allianceInfo(n) { return findRow(DATA.alliances, "alliance", periods[n].alliance) || {}; }
 function ranksOf(allianceName) { return DATA.ranks.filter(function (r) { return sameValue(r.alliance, allianceName); }); }
 
@@ -46,16 +45,93 @@ function rankInfo(n) {
 }
 
 
-// Race / Region / Gender (data/races.csv, data/regions.csv, data/genders.csv) ------------------------------------------------------------------------------------------
+// Race (data/races.csv, data/hybrids.csv) -----------------------------------------------------------------------------------------------------------------------------
+// Uma raça pura usa 100% dos seus valores. Um híbrido tem exatamente dois componentes e recebe 50% de cada um:
+// hybrid = (componente A + componente B) / 2, calculado sempre a partir de data/races.csv (nunca copiado para o híbrido).
 
+var RACIAL_FIELDS = ["doriki_min", "doriki_max", "bounty_min", "bounty_max"];
+var HYBRID_KEY = "Hybrid";   // chave em regions.csv e fighting-styles.csv de todos os híbridos biológicos (como a antiga raça Hybrid)
+
+// Valores raciais de uma lista de componentes (1 = raça pura, 2 = híbrido). Arredonda para baixo, como os restantes valores
+function racialModifiers(components) {
+  if (!components.length || !components[0]) return null;
+  if (components.length === 1) return components[0];
+  var out = {};
+  RACIAL_FIELDS.forEach(function (f) { out[f] = Math.floor((num(components[0][f]) + num(components[1][f])) / 2); });
+  return out;
+}
+
+function raceInfo() { return race ? racialModifiers(race.components) : null; }
+
+function isArtificial(row) { return String(row.kind || "").trim().toLowerCase() === "artificial"; }
+
+function pureRace(name) {
+  return { name: name, type: "Pure", components: [findRow(DATA.races, "race", name)], description: "" };
+}
+
+function hybridRace(h) {
+  var parts = [h.race_a, h.race_b].map(function (name) { return findRow(DATA.races, "race", name); });
+  return {
+    name: h.hybrid_name,
+    type: parts.some(isArtificial) ? "Artificial Hybrid" : "Hybrid",
+    components: parts,
+    description: h.description
+  };
+}
+
+// Nomes dos componentes, ex: "Human + Giant" (uma raça pura tem só o seu nome)
+function componentsText() {
+  return race ? race.components.map(function (r) { return r.race; }).join(" + ") : "";
+}
+
+// Nome mostrado nas tabelas e exportações, ex: "Half-Giant (Human + Giant)"; nas raças puras só o nome
+function raceLabel() {
+  if (!race) return "";
+  return race.type === "Pure" ? race.name : race.name + " (" + componentsText() + ")";
+}
+
+// Chave das tabelas por raça (regions.csv, fighting-styles.csv): a raça pura; "Hybrid" para os híbridos biológicos;
+// vazio para os artificiais (como o antigo Cyborg, que não tinha linhas próprias)
+function raceKey() {
+  if (!race) return "";
+  if (race.type === "Pure") return race.components[0].race;
+  return race.type === "Hybrid" ? HYBRID_KEY : "";
+}
+
+// Mostra a raça: só o nome. Nos híbridos, um "i" abre o popover com o tipo, os componentes e a descrição (race-popover.js)
+function showRace() {
+  closeRacePopover();
+  var el = document.getElementById("race");
+  var name = document.createElement("span");
+  name.className = "race-name";
+  name.textContent = race.name;
+  el.textContent = "";
+  el.appendChild(name);
+  if (race.type === "Pure") return;
+  var btn = document.createElement("button");
+  btn.type = "button";
+  btn.className = "info-btn race-info";
+  btn.textContent = "i";
+  btn.title = "About this hybrid";
+  btn.setAttribute("aria-label", "About " + race.name);
+  btn.setAttribute("aria-expanded", "false");
+  btn.setAttribute("aria-controls", "race-popover");
+  el.appendChild(btn);
+}
+
+// Sorteia da tabela de raças: uma raça pura pelo "weight", ou a categoria Hybrid, que sorteia um híbrido de data/hybrids.csv.
+// Sem híbridos válidos (ou com todos a 0), a categoria Hybrid não entra no sorteio
 function generateRace() {
-  race = pickValue(DATA.races, "race");
-  document.getElementById("race").innerHTML = race;
+  var hybrids = DATA.hybrids.filter(function (h) { return weightOf(h) > 0; });
+  var pool = DATA.races.filter(function (r) { return raceKind(r) !== "category" || hybrids.length; });
+  var pick = weightedPick(pool);
+  race = raceKind(pick) === "category" ? hybridRace(weightedPick(hybrids)) : pureRace(pick.race);
+  showRace();
 }
 
 // A região depende da raça e da alliance do 1st Year (ex.: World Nobles nascem em Mary Geoise)
 function regionChoices() {
-  return matchRule(RULES.regions, { alliance: periods[1].alliance || "", race: race });
+  return matchRule(RULES.regions, { alliance: periods[1].alliance || "", race: raceKey() });
 }
 
 function generateRegion() {
@@ -75,6 +151,7 @@ function generateGender() {
 
 
 // Alliance (data/alliances.csv no 1st Year, data/alliance-changes.csv nos timeskips) -------------------------------------------------------------------------------------
+// A alliance é a organização. A afiliação principal (main_alliance) vem da linha dessa organização, sem sorteio próprio
 
 function generateAlliance(n) {
   var p = periods[n];
@@ -84,6 +161,8 @@ function generateAlliance(n) {
     var before = periods[n - 1].alliance;
     p.alliance = pickValue(matchRule(RULES.allianceChanges, { previous_alliance: before }), "alliance") || before;
   }
+  p.mainAlliance = allianceInfo(n).main_alliance || "";
+  show("main-alliance", n, p.mainAlliance);
   show("alliance", n, p.alliance);
   if (n === 1) syncRegion();
 }
@@ -112,7 +191,7 @@ function assignRank(n) {
 
 function generatefighting(n) {
   var p = periods[n], before = n > 1 ? periods[n - 1].fighting : "";
-  var choices = matchRule(RULES.fighting, { period: n, alliance: p.alliance, rank: p.rank, race: race });
+  var choices = matchRule(RULES.fighting, { period: n, alliance: p.alliance, rank: p.rank, race: raceKey() });
   var keep = n > 1 && (!choices.length || choices.some(function (r) { return sameValue(r.style, before); }));
   p.fighting = keep ? before : pickValue(choices, "style") || before || "None";
   show("fighting", n, p.fighting);
@@ -334,7 +413,7 @@ function doriki(n) {
     p.doriki = hasWillOfD() ? base * (1 + bonus) : base;   // --- Will of D. (nome com "D.")
     change = parseInt(p.doriki);
     rows = [
-      ["Race", race, racedoriki], ["Rank", p.rank, rankdoriki], ["Haki", hakiText(p.haki, ", "), hakidoriki],
+      ["Race", raceLabel(), racedoriki], ["Rank", p.rank, rankdoriki], ["Haki", hakiText(p.haki, ", "), hakidoriki],
       ["Devil fruit", p.fruitType, fruitdoriki], ["Feats", feats.detail, feats.total]
     ].concat(hasWillOfD() ? [["Will of D.", "+" + percent(bonus) + " of " + base, p.doriki - base]] : []);
   } else {
@@ -355,7 +434,8 @@ function doriki(n) {
 
 // Bounty ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 // Parte do Doriki (doriki_bounty_share) + alliance + devil fruit + feats + haki + rank (ex.: Yonko), em milhões.
-// Alliances com has_bounty = No: sem bounty no 1st Year e mantêm a anterior nos timeskips.
+// Alliances com has_bounty = No (World Government: World Nobles, Marine, Cipher Pol, Government): bounty 0 em todos os períodos,
+// incluindo feats, timeskips e mudanças de organização. Os valores anteriores ficam no período em que foram ganhos.
 // Ranks com bounty_in_thousands (Pets): a bounty conta em milhares. keeps_higher_bounty (Yonko): no After 10 Years
 // mantém a bounty do After 2 Years se a nova for mais baixa.
 
@@ -393,31 +473,32 @@ function petBreakdown(n) {
 
 function addbounty(n) {
   var p = periods[n], before = periods[n - 1], rk = rankInfo(n);
-  var blocked = !yes(allianceInfo(n).has_bounty);
+  var blocked = !yes(allianceInfo(n).has_bounty);   // --- World Government: sem bounty
   var share = setting("doriki_bounty_share");
   var feats = featParts("bounty", p.feats, p.alliance, "bounty");
   var parts = {
     doriki: p.doriki * share, alliance: rollRange(allianceInfo(n), "bounty"), fruit: fruitBounty(p.fruitType),
-    feats: feats.total, haki: hakiBonus(p.haki, "bounty"), rank: rollRange(rk, "bounty")
+    feats: feats.total, haki: hakiBonus(p.haki, "bounty"), rank: rollRange(rk, "bounty"), race: rollRange(raceInfo(), "bounty")
   };
-  if (blocked && n === 1) for (var k in parts) parts[k] = 0;   // --- sem bounty
 
-  var total = parts.doriki + parts.alliance + parts.fruit + parts.feats + parts.haki + parts.rank;
+  var total = parts.doriki + parts.alliance + parts.fruit + parts.feats + parts.haki + parts.rank + parts.race;
   var keptHigher = n === 3 && yes(rk.keeps_higher_bounty) && total < before.bounty;
-  if (keptHigher || (blocked && n > 1)) total = before.bounty;   // --- mantém a bounty anterior
-  var pet = yes(rk.bounty_in_thousands);
+  if (blocked) total = 0;
+  else if (keptHigher) total = before.bounty;   // --- mantém a bounty anterior
+  var pet = !blocked && yes(rk.bounty_in_thousands);
   if (pet) total = petBounty(total);   // --- Pets dos piratas (bounty nos milhares)
   p.bounty = total;
 
   var change = roundBounty(total) - (n > 1 ? roundBounty(before.bounty) : 0);
-  var rows = n > 1 && (blocked || keptHigher) ? [["Bounty from " + PERIOD_NAMES[n - 1], "", before.bounty]] : [
-    ["Doriki", percent(share) + " of " + parseInt(p.doriki), parts.doriki], ["Alliance", p.alliance, parts.alliance],
-    ["Devil fruit", p.fruitType, parts.fruit], ["Feats", parts.feats ? feats.detail : feats.names, parts.feats], ["Haki", hakiText(p.haki, ", "), parts.haki]
-  ].concat(parts.rank ? [[p.rank, "", parts.rank]] : []);
-  var note = n === 1 ? (blocked ? p.alliance + " members have no bounty." : "")
-    : blocked ? p.alliance + " members keep the bounty they already had."
+  var rows = blocked ? [[p.mainAlliance, "No bounty for this affiliation", 0]]
+    : keptHigher ? [["Bounty from " + PERIOD_NAMES[n - 1], "", before.bounty]] : [
+      ["Doriki", percent(share) + " of " + parseInt(p.doriki), parts.doriki], ["Organization", p.alliance, parts.alliance],
+      ["Devil fruit", p.fruitType, parts.fruit], ["Feats", parts.feats ? feats.detail : feats.names, parts.feats], ["Haki", hakiText(p.haki, ", "), parts.haki]
+    ].concat(parts.rank ? [[p.rank, "", parts.rank]] : []).concat(parts.race ? [["Race", raceLabel(), parts.race]] : []);
+  var note = blocked ? p.mainAlliance + " members have no bounty."
     : keptHigher ? "The new bounty would be lower, so the " + p.rank + " keeps the bounty from " + PERIOD_NAMES[n - 1] + "."
-    : "The bounty is recalculated each period from the current Doriki, alliance, fruit, feat and haki.";
+    : n === 1 ? ""
+    : "The bounty is recalculated each period from the current Doriki, organization, fruit, feat and haki.";
 
   setBreakdown("bounty", n, rows, roundBounty(total), change, note);
   if (pet) petBreakdown(n);
