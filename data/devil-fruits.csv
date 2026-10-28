@@ -29,18 +29,18 @@ Zoan;Sara-Sara no Mi - Model: Axolotl;Transforms the user into an axolotl or a h
 Zoan;Tama-Tama no Mi (Egg Fruit);Gives an egg-like body that hatches into a chick form and then a stronger rooster form when broken.	
 Zoan;Tori-Tori no Mi - Model: Albatross;Transforms the user into an albatross or a hybrid form	 granting long-distance soaring
 Zoan;Tori-Tori no Mi - Model: Falcon;Transforms the user into a falcon or a hybrid form	 granting high-speed dives
-Zoan;Uma-Uma no Mi (Horse Fruit);Transforms the user into a horse or hybrid form	 increasing running strength and mobility.
-Zoan;Unnamed Devil Fruit (Dalmatian);Grants Dalmatian dog-like transformation and physical traits. The fruit's official name has not been revealed.	
-Zoan;Unnamed Devil Fruit (Epoida);Grants caterpillar-like transformation and physical traits. The fruit's official name has not been revealed.	
-Zoan;Unnamed Devil Fruit (Minochihuahua);Grants chihuahua-like transformation and physical traits. The fruit's official name has not been revealed.	
-Zoan;Unnamed Devil Fruit (Minokoala);Grants koala-like transformation and physical traits. The fruit's official name has not been revealed.	
-Zoan;Unnamed Devil Fruit (Minorhinoceros);Grants rhinoceros-like transformation and physical traits. The fruit's official name has not been revealed.	
-Zoan;Unnamed Devil Fruit (Minotaurus);Grants Holstein cow-like transformation and physical traits. The fruit's official name has not been revealed.	
-Zoan;Unnamed Devil Fruit (Minozebra);Grants zebra-like transformation and physical traits. The fruit's official name has not been revealed.	
-Zoan;Unnamed Devil Fruit (Onigumo);Grants spider-like transformation and physical traits. The fruit's official name has not been revealed.	
-Zoan;Ushi-Ushi no Mi - Model: Bison;Transforms the user into a bison or a hybrid form	 granting massive shoulder strength
-Zoan;Ushi-Ushi no Mi - Model: Giraffe;Transforms the user into a giraffe or a hybrid form	 granting a long neck
-Zoan;Zou-Zou no Mi (Elephant Fruit);Transforms the user into an elephant or hybrid form with great strength	 a trunk and tusks.
+Zoan;Uma-Uma no Mi (Horse Fruit);Transforms the user into a horse or hybrid form, increasing running strength and mobility.
+Zoan;Inu-Inu no Mi, Model: Dalmatian;Transforms the user into a Dalmatian or hybrid form, enhancing speed, agility and canine senses.
+Zoan;Mushi-Mushi no Mi, Model: Caterpillar;Transforms the user into a caterpillar or hybrid form, granting enhanced flexibility and crawling abilities.
+Zoan;Inu-Inu no Mi, Model: Chihuahua;Transforms the user into a chihuahua or hybrid form, enhancing agility and canine senses.
+Zoan;Kuma-Kuma no Mi, Model: Koala;Transforms the user into a koala or hybrid form, enhancing climbing ability and grip strength.
+Zoan;Uma-Uma no Mi, Model: Rhinoceros;Transforms the user into a rhinoceros or hybrid form, granting immense physical strength and powerful charging attacks.
+Zoan;Ushi-Ushi no Mi, Model: Holstein Cow;Transforms the user into a Holstein cow or hybrid form, enhancing physical strength and endurance.
+Zoan;Uma-Uma no Mi, Model: Zebra;Transforms the user into a zebra or hybrid form, enhancing running speed, stamina and kicking power.
+Zoan;Kumo-Kumo no Mi, Model: Spider;Transforms the user into a spider or hybrid form, granting spider-like mobility and enhanced climbing abilities.
+Zoan;Ushi-Ushi no Mi - Model: Bison;Transforms the user into a bison or a hybrid form granting massive shoulder strength
+Zoan;Ushi-Ushi no Mi - Model: Giraffe;Transforms the user into a giraffe or a hybrid form granting a long neck
+Zoan;Zou-Zou no Mi (Elephant Fruit);Transforms the user into an elephant or hybrid form with great strength a trunk and tusks.
 	
 # === MYTHICAL ZOAN (18) ===	
 Mythical Zoan;Hebi-Hebi no Mi - Model: Yamata no Orochi;Transforms the user into an eight-headed serpent allowing multiple heads to attack and survive individual decapitations.
@@ -222,7 +222,7 @@ Zoan;Uma-Uma no Mi - Model: Pony;Transforms the user into a pony or a hybrid for
 Zoan;Ushi-Ushi no Mi - Model: Reindeer;Transforms the user into a reindeer or a hybrid form granting cold-weather stamina
 Zoan;Webbo-Webbo no Mi - Model: Black Widow;Transforms the user into a black widow or a hybrid form	 granting silk webs for trapping prey and a venomous bite.
 	
-# === MYTHICAL ZOAN (16) ===	
+# === MYTHICAL ZOAN (21) ===	
 Mythical Zoan;Aku-Aku no Mi - Model: Asura;Transforms into a multi-armed asura or hybrid form	 increasing strength and simultaneous striking ability.
 Mythical Zoan;Aku-Aku no Mi - Model: Imp;Transforms into a small winged imp or hybrid form with claws and deceptive illusions.	
 Mythical Zoan;Aku-Aku no Mi - Model: Suuccubus;Transforms into a succubus or hybrid form with wings	 charm abilities and life-energy draining.
@@ -238,21 +238,27 @@ Mythical Zoan;Neko-Neko no Mi - Model: Unicorn;Transforms into a unicorn or hybr
 Mythical Zoan;Prima-Prima no Mi - Model: Yeti;Transforms into a yeti or hybrid form with great strength	 thick fur and resistance to cold.
 Mythical Zoan;Ryu-Ryu no Mi - Model: Western Dragon;Transforms into a winged western dragon or hybrid form with armoured scales and fire breath.	
 Mythical Zoan;Tori-Tori no Mi - Model: Thunderbird;Transforms into a giant thunderbird or hybrid form with flight and lightning attacks.	
-Mythical Zoan;Tori-Tori no Mi - Model: Tripodero;Transforms into a tripodero or hybrid form with extensible legs and a tube-like snout that fires projectiles.	
+Mythical Zoan;Tori-Tori no Mi - Model: Tripodero;Transforms into a tripodero or hybrid form with extensible legs and a tube-like snout that fires projectiles.
+Mythical Zoan;Hito-Hito no Mi - Model: Jesus;Transforms the user into a divine human or hybrid form, granting the ability to walk on water, heal injuries through touch, transform water into wine and perform miraculous feats. At full power, the user can resurrect once after death, provided their body remains intact.
+Mythical Zoan;Hito-Hito no Mi - Model: Anubis;Transforms the user into the Egyptian god of the dead or a jackal-headed hybrid form, granting the ability to sense souls, summon spectral guardians and temporarily weaken enemies by weighing their spiritual essence.
+Mythical Zoan;Tori-Tori no Mi - Model: Thunderbird;Transforms the user into a gigantic mythical thunderbird or hybrid form, granting control over lightning, the ability to generate violent thunderstorms and devastating electrical attacks through its wings.
+Mythical Zoan;Hebi-Hebi no Mi - Model: Jormungandr;Transforms the user into the legendary world serpent or hybrid form, granting immense size, overwhelming constriction strength, poisonous breath and the ability to generate powerful ocean waves through its movements.
+Mythical Zoan;Uma-Uma no Mi - Model: Sleipnir;Transforms the user into Odin's legendary eight-legged horse or hybrid form, granting extraordinary speed, the ability to run across water and clouds, and short bursts of movement between distant locations.
 	
-# === ANCIENT ZOAN (12) ===	
-Ancient Zoan;Hito-Hito no Mi - Model: Neanderthal;Transforms the user into a neanderthal or a hybrid form	 granting a robust prehistoric human physique
-Ancient Zoan;Inu-Inu no Mi - Model: Dire Wolf;Transforms the user into a dire wolf or a hybrid form	 granting large jaws
-Ancient Zoan;Mushi-Mushi no Mi - Model: Gastropod;Transforms the user into a gastropod or a hybrid form granting a soft flexible body
-Ancient Zoan;Mushi-Mushi no Mi - Model: Meganeura;Transforms the user into a meganeura or a hybrid form granting large insect wings
-Ancient Zoan;Neko-Neko no Mi - Model: Xenosmilus;Transforms the user into a xenosmilus or a hybrid form granting saber-like teeth
-Ancient Zoan;Ryu-Ryu no Mi - Model: Megaraptor;Transforms the user into a megaraptor or a hybrid form granting large grasping claws
-Ancient Zoan;Ryu-Ryu no Mi - Model: Pterodactyl;Transforms the user into a pterodactyl or a hybrid form granting flight
-Ancient Zoan;Ryu-Ryu no Mi - Model: Tyrannosaurus Rex;Transforms the user into a tyrannosaurus rex or a hybrid form granting colossal jaws
-Ancient Zoan;Ryu-Ryu no Mi - Model: Veolociraptor;Transforms the user into a veolociraptor or a hybrid form granting high-speed pursuit
-Ancient Zoan;Tori-Tori no Mi - Model: Dodo Bird;Transforms the user into a dodo bird or a hybrid form granting a sturdy flightless bird body
-Ancient Zoan;Uma-Uma no Mi - Model: Giant Deer;Transforms the user into a giant deer or a hybrid form granting huge branching antlers
-Ancient Zoan;Webbo-Webbo no Mi - Model: Megarachne;Transforms the user into a megarachne or a hybrid form granting a large prehistoric arthropod body
+# === ANCIENT ZOAN (12) ===
+Ancient Zoan;Hito-Hito no Mi - Model: Neanderthal;Transforms the user into a Neanderthal or hybrid form, granting a powerful prehistoric physique, exceptional physical strength, endurance and resilience in close combat.
+Ancient Zoan;Inu-Inu no Mi - Model: Dire Wolf;Transforms the user into a dire wolf or hybrid form, granting immense biting force, enhanced tracking senses, powerful limbs and exceptional speed when hunting prey.
+Ancient Zoan;Mushi-Mushi no Mi - Model: Gastropod;Transforms the user into a prehistoric gastropod or hybrid form, granting a highly flexible body, the ability to squeeze through narrow spaces and enhanced resistance to blunt physical attacks.
+Ancient Zoan;Mushi-Mushi no Mi - Model: Meganeura;Transforms the user into a giant prehistoric dragonfly or hybrid form, granting powerful wings, high-speed aerial mobility, exceptional maneuverability and enhanced compound vision.
+Ancient Zoan;Neko-Neko no Mi - Model: Xenosmilus;Transforms the user into a prehistoric saber-toothed feline or hybrid form, granting powerful jaws, long serrated fangs, explosive muscular strength and deadly close-range attacks.
+Ancient Zoan;Ryu-Ryu no Mi - Model: Megaraptor;Transforms the user into a megaraptor or hybrid form, granting enormous curved claws, powerful hind limbs, enhanced agility and devastating slashing attacks.
+Ancient Zoan;Ryu-Ryu no Mi - Model: Pterodactyl;Transforms the user into a prehistoric flying reptile or hybrid form, granting sustained flight, powerful wings, aerial agility and the ability to perform high-speed diving attacks.
+Ancient Zoan;Ryu-Ryu no Mi - Model: Tyrannosaurus Rex;Transforms the user into a Tyrannosaurus rex or hybrid form, granting colossal biting force, overwhelming muscular strength, immense durability and devastating crushing attacks.
+Ancient Zoan;Ryu-Ryu no Mi - Model: Velociraptor;Transforms the user into a velociraptor or hybrid form, granting exceptional running speed, sharp claws, heightened reflexes and deadly precision during rapid attacks.
+Ancient Zoan;Tori-Tori no Mi - Model: Dodo Bird;Transforms the user into a dodo bird or hybrid form, granting a sturdy flightless body, powerful legs, improved balance and enhanced resistance to physical impacts.
+Ancient Zoan;Uma-Uma no Mi - Model: Giant Deer;Transforms the user into a giant prehistoric deer or hybrid form, granting enormous branching antlers, powerful charging attacks, enhanced running strength and exceptional physical endurance.
+Ancient Zoan;Webbo-Webbo no Mi - Model: Megarachne;Transforms the user into a massive prehistoric arthropod or hybrid form, granting a heavily built body, powerful grasping appendages, enhanced ground mobility and formidable close-range defensive capabilities.
+
 	
 # === PARAMECIA (28) ===	
 Paramecia;Alco-Alco No Mi (Alcohol Fruit);Produces and manipulates alcohol causing intoxication or creating flammable attacks.
