@@ -22,7 +22,11 @@ function exportCharacter() {
   return {
     name: document.getElementById("fname").value.trim() || "Unnamed Pirate",
     nickname: document.getElementById("nickname").value.trim(),
-    race: exportText("race"),
+    race: raceLabel(),
+    raceName: race ? race.name : "",
+    raceType: race ? race.type : "",
+    raceComponents: race && race.type !== "Pure" ? componentsText() : "",
+    raceDescription: race ? race.description : "",
     region: exportText("region"),
     gender: gender.options[gender.selectedIndex].text
   };
@@ -48,6 +52,7 @@ function exportPeriod(n) {
     label: PERIOD_NAMES[n],
     badge: n === 1 ? "Start" : "Timeskip",
     alliance: p.alliance || "-",
+    affiliation: [p.mainAlliance, p.alliance].filter(Boolean).join(" → ") || "-",   // ex: World Government → Government
     rank: p.rank || "-",
     fighting: p.fighting || "None",
     haki: p.haki || noHaki(),
@@ -224,7 +229,7 @@ function exportSetBusy(busy, text) {
 
 function openExport() {
   var available = exportAvailablePeriods();
-  var ready = available.length && exportText("race");
+  var ready = available.length && race;
   document.getElementById("export-empty").hidden = !!ready;
   document.getElementById("export-content").hidden = !ready;
   if (ready) {

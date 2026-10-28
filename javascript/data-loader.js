@@ -10,7 +10,7 @@
  // Paramecia;Bara Bara no Mi;Body separation;1
 
 var DATA_FILES = [
-  "settings", "names", "genders", "races", "regions", "alliances", "alliance-changes", "ranks", "rank-changes",
+  "settings", "names", "genders", "races", "hybrids", "regions", "alliances", "alliance-changes", "ranks", "rank-changes",
   "fighting-styles", "haki-chances", "haki-level-chances", "haki-levels", "devil-fruit-types", "devil-fruits", "feats", "feat-counts"
 ];
 
@@ -26,6 +26,7 @@ var hakiLevels = {};      // "Conquerors" -> { 1: { doriki_min, ... , descriptio
 
 var HAKI_TYPES = ["Conquerors", "Armament", "Observation"];
 var HAKI_LEVEL_NAMES = ["None", "Basic", "Advanced", "Master"];
+var MAIN_ALLIANCES = ["Free", "Revolutionaries", "World Government"];   // main_alliance de data/alliances.csv
 
 // Aceita "0,02" (Excel PT)
 function num(v) { return Number(String(v).replace(",", ".")) || 0; }
@@ -234,12 +235,91 @@ function matchRule(groups, ctx) {
   return [];
 }
 
+// Hierarquia ----------------------------------------------------------------------------------------------------------------------------------------------------------
+// Cada alliance (organização) tem uma main_alliance (afiliação principal) em data/alliances.csv, ex.: Government -> World Government.
+// Uma alliance com ranks_from (ex.: Revolutionary Country) usa os ranks e os rank-changes de outra alliance, sem os ranks_exclude
+// (ex.: Celestial Dragon), desde que não tenha linhas próprias nesses ficheiros.
+
+// Raças -----------------------------------------------------------------------------------------------------------------------------------------------------------------
+// data/races.csv: kind = Biological / Artificial / Category (a linha Hybrid, que sorteia um híbrido de data/hybrids.csv)
+// data/hybrids.csv: cada linha junta dois componentes. Linhas inválidas são retiradas e avisadas na consola,
+// para nunca poderem ser sorteadas.
+
+function raceKind(row) { return String(row.kind || "").trim().toLowerCase(); }
+
+function checkHybrids() {
+  var races = {}, pairs = {}, names = {};
+  DATA.races.forEach(function (r) { races[r.race.toLowerCase()] = r; names[r.race.toLowerCase()] = true; });
+
+  DATA.hybrids = DATA.hybrids.filter(function (h) {
+    var a = races[String(h.race_a).toLowerCase()], b = races[String(h.race_b).toLowerCase()];
+    var key = [String(h.race_a), String(h.race_b)].map(function (v) { return v.toLowerCase(); }).sort().join("|");
+    var problem = "";
+    if (!a || !b) problem = "unknown race";
+    else if (a === b) problem = "a race combined with itself";
+    else if (raceKind(a) === "category" || raceKind(b) === "category") problem = "the Hybrid category is not a race";
+    else if (raceKind(a) === "artificial" && raceKind(b) === "artificial") problem = "two artificial components";
+    else if (pairs[key]) problem = "the pair is already defined (order does not matter)";
+    else if (!h.hybrid_name || names[h.hybrid_name.toLowerCase()]) problem = "the name is empty or already used";
+    else if (!h.description) problem = "no description";
+    if (problem) {
+      console.warn("Hybrid ignored (" + problem + "): " + h.race_a + " + " + h.race_b + " " + h.hybrid_name);
+      return false;
+    }
+    pairs[key] = true;
+    names[h.hybrid_name.toLowerCase()] = true;
+    return true;
+  });
+}
+
+// Copia as linhas de ranks_from para a alliance, sem as que usam um rank excluído
+function inheritRows(rows, alliances) {
+  alliances.forEach(function (a) {
+    if (!a.ranks_from || rows.some(function (r) { return sameValue(r.alliance, a.alliance); })) return;
+    var excluded = String(a.ranks_exclude || "").split(",").map(function (v) { return v.trim().toLowerCase(); }).filter(Boolean);
+    rows.filter(function (r) { return sameValue(r.alliance, a.ranks_from); }).forEach(function (r) {
+      var skip = ["rank", "previous_rank"].some(function (c) { return excluded.indexOf(String(r[c] || "").trim().toLowerCase()) !== -1; });
+      if (!skip) rows.push(Object.assign({}, r, { alliance: a.alliance }));
+    });
+  });
+}
+
+// Avisa na consola se um nome não existe em data/alliances.csv, e garante que as organizações de World Government não têm bounty
+function checkAlliances() {
+  var names = DATA.alliances.map(function (a) { return a.alliance; });
+  function known(name) { return names.some(function (n) { return sameValue(n, name); }); }
+
+  DATA.alliances.forEach(function (a) {
+    if (MAIN_ALLIANCES.indexOf(a.main_alliance) === -1) console.warn("Unknown main_alliance for " + a.alliance + ": " + a.main_alliance);
+    if (a.ranks_from && !known(a.ranks_from)) console.warn("Unknown ranks_from for " + a.alliance + ": " + a.ranks_from);
+    if (a.main_alliance === "World Government" && (yes(a.has_bounty) || num(a.bounty_min) || num(a.bounty_max))) {
+      console.warn(a.alliance + " belongs to World Government, so its bounty is forced to 0.");
+      a.has_bounty = "No";
+      a.bounty_min = "0";
+      a.bounty_max = "0";
+    }
+  });
+
+  [["ranks", ["alliance"]], ["rank-changes", ["alliance"]], ["feats", ["alliance"]], ["alliance-changes", ["previous_alliance", "alliance"]]].forEach(function (t) {
+    DATA[t[0]].forEach(function (r) {
+      t[1].forEach(function (c) {
+        if (r[c] && r[c].toLowerCase() !== "any" && !known(r[c])) console.warn("Unknown alliance \"" + r[c] + "\" in " + t[0] + ".csv");
+      });
+    });
+  });
+}
+
 // Carregamento ----------------------------------------------------------------------------------------------------------------------------------------------------
 
 var dataReady = Promise.all(DATA_FILES.map(function (name) { return loadCSV("data/" + name + ".csv"); })).then(function (files) {
   DATA_FILES.forEach(function (name, i) { DATA[name] = files[i]; });
 
   DATA.settings.forEach(function (s) { settings[s.setting] = num(s.value); });
+
+  checkAlliances();
+  checkHybrids();
+  inheritRows(DATA.ranks, DATA.alliances);
+  inheritRows(DATA["rank-changes"], DATA.alliances);
 
   RULES.regions = buildRules(DATA.regions, ["alliance", "race"]);
   RULES.allianceChanges = buildRules(DATA["alliance-changes"], ["previous_alliance"]);

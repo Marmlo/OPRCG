@@ -10,6 +10,7 @@
 	<script src="javascript/data-loader.js"></script>
 	<script src="javascript/character.js"></script>
 	<script src="javascript/extras.js"></script>
+	<script src="javascript/race-popover.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
 	<script src="javascript/export.js"></script>
 	<script src="javascript/export-poster.js"></script>
@@ -33,11 +34,11 @@
 			</header>
 			<div class="period-content">
 				<div class="identity-body">
-					<div class="field field-name"><label class="field-label" for="fname">Name</label><div class="field-value"><input type="text" id="fname" autocomplete="off" placeholder="Enter or generate a name" name="fname"></div></div>
-					<div class="field field-name"><label class="field-label" for="nickname">Nickname</label><div class="field-value"><input type="text" id="nickname" autocomplete="off" placeholder="Enter or generate a nickname" name="nickname"></div></div>
-					<div class="field"><span class="field-label">Race</span><div class="field-value"><h5 id="race"></h5></div></div>
-					<div class="field"><span class="field-label">Region (birthplace)</span><div class="field-value"><h5 id="region"></h5></div></div>
-					<div class="field"><label class="field-label" for="gender">Gender</label><div class="field-value"><select id="gender" autocomplete="off">
+					<div class="field field-name f-name"><label class="field-label" for="fname">Name</label><div class="field-value"><input type="text" id="fname" autocomplete="off" placeholder="Enter or generate a name" name="fname"></div></div>
+					<div class="field field-name f-nick"><label class="field-label" for="nickname">Nickname</label><div class="field-value"><input type="text" id="nickname" autocomplete="off" placeholder="Enter or generate a nickname" name="nickname"></div></div>
+					<div class="field f-race"><span class="field-label">Race</span><div class="field-value"><h5 id="race"></h5></div></div>
+					<div class="field f-region"><span class="field-label">Region (birthplace)</span><div class="field-value"><h5 id="region"></h5></div></div>
+					<div class="field f-gender"><label class="field-label" for="gender">Gender</label><div class="field-value"><select id="gender" autocomplete="off">
 						<option value="male">Male</option>
 						<option value="female">Female</option>
 						<option value="other">Other</option>
@@ -68,8 +69,9 @@
 				<div class="period-body">
 					<section class="group">
 						<h3 class="group-title">Affiliation</h3>
-						<div class="field"><span class="field-label">Alliance</span><div class="field-value"><h5 id="alliance"></h5></div></div>
-						<div class="field"><span class="field-label">Rank (within the alliance)</span><div class="field-value"><h5 id="rank"></h5></div></div>
+						<div class="field"><span class="field-label">Main affiliation</span><div class="field-value"><h5 id="main-alliance"></h5></div></div>
+						<div class="field"><span class="field-label">Organization</span><div class="field-value"><h5 id="alliance"></h5></div></div>
+						<div class="field"><span class="field-label">Rank (within the organization)</span><div class="field-value"><h5 id="rank"></h5></div></div>
 					</section>
 					<section class="group">
 						<h3 class="group-title">Powers</h3>
@@ -113,8 +115,9 @@
 				<div class="period-body">
 					<section class="group">
 						<h3 class="group-title">Affiliation</h3>
-						<div class="field"><span class="field-label">Alliance</span><div class="field-value"><h5 id="alliance2"></h5></div></div>
-						<div class="field"><span class="field-label">Rank (within the alliance)</span><div class="field-value"><h5 id="rank2"></h5></div></div>
+						<div class="field"><span class="field-label">Main affiliation</span><div class="field-value"><h5 id="main-alliance2"></h5></div></div>
+						<div class="field"><span class="field-label">Organization</span><div class="field-value"><h5 id="alliance2"></h5></div></div>
+						<div class="field"><span class="field-label">Rank (within the organization)</span><div class="field-value"><h5 id="rank2"></h5></div></div>
 					</section>
 					<section class="group">
 						<h3 class="group-title">Powers</h3>
@@ -158,8 +161,9 @@
 				<div class="period-body">
 					<section class="group">
 						<h3 class="group-title">Affiliation</h3>
-						<div class="field"><span class="field-label">Alliance</span><div class="field-value"><h5 id="alliance3"></h5></div></div>
-						<div class="field"><span class="field-label">Rank (within the alliance)</span><div class="field-value"><h5 id="rank3"></h5></div></div>
+						<div class="field"><span class="field-label">Main affiliation</span><div class="field-value"><h5 id="main-alliance3"></h5></div></div>
+						<div class="field"><span class="field-label">Organization</span><div class="field-value"><h5 id="alliance3"></h5></div></div>
+						<div class="field"><span class="field-label">Rank (within the organization)</span><div class="field-value"><h5 id="rank3"></h5></div></div>
 					</section>
 					<section class="group">
 						<h3 class="group-title">Powers</h3>
@@ -218,6 +222,7 @@
 			<p id="modal-power-text"></p>
 		</div>
 	</div>
+	<div id="race-popover" class="race-popover" role="dialog" aria-label="Race details" hidden></div>
 	<div id="export-modal" class="modal" hidden onclick="if (event.target === this) closeExport();">
 		<div class="modal-box export-box" role="dialog" aria-modal="true" aria-labelledby="export-title">
 			<button type="button" class="modal-close" id="export-close" onclick="closeExport()" aria-label="Close">&times;</button>

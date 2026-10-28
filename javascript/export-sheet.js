@@ -61,7 +61,11 @@ function sheetHeader(assets, character) {
       ctx.textAlign = "left";
     }
     t += 150;
-    t += sheetGrid(ctx, [["Race", character.race], ["Region (birthplace)", character.region], ["Gender", character.gender]], SHEET_MARGIN, y + t, cw, dry);
+    var raceFields = [["Race", character.raceName], ["Type", character.raceType]];
+    if (character.raceComponents) raceFields.push(["Components", character.raceComponents]);
+    raceFields.push(["Region (birthplace)", character.region], ["Gender", character.gender]);
+    t += sheetGrid(ctx, raceFields, SHEET_MARGIN, y + t, cw, dry);
+    if (character.raceDescription) t += sheetField(ctx, "Description", character.raceDescription, SHEET_MARGIN, y + t, cw, dry) + 14;
     return t;
   };
 }
@@ -73,7 +77,7 @@ function sheetPeriod(snap) {
     function body(top, d) {
       var t = top + sheetHeading(ctx, snap.label + (snap.n > 1 ? " · Timeskip" : " · Start"), x, top, cw, d) + 8;
       t += sheetGrid(ctx, [
-        ["Alliance", snap.alliance], ["Rank (within the alliance)", snap.rank],
+        ["Affiliation", snap.affiliation], ["Rank (within the organization)", snap.rank],
         ["Fighting style", snap.fighting], ["Haki", hakiText(snap.haki, ", ")],
         ["Devil fruit (type)", snap.fruitType], ["Devil fruit", snap.fruit ? snap.fruit.fruit : "None"]
       ], x, t, cw, d) + 14;

@@ -23,7 +23,7 @@ function generateIdentity() {
 function periodSteps(n) {
   function step(fn, ids) { return [function () { fn(n); }, ids.map(function (id) { return cellId(id, n); })]; }
   return [
-    step(generateAlliance, ["alliance"]),
+    step(generateAlliance, ["main-alliance", "alliance"]),
     step(assignRank, ["rank"]),
     step(generatefighting, ["fighting"]),
     step(assignhaki, ["haki"]),
@@ -186,7 +186,7 @@ function syncIdentity() {
   var values = {
     fname: document.getElementById("fname").value.trim(),
     nickname: document.getElementById("nickname").value.trim(),
-    race: cellDone("race") ? document.getElementById("race").textContent.trim() : "",
+    race: cellDone("race") ? raceLabel() : "",
     region: cellDone("region") ? document.getElementById("region").textContent.trim() : "",
     gender: gender.options[gender.selectedIndex].text
   };

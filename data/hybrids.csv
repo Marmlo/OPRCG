@@ -1,0 +1,33 @@
+# ==========================================================
+# ONE PIECE CHARACTER GENERATOR — HYBRIDS DATABASE
+# ==========================================================
+# race_a / race_b = the two components (names from races.csv). The order does not matter: Human;Giant = Giant;Human
+# hybrid_name = display name (unique, and not the name of a race)
+# description = English description shown on the character sheet (no semicolons)
+# weight = relative probability inside the Hybrid category of races.csv (empty = 1, 0 = never)
+#
+# Type: Artificial Hybrid if one component is Artificial in races.csv, otherwise Hybrid.
+# Doriki and bounty = the average of both components, see the README.
+# Invalid rows (unknown race, same race twice, repeated pair, two artificial components) are ignored with a console warning.
+# ==========================================================
+
+race_a;race_b;hybrid_name;description;weight
+
+# --- BIOLOGICAL HYBRIDS ---
+Human;Giant;Half-Giant;A descendant of Humans and Giants, combining characteristics of both species.;3
+Human;Ancient Giant;Half-Ancient Giant;A descendant of Humans and Ancient Giants, combining characteristics of both species.;1
+Human;Frost Giant;Half-Frost Giant;A descendant of Humans and Frost Giants, combining characteristics of both species.;1
+Human;Fishman;Half-Fish-Man;A descendant of Humans and Fish-Men, combining characteristics of both species.;4
+Human;Merfolk;Half-Merfolk;A descendant of Humans and Merfolk, combining characteristics of both species.;2
+Human;Skipean;Human-Skipean Hybrid;A descendant of Humans and Skipeans, combining characteristics of both species.;1
+Human;Lunarian;Human-Lunarian Hybrid;A descendant of Humans and Lunarians, combining characteristics of both species.;1
+Human;Mink;Human-Mink Hybrid;A descendant of Humans and Minks, combining characteristics of both species.;1
+Human;Tonnata;Human-Tonnata Hybrid;A descendant of Humans and Tonnata, combining characteristics of both species.;1
+Human;Oni;Half-Oni;A descendant of Humans and Oni, combining characteristics of both species.;1
+Giant;Fishman;Giant Fish-Man Hybrid;A descendant of Giants and Fish-Men, combining characteristics of both species.;1
+
+# --- ARTIFICIAL HYBRIDS (biological species + Machine) ---
+Human;Machine;Cyborg;A Human whose body has been enhanced with mechanical components.;1
+Giant;Machine;Giant Cyborg;A Giant whose body has been enhanced with mechanical components.;1
+Fishman;Machine;Fish-Man Cyborg;A Fish-Man whose body has been enhanced with mechanical components.;1
+Mink;Machine;Mink Cyborg;A Mink whose body has been enhanced with mechanical components.;1

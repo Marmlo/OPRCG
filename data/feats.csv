@@ -12,31 +12,31 @@
 alliance;feat;weight;doriki_min;doriki_max;bounty_min;bounty_max;conquerors;armament;observation
 
 # ==========================================================
-# REVOLUCIONARY ARMY
+# REVOLUTIONARY ARMY
 # ==========================================================
 
 # --- NO FEAT ---
-Revolucionary Army;None;3;0;0;0;0;;;
+Revolutionary Army;None;3;0;0;0;0;;;
 
 # --- OPERATIONS & INFILTRATION ---
-Revolucionary Army;Attacked a Government country.;1;0;0;0;0;;;
-Revolucionary Army;Leaked sensitive Government information.;1;0;0;5;25;;;
-Revolucionary Army;Stole a rare devil fruit from the Government.;1;0;0;25;100;;;
-Revolucionary Army;Stole a legendary devil fruit from the Government.;1;200;500;150;300;;;
-Revolucionary Army;Took part in the Reverie raid.;1;0;0;50;200;;;
-Revolucionary Army;Infiltrated Mary Geoise.;1;0;0;50;200;;;
-Revolucionary Army;Declared war on the World Government.;1;0;0;100;300;;;
+Revolutionary Army;Attacked a Government country.;1;0;0;0;0;;;
+Revolutionary Army;Leaked sensitive Government information.;1;0;0;5;25;;;
+Revolutionary Army;Stole a rare devil fruit from the Government.;1;0;0;25;100;;;
+Revolutionary Army;Stole a legendary devil fruit from the Government.;1;200;500;150;300;;;
+Revolutionary Army;Took part in the Reverie raid.;1;0;0;50;200;;;
+Revolutionary Army;Infiltrated Mary Geoise.;1;0;0;50;200;;;
+Revolutionary Army;Declared war on the World Government.;1;0;0;100;300;;;
 
 # --- LIBERATION & RESCUE ---
-Revolucionary Army;Released slaves from a Government ally.;1;0;0;0;0;;;
-Revolucionary Army;Freed a kingdom from a tyrant.;1;0;0;20;80;;;
-Revolucionary Army;Rescued a comrade from Impel Down.;1;0;0;10;25;;;
+Revolutionary Army;Released slaves from a Government ally.;1;0;0;0;0;;;
+Revolutionary Army;Freed a kingdom from a tyrant.;1;0;0;20;80;;;
+Revolutionary Army;Rescued a comrade from Impel Down.;1;0;0;10;25;;;
 
 # --- COMBAT & SURVIVAL ---
-Revolucionary Army;Participated in a war.;1;200;500;0;0;;;
-Revolucionary Army;Survived a Buster Call.;1;100;200;0;0;;;
-Revolucionary Army;Defeated an Vice-Admiral.;1;3000;8000;200;500;;Basic;Basic
-Revolucionary Army;Defeated an Admiral.;1;10000;20000;300;800;Basic;Advanced;Basic
+Revolutionary Army;Participated in a war.;1;200;500;0;0;;;
+Revolutionary Army;Survived a Buster Call.;1;100;200;0;0;;;
+Revolutionary Army;Defeated an Vice-Admiral.;1;3000;8000;200;500;;Basic;Basic
+Revolutionary Army;Defeated an Admiral.;1;10000;20000;300;800;Basic;Advanced;Basic
 
 
 # ==========================================================
@@ -173,24 +173,24 @@ Cipher Pol;Defeated a notorious pirate.;1;100;1000;0;0;;;
 
 
 # ==========================================================
-# WORLD GOVERNMENT
+# GOVERNMENT
 # ==========================================================
 
 # --- NO FEAT ---
-World Government;None;3;0;0;0;0;;;
+Government;None;3;0;0;0;0;;;
 
 # --- SECRET MISSIONS & ENFORCEMENT ---
-World Government;Enforced a secret decree from the Five Elders.;1;200;600;0;0;;;
-World Government;Participated in a expedition.;1;1500;4000;0;0;;Basic;Basic
-World Government;Suppressed a rebellion against the World Government.;1;2000;5000;0;0;;Basic;Basic
-World Government;Carried out a World Governments judgment against a rebellious kingdom.;1;6000;12000;0;0;Basic;Advanced;Basic
-World Government;Participated in the destruction of an island.;0.3;20000;30000;0;0;Advanced;Advanced;Advanced
+Government;Enforced a secret decree from the Five Elders.;1;200;600;0;0;;;
+Government;Participated in a expedition.;1;1500;4000;0;0;;Basic;Basic
+Government;Suppressed a rebellion against the World Government.;1;2000;5000;0;0;;Basic;Basic
+Government;Carried out a World Governments judgment against a rebellious kingdom.;1;6000;12000;0;0;Basic;Advanced;Basic
+Government;Participated in the destruction of an island.;0.3;20000;30000;0;0;Advanced;Advanced;Advanced
 
 # --- HIGH-LEVEL COMBAT ---
-World Government;Eliminated a high-ranking Revolutionary Army officer.;1;1000;3000;0;0;;Basic;Basic
-World Government;Defeated a Yonko Commander.;1;5000;10000;0;0;;Advanced;Basic
-World Government;Survived a confrontation with a Yonko.;1;8000;15000;0;0;;Advanced;Advanced
-World Government;Defeated an Admiral while enforcing the authority of the World Government.;0.5;15000;25000;0;0;Basic;Advanced;Advanced
+Government;Eliminated a high-ranking Revolutionary Army officer.;1;1000;3000;0;0;;Basic;Basic
+Government;Defeated a Yonko Commander.;1;5000;10000;0;0;;Advanced;Basic
+Government;Survived a confrontation with a Yonko.;1;8000;15000;0;0;;Advanced;Advanced
+Government;Defeated an Admiral while enforcing the authority of the World Government.;0.5;15000;25000;0;0;Basic;Advanced;Advanced
 
 
 # ==========================================================

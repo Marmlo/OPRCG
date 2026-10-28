@@ -23,10 +23,11 @@ Para adicionar, alterar ou remover um valor basta editar as linhas. Não é prec
 | `settings.csv` | Valores gerais: chance e bónus do Will of D., parte do Doriki do rank nos timeskips, parte do Doriki que vira bounty, limites da bounty dos Pets, Doriki de um rank que não esteja em `ranks.csv`. |
 | `names.csv` | Nomes e alcunhas aleatórios. `part` = `first_name`, `last_name`, `nickname_prefix` ou `nickname_suffix`. |
 | `genders.csv` | Probabilidade de cada género. `gender` tem de ser igual ao valor da lista do site (`male`, `female`, `other`). |
-| `races.csv` | Probabilidade de cada raça e o Doriki que dá no 1st Year. |
-| `regions.csv` | Região de nascimento, por `alliance` (do 1st Year) e `race`. As linhas sem raça servem para as outras raças (Human, Cyborg e raças novas). |
-| `alliances.csv` | Probabilidade de cada alliance no 1st Year, bounty que a alliance dá, e `has_bounty` (`No` = sem bounty no 1st Year e mantém a anterior nos timeskips, ex.: Marine, Cipher Pol). |
-| `alliance-changes.csv` | Alliance em cada timeskip conforme a anterior. A linha da própria alliance é a chance de a manter (ex.: Pirate 12 contra 1+1+1 → 80%). |
+| `races.csv` | Raças puras: `weight` = probabilidade de cada uma (0 = nunca sai sozinha, só como componente). Doriki no 1st Year, `bounty_min` / `bounty_max` (bounty racial, 0 em todas). `kind` = `Biological`, `Artificial` (componente mecânico, ex.: Machine) ou `Category` (a linha `Hybrid`, que sorteia um híbrido). |
+| `hybrids.csv` | Híbridos: os dois componentes (`race_a`, `race_b`, qualquer ordem), `hybrid_name`, `description` (inglês) e `weight` dentro da categoria `Hybrid`. Não tem valores de Doriki nem de bounty: são calculados a partir dos componentes. Tipo `Artificial Hybrid` se um componente for `Artificial`, senão `Hybrid`. |
+| `regions.csv` | Região de nascimento, por `alliance` (do 1st Year) e `race`. A linha `Hybrid` vale para todos os híbridos biológicos; as linhas sem raça servem para as outras raças (Human, híbridos artificiais e raças novas). |
+| `alliances.csv` | Probabilidade de cada alliance (organização) no 1st Year, bounty que dá e `has_bounty`. `main_alliance` = afiliação principal (`Free`, `Revolutionaries` ou `World Government`), que não tem sorteio próprio: vem da organização. As organizações de `World Government` têm sempre bounty 0 (`has_bounty` = `No`). `ranks_from` / `ranks_exclude` = a alliance usa os ranks (e rank-changes) de outra, menos os excluídos (ex.: Revolutionary Country usa os de World Nobles sem Celestial Dragon), a não ser que tenha linhas próprias. |
+| `alliance-changes.csv` | Alliance (organização) em cada timeskip conforme a anterior. A linha da própria alliance é a chance de a manter (ex.: Pirate 12 contra 1+1+1 → 80%). |
 | `ranks.csv` | Todos os ranks de cada alliance: `weight` = probabilidade no 1st Year (0 = só aparece nos timeskips), Doriki e bounty do rank, haki mínimo exigido, `timeskip_jump_chance` (chance de saltar para este rank num timeskip, seja qual for o anterior, ex.: Yonko 2%), `bounty_in_thousands` (Pets) e `keeps_higher_bounty` (no After 10 Years mantém a bounty do After 2 Years se a nova for mais baixa). |
 | `rank-changes.csv` | Rank em cada timeskip conforme a alliance nova e o rank anterior. As linhas sem `previous_rank` servem para os outros ranks e para quem muda de alliance. |
 | `fighting-styles.csv` | Estilo de luta. No 1st Year sorteia do primeiro grupo que encaixa (alliance, rank ou raça). Nos timeskips o estilo mantém-se, a não ser que um grupo desse período (ex.: rank Swordsman) não o permita. |
@@ -42,4 +43,6 @@ Para adicionar, alterar ou remover um valor basta editar as linhas. Não é prec
 
 - **Doriki do 1st Year**: raça + rank + haki + devil fruit + feats (+ bónus do Will of D.).
 - **Doriki nos timeskips**: Doriki anterior + parte do Doriki do rank (`timeskip_rank_doriki_share`) + haki + feats.
-- **Bounty**: parte do Doriki (`doriki_bounty_share`) + alliance + devil fruit + feats + haki + rank.
+- **Bounty**: parte do Doriki (`doriki_bounty_share`) + alliance + devil fruit + feats + haki + rank + bounty racial. Nas organizações de World Government a bounty é sempre 0.
+- **Raça híbrida**: `hybrid = (componente A + componente B) / 2`, para `doriki_min`, `doriki_max`, `bounty_min` e `bounty_max` (arredondado para baixo). É calculada a partir de `races.csv` em cada sorteio, por isso uma alteração na raça atualiza todos os híbridos que a contêm. Uma raça pura usa 100% dos seus valores. O Doriki racial só entra no 1st Year.
+- **Afiliação**: `main_alliance` (Free, Revolutionaries, World Government) → alliance (organização) → rank.

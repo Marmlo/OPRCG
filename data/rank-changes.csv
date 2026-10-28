@@ -11,39 +11,41 @@
 # Same previous_rank and rank = character retains their rank
 #
 # Keep names consistent with ranks.csv.
+# An alliance with no rows here uses the rows of its ranks_from alliance (data/alliances.csv),
+# without the ranks_exclude ones. Add rows for it to give it its own transitions.
 # ==========================================================
 
 alliance;previous_rank;rank;weight
 
 # ==========================================================
-# REVOLUCIONARY ARMY
+# REVOLUTIONARY ARMY
 # ==========================================================
 
 # --- PREVIOUS: LEADER ---
-Revolucionary Army;Leader;Leader;1
+Revolutionary Army;Leader;Leader;1
 
 # --- PREVIOUS: CHIEF OF STAFF ---
-Revolucionary Army;Chief of Staff;Leader;1
-Revolucionary Army;Chief of Staff;Chief of Staff;3
+Revolutionary Army;Chief of Staff;Leader;1
+Revolutionary Army;Chief of Staff;Chief of Staff;3
 
 # --- PREVIOUS: ARMY COMMANDER ---
-Revolucionary Army;Army Commander;Leader;1
-Revolucionary Army;Army Commander;Chief of Staff;3
-Revolucionary Army;Army Commander;Army Commander;3
+Revolutionary Army;Army Commander;Leader;1
+Revolutionary Army;Army Commander;Chief of Staff;3
+Revolutionary Army;Army Commander;Army Commander;3
 
 # --- PREVIOUS: OFFICER ---
-Revolucionary Army;Officer;Leader;0
-Revolucionary Army;Officer;Chief of Staff;1
-Revolucionary Army;Officer;Army Commander;3
-Revolucionary Army;Officer;Officer;3
+Revolutionary Army;Officer;Leader;0
+Revolutionary Army;Officer;Chief of Staff;1
+Revolutionary Army;Officer;Army Commander;3
+Revolutionary Army;Officer;Officer;3
 
 # --- INITIAL / FALLBACK ---
-Revolucionary Army;;Leader;0
-Revolucionary Army;;Chief of Staff;0
-Revolucionary Army;;Army Commander;1
-Revolucionary Army;;Officer;1
-Revolucionary Army;;Member;3
-Revolucionary Army;;Associate;3
+Revolutionary Army;;Leader;0
+Revolutionary Army;;Chief of Staff;0
+Revolutionary Army;;Army Commander;1
+Revolutionary Army;;Officer;1
+Revolutionary Army;;Member;3
+Revolutionary Army;;Associate;3
 
 
 # ==========================================================
@@ -382,22 +384,22 @@ Cipher Pol;;CP9;1
 
 
 # ==========================================================
-# WORLD GOVERNMENT
+# GOVERNMENT
 # ==========================================================
 
 # --- PREVIOUS: KING OF THE WORLD ---
-World Government;King of the World;King of the World;1
+Government;King of the World;King of the World;1
 
 # --- PREVIOUS: FIVE ELDERS ---
-World Government;Five Elders;King of the World;0.1
-World Government;Five Elders;Five Elders;1
+Government;Five Elders;King of the World;0.1
+Government;Five Elders;Five Elders;1
 
 # --- PREVIOUS: HOLY KNIGHTS ---
-World Government;Holy Knights;Five Elders;0.1
-World Government;Holy Knights;Holy Knights;1
+Government;Holy Knights;Five Elders;0.1
+Government;Holy Knights;Holy Knights;1
 
 # --- INITIAL / FALLBACK ---
-World Government;;Holy Knights;1
+Government;;Holy Knights;1
 
 # ==========================================================
 # WORLD NOBLES

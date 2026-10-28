@@ -85,13 +85,24 @@ body {
 .field-value { min-width: 0; overflow-wrap: anywhere; }
 .field-value .know-more { justify-self: start; }
 
-/* Identity */
+/* Identity: one compact row on desktop, reflowed by grid areas on tablet and mobile */
 .identity-body {
 	display: grid;
-	grid-template-columns: 1.6fr 1.6fr 1fr 1fr 1fr;
-	gap: 14px 16px;
-	padding: 14px 18px 16px;
+	grid-template-columns: minmax(160px, 1.4fr) minmax(160px, 1.4fr) minmax(130px, 1.2fr) minmax(170px, 1.5fr) minmax(120px, 0.8fr);
+	grid-template-areas: "name nick race region gender";
+	align-items: start;
+	gap: 12px 14px;
+	padding: 12px 16px 14px;
 }
+.identity-body .f-name { grid-area: name; }
+.identity-body .f-nick { grid-area: nick; }
+.identity-body .f-race { grid-area: race; }
+.identity-body .f-region { grid-area: region; }
+.identity-body .f-gender { grid-area: gender; }
+.identity-body .field-value { display: flex; align-items: center; min-height: 44px; }
+.identity-body .field-value > input, .identity-body .field-value > select { height: 44px; min-width: 0; }
+.identity-body .field-value > h5 { flex: 1 1 auto; min-width: 0; display: flex; align-items: center; }
+.identity-body #region { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
 /* Timeline: a vertical line connects the period cards */
 .timeline { position: relative; display: grid; gap: 18px; padding-left: 26px; }
@@ -142,6 +153,36 @@ body {
 
 h5, h6 { margin: 0; font-weight: 500; }
 h5 { font-size: 1rem; }
+.race-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.race-info { flex: none; width: 22px; height: 22px; margin-left: 8px; font-size: 0.75rem; }
+
+/* Race details popover: fixed to the page, because the card clips its content. race-popover.js places it */
+.race-popover {
+	position: fixed;
+	z-index: 60;
+	width: 300px;
+	padding: 14px 16px;
+	background: #171c28;
+	border: 1px solid var(--line);
+	border-top: 3px solid var(--red);
+	border-radius: 12px;
+	box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+	font-size: 0.9rem;
+	line-height: 1.45;
+}
+.race-popover[hidden] { display: none; }
+.race-popover-title {
+	margin: 0 0 8px;
+	font-family: "Bangers", "Inter", sans-serif;
+	font-weight: 400;
+	font-size: 1.25rem;
+	letter-spacing: 1px;
+	color: var(--gold);
+}
+.race-popover dl { margin: 0 0 8px; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 12px; }
+.race-popover dt { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); padding-top: 2px; }
+.race-popover dd { margin: 0; overflow-wrap: anywhere; }
+.race-popover p { margin: 0; opacity: 0.9; }
 h6 { font-size: 0.85rem; font-weight: 600; margin-top: 2px; }
 
 /* Forms */
@@ -385,8 +426,7 @@ select option { color: #111; }
 
 /* Tablet: groups stack, fields inside each group sit side by side */
 @media (max-width: 960px) {
-	.identity-body { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-	.identity-body .field:last-child { grid-column: 1 / -1; }
+	.identity-body { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-areas: "name nick" "race gender" "region region"; }
 	.period-body { grid-template-columns: 1fr; }
 	.group { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 	.group-title { grid-column: 1 / -1; }
@@ -423,7 +463,8 @@ select option { color: #111; }
 	.period-identity { padding: 7px 14px; gap: 2px 14px; font-size: 0.75rem; }
 	[type="button"].period-generate { min-width: 0; width: 100%; max-width: 300px; font-size: 1.2rem; }
 
-	.identity-body { grid-template-columns: 1fr; padding: 12px 14px 14px; }
+	.identity-body { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-areas: "name name" "nick nick" "race gender" "region region"; gap: 12px; padding: 12px 14px 14px; }
+	.identity-body .field-value { min-height: 44px; }
 	.group { grid-template-columns: 1fr; padding: 12px 14px 14px; }
 	.field-row { grid-column: auto; }
 

@@ -1,8 +1,9 @@
-alliance;weight;bounty_min;bounty_max;has_bounty
-Revolucionary Army;2;1;10;Yes
-Marine;3;0;0;No
-Pirate;5;1;5;Yes
-Bounty Hunter;1;0;0;Yes
-Cipher Pol;1;0;0;No
-World Nobles;1;0;0;Yes
-World Government;1;0;0;No
+alliance;weight;bounty_min;bounty_max;has_bounty;main_alliance;ranks_from;ranks_exclude
+Revolutionary Army;2;1;10;Yes;Revolutionaries;;
+Revolutionary Country;1;1;10;Yes;Revolutionaries;World Nobles;Celestial Dragon
+Marine;3;0;0;No;World Government;;
+Pirate;5;1;5;Yes;Free;;
+Bounty Hunter;1;0;0;Yes;Free;;
+Cipher Pol;1;0;0;No;World Government;;
+World Nobles;1;0;0;No;World Government;;
+Government;1;0;0;No;World Government;;
