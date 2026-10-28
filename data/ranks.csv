@@ -47,7 +47,7 @@ Cipher Pol;CP1;0;18000;20000;0;0;;;;;;
 Cipher Pol;CP2;0;16000;18000;0;0;;;;;;
 Cipher Pol;CP3;0;14000;16000;0;0;;;;;;
 Cipher Pol;CP4;0;12000;14000;0;0;;;;;;
-World Government;King of the World;0.01;100000;130000;0;0;Master;Master;Advanced;;;
+World Government;King of the World;100000.01;100000;130000;0;0;Master;Master;Advanced;;;
 World Government;Five Elders;0.05;80000;100000;0;0;Advanced;Advanced;Basic;;;
 World Government;Holy Knights;0.1;75000;90000;0;0;Advanced;Advanced;Basic;;;
 World Nobles;Celestial Dragon;1;1;10;0;0;;;;;;
