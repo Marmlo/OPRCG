@@ -141,6 +141,7 @@ function updatePortraitControls() {
   document.getElementById("export-preview").classList.toggle("has-portrait", has);
   document.getElementById("portrait-upload").textContent = has ? "Replace Character Image" : "Upload Character Image";
   if (has) document.getElementById("portrait-zoom").value = posterPortrait.zoom;
+  if (typeof syncDashboard === "function") syncDashboard(true);   // the dashboard shows the same portrait and poster
 }
 
 // Pointer position on the poster, in poster px (the preview is scaled by CSS)

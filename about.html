@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>About · One Piece Character Generator</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/theme.css" media="all" />
+	<script src="javascript/site.js"></script>
+</head>
+<body>
+	<header class="site-header">
+		<a href="index.html" class="brand" aria-label="One Piece Character Generator home"><img src="images/Logo.png" alt="Random character generator" class="logo"></a>
+		<p class="tagline">Roll a new adventurer and follow their journey across the Grand Line.</p>
+		<button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav"><span class="sr-only">Menu</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg></button>
+		<nav class="site-nav" id="site-nav" aria-label="Main">
+			<a href="about.html" class="nav-link" aria-current="page">About</a>
+			<a href="settings.html" class="nav-icon" aria-label="Settings" title="Settings"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3" /><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z" /></svg></a>
+		</nav>
+	</header>
+
+	<main class="page">
+		<article class="panel page-panel prose">
+			<h1 class="page-title">About the project</h1>
+
+			<h2>What it is</h2>
+			<p>The One Piece Character Generator rolls a new character from the world of One Piece and follows their journey across the Grand Line. You can type a name or let the generator invent one, and it builds their race, affiliation and rank, fighting style, Haki, Devil Fruit, feats, Doriki and Bounty. Then it shows how all of that changes one year in, two years later and ten years after.</p>
+
+			<h2>Why we built it</h2>
+			<p>We are One Piece fans, and the series is full of people whose strength, reputation and place in the world change over time. We wanted a way to imagine our own pirate, marine, revolutionary or hybrid, instead of only reading about the existing cast. The goal is a tool that tells that kind of story from a blank sheet and is quick enough to play with between chapters.</p>
+
+			<h2>How it works</h2>
+			<p>Every probability and value comes from plain CSV files in the project's data folder, so the rules are easy to read and to change. The generator runs entirely in your browser: there are no accounts, no server keeps your characters, and no images are generated with AI. Portraits you upload stay on your device.</p>
+
+			<h2>Source and credits</h2>
+			<p>The project is open source on <a href="https://github.com/Marmlo/OPRCG" target="_blank" rel="noopener noreferrer">GitHub</a>. It has been developed since 2021 by João Marmelo and Miguel Fernandes, with Cláudio "Claude" since 2026.</p>
+
+			<p class="disclaimer">Unofficial, free, non-commercial fan project. One Piece and its characters, names, settings and related intellectual property belong to Eiichiro Oda and their respective rights holders, including Shueisha. This project is not affiliated with or endorsed by them.</p>
+		</article>
+	</main>
+
+	<footer class="credits">
+		<span>Credits</span>
+		<span>João Marmelo <small>since 2021</small></span>
+		<span>Miguel Fernandes <small>since 2021</small></span>
+		<span>Cláudio "Claude" <small>since 2026</small></span>
+		<a href="https://linktr.ee/MarmeloDesign" target="_blank" rel="noopener noreferrer" aria-label="João Marmelo's Linktree">João Marmelo — Links</a>
+	</footer>
+</body>
+</html>
