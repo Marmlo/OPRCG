@@ -3,77 +3,77 @@ Revolucionary Army;Leader;Leader;1
 Revolucionary Army;Chief of Staff;Leader;1
 Revolucionary Army;Chief of Staff;Chief of Staff;3
 Revolucionary Army;Army Commander;Leader;1
-Revolucionary Army;Army Commander;Chief of Staff;1
-Revolucionary Army;Army Commander;Army Commander;1
-Revolucionary Army;Officer;Leader;1
+Revolucionary Army;Army Commander;Chief of Staff;3
+Revolucionary Army;Army Commander;Army Commander;5
+Revolucionary Army;Officer;Leader;0
 Revolucionary Army;Officer;Chief of Staff;1
-Revolucionary Army;Officer;Army Commander;1
-Revolucionary Army;Officer;Officer;1
-Revolucionary Army;;Leader;1
-Revolucionary Army;;Chief of Staff;1
+Revolucionary Army;Officer;Army Commander;3
+Revolucionary Army;Officer;Officer;5
+Revolucionary Army;;Leader;0
+Revolucionary Army;;Chief of Staff;0
 Revolucionary Army;;Army Commander;1
 Revolucionary Army;;Officer;1
-Revolucionary Army;;Member;1
-Revolucionary Army;;Associate;1
-Marine;Fleet Admiral;Fleet Admiral;1
+Revolucionary Army;;Member;3
+Revolucionary Army;;Associate;3
+Marine;Fleet Admiral;Fleet Admiral;5
 Marine;Fleet Admiral;Admiral;1
 Marine;Fleet Admiral;Vice Admiral;1
 Marine;Fleet Admiral;Inspector General;1
 Marine;Fleet Admiral;Instructor;1
 Marine;Admiral;Fleet Admiral;1
-Marine;Admiral;Admiral;1
+Marine;Admiral;Admiral;3
 Marine;Admiral;Vice Admiral;1
 Marine;Admiral;Inspector General;1
 Marine;Admiral;Instructor;1
-Marine;Vice Admiral;Fleet Admiral;1
+Marine;Vice Admiral;Fleet Admiral;0.2
 Marine;Vice Admiral;Admiral;1
-Marine;Vice Admiral;Vice Admiral;1
+Marine;Vice Admiral;Vice Admiral;3
 Marine;Vice Admiral;Inspector General;1
 Marine;Vice Admiral;Instructor;1
-Marine;Rear Admiral;Fleet Admiral;1
-Marine;Rear Admiral;Admiral;1
+Marine;Rear Admiral;Fleet Admiral;0
+Marine;Rear Admiral;Admiral;0
 Marine;Rear Admiral;Vice Admiral;1
-Marine;Rear Admiral;Rear Admiral;1
+Marine;Rear Admiral;Rear Admiral;3
 Marine;Rear Admiral;Inspector General;1
 Marine;Rear Admiral;Instructor;1
-Marine;Commodore;Fleet Admiral;1
-Marine;Commodore;Admiral;1
-Marine;Commodore;Vice Admiral;1
+Marine;Commodore;Fleet Admiral;0
+Marine;Commodore;Admiral;0
+Marine;Commodore;Vice Admiral;0
 Marine;Commodore;Rear Admiral;1
 Marine;Commodore;Commodore;1
 Marine;Commodore;Inspector General;1
 Marine;Commodore;Instructor;1
-Marine;Captain;Fleet Admiral;1
-Marine;Captain;Admiral;1
-Marine;Captain;Vice Admiral;1
+Marine;Captain;Fleet Admiral;0
+Marine;Captain;Admiral;0
+Marine;Captain;Vice Admiral;0
 Marine;Captain;Rear Admiral;1
 Marine;Captain;Commodore;1
 Marine;Captain;Captain;1
 Marine;Captain;Inspector General;1
 Marine;Captain;Instructor;1
-Marine;Commander;Fleet Admiral;1
-Marine;Commander;Admiral;1
-Marine;Commander;Vice Admiral;1
+Marine;Commander;Fleet Admiral;0
+Marine;Commander;Admiral;0
+Marine;Commander;Vice Admiral;0
 Marine;Commander;Rear Admiral;1
 Marine;Commander;Commodore;1
 Marine;Commander;Captain;1
 Marine;Commander;Commander;1
 Marine;Commander;Inspector General;1
 Marine;Commander;Instructor;1
-Marine;Lieutenant;Fleet Admiral;1
-Marine;Lieutenant;Admiral;1
-Marine;Lieutenant;Vice Admiral;1
-Marine;Lieutenant;Rear Admiral;1
+Marine;Lieutenant;Fleet Admiral;0
+Marine;Lieutenant;Admiral;0
+Marine;Lieutenant;Vice Admiral;0
+Marine;Lieutenant;Rear Admiral;0
 Marine;Lieutenant;Commodore;1
 Marine;Lieutenant;Captain;1
 Marine;Lieutenant;Commander;1
 Marine;Lieutenant;Lieutenant;1
 Marine;Lieutenant;Inspector General;1
 Marine;Lieutenant;Instructor;1
-Marine;Ensign;Fleet Admiral;1
-Marine;Ensign;Admiral;1
-Marine;Ensign;Vice Admiral;1
-Marine;Ensign;Rear Admiral;1
+Marine;Ensign;Fleet Admiral;0
+Marine;Ensign;Admiral;0
+Marine;Ensign;Vice Admiral;0
+Marine;Ensign;Rear Admiral;0
 Marine;Ensign;Commodore;1
 Marine;Ensign;Captain;1
 Marine;Ensign;Commander;1
@@ -81,10 +81,10 @@ Marine;Ensign;Lieutenant;1
 Marine;Ensign;Ensign;1
 Marine;Ensign;Inspector General;1
 Marine;Ensign;Instructor;1
-Marine;Petty Officer;Fleet Admiral;1
-Marine;Petty Officer;Admiral;1
-Marine;Petty Officer;Vice Admiral;1
-Marine;Petty Officer;Rear Admiral;1
+Marine;Petty Officer;Fleet Admiral;0
+Marine;Petty Officer;Admiral;0
+Marine;Petty Officer;Vice Admiral;0
+Marine;Petty Officer;Rear Admiral;0
 Marine;Petty Officer;Commodore;1
 Marine;Petty Officer;Captain;1
 Marine;Petty Officer;Commander;1
@@ -93,10 +93,10 @@ Marine;Petty Officer;Ensign;1
 Marine;Petty Officer;Petty Officer;1
 Marine;Petty Officer;Inspector General;1
 Marine;Petty Officer;Instructor;1
-Marine;Seaman;Fleet Admiral;1
-Marine;Seaman;Admiral;1
-Marine;Seaman;Vice Admiral;1
-Marine;Seaman;Rear Admiral;1
+Marine;Seaman;Fleet Admiral;0
+Marine;Seaman;Admiral;0
+Marine;Seaman;Vice Admiral;0
+Marine;Seaman;Rear Admiral;0
 Marine;Seaman;Commodore;1
 Marine;Seaman;Captain;1
 Marine;Seaman;Commander;1
@@ -106,22 +106,22 @@ Marine;Seaman;Petty Officer;1
 Marine;Seaman;Seaman;1
 Marine;Seaman;Inspector General;1
 Marine;Seaman;Instructor;1
-Marine;Inspector General;Fleet Admiral;1
-Marine;Inspector General;Admiral;1
+Marine;Inspector General;Fleet Admiral;0.1
+Marine;Inspector General;Admiral;0.2
 Marine;Inspector General;Vice Admiral;1
-Marine;Inspector General;Inspector General;1
+Marine;Inspector General;Inspector General;3
 Marine;Inspector General;Instructor;1
-Marine;Instructor;Fleet Admiral;1
-Marine;Instructor;Admiral;1
+Marine;Instructor;Fleet Admiral;0
+Marine;Instructor;Admiral;0
 Marine;Instructor;Vice Admiral;1
 Marine;Instructor;Rear Admiral;1
 Marine;Instructor;Inspector General;1
 Marine;Instructor;Instructor;1
 Marine;Pirate Captain;Shichibukai;1
-Marine;;Fleet Admiral;1
-Marine;;Admiral;1
-Marine;;Vice Admiral;1
-Marine;;Rear Admiral;1
+Marine;;Fleet Admiral;0
+Marine;;Admiral;0
+Marine;;Vice Admiral;0
+Marine;;Rear Admiral;0
 Marine;;Commodore;1
 Marine;;Captain;1
 Marine;;Commander;1
