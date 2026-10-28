@@ -1,4 +1,5 @@
 setting;value;description
+clone_chance;0.05;Chance of a character being a clone (origin). A clone takes its race from clones.csv (0.05 = 5%)
 will_of_d_chance;0.01;Chance of a generated name having the "D." (Will of D.)
 will_of_d_doriki_bonus;0.1;Extra Doriki in the 1st Year for a character with the Will of D. (0.1 = +10%)
 timeskip_rank_doriki_share;0.2;Share of the rank Doriki added in each timeskip (0.2 = 20%)

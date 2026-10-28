@@ -63,6 +63,8 @@ function sheetHeader(assets, character) {
     t += 150;
     var raceFields = [["Race", character.raceName], ["Type", character.raceType]];
     if (character.raceComponents) raceFields.push(["Components", character.raceComponents]);
+    raceFields.push(["Origin", character.raceOrigin]);
+    if (character.raceSubtype) raceFields.push(["Artificial subtype", character.raceSubtype]);
     raceFields.push(["Region (birthplace)", character.region], ["Gender", character.gender]);
     t += sheetGrid(ctx, raceFields, SHEET_MARGIN, y + t, cw, dry);
     if (character.raceDescription) t += sheetField(ctx, "Description", character.raceDescription, SHEET_MARGIN, y + t, cw, dry) + 14;

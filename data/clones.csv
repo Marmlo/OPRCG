@@ -1,0 +1,52 @@
+# ==========================================================
+# ONE PIECE CHARACTER GENERATOR — CLONES DATABASE
+# ==========================================================
+# A clone is an origin, not a race. settings.csv (clone_chance) decides if a character is a clone;
+# if so, its race is rolled from this file instead of races.csv. Natural characters are not affected.
+# race_a = biological race (pure clone) or the first component of a hybrid clone
+# race_b = second component of a hybrid clone (empty = pure race clone). The order does not matter
+# subtype = artificial subtype shown after the name (Seraphim-type). Empty = plain clone ("— Clone").
+#           A subtype makes the clone an Artificial Hybrid.
+# description = English description (no semicolons). Optional
+# weight = relative probability inside this file (empty = 1, 0 = never)
+# A clone keeps its components' racial values: 100% for a pure race, 50% of each component for a hybrid.
+# Clone status adds no Doriki, Bounty or powers. A hybrid pair must exist in hybrids.csv.
+# Invalid rows are ignored with a console warning.
+# ==========================================================
+
+race_a;race_b;subtype;description;weight
+
+# --- PURE RACE CLONES (biological races only) ---
+Human;;;A clone grown from the body of a Human. It keeps the racial values of the Human race.;1
+Giant;;;A clone grown from the body of a Giant. It keeps the racial values of the Giant race.;1
+Ancient Giant;;;A clone grown from the body of an Ancient Giant. It keeps the racial values of the Ancient Giant race.;1
+Frost Giant;;;A clone grown from the body of a Frost Giant. It keeps the racial values of the Frost Giant race.;1
+Fishman;;;A clone grown from the body of a Fish-Man. It keeps the racial values of the Fish-Man race.;1
+Merfolk;;;A clone grown from the body of a Merfolk. It keeps the racial values of the Merfolk race.;1
+Skipean;;;A clone grown from the body of a Skipean. It keeps the racial values of the Skipean race.;1
+Lunarian;;;A clone grown from the body of a Lunarian. It keeps the racial values of the Lunarian race and no extra powers.;1
+Mink;;;A clone grown from the body of a Mink. It keeps the racial values of the Mink race.;1
+Tonnata;;;A clone grown from the body of a Tonnata. It keeps the racial values of the Tonnata race.;1
+Oni;;;A clone grown from the body of an Oni. It keeps the racial values of the Oni race.;1
+
+# --- BIOLOGICAL HYBRID CLONES ---
+Human;Giant;;A clone of a Half-Giant, grown from the bodies of a Human and a Giant.;1
+Human;Ancient Giant;;A clone of a Half-Ancient Giant, grown from the bodies of a Human and an Ancient Giant.;1
+Human;Frost Giant;;A clone of a Half-Frost Giant, grown from the bodies of a Human and a Frost Giant.;1
+Human;Fishman;;A clone of a Half-Fish-Man, grown from the bodies of a Human and a Fish-Man.;1
+Human;Merfolk;;A clone of a Half-Merfolk, grown from the bodies of a Human and a Merfolk.;1
+Human;Skipean;;A clone of a Human-Skipean Hybrid, grown from the bodies of a Human and a Skipean.;1
+Human;Mink;;A clone of a Human-Mink Hybrid, grown from the bodies of a Human and a Mink.;1
+Human;Tonnata;;A clone of a Human-Tonnata Hybrid, grown from the bodies of a Human and a Tonnata.;1
+Human;Oni;;A clone of a Half-Oni, grown from the bodies of a Human and an Oni.;1
+Giant;Fishman;;A clone of a Giant Fish-Man Hybrid, grown from the bodies of a Giant and a Fish-Man.;1
+
+# --- SERAPHIM-TYPE CLONES (Artificial Hybrids: the subtype is set, the natural hybrid is not) ---
+Human;Lunarian;Seraphim-type;An artificially engineered Human-Lunarian Hybrid of the Seraphim type. The clone has no Lunarian powers of its own.;1
+Fishman;Lunarian;Seraphim-type;An artificially engineered Fish-Man-Lunarian Hybrid of the Seraphim type. The clone has no Lunarian powers of its own.;1
+
+# --- ARTIFICIAL HYBRID CLONES (biological species + Machine) ---
+Human;Machine;;A Human whose body has been enhanced with mechanical components, grown as a clone.;1
+Giant;Machine;;A Giant whose body has been enhanced with mechanical components, grown as a clone.;1
+Fishman;Machine;;A Fish-Man whose body has been enhanced with mechanical components, grown as a clone.;1
+Mink;Machine;;A Mink whose body has been enhanced with mechanical components, grown as a clone.;1

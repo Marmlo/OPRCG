@@ -2,7 +2,7 @@
 // Os valores e probabilidades estão todos em data/*.csv (ver data/README.md); aqui ficam só as regras que os ligam.
 // Cada período tem o seu estado: 1 = 1st Year, 2 = After 2 Years, 3 = After 10 Years.
 
-var race = null;   // { name, type: "Pure" | "Hybrid" | "Artificial Hybrid", components: [linhas de races.csv], description }
+var race = null;   // { name, type: "Pure" | "Hybrid" | "Artificial Hybrid", origin: "Natural" | "Clone", subtype, components: [linhas de races.csv], description }
 var region = "";
 var periods = [null, {}, {}, {}];   // { mainAlliance, alliance, rank, fighting, haki, fruitType, fruit, feats, doriki, bounty }
 
@@ -65,8 +65,9 @@ function raceInfo() { return race ? racialModifiers(race.components) : null; }
 
 function isArtificial(row) { return String(row.kind || "").trim().toLowerCase() === "artificial"; }
 
+// Raças naturais: uma raça pura, ou um híbrido de data/hybrids.csv
 function pureRace(name) {
-  return { name: name, type: "Pure", components: [findRow(DATA.races, "race", name)], description: "" };
+  return { name: name, type: "Pure", origin: "Natural", subtype: "", components: [findRow(DATA.races, "race", name)], description: "" };
 }
 
 function hybridRace(h) {
@@ -74,9 +75,22 @@ function hybridRace(h) {
   return {
     name: h.hybrid_name,
     type: parts.some(isArtificial) ? "Artificial Hybrid" : "Hybrid",
+    origin: "Natural",
+    subtype: "",
     components: parts,
     description: h.description
   };
+}
+
+// Clone (origem, separada dos componentes): a raça de uma linha de data/clones.csv. Não dá Doriki, bounty nem poderes.
+// Um subtipo artificial (Seraphim-type) torna-o Artificial Hybrid, mesmo com componentes biológicos
+function cloneRace(c) {
+  var clone = c.race_b ? hybridRace(findHybridRow(c.race_a, c.race_b)) : pureRace(c.race_a);
+  clone.origin = "Clone";
+  clone.subtype = c.subtype || "";
+  if (clone.subtype) clone.type = "Artificial Hybrid";
+  clone.description = c.description || clone.description;
+  return clone;
 }
 
 // Nomes dos componentes, ex: "Human + Giant" (uma raça pura tem só o seu nome)
@@ -84,49 +98,61 @@ function componentsText() {
   return race ? race.components.map(function (r) { return r.race; }).join(" + ") : "";
 }
 
-// Nome mostrado nas tabelas e exportações, ex: "Half-Giant (Human + Giant)"; nas raças puras só o nome
+// Nome principal mostrado na raça, ex: "Human", "Human — Clone", "Human-Lunarian Hybrid — Seraphim-type"
+function raceTitle() {
+  if (!race) return "";
+  return race.origin === "Clone" ? race.name + " — " + (race.subtype || "Clone") : race.name;
+}
+
+// Nome mostrado nas tabelas e exportações, ex: "Half-Giant (Human + Giant)"; "Human — Clone" nas raças puras clonadas
 function raceLabel() {
   if (!race) return "";
-  return race.type === "Pure" ? race.name : race.name + " (" + componentsText() + ")";
+  return race.type === "Pure" ? raceTitle() : raceTitle() + " (" + componentsText() + ")";
 }
 
 // Chave das tabelas por raça (regions.csv, fighting-styles.csv): a raça pura; "Hybrid" para os híbridos biológicos;
-// vazio para os artificiais (como o antigo Cyborg, que não tinha linhas próprias)
+// vazio para os artificiais (como o antigo Cyborg, que não tinha linhas próprias). Um clone usa a mesma chave da sua raça
 function raceKey() {
   if (!race) return "";
   if (race.type === "Pure") return race.components[0].race;
   return race.type === "Hybrid" ? HYBRID_KEY : "";
 }
 
-// Mostra a raça: só o nome. Nos híbridos, um "i" abre o popover com o tipo, os componentes e a descrição (race-popover.js)
+// Mostra a raça: o nome principal. Nos híbridos e nos clones, um "i" abre o popover (race-popover.js)
 function showRace() {
   closeRacePopover();
   var el = document.getElementById("race");
   var name = document.createElement("span");
   name.className = "race-name";
-  name.textContent = race.name;
+  name.textContent = raceTitle();
   el.textContent = "";
   el.appendChild(name);
-  if (race.type === "Pure") return;
+  if (race.type === "Pure" && race.origin === "Natural") return;
   var btn = document.createElement("button");
   btn.type = "button";
   btn.className = "info-btn race-info";
   btn.textContent = "i";
-  btn.title = "About this hybrid";
-  btn.setAttribute("aria-label", "About " + race.name);
+  btn.title = "About this race";
+  btn.setAttribute("aria-label", "About " + raceTitle());
   btn.setAttribute("aria-expanded", "false");
   btn.setAttribute("aria-controls", "race-popover");
   el.appendChild(btn);
 }
 
-// Sorteia da tabela de raças: uma raça pura pelo "weight", ou a categoria Hybrid, que sorteia um híbrido de data/hybrids.csv.
+// Origem: com a chance de settings.csv (clone_chance) a personagem é um clone e a raça vem de data/clones.csv.
+// Caso contrário sorteia da tabela de raças: uma raça pura pelo "weight", ou a categoria Hybrid, que sorteia um híbrido de data/hybrids.csv.
 // Sem híbridos válidos (ou com todos a 0), a categoria Hybrid não entra no sorteio
 function generateRace() {
+  var clone = Math.random() < setting("clone_chance") ? weightedPick(DATA.clones) : null;
+  race = clone ? cloneRace(clone) : naturalRace();
+  showRace();
+}
+
+function naturalRace() {
   var hybrids = DATA.hybrids.filter(function (h) { return weightOf(h) > 0; });
   var pool = DATA.races.filter(function (r) { return raceKind(r) !== "category" || hybrids.length; });
   var pick = weightedPick(pool);
-  race = raceKind(pick) === "category" ? hybridRace(weightedPick(hybrids)) : pureRace(pick.race);
-  showRace();
+  return raceKind(pick) === "category" ? hybridRace(weightedPick(hybrids)) : pureRace(pick.race);
 }
 
 // A região depende da raça e da alliance do 1st Year (ex.: World Nobles nascem em Mary Geoise)
