@@ -11,7 +11,10 @@
 	<script src="javascript/character.js"></script>
 	<script src="javascript/extras.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
-	<script src="javascript/pdf.js"></script>
+	<script src="javascript/export.js"></script>
+	<script src="javascript/export-poster.js"></script>
+	<script src="javascript/export-sheet.js"></script>
+	<script src="javascript/export-portrait.js"></script>
 </head>
 <body>
 	<header class="hero">
@@ -186,7 +189,7 @@
 		</div>
 
 		<div class="actions">
-			<input type="button" class="primary" value="Export to PDF" onclick="exportPDF();">
+			<input type="button" class="primary" id="export-open" value="Export Character" onclick="openExport();">
 			<input type="button" class="primary secondary" value="Reload" title="Start over with a blank sheet" onclick="resetPage();">
 		</div>
 	</main>
@@ -207,6 +210,37 @@
 			<p id="modal-type-text"></p>
 			<h3>Powers</h3>
 			<p id="modal-power-text"></p>
+		</div>
+	</div>
+	<div id="export-modal" class="modal" hidden onclick="if (event.target === this) closeExport();">
+		<div class="modal-box export-box" role="dialog" aria-modal="true" aria-labelledby="export-title">
+			<button type="button" class="modal-close" id="export-close" onclick="closeExport()" aria-label="Close">&times;</button>
+			<h2 id="export-title">Export Character</h2>
+			<p id="export-empty" hidden>Generate the character first to export it.</p>
+			<div id="export-content">
+				<h3>Bounty Poster (PNG)</h3>
+				<p>Choose the period to show on the poster.</p>
+				<div id="export-periods" class="export-periods" role="radiogroup" aria-label="Period"></div>
+				<div class="export-preview"><canvas id="export-preview" aria-label="Bounty Poster preview"></canvas></div>
+				<div class="portrait-tools">
+					<input type="file" id="portrait-file" accept="image/png,image/jpeg,image/webp" hidden onchange="uploadPortrait(this)">
+					<button type="button" class="export-tool" id="portrait-upload" onclick="document.getElementById('portrait-file').click()">Upload Character Image</button>
+					<div class="portrait-controls" id="portrait-controls" hidden>
+						<label class="portrait-zoom">Zoom <input type="range" id="portrait-zoom" min="1" max="4" step="0.01" value="1" oninput="zoomPortrait(this.value)"></label>
+						<button type="button" class="export-tool" onclick="centerPortrait()">Center</button>
+						<button type="button" class="export-tool" onclick="resetPortrait()">Reset</button>
+						<button type="button" class="export-tool" onclick="removePortrait()">Remove</button>
+					</div>
+					<p class="portrait-hint">Images stay on your device. Drag the picture inside the portrait to reposition it.</p>
+				</div>
+				<button type="button" class="primary export-action" onclick="exportPosterPNG()">Download Bounty Poster (PNG)</button>
+				<h3>Full Character Sheet</h3>
+				<div class="export-row">
+					<button type="button" class="primary export-action" onclick="exportSheetPNG()">Download Full Character Sheet (PNG)</button>
+					<button type="button" class="primary export-action" onclick="exportSheetPDF()">Download Full Character Sheet (PDF)</button>
+				</div>
+			</div>
+			<p id="export-status" class="export-status" role="status"></p>
 		</div>
 	</div>
 	<div id="breakdown-modal" class="modal" hidden onclick="if (event.target === this) closeBreakdown();">
