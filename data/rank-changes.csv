@@ -1,7 +1,7 @@
 alliance;previous_rank;rank;weight
 Revolucionary Army;Leader;Leader;1
 Revolucionary Army;Chief of Staff;Leader;1
-Revolucionary Army;Chief of Staff;Chief of Staff;1
+Revolucionary Army;Chief of Staff;Chief of Staff;3
 Revolucionary Army;Army Commander;Leader;1
 Revolucionary Army;Army Commander;Chief of Staff;1
 Revolucionary Army;Army Commander;Army Commander;1
@@ -136,10 +136,10 @@ Pirate;Yonko;Yonko;1
 Pirate;Pirate Captain;Yonko;1
 Pirate;Pirate Captain;Pirate Captain;3
 Pirate;First Mate;Pirate Captain;1
-Pirate;First Mate;First Mate;1
+Pirate;First Mate;First Mate;3
 Pirate;Swordsman;Pirate Captain;1
 Pirate;Swordsman;First Mate;1
-Pirate;Swordsman;Swordsman;1
+Pirate;Swordsman;Swordsman;2
 Pirate;Sniper;Pirate Captain;1
 Pirate;Sniper;First Mate;1
 Pirate;Sniper;Sniper;1
