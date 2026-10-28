@@ -1,0 +1,14 @@
+race;weight;doriki_min;doriki_max
+Human;10;1;10
+Giant;3;10;100
+Ancient Giant;1;100;500
+Frost Giant;1;10;50
+Fishman;4;10;50
+Merfolk;2;10;100
+Skipean;1;1;50
+Lunarian;1;1;50
+Mink;1;100;300
+Tonnata;1;5;30
+Oni;1;50;500
+Cyborg;1;10;300
+Hybrid;3;10;100

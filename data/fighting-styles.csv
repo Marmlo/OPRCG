@@ -1,0 +1,41 @@
+period;alliance;rank;race;style;weight
+1;Cipher Pol;;;Six power;1
+1;;Seaman;;Gunsmanship;1
+1;;Seaman;;Swordsmanship;1
+1;;Choreboy;;Gunsmanship;1
+1;;Choreboy;;Swordsmanship;1
+1;;Choreboy;;Fists;1
+;;Swordsman;;Swordsmanship;1
+;;Swordsman;;Samurai;1
+1;;Sniper;;Gunsmanship;1
+1;;Martial Artist;;Six power;1
+1;;Martial Artist;;Dragon Claw;1
+1;;Martial Artist;;Fishman karate;1
+1;;Soldier;;Gunsmanship;1
+1;;Soldier;;Swordsmanship;1
+1;;;Fishman;Fishman karate;1
+1;;;Fishman;Swordsmanship;1
+1;;;Fishman;Gunsmanship;1
+1;;;Fishman;Six power;1
+1;;;Fishman;Dragon Claw;1
+1;;;Fishman;Freestyle;1
+1;;;Fishman;Black leg;1
+1;;;Fishman;Fists;1
+1;;;Fishman;Samurai;1
+1;;;Merfolk;Fishman karate;1
+1;;;Merfolk;Swordsmanship;1
+1;;;Merfolk;Gunsmanship;1
+1;;;Merfolk;Six power;1
+1;;;Merfolk;Dragon Claw;1
+1;;;Merfolk;Freestyle;1
+1;;;Merfolk;Black leg;1
+1;;;Merfolk;Fists;1
+1;;;Merfolk;Samurai;1
+1;;;;Swordsmanship;1
+1;;;;Gunsmanship;1
+1;;;;Six power;1
+1;;;;Dragon Claw;1
+1;;;;Freestyle;1
+1;;;;Black leg;1
+1;;;;Fists;1
+1;;;;Samurai;1

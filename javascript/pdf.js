@@ -212,9 +212,9 @@ function buildPDF(assets) {
 
   // Period cards on a timeline
   var periods = [
-    { s: '', n: 1, badge: 'Start', title: '1st Year', h: haki },
-    { s: '2', n: 2, badge: 'Timeskip', title: 'After 2 Years', h: haki2 },
-    { s: '3', n: 3, badge: 'Timeskip', title: 'After 10 Years', h: haki3 }
+    { s: '', n: 1, badge: 'Start', title: '1st Year', h: periods[1].haki },
+    { s: '2', n: 2, badge: 'Timeskip', title: 'After 2 Years', h: periods[2].haki },
+    { s: '3', n: 3, badge: 'Timeskip', title: 'After 10 Years', h: periods[3].haki }
   ];
   var TL = 8, x0 = M + TL, w0 = pageW - 2 * M - TL, pad = 5, IDH = 7;
   var colRatios = [0.85, 1.3, 1], colTotal = 3.15;

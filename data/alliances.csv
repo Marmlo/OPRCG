@@ -1,0 +1,7 @@
+alliance;weight;bounty_min;bounty_max;has_bounty
+Revolucionary Army;2;1;10;Yes
+Marine;3;0;0;No
+Pirate;3;1;5;Yes
+Bounty Hunter;2;0;0;Yes
+Cipher Pol;1;0;0;No
+World Nobles;1;0;0;Yes

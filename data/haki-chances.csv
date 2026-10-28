@@ -1,0 +1,81 @@
+period;fighting;rank;previous_haki;haki;weight
+1;Dragon Claw;;;Observation + Armament;4
+1;Dragon Claw;;;Armament;17
+1;Dragon Claw;;;Conquerors + Armament;3
+1;Dragon Claw;;;Conquerors + Armament + Observation;1
+1;;Fleet Admiral;;Armament;5
+1;;Fleet Admiral;;Conquerors;1
+1;;Fleet Admiral;;Observation;10
+1;;Fleet Admiral;;Conquerors + Armament;1
+1;;Fleet Admiral;;Observation + Armament;1
+1;;Fleet Admiral;;Conquerors + Observation;1
+1;;Fleet Admiral;;Conquerors + Armament + Observation;1
+1;;Admiral;;Armament;10
+1;;Admiral;;Conquerors;1
+1;;Admiral;;Observation;10
+1;;Admiral;;Conquerors + Armament;1
+1;;Admiral;;Observation + Armament;1
+1;;Admiral;;Conquerors + Observation;1
+1;;Admiral;;Conquerors + Armament + Observation;1
+1;;Rear Admiral;;Armament;10
+1;;Rear Admiral;;Conquerors;1
+1;;Rear Admiral;;Observation;10
+1;;Rear Admiral;;Conquerors + Armament;1
+1;;Rear Admiral;;Observation + Armament;1
+1;;Rear Admiral;;Conquerors + Observation;1
+1;;Rear Admiral;;Conquerors + Armament + Observation;1
+1;;Leader;;Armament;5
+1;;Leader;;Conquerors;1
+1;;Leader;;Observation;10
+1;;Leader;;Conquerors + Armament;1
+1;;Leader;;Observation + Armament;1
+1;;Leader;;Conquerors + Observation;1
+1;;Leader;;Conquerors + Armament + Observation;1
+1;;Chief of Staff;;Armament;10
+1;;Chief of Staff;;Conquerors;1
+1;;Chief of Staff;;Observation;10
+1;;Chief of Staff;;Conquerors + Armament;1
+1;;Chief of Staff;;Observation + Armament;1
+1;;Chief of Staff;;Conquerors + Observation;1
+1;;Chief of Staff;;Conquerors + Armament + Observation;1
+1;;Army Commander;;Armament;10
+1;;Army Commander;;Conquerors;1
+1;;Army Commander;;Observation;10
+1;;Army Commander;;Conquerors + Armament;1
+1;;Army Commander;;Observation + Armament;1
+1;;Army Commander;;Conquerors + Observation;1
+1;;Army Commander;;Conquerors + Armament + Observation;1
+1;;Shichibukai;;Armament;10
+1;;Shichibukai;;Conquerors;1
+1;;Shichibukai;;Observation;10
+1;;Shichibukai;;Conquerors + Armament;1
+1;;Shichibukai;;Observation + Armament;1
+1;;Shichibukai;;Conquerors + Observation;1
+1;;Shichibukai;;Conquerors + Armament + Observation;1
+;;;Conquerors;Conquerors + Armament;1
+;;;Conquerors;Conquerors + Observation;1
+;;;Conquerors;Conquerors + Armament + Observation;1
+;;;Conquerors;Conquerors;3
+;;;Armament;Conquerors + Armament;1
+;;;Armament;Observation + Armament;1
+;;;Armament;Conquerors + Armament + Observation;1
+;;;Armament;Armament;3
+;;;Observation;Conquerors + Observation;1
+;;;Observation;Observation + Armament;1
+;;;Observation;Conquerors + Armament + Observation;1
+;;;Observation;Observation;3
+;;;Conquerors + Observation;Conquerors + Armament + Observation;1
+;;;Conquerors + Observation;Conquerors + Observation;2
+;;;Conquerors + Armament;Conquerors + Armament + Observation;1
+;;;Conquerors + Armament;Conquerors + Armament;2
+;;;Observation + Armament;Conquerors + Armament + Observation;1
+;;;Observation + Armament;Observation + Armament;2
+;;;Conquerors + Armament + Observation;Conquerors + Armament + Observation;1
+;;;None;None;16
+;;;None;Conquerors;1
+;;;None;Observation;2
+;;;None;Armament;2
+;;;None;Conquerors + Armament;1
+;;;None;Observation + Armament;1
+;;;None;Conquerors + Observation;1
+;;;None;Conquerors + Armament + Observation;1

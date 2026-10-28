@@ -1,0 +1,265 @@
+alliance;previous_rank;rank;weight
+Revolucionary Army;Leader;Leader;1
+Revolucionary Army;Chief of Staff;Leader;1
+Revolucionary Army;Chief of Staff;Chief of Staff;1
+Revolucionary Army;Army Commander;Leader;1
+Revolucionary Army;Army Commander;Chief of Staff;1
+Revolucionary Army;Army Commander;Army Commander;1
+Revolucionary Army;Officer;Leader;1
+Revolucionary Army;Officer;Chief of Staff;1
+Revolucionary Army;Officer;Army Commander;1
+Revolucionary Army;Officer;Officer;1
+Revolucionary Army;;Leader;1
+Revolucionary Army;;Chief of Staff;1
+Revolucionary Army;;Army Commander;1
+Revolucionary Army;;Officer;1
+Revolucionary Army;;Member;1
+Revolucionary Army;;Associate;1
+Marine;Fleet Admiral;Fleet Admiral;1
+Marine;Fleet Admiral;Admiral;1
+Marine;Fleet Admiral;Vice Admiral;1
+Marine;Fleet Admiral;Inspector General;1
+Marine;Fleet Admiral;Instructor;1
+Marine;Admiral;Fleet Admiral;1
+Marine;Admiral;Admiral;1
+Marine;Admiral;Vice Admiral;1
+Marine;Admiral;Inspector General;1
+Marine;Admiral;Instructor;1
+Marine;Vice Admiral;Fleet Admiral;1
+Marine;Vice Admiral;Admiral;1
+Marine;Vice Admiral;Vice Admiral;1
+Marine;Vice Admiral;Inspector General;1
+Marine;Vice Admiral;Instructor;1
+Marine;Rear Admiral;Fleet Admiral;1
+Marine;Rear Admiral;Admiral;1
+Marine;Rear Admiral;Vice Admiral;1
+Marine;Rear Admiral;Rear Admiral;1
+Marine;Rear Admiral;Inspector General;1
+Marine;Rear Admiral;Instructor;1
+Marine;Commodore;Fleet Admiral;1
+Marine;Commodore;Admiral;1
+Marine;Commodore;Vice Admiral;1
+Marine;Commodore;Rear Admiral;1
+Marine;Commodore;Commodore;1
+Marine;Commodore;Inspector General;1
+Marine;Commodore;Instructor;1
+Marine;Captain;Fleet Admiral;1
+Marine;Captain;Admiral;1
+Marine;Captain;Vice Admiral;1
+Marine;Captain;Rear Admiral;1
+Marine;Captain;Commodore;1
+Marine;Captain;Captain;1
+Marine;Captain;Inspector General;1
+Marine;Captain;Instructor;1
+Marine;Commander;Fleet Admiral;1
+Marine;Commander;Admiral;1
+Marine;Commander;Vice Admiral;1
+Marine;Commander;Rear Admiral;1
+Marine;Commander;Commodore;1
+Marine;Commander;Captain;1
+Marine;Commander;Commander;1
+Marine;Commander;Inspector General;1
+Marine;Commander;Instructor;1
+Marine;Lieutenant;Fleet Admiral;1
+Marine;Lieutenant;Admiral;1
+Marine;Lieutenant;Vice Admiral;1
+Marine;Lieutenant;Rear Admiral;1
+Marine;Lieutenant;Commodore;1
+Marine;Lieutenant;Captain;1
+Marine;Lieutenant;Commander;1
+Marine;Lieutenant;Lieutenant;1
+Marine;Lieutenant;Inspector General;1
+Marine;Lieutenant;Instructor;1
+Marine;Ensign;Fleet Admiral;1
+Marine;Ensign;Admiral;1
+Marine;Ensign;Vice Admiral;1
+Marine;Ensign;Rear Admiral;1
+Marine;Ensign;Commodore;1
+Marine;Ensign;Captain;1
+Marine;Ensign;Commander;1
+Marine;Ensign;Lieutenant;1
+Marine;Ensign;Ensign;1
+Marine;Ensign;Inspector General;1
+Marine;Ensign;Instructor;1
+Marine;Petty Officer;Fleet Admiral;1
+Marine;Petty Officer;Admiral;1
+Marine;Petty Officer;Vice Admiral;1
+Marine;Petty Officer;Rear Admiral;1
+Marine;Petty Officer;Commodore;1
+Marine;Petty Officer;Captain;1
+Marine;Petty Officer;Commander;1
+Marine;Petty Officer;Lieutenant;1
+Marine;Petty Officer;Ensign;1
+Marine;Petty Officer;Petty Officer;1
+Marine;Petty Officer;Inspector General;1
+Marine;Petty Officer;Instructor;1
+Marine;Seaman;Fleet Admiral;1
+Marine;Seaman;Admiral;1
+Marine;Seaman;Vice Admiral;1
+Marine;Seaman;Rear Admiral;1
+Marine;Seaman;Commodore;1
+Marine;Seaman;Captain;1
+Marine;Seaman;Commander;1
+Marine;Seaman;Lieutenant;1
+Marine;Seaman;Ensign;1
+Marine;Seaman;Petty Officer;1
+Marine;Seaman;Seaman;1
+Marine;Seaman;Inspector General;1
+Marine;Seaman;Instructor;1
+Marine;Inspector General;Fleet Admiral;1
+Marine;Inspector General;Admiral;1
+Marine;Inspector General;Vice Admiral;1
+Marine;Inspector General;Inspector General;1
+Marine;Inspector General;Instructor;1
+Marine;Instructor;Fleet Admiral;1
+Marine;Instructor;Admiral;1
+Marine;Instructor;Vice Admiral;1
+Marine;Instructor;Rear Admiral;1
+Marine;Instructor;Inspector General;1
+Marine;Instructor;Instructor;1
+Marine;Pirate Captain;Shichibukai;1
+Marine;;Fleet Admiral;1
+Marine;;Admiral;1
+Marine;;Vice Admiral;1
+Marine;;Rear Admiral;1
+Marine;;Commodore;1
+Marine;;Captain;1
+Marine;;Commander;1
+Marine;;Lieutenant;1
+Marine;;Ensign;1
+Marine;;Petty Officer;1
+Marine;;Seaman;1
+Marine;;Choreboy;1
+Marine;;Inspector General;1
+Marine;;Instructor;1
+Pirate;Yonko;Yonko;1
+Pirate;Pirate Captain;Yonko;1
+Pirate;Pirate Captain;Pirate Captain;3
+Pirate;First Mate;Pirate Captain;1
+Pirate;First Mate;First Mate;1
+Pirate;Swordsman;Pirate Captain;1
+Pirate;Swordsman;First Mate;1
+Pirate;Swordsman;Swordsman;1
+Pirate;Sniper;Pirate Captain;1
+Pirate;Sniper;First Mate;1
+Pirate;Sniper;Sniper;1
+Pirate;Martial Artist;Pirate Captain;1
+Pirate;Martial Artist;First Mate;1
+Pirate;Martial Artist;Martial Artist;1
+Pirate;Navigator;Pirate Captain;1
+Pirate;Navigator;First Mate;1
+Pirate;Navigator;Navigator;1
+Pirate;Cook;Pirate Captain;1
+Pirate;Cook;First Mate;1
+Pirate;Cook;Cook;1
+Pirate;Doctor;Pirate Captain;1
+Pirate;Doctor;First Mate;1
+Pirate;Doctor;Doctor;1
+Pirate;Shipwright;Pirate Captain;1
+Pirate;Shipwright;First Mate;1
+Pirate;Shipwright;Shipwright;1
+Pirate;Musician;Pirate Captain;1
+Pirate;Musician;First Mate;1
+Pirate;Musician;Musician;1
+Pirate;Aprentice;Pirate Captain;1
+Pirate;Aprentice;First Mate;1
+Pirate;Aprentice;Swordsman;1
+Pirate;Aprentice;Sniper;1
+Pirate;Aprentice;Martial Artist;1
+Pirate;Aprentice;Navigator;1
+Pirate;Aprentice;Cook;1
+Pirate;Aprentice;Doctor;1
+Pirate;Aprentice;Shipwright;1
+Pirate;Aprentice;Musician;1
+Pirate;Aprentice;Aprentice;1
+Pirate;Pet;Pirate Captain;1
+Pirate;Pet;First Mate;1
+Pirate;Pet;Pet;1
+Pirate;;Pirate Captain;1
+Pirate;;First Mate;1
+Pirate;;Swordsman;1
+Pirate;;Sniper;1
+Pirate;;Martial Artist;1
+Pirate;;Navigator;1
+Pirate;;Cook;1
+Pirate;;Doctor;1
+Pirate;;Shipwright;1
+Pirate;;Musician;1
+Pirate;;Aprentice;1
+Pirate;;Pet;1
+Bounty Hunter;Guild Leader;Individual;1
+Bounty Hunter;Guild Leader;Guild Leader;1
+Bounty Hunter;;Individual;1
+Bounty Hunter;;Guild Leader;1
+Bounty Hunter;;Guild Member;1
+Cipher Pol;CP0;CP0;1
+Cipher Pol;CP1;CP0;1
+Cipher Pol;CP1;CP1;1
+Cipher Pol;CP2;CP0;1
+Cipher Pol;CP2;CP1;1
+Cipher Pol;CP2;CP2;1
+Cipher Pol;CP3;CP0;1
+Cipher Pol;CP3;CP1;1
+Cipher Pol;CP3;CP2;1
+Cipher Pol;CP3;CP3;1
+Cipher Pol;CP4;CP0;1
+Cipher Pol;CP4;CP1;1
+Cipher Pol;CP4;CP2;1
+Cipher Pol;CP4;CP3;1
+Cipher Pol;CP4;CP4;1
+Cipher Pol;CP5;CP0;1
+Cipher Pol;CP5;CP1;1
+Cipher Pol;CP5;CP2;1
+Cipher Pol;CP5;CP3;1
+Cipher Pol;CP5;CP4;1
+Cipher Pol;CP5;CP5;1
+Cipher Pol;CP6;CP0;1
+Cipher Pol;CP6;CP1;1
+Cipher Pol;CP6;CP2;1
+Cipher Pol;CP6;CP3;1
+Cipher Pol;CP6;CP4;1
+Cipher Pol;CP6;CP5;1
+Cipher Pol;CP6;CP6;1
+Cipher Pol;CP7;CP0;1
+Cipher Pol;CP7;CP1;1
+Cipher Pol;CP7;CP2;1
+Cipher Pol;CP7;CP3;1
+Cipher Pol;CP7;CP4;1
+Cipher Pol;CP7;CP5;1
+Cipher Pol;CP7;CP6;1
+Cipher Pol;CP7;CP7;1
+Cipher Pol;CP8;CP0;1
+Cipher Pol;CP8;CP1;1
+Cipher Pol;CP8;CP2;1
+Cipher Pol;CP8;CP3;1
+Cipher Pol;CP8;CP4;1
+Cipher Pol;CP8;CP5;1
+Cipher Pol;CP8;CP6;1
+Cipher Pol;CP8;CP7;1
+Cipher Pol;CP8;CP8;1
+Cipher Pol;;CP0;1
+Cipher Pol;;CP1;1
+Cipher Pol;;CP2;1
+Cipher Pol;;CP3;1
+Cipher Pol;;CP4;1
+Cipher Pol;;CP5;1
+Cipher Pol;;CP6;1
+Cipher Pol;;CP7;1
+Cipher Pol;;CP8;1
+Cipher Pol;;CP9;1
+World Nobles;Celestial Dragon;Celestial Dragon;1
+World Nobles;Celestial Dragon;King/Queen;1
+World Nobles;Celestial Dragon;Prince/Princess;1
+World Nobles;Celestial Dragon;Noble Commander;1
+World Nobles;Celestial Dragon;Soldier;1
+World Nobles;King/Queen;Celestial Dragon;1
+World Nobles;King/Queen;King/Queen;1
+World Nobles;Prince/Princess;King/Queen;1
+World Nobles;Prince/Princess;Prince/Princess;1
+World Nobles;Noble Commander;King/Queen;1
+World Nobles;Noble Commander;Prince/Princess;1
+World Nobles;Noble Commander;Noble Commander;1
+World Nobles;;King/Queen;1
+World Nobles;;Prince/Princess;1
+World Nobles;;Noble Commander;1
+World Nobles;;Soldier;1

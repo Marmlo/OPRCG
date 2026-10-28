@@ -1,0 +1,10 @@
+period;level;start_weight;upgrade_chance
+1;Basic;0.9;
+1;Advanced;0.1;
+1;Master;0;
+2;Basic;0.8;0.3
+2;Advanced;0.17;0.08
+2;Master;0.03;
+3;Basic;0.7;0.45
+3;Advanced;0.23;0.2
+3;Master;0.07;

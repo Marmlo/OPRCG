@@ -1,0 +1,9 @@
+setting;value;description
+will_of_d_chance;0.01;Chance of a generated name having the "D." (Will of D.)
+will_of_d_doriki_bonus;0.1;Extra Doriki in the 1st Year for a character with the Will of D. (0.1 = +10%)
+timeskip_rank_doriki_share;0.2;Share of the rank Doriki added in each timeskip (0.2 = 20%)
+doriki_bounty_share;0.075;Share of the Doriki that becomes bounty, in millions (0.075 = 7.5%)
+pet_bounty_min;1;Lowest bounty of a rank with bounty_in_thousands, in thousands
+pet_bounty_max;100;Highest bounty of a rank with bounty_in_thousands, in thousands
+default_rank_doriki_min;1;Doriki of a rank missing from ranks.csv (minimum)
+default_rank_doriki_max;400;Doriki of a rank missing from ranks.csv (maximum)
