@@ -1,19 +1,12 @@
 // Name & Nickname -----------------------------------------------------------------------------------------------------------------------------------------------------
 
-var firstNames = ["Kaito", "Rin", "Jiro", "Mira", "Sora", "Taro", "Yuki", "Haru", "Nami", "Kenji", "Aya", "Ryo", "Lola", "Marco",
-  "Silas", "Vera", "Dante", "Iris", "Bram", "Kira", "Otto", "Luna", "Gus", "Hana", "Zeke", "Tess", "Rex", "Mei", "Basil", "Coral"];
-var lastNames = ["Storm", "Kurogane", "Blackwater", "Hayabusa", "Redfield", "Tsunami", "Ironhook", "Saltbeard", "Akagami", "Moriyama",
-  "Goldtide", "Shirohige", "Ravencrest", "Kazama", "Seaborne", "Thornwood", "Umino", "Grimwave", "Hoshino", "Brassjaw"];
-var nickPrefixes = ["Red", "Iron", "Black", "Storm", "Ghost", "Golden", "Silent", "Crimson", "Mad", "Thunder", "Sea", "Bloody", "Lucky", "White", "Wild"];
-var nickSuffixes = ["Fist", "Fang", "Blade", "Hurricane", "Devil", "Wolf", "Shark", "Dragon", "Reaper", "Tide", "Hawk", "Cannon", "Serpent", "Kraken", "Phantom"];
-
-function pick(list) {
-  return list[Math.floor(Math.random() * list.length)];
+// Names: data/names.csv (part = first_name / last_name / nickname_prefix / nickname_suffix)
+function pickName(part) {
+  return pickValue(DATA.names.filter(function (r) { return r.part === part; }), "name");
 }
 
-// Will of D.: extremely rare "D." between the first and last name (can also be typed by hand)
-var WILL_OF_D_CHANCE = 0.01;
-var WILL_OF_D_BONUS = 0.1;   // +10% Doriki on the 1st year
+// Will of D.: extremely rare "D." between the first and last name (can also be typed by hand).
+// Chance and Doriki bonus: will_of_d_chance / will_of_d_doriki_bonus in data/settings.csv
 
 function hasWillOfD() {
   var el = document.getElementById("fname");
@@ -21,23 +14,24 @@ function hasWillOfD() {
 }
 
 function generateIdentity() {
-  var middle = Math.random() < WILL_OF_D_CHANCE ? " D. " : " ";
-  document.getElementById("fname").value = pick(firstNames) + middle + pick(lastNames);
-  document.getElementById("nickname").value = '"' + pick(nickPrefixes) + " " + pick(nickSuffixes) + '"';
+  var middle = Math.random() < setting("will_of_d_chance") ? " D. " : " ";
+  document.getElementById("fname").value = pickName("first_name") + middle + pickName("last_name");
+  document.getElementById("nickname").value = '"' + pickName("nickname_prefix") + " " + pickName("nickname_suffix") + '"';
 }
 
-// Steps of one period (1st year = "", after 2 years = "2", after 10 years = "3"): [function, ids of the cells it fills]
-function periodSteps(s) {
+// Steps of one period (1 = 1st year, 2 = after 2 years, 3 = after 10 years): [function, ids of the cells it fills]
+function periodSteps(n) {
+  function step(fn, ids) { return [function () { fn(n); }, ids.map(function (id) { return cellId(id, n); })]; }
   return [
-    [window["generateAlliance" + s], ["alliance" + s]],
-    [window["assignRank" + s], ["rank" + s]],
-    [window["generatefighting" + s], ["fighting" + s]],
-    [window["assignhaki" + s], ["haki" + s]],
-    [window["generatedevilfruit" + s], ["devilfruit" + s]],
-    [window["assigndevilfruit" + s], ["df" + s]],
-    [window["assignfeat" + s], ["feat" + s]],
-    [window["doriki" + s], ["dorikifinal" + s, "adddoriki" + s]],
-    [window["addbounty" + s], ["bountyfinal" + s, "addbounty" + s]]
+    step(generateAlliance, ["alliance"]),
+    step(assignRank, ["rank"]),
+    step(generatefighting, ["fighting"]),
+    step(assignhaki, ["haki"]),
+    step(generatedevilfruit, ["devilfruit"]),
+    step(assigndevilfruit, ["df"]),
+    step(assignfeat, ["feat"]),
+    step(doriki, ["dorikifinal", "adddoriki"]),
+    step(addbounty, ["bountyfinal", "addbounty"])
   ];
 }
 
@@ -55,7 +49,6 @@ function reveal(id) {
 
 // Cards: 0 = Character, 1 = 1st Year, 2 = After 2 Years, 3 = After 10 Years.
 // Each card starts blurred with its own button; the button fills the whole card one element at a time.
-var PERIOD_SUFFIX = [null, "", "2", "3"];
 var LOCK_MESSAGES = ["", "Generate the character first", "Generate the 1st Year first", "Generate After 2 Years first"];
 
 // Keeps a name / nickname typed by hand
@@ -68,11 +61,11 @@ function generateIdentityKeepTyped() {
 
 function stepsFor(p) {
   if (p === 0) return [[generateIdentityKeepTyped, ["fname", "nickname"]], [generateRace, ["race"]], [generateRegion, ["region"]], [generateGender, ["gender"]]];
-  return periodSteps(PERIOD_SUFFIX[p]);
+  return periodSteps(p);
 }
 
 function cardDone(p) {
-  return p === 0 ? cellDone("race") && cellDone("region") : periodDone(PERIOD_SUFFIX[p]);
+  return p === 0 ? cellDone("race") && cellDone("region") : periodDone(p);
 }
 
 // Minimize / expand a period card; minimized cards show a one-line summary in the header
@@ -83,15 +76,15 @@ function toggleCard(n, collapsed) {
   var btn = card.querySelector(".collapse-btn");
   btn.setAttribute("aria-expanded", String(!collapsed));
   btn.title = collapsed ? "Expand" : "Minimize";
-  var s = PERIOD_SUFFIX[n], summary = card.querySelector(".period-summary");
+  var summary = card.querySelector(".period-summary");
   if (!summary) {
     summary = document.createElement("span");
     summary.className = "period-summary";
     card.querySelector(".period-head").insertBefore(summary, btn);
   }
   var parts = cardDone(n) ? [
-    document.getElementById("alliance" + s).textContent, document.getElementById("rank" + s).textContent,
-    "Doriki " + document.getElementById("dorikifinal" + s).textContent, "Bounty " + document.getElementById("bountyfinal" + s).textContent
+    document.getElementById(cellId("alliance", n)).textContent, document.getElementById(cellId("rank", n)).textContent,
+    "Doriki " + document.getElementById(cellId("dorikifinal", n)).textContent, "Bounty " + document.getElementById(cellId("bountyfinal", n)).textContent
   ] : ["Not generated yet"];
   summary.textContent = collapsed ? parts.join(" · ") : "";
 }
@@ -149,7 +142,7 @@ function generatePeriod(p) {
 function generateAll() {
   if (generating) return;
   dataReady.then(function () {
-    alliance = "";
+    resetCharacter();
     // Clear the sheet so the new character appears element by element
     document.getElementById("fname").value = "";
     document.getElementById("nickname").value = "";
@@ -167,8 +160,8 @@ function cellDone(id) {
   return !!el && !el.querySelector("input") && el.textContent.trim() !== "";
 }
 
-function periodDone(s) {
-  return periodSteps(s).every(function (step) { return cellDone(step[1][0]); });
+function periodDone(n) {
+  return periodSteps(n).every(function (step) { return cellDone(step[1][0]); });
 }
 
 function setText(el, text) {
@@ -288,8 +281,8 @@ function fruitPower(type, fruit) {
 }
 
 function fruitData(n) {
-  var type = [devilfruit, devilfruit2, devilfruit3][n - 1];
-  var fruit = [df, df2, df3][n - 1];
+  var type = periods[n].fruitType;
+  var fruit = periods[n].fruit;
   if (!fruit || fruit === "None" || !fruitTypeInfo(type)) return null;
   return { type: type, fruit: fruit, typeText: fruitTypeInfo(type), powerText: fruitPower(type, fruit) };
 }
