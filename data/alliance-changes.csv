@@ -16,6 +16,12 @@ Bounty Hunter;Revolucionary Army;1
 Bounty Hunter;Pirate;1
 Cipher Pol;Cipher Pol;4
 Cipher Pol;Marine;1
+World Government;World Government;20
+World Government;World Nobles;0.5
+World Government;Cipher Pol;0.5
+World Government;Marine;0.5
+World Government;Revolucionary Army;0.2
+World Government;Pirate;0.2
 World Nobles;World Nobles;20
 World Nobles;Revolucionary Army;1
 World Nobles;Marine;1
