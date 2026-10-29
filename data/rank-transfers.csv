@@ -1,0 +1,446 @@
+previous_alliance;previous_rank;previous_tier;alliance;rank;weight
+
+# ========================================
+# GENERAL TRANSFER MATRICES BY DESTINATION
+# ========================================
+# Empty previous_alliance and previous_rank = any origin in the listed tier.
+# These rules apply ONLY when the alliance actually changes.
+# Exact-rank exceptions below OVERRIDE the tier matrix
+# No generic Government matrix: restricted destination.
+
+# --- DESTINATION: PIRATE ---
+# PREVIOUS TIER: L0
+;;L0;Pirate;Pirate Captain;5
+;;L0;Pirate;Yonko Commander;4
+;;L0;Pirate;First Mate;2
+;;L0;Pirate;Yonko;1
+# PREVIOUS TIER: L1
+;;L1;Pirate;Pirate Captain;5
+;;L1;Pirate;Yonko Commander;3
+;;L1;Pirate;First Mate;3
+;;L1;Pirate;Yonko;0.3
+# PREVIOUS TIER: L2
+;;L2;Pirate;Pirate Captain;5
+;;L2;Pirate;First Mate;4
+;;L2;Pirate;Swordsman;2
+;;L2;Pirate;Sniper;2
+;;L2;Pirate;Martial Artist;2
+;;L2;Pirate;Yonko Commander;0.5
+# PREVIOUS TIER: L3
+;;L3;Pirate;Swordsman;3
+;;L3;Pirate;Sniper;3
+;;L3;Pirate;Martial Artist;3
+;;L3;Pirate;Navigator;2
+;;L3;Pirate;Cook;2
+;;L3;Pirate;Doctor;2
+;;L3;Pirate;Shipwright;2
+;;L3;Pirate;Musician;2
+;;L3;Pirate;First Mate;1
+;;L3;Pirate;Pirate Captain;0.5
+# PREVIOUS TIER: L4
+;;L4;Pirate;Aprentice;5
+;;L4;Pirate;Swordsman;2
+;;L4;Pirate;Sniper;2
+;;L4;Pirate;Martial Artist;2
+;;L4;Pirate;Navigator;2
+;;L4;Pirate;Cook;2
+;;L4;Pirate;Doctor;2
+;;L4;Pirate;Shipwright;2
+;;L4;Pirate;Musician;2
+
+# --- DESTINATION: MARINE ---
+# PREVIOUS TIER: L0
+;;L0;Marine;Vice Admiral;5
+;;L0;Marine;Admiral;4
+;;L0;Marine;Rear Admiral;2
+;;L0;Marine;Fleet Admiral;0.5
+;;L0;Marine;Commander-in-chief;0.05
+# PREVIOUS TIER: L1
+;;L1;Marine;Vice Admiral;5
+;;L1;Marine;Rear Admiral;4
+;;L1;Marine;Admiral;2
+;;L1;Marine;Commodore;2
+;;L1;Marine;Fleet Admiral;0.1
+# PREVIOUS TIER: L2
+;;L2;Marine;Captain;5
+;;L2;Marine;Commodore;4
+;;L2;Marine;Commander;3
+;;L2;Marine;Rear Admiral;2
+;;L2;Marine;Vice Admiral;0.2
+# PREVIOUS TIER: L3
+;;L3;Marine;Lieutenant;5
+;;L3;Marine;Ensign;4
+;;L3;Marine;Commander;3
+;;L3;Marine;Petty Officer;2
+;;L3;Marine;Captain;1
+# PREVIOUS TIER: L4
+;;L4;Marine;Seaman;5
+;;L4;Marine;Petty Officer;3
+;;L4;Marine;Ensign;2
+;;L4;Marine;Choreboy;1
+
+# --- DESTINATION: REVOLUTIONARY ARMY ---
+# PREVIOUS TIER: L0
+;;L0;Revolutionary Army;Army Commander;5
+;;L0;Revolutionary Army;Chief of Staff;4
+;;L0;Revolutionary Army;Leader;1
+# PREVIOUS TIER: L1
+;;L1;Revolutionary Army;Army Commander;5
+;;L1;Revolutionary Army;Officer;3
+;;L1;Revolutionary Army;Chief of Staff;2
+;;L1;Revolutionary Army;Leader;0.2
+# PREVIOUS TIER: L2
+;;L2;Revolutionary Army;Officer;5
+;;L2;Revolutionary Army;Army Commander;2
+;;L2;Revolutionary Army;Member;2
+;;L2;Revolutionary Army;Chief of Staff;0.2
+# PREVIOUS TIER: L3
+;;L3;Revolutionary Army;Member;5
+;;L3;Revolutionary Army;Officer;3
+;;L3;Revolutionary Army;Associate;2
+# PREVIOUS TIER: L4
+;;L4;Revolutionary Army;Associate;5
+;;L4;Revolutionary Army;Member;4
+;;L4;Revolutionary Army;Officer;0.2
+
+# --- DESTINATION: BOUNTY HUNTER ---
+# PREVIOUS TIER: L0
+;;L0;Bounty Hunter;Individual;6
+;;L0;Bounty Hunter;Guild Leader;4
+# PREVIOUS TIER: L1
+;;L1;Bounty Hunter;Individual;5
+;;L1;Bounty Hunter;Guild Leader;4
+;;L1;Bounty Hunter;Guild Member;1
+# PREVIOUS TIER: L2
+;;L2;Bounty Hunter;Individual;5
+;;L2;Bounty Hunter;Guild Leader;3
+;;L2;Bounty Hunter;Guild Member;2
+# PREVIOUS TIER: L3
+;;L3;Bounty Hunter;Individual;5
+;;L3;Bounty Hunter;Guild Member;4
+;;L3;Bounty Hunter;Guild Leader;1
+# PREVIOUS TIER: L4
+;;L4;Bounty Hunter;Guild Member;5
+;;L4;Bounty Hunter;Individual;4
+;;L4;Bounty Hunter;Guild Leader;0.2
+
+# --- DESTINATION: CIPHER POL ---
+# PREVIOUS TIER: L0
+;;L0;Cipher Pol;CP0;5
+;;L0;Cipher Pol;CP1;4
+;;L0;Cipher Pol;CP2;3
+# PREVIOUS TIER: L1
+;;L1;Cipher Pol;CP0;2
+;;L1;Cipher Pol;CP1;4
+;;L1;Cipher Pol;CP2;4
+;;L1;Cipher Pol;CP3;2
+# PREVIOUS TIER: L2
+;;L2;Cipher Pol;CP3;3
+;;L2;Cipher Pol;CP4;4
+;;L2;Cipher Pol;CP5;4
+;;L2;Cipher Pol;CP2;0.5
+# PREVIOUS TIER: L3
+;;L3;Cipher Pol;CP5;3
+;;L3;Cipher Pol;CP6;4
+;;L3;Cipher Pol;CP7;4
+;;L3;Cipher Pol;CP8;2
+# PREVIOUS TIER: L4
+;;L4;Cipher Pol;CP8;5
+;;L4;Cipher Pol;CP9;5
+;;L4;Cipher Pol;CP7;1
+
+# --- DESTINATION: WORLD NOBLES ---
+# PREVIOUS TIER: L0
+;;L0;World Nobles;Noble Commander;6
+;;L0;World Nobles;King/Queen;2
+;;L0;World Nobles;Soldier;1
+# PREVIOUS TIER: L1
+;;L1;World Nobles;Noble Commander;6
+;;L1;World Nobles;Soldier;3
+;;L1;World Nobles;King/Queen;0.5
+# PREVIOUS TIER: L2
+;;L2;World Nobles;Noble Commander;5
+;;L2;World Nobles;Soldier;4
+;;L2;World Nobles;Prince/Princess;0.2
+# PREVIOUS TIER: L3
+;;L3;World Nobles;Soldier;7
+;;L3;World Nobles;Noble Commander;2
+# PREVIOUS TIER: L4
+;;L4;World Nobles;Soldier;10
+
+# --- DESTINATION: REVOLUTIONARY COUNTRY ---
+# PREVIOUS TIER: L0
+;;L0;Revolutionary Country;Noble Commander;6
+;;L0;Revolutionary Country;King/Queen;3
+;;L0;Revolutionary Country;Prince/Princess;1
+# PREVIOUS TIER: L1
+;;L1;Revolutionary Country;Noble Commander;6
+;;L1;Revolutionary Country;King/Queen;1
+;;L1;Revolutionary Country;Soldier;2
+# PREVIOUS TIER: L2
+;;L2;Revolutionary Country;Noble Commander;5
+;;L2;Revolutionary Country;Soldier;4
+;;L2;Revolutionary Country;King/Queen;0.5
+# PREVIOUS TIER: L3
+;;L3;Revolutionary Country;Soldier;6
+;;L3;Revolutionary Country;Noble Commander;3
+# PREVIOUS TIER: L4
+;;L4;Revolutionary Country;Soldier;10
+
+# ========================================
+# INDIVIDUAL EXCEPTIONS (PREVIOUS RANK + ALLIANCE)
+# ========================================
+# Specific rows override the general tier matrix.
+# These do not create alliance transitions; alliance-changes.csv still controls them.
+
+# --- MARINE / ADMIRAL -> PIRATE ---
+Marine;Admiral;;Pirate;Pirate Captain;5
+Marine;Admiral;;Pirate;Yonko Commander;3
+Marine;Admiral;;Pirate;First Mate;2
+Marine;Admiral;;Pirate;Yonko;0.5
+
+# --- MARINE / FLEET ADMIRAL -> PIRATE ---
+Marine;Fleet Admiral;;Pirate;Yonko Commander;4
+Marine;Fleet Admiral;;Pirate;Pirate Captain;4
+Marine;Fleet Admiral;;Pirate;Yonko;2
+Marine;Fleet Admiral;;Pirate;First Mate;1
+
+# --- MARINE / COMMANDER-IN-CHIEF -> PIRATE ---
+Marine;Commander-in-chief;;Pirate;Yonko;3
+Marine;Commander-in-chief;;Pirate;Yonko Commander;4
+Marine;Commander-in-chief;;Pirate;Pirate Captain;3
+
+# --- MARINE / VICE ADMIRAL -> PIRATE ---
+Marine;Vice Admiral;;Pirate;Pirate Captain;5
+Marine;Vice Admiral;;Pirate;First Mate;3
+Marine;Vice Admiral;;Pirate;Yonko Commander;2
+Marine;Vice Admiral;;Pirate;Yonko;0.1
+
+# --- MARINE / REAR ADMIRAL -> PIRATE ---
+Marine;Rear Admiral;;Pirate;Pirate Captain;5
+Marine;Rear Admiral;;Pirate;First Mate;3
+Marine;Rear Admiral;;Pirate;Swordsman;2
+Marine;Rear Admiral;;Pirate;Sniper;1
+
+# --- PIRATE / YONKO -> MARINE ---
+Pirate;Yonko;;Marine;Admiral;5
+Pirate;Yonko;;Marine;Vice Admiral;4
+Pirate;Yonko;;Marine;Fleet Admiral;2
+Pirate;Yonko;;Marine;Commander-in-chief;0.2
+
+# --- PIRATE / YONKO COMMANDER -> MARINE ---
+Pirate;Yonko Commander;;Marine;Vice Admiral;5
+Pirate;Yonko Commander;;Marine;Rear Admiral;3
+Pirate;Yonko Commander;;Marine;Admiral;2
+Pirate;Yonko Commander;;Marine;Fleet Admiral;0.1
+
+# --- PIRATE / PIRATE CAPTAIN -> MARINE ---
+Pirate;Pirate Captain;;Marine;Captain;5
+Pirate;Pirate Captain;;Marine;Commodore;3
+Pirate;Pirate Captain;;Marine;Rear Admiral;2
+Pirate;Pirate Captain;;Marine;Vice Admiral;0.5
+Pirate;Pirate Captain;;Marine;Shichibukai;0.5
+
+# --- PIRATE / FIRST MATE -> MARINE ---
+Pirate;First Mate;;Marine;Captain;4
+Pirate;First Mate;;Marine;Commander;3
+Pirate;First Mate;;Marine;Commodore;2
+Pirate;First Mate;;Marine;Rear Admiral;1
+
+# --- REVOLUTIONARY ARMY / LEADER -> PIRATE ---
+Revolutionary Army;Leader;;Pirate;Yonko;2
+Revolutionary Army;Leader;;Pirate;Yonko Commander;4
+Revolutionary Army;Leader;;Pirate;Pirate Captain;4
+
+# --- REVOLUTIONARY ARMY / CHIEF OF STAFF -> PIRATE ---
+Revolutionary Army;Chief of Staff;;Pirate;Yonko Commander;4
+Revolutionary Army;Chief of Staff;;Pirate;Pirate Captain;5
+Revolutionary Army;Chief of Staff;;Pirate;First Mate;3
+Revolutionary Army;Chief of Staff;;Pirate;Yonko;0.5
+
+# --- REVOLUTIONARY ARMY / ARMY COMMANDER -> PIRATE ---
+Revolutionary Army;Army Commander;;Pirate;Pirate Captain;5
+Revolutionary Army;Army Commander;;Pirate;Yonko Commander;3
+Revolutionary Army;Army Commander;;Pirate;First Mate;3
+
+# --- REVOLUTIONARY ARMY / LEADER -> MARINE ---
+Revolutionary Army;Leader;;Marine;Admiral;5
+Revolutionary Army;Leader;;Marine;Vice Admiral;4
+Revolutionary Army;Leader;;Marine;Fleet Admiral;1
+
+# --- CIPHER POL / CP0 -> PIRATE ---
+Cipher Pol;CP0;;Pirate;Pirate Captain;4
+Cipher Pol;CP0;;Pirate;Yonko Commander;3
+Cipher Pol;CP0;;Pirate;First Mate;3
+Cipher Pol;CP0;;Pirate;Swordsman;1
+
+# --- CIPHER POL / CP0 -> REVOLUTIONARY ARMY ---
+Cipher Pol;CP0;;Revolutionary Army;Army Commander;5
+Cipher Pol;CP0;;Revolutionary Army;Chief of Staff;3
+Cipher Pol;CP0;;Revolutionary Army;Officer;2
+Cipher Pol;CP0;;Revolutionary Army;Leader;0.2
+
+# --- CIPHER POL / CP1 -> MARINE ---
+Cipher Pol;CP1;;Marine;Vice Admiral;4
+Cipher Pol;CP1;;Marine;Rear Admiral;4
+Cipher Pol;CP1;;Marine;Admiral;1
+
+# --- CIPHER POL / CP2 -> MARINE ---
+Cipher Pol;CP2;;Marine;Rear Admiral;5
+Cipher Pol;CP2;;Marine;Vice Admiral;3
+Cipher Pol;CP2;;Marine;Commodore;2
+
+# --- BOUNTY HUNTER / GUILD LEADER -> PIRATE ---
+Bounty Hunter;Guild Leader;;Pirate;Pirate Captain;5
+Bounty Hunter;Guild Leader;;Pirate;First Mate;3
+Bounty Hunter;Guild Leader;;Pirate;Yonko Commander;1
+Bounty Hunter;Guild Leader;;Pirate;Swordsman;1
+
+# --- MARINE / SHICHIBUKAI -> PIRATE ---
+Marine;Shichibukai;;Pirate;Pirate Captain;6
+Marine;Shichibukai;;Pirate;Yonko Commander;3
+Marine;Shichibukai;;Pirate;Yonko;0.5
+Marine;Shichibukai;;Pirate;First Mate;1
+
+# --- PIRATE / PET -> PIRATE ---
+Pirate;Pet;;Pirate;Aprentice;5
+Pirate;Pet;;Pirate;Navigator;2
+Pirate;Pet;;Pirate;Cook;2
+Pirate;Pet;;Pirate;Doctor;2
+
+# --- PIRATE / PET -> MARINE ---
+Pirate;Pet;;Marine;Seaman;5
+Pirate;Pet;;Marine;Choreboy;1
+
+# --- PIRATE / PET -> REVOLUTIONARY ARMY ---
+Pirate;Pet;;Revolutionary Army;Associate;5
+Pirate;Pet;;Revolutionary Army;Member;2
+
+# --- PIRATE / PET -> BOUNTY HUNTER ---
+Pirate;Pet;;Bounty Hunter;Guild Member;5
+Pirate;Pet;;Bounty Hunter;Individual;2
+
+# --- PIRATE / PET -> CIPHER POL ---
+Pirate;Pet;;Cipher Pol;CP9;5
+Pirate;Pet;;Cipher Pol;CP8;1
+
+# --- PIRATE / PET -> REVOLUTIONARY COUNTRY ---
+Pirate;Pet;;Revolutionary Country;Soldier;10
+
+# --- BOUNTY HUNTER / INDIVIDUAL -> PIRATE ---
+Bounty Hunter;Individual;;Pirate;Swordsman;3
+Bounty Hunter;Individual;;Pirate;Sniper;3
+Bounty Hunter;Individual;;Pirate;Martial Artist;3
+Bounty Hunter;Individual;;Pirate;Navigator;2
+Bounty Hunter;Individual;;Pirate;Cook;2
+Bounty Hunter;Individual;;Pirate;Doctor;2
+Bounty Hunter;Individual;;Pirate;Shipwright;2
+Bounty Hunter;Individual;;Pirate;Musician;2
+Bounty Hunter;Individual;;Pirate;First Mate;1
+Bounty Hunter;Individual;;Pirate;Pirate Captain;0.5
+
+# --- BOUNTY HUNTER / INDIVIDUAL -> MARINE ---
+Bounty Hunter;Individual;;Marine;Lieutenant;5
+Bounty Hunter;Individual;;Marine;Ensign;4
+Bounty Hunter;Individual;;Marine;Commander;3
+Bounty Hunter;Individual;;Marine;Petty Officer;2
+Bounty Hunter;Individual;;Marine;Captain;1
+
+# --- BOUNTY HUNTER / INDIVIDUAL -> REVOLUTIONARY ARMY ---
+Bounty Hunter;Individual;;Revolutionary Army;Member;5
+Bounty Hunter;Individual;;Revolutionary Army;Officer;3
+Bounty Hunter;Individual;;Revolutionary Army;Associate;2
+
+# --- BOUNTY HUNTER / INDIVIDUAL -> BOUNTY HUNTER ---
+Bounty Hunter;Individual;;Bounty Hunter;Individual;5
+Bounty Hunter;Individual;;Bounty Hunter;Guild Member;4
+Bounty Hunter;Individual;;Bounty Hunter;Guild Leader;1
+
+# --- BOUNTY HUNTER / INDIVIDUAL -> CIPHER POL ---
+Bounty Hunter;Individual;;Cipher Pol;CP5;3
+Bounty Hunter;Individual;;Cipher Pol;CP6;4
+Bounty Hunter;Individual;;Cipher Pol;CP7;4
+Bounty Hunter;Individual;;Cipher Pol;CP8;2
+
+# --- BOUNTY HUNTER / INDIVIDUAL -> WORLD NOBLES ---
+Bounty Hunter;Individual;;World Nobles;Soldier;7
+Bounty Hunter;Individual;;World Nobles;Noble Commander;2
+
+# --- BOUNTY HUNTER / INDIVIDUAL -> REVOLUTIONARY COUNTRY ---
+Bounty Hunter;Individual;;Revolutionary Country;Soldier;6
+Bounty Hunter;Individual;;Revolutionary Country;Noble Commander;3
+
+# --- WORLD NOBLES / CELESTIAL DRAGON -> GOVERNMENT ---
+World Nobles;Celestial Dragon;;Government;Holy Knights;10
+World Nobles;Celestial Dragon;;Government;Five Elders;0.1
+
+# --- WORLD NOBLES / CELESTIAL DRAGON -> PIRATE ---
+World Nobles;Celestial Dragon;;Pirate;Aprentice;5
+World Nobles;Celestial Dragon;;Pirate;Navigator;2
+World Nobles;Celestial Dragon;;Pirate;Cook;2
+
+# --- WORLD NOBLES / CELESTIAL DRAGON -> MARINE ---
+World Nobles;Celestial Dragon;;Marine;Seaman;5
+World Nobles;Celestial Dragon;;Marine;Ensign;1
+
+# --- WORLD NOBLES / CELESTIAL DRAGON -> REVOLUTIONARY ARMY ---
+World Nobles;Celestial Dragon;;Revolutionary Army;Associate;5
+World Nobles;Celestial Dragon;;Revolutionary Army;Member;2
+
+# --- WORLD NOBLES / CELESTIAL DRAGON -> BOUNTY HUNTER ---
+World Nobles;Celestial Dragon;;Bounty Hunter;Guild Member;5
+World Nobles;Celestial Dragon;;Bounty Hunter;Individual;2
+
+# --- WORLD NOBLES / CELESTIAL DRAGON -> CIPHER POL ---
+World Nobles;Celestial Dragon;;Cipher Pol;CP9;5
+World Nobles;Celestial Dragon;;Cipher Pol;CP8;1
+
+# --- WORLD NOBLES / CELESTIAL DRAGON -> REVOLUTIONARY COUNTRY ---
+World Nobles;Celestial Dragon;;Revolutionary Country;Soldier;10
+
+# --- WORLD NOBLES / KING/QUEEN -> REVOLUTIONARY COUNTRY ---
+World Nobles;King/Queen;;Revolutionary Country;King/Queen;7
+World Nobles;King/Queen;;Revolutionary Country;Noble Commander;2
+World Nobles;King/Queen;;Revolutionary Country;Soldier;1
+
+# --- WORLD NOBLES / PRINCE/PRINCESS -> REVOLUTIONARY COUNTRY ---
+World Nobles;Prince/Princess;;Revolutionary Country;Prince/Princess;7
+World Nobles;Prince/Princess;;Revolutionary Country;Noble Commander;2
+World Nobles;Prince/Princess;;Revolutionary Country;Soldier;1
+
+# --- WORLD NOBLES / NOBLE COMMANDER -> REVOLUTIONARY COUNTRY ---
+World Nobles;Noble Commander;;Revolutionary Country;Noble Commander;8
+World Nobles;Noble Commander;;Revolutionary Country;Soldier;2
+
+# --- WORLD NOBLES / SOLDIER -> REVOLUTIONARY COUNTRY ---
+World Nobles;Soldier;;Revolutionary Country;Soldier;10
+
+# --- REVOLUTIONARY COUNTRY / KING/QUEEN -> WORLD NOBLES ---
+Revolutionary Country;King/Queen;;World Nobles;King/Queen;7
+Revolutionary Country;King/Queen;;World Nobles;Noble Commander;2
+Revolutionary Country;King/Queen;;World Nobles;Soldier;1
+
+# --- REVOLUTIONARY COUNTRY / PRINCE/PRINCESS -> WORLD NOBLES ---
+Revolutionary Country;Prince/Princess;;World Nobles;Prince/Princess;7
+Revolutionary Country;Prince/Princess;;World Nobles;Noble Commander;2
+Revolutionary Country;Prince/Princess;;World Nobles;Soldier;1
+
+# --- REVOLUTIONARY COUNTRY / NOBLE COMMANDER -> WORLD NOBLES ---
+Revolutionary Country;Noble Commander;;World Nobles;Noble Commander;8
+Revolutionary Country;Noble Commander;;World Nobles;Soldier;2
+
+# --- REVOLUTIONARY COUNTRY / SOLDIER -> WORLD NOBLES ---
+Revolutionary Country;Soldier;;World Nobles;Soldier;10
+
+# --- MARINE / COMMANDER-IN-CHIEF -> GOVERNMENT ---
+Marine;Commander-in-chief;;Government;Holy Knights;7
+Marine;Commander-in-chief;;Government;Five Elders;1
+Marine;Commander-in-chief;;Government;King of the World;0.01
+
+# --- MARINE / FLEET ADMIRAL -> GOVERNMENT ---
+Marine;Fleet Admiral;;Government;Holy Knights;8
+Marine;Fleet Admiral;;Government;Five Elders;0.5
+
+# --- CIPHER POL / CP0 -> GOVERNMENT ---
+Cipher Pol;CP0;;Government;Holy Knights;10
+Cipher Pol;CP0;;Government;Five Elders;0.1
