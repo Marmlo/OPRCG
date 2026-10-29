@@ -268,43 +268,64 @@ function getRankTransferChoices(n) {
 // Rank (coluna weight de data/ranks.csv no 1st Year, data/rank-changes.csv nos timeskips) ----------------------------------------------------------------------------------
 
 
+
 function assignRank(n) {
   var p = periods[n];
-  var choices = ranksOf(p.alliance);
+  var previous = n > 1 ? periods[n - 1] : null;
 
-  if (n > 1) {
-    var previous = periods[n - 1];
+  // Only use ranks that actually exist and have a positive weight.
+  function validChoices(rows) {
+    return (rows || []).filter(function (r) {
+      return r.rank && weightOf(r) > 0;
+    });
+  }
 
+  var choices = validChoices(ranksOf(p.alliance));
+
+  if (previous) {
     var changedAlliance = !sameValue(
       previous.alliance,
       p.alliance
     );
 
     if (changedAlliance) {
+      var transfers = [];
 
-      // NEW: use the hybrid transfer system.
-      var transfers = getRankTransferChoices(n);
+      if (
+        DATA["rank-tiers"] &&
+        DATA["rank-transfers"] &&
+        RULES.rankTransfers
+      ) {
+        transfers = validChoices(getRankTransferChoices(n));
+      } else {
+        console.warn("Rank transfer data not loaded.");
+      }
 
       if (transfers.length) {
         choices = transfers;
       } else {
+        console.warn(
+          "No valid rank transfer:",
+          previous.alliance,
+          previous.rank,
+          "->",
+          p.alliance
+        );
 
-        // No valid transfer exists.
-        // Restore the previous organization.
+        // Cancel the invalid organization transfer.
         p.alliance = previous.alliance;
-        p.mainAlliance = allianceInfo(n).main_alliance || "";
+        p.mainAlliance =
+          allianceInfo(n).main_alliance || "";
 
         show("main-alliance", n, p.mainAlliance);
         show("alliance", n, organizationHtml(p.alliance));
 
-        choices = ranksOf(p.alliance);
         changedAlliance = false;
+        choices = validChoices(ranksOf(p.alliance));
       }
     }
 
     if (!changedAlliance) {
-
-      // ORIGINAL: normal progression in the same alliance.
       var changes = matchTransitionRule(
         RULES.rankChanges,
         {
@@ -314,24 +335,54 @@ function assignRank(n) {
         }
       );
 
-      if (changes.length) choices = changes;
+      var validChanges = validChoices(changes);
 
-      // Original timeskip jump mechanic.
-      var jump = choices.length &&
-        ranksOf(p.alliance).filter(function (r) {
-          return Math.random() <
-            num(r.timeskip_jump_chance);
-        })[0];
+      if (validChanges.length) {
+        choices = validChanges;
+      }
+
+      // Preserve the original timeskip jump mechanic.
+      var jump = ranksOf(p.alliance).filter(function (r) {
+        return Math.random() <
+          num(r.timeskip_jump_chance);
+      })[0];
 
       if (jump) {
-        choices = [{ rank: jump.rank }];
+        choices = [{ rank: jump.rank, weight: 1 }];
       }
     }
   }
 
+  // Final safety fallback: never leave the rank empty.
   p.rank = pickValue(choices, "rank");
+
+  if (!p.rank) {
+    console.warn(
+      "Empty rank detected:",
+      p.alliance,
+      "period",
+      n
+    );
+
+    var fallback = validChoices(ranksOf(p.alliance));
+
+    p.rank = pickValue(fallback, "rank") ||
+      (previous && sameValue(previous.alliance, p.alliance)
+        ? previous.rank
+        : "");
+  }
+
+  if (!p.rank) {
+    console.error(
+      "No valid rank available for",
+      p.alliance
+    );
+    p.rank = "Unknown";
+  }
+
   show("rank", n, p.rank);
 }
+
 
 
 
