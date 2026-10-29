@@ -205,28 +205,134 @@ p.alliance = pickValue(changes, "alliance") || before;
 }
 
 
+/**
+ * HYBRID RANK TRANSFER SYSTEM
+ *
+ * Only applies when a character changes alliance.
+ *
+ * Priority:
+ * 1. Specific previous alliance and rank
+ * 2. General previous tier
+ * 3. No valid transfer -> keep previous alliance
+ *
+ * Transfer weights are defined in rank-transfers.csv.
+ * Rank tiers are defined in rank-tiers.csv.
+ */
+
+function previousRankTier(alliance, rank) {
+  var row = DATA["rank-tiers"].find(function (r) {
+    return sameValue(r.alliance, alliance) &&
+           sameValue(r.rank, rank);
+  });
+
+  return row ? row.tier : "";
+}
+
+function getRankTransferChoices(n) {
+  if (n <= 1) return [];
+
+  var previous = periods[n - 1];
+  var current = periods[n];
+
+  if (sameValue(previous.alliance, current.alliance)) {
+    return [];
+  }
+
+  var tier = previousRankTier(
+    previous.alliance,
+    previous.rank
+  );
+
+  var choices = matchTransitionRule(
+    RULES.rankTransfers,
+    {
+      period: n,
+      previous_alliance: previous.alliance,
+      previous_rank: previous.rank,
+      previous_tier: tier,
+      alliance: current.alliance
+    }
+  );
+
+  // Only allow ranks that exist in the destination.
+  var validRanks = ranksOf(current.alliance);
+
+  return choices.filter(function (choice) {
+    return weightOf(choice) > 0 &&
+      validRanks.some(function (rank) {
+        return sameValue(rank.rank, choice.rank);
+      });
+  });
+}
+
 // Rank (coluna weight de data/ranks.csv no 1st Year, data/rank-changes.csv nos timeskips) ----------------------------------------------------------------------------------
+
 
 function assignRank(n) {
   var p = periods[n];
   var choices = ranksOf(p.alliance);
+
   if (n > 1) {
-    var changes = matchTransitionRule(
-  RULES.rankChanges,
-  {
-    period: n,
-    alliance: p.alliance,
-    previous_rank: periods[n - 1].rank
+    var previous = periods[n - 1];
+
+    var changedAlliance = !sameValue(
+      previous.alliance,
+      p.alliance
+    );
+
+    if (changedAlliance) {
+
+      // NEW: use the hybrid transfer system.
+      var transfers = getRankTransferChoices(n);
+
+      if (transfers.length) {
+        choices = transfers;
+      } else {
+
+        // No valid transfer exists.
+        // Restore the previous organization.
+        p.alliance = previous.alliance;
+        p.mainAlliance = allianceInfo(n).main_alliance || "";
+
+        show("main-alliance", n, p.mainAlliance);
+        show("alliance", n, organizationHtml(p.alliance));
+
+        choices = ranksOf(p.alliance);
+        changedAlliance = false;
+      }
+    }
+
+    if (!changedAlliance) {
+
+      // ORIGINAL: normal progression in the same alliance.
+      var changes = matchTransitionRule(
+        RULES.rankChanges,
+        {
+          period: n,
+          alliance: p.alliance,
+          previous_rank: previous.rank
+        }
+      );
+
+      if (changes.length) choices = changes;
+
+      // Original timeskip jump mechanic.
+      var jump = choices.length &&
+        ranksOf(p.alliance).filter(function (r) {
+          return Math.random() <
+            num(r.timeskip_jump_chance);
+        })[0];
+
+      if (jump) {
+        choices = [{ rank: jump.rank }];
+      }
+    }
   }
-);
-    if (changes.length) choices = changes;
-    // timeskip_jump_chance: chance de saltar diretamente para esse rank (ex.: Yonko), seja qual for o rank anterior
-    var jump = choices.length && ranksOf(p.alliance).filter(function (r) { return Math.random() < num(r.timeskip_jump_chance); })[0];
-    if (jump) choices = [{ rank: jump.rank }];
-  }
+
   p.rank = pickValue(choices, "rank");
   show("rank", n, p.rank);
 }
+
 
 
 // Fighting style (data/fighting-styles.csv) ----------------------------------------------------------------------------------------------------------------------------
