@@ -204,68 +204,69 @@ Marine;;Instructor;1
 # PIRATE
 # ==========================================================
 
+
 # --- PREVIOUS: YONKO ---
-Pirate;Yonko;Yonko;1
+Pirate;Yonko;Yonko;10
 
 # --- PREVIOUS: YONKO COMMANDER ---
-Pirate;Yonko Commander;Yonko;0.5
-Pirate;Yonko Commander;Yonko Commander;50
+Pirate;Yonko Commander;Yonko;0.15
+Pirate;Yonko Commander;Yonko Commander;10
 
 # --- PREVIOUS: PIRATE CAPTAIN ---
-Pirate;Pirate Captain;Yonko;1
-Pirate;Pirate Captain;Yonko Commander;2
+Pirate;Pirate Captain;Yonko;0.1
+Pirate;Pirate Captain;Yonko Commander;0.5
 Pirate;Pirate Captain;Pirate Captain;10
 
 # --- PREVIOUS: FIRST MATE ---
-Pirate;First Mate;Pirate Captain;1
-Pirate;First Mate;Yonko Commander;3
+Pirate;First Mate;Pirate Captain;0.5
+Pirate;First Mate;Yonko Commander;0.3
 Pirate;First Mate;First Mate;10
 
 # --- PREVIOUS: SWORDSMAN ---
-Pirate;Swordsman;Pirate Captain;1
-Pirate;Swordsman;Yonko Commander;0.5
-Pirate;Swordsman;First Mate;3
+Pirate;Swordsman;Pirate Captain;0.3
+Pirate;Swordsman;Yonko Commander;0.05
+Pirate;Swordsman;First Mate;0.8
 Pirate;Swordsman;Swordsman;10
 
 # --- PREVIOUS: SNIPER ---
-Pirate;Sniper;Pirate Captain;1
-Pirate;Sniper;Yonko Commander;0.5
-Pirate;Sniper;First Mate;2
-Pirate;Sniper;Sniper;15
+Pirate;Sniper;Pirate Captain;0.3
+Pirate;Sniper;Yonko Commander;0.05
+Pirate;Sniper;First Mate;0.8
+Pirate;Sniper;Sniper;10
 
 # --- PREVIOUS: MARTIAL ARTIST ---
-Pirate;Martial Artist;Pirate Captain;1
-Pirate;Martial Artist;First Mate;1
-Pirate;Martial Artist;Martial Artist;1
+Pirate;Martial Artist;Pirate Captain;0.2
+Pirate;Martial Artist;First Mate;0.5
+Pirate;Martial Artist;Martial Artist;10
 
 # --- PREVIOUS: NAVIGATOR ---
-Pirate;Navigator;Pirate Captain;1
-Pirate;Navigator;First Mate;1
-Pirate;Navigator;Navigator;1
+Pirate;Navigator;Pirate Captain;0.2
+Pirate;Navigator;First Mate;0.5
+Pirate;Navigator;Navigator;10
 
 # --- PREVIOUS: COOK ---
-Pirate;Cook;Pirate Captain;1
-Pirate;Cook;First Mate;1
-Pirate;Cook;Cook;1
+Pirate;Cook;Pirate Captain;0.2
+Pirate;Cook;First Mate;0.5
+Pirate;Cook;Cook;10
 
 # --- PREVIOUS: DOCTOR ---
-Pirate;Doctor;Pirate Captain;1
-Pirate;Doctor;First Mate;1
-Pirate;Doctor;Doctor;1
+Pirate;Doctor;Pirate Captain;0.2
+Pirate;Doctor;First Mate;0.5
+Pirate;Doctor;Doctor;10
 
 # --- PREVIOUS: SHIPWRIGHT ---
-Pirate;Shipwright;Pirate Captain;1
-Pirate;Shipwright;First Mate;1
-Pirate;Shipwright;Shipwright;1
+Pirate;Shipwright;Pirate Captain;0.2
+Pirate;Shipwright;First Mate;0.5
+Pirate;Shipwright;Shipwright;10
 
 # --- PREVIOUS: MUSICIAN ---
-Pirate;Musician;Pirate Captain;1
-Pirate;Musician;First Mate;1
-Pirate;Musician;Musician;1
+Pirate;Musician;Pirate Captain;0.2
+Pirate;Musician;First Mate;0.5
+Pirate;Musician;Musician;10
 
 # --- PREVIOUS: APRENTICE ---
-Pirate;Aprentice;Pirate Captain;1
-Pirate;Aprentice;First Mate;1
+Pirate;Aprentice;Pirate Captain;0.05
+Pirate;Aprentice;First Mate;0.1
 Pirate;Aprentice;Swordsman;1
 Pirate;Aprentice;Sniper;1
 Pirate;Aprentice;Martial Artist;1
@@ -274,12 +275,12 @@ Pirate;Aprentice;Cook;1
 Pirate;Aprentice;Doctor;1
 Pirate;Aprentice;Shipwright;1
 Pirate;Aprentice;Musician;1
-Pirate;Aprentice;Aprentice;1
+Pirate;Aprentice;Aprentice;3
 
 # --- PREVIOUS: PET ---
-Pirate;Pet;Pirate Captain;1
-Pirate;Pet;First Mate;1
-Pirate;Pet;Doctor;5
+Pirate;Pet;Pirate Captain;0
+Pirate;Pet;First Mate;0
+Pirate;Pet;Doctor;0.5
 Pirate;Pet;Pet;10
 
 # --- INITIAL / FALLBACK ---
@@ -316,67 +317,51 @@ Bounty Hunter;;Guild Member;1
 # ==========================================================
 
 # --- PREVIOUS: CP0 ---
-Cipher Pol;CP0;CP0;1
+Cipher Pol;CP0;CP0;10
 
 # --- PREVIOUS: CP1 ---
-Cipher Pol;CP1;CP0;1
-Cipher Pol;CP1;CP1;1
+Cipher Pol;CP1;CP0;0.3
+Cipher Pol;CP1;CP1;10
 
 # --- PREVIOUS: CP2 ---
-Cipher Pol;CP2;CP0;1
-Cipher Pol;CP2;CP1;1
-Cipher Pol;CP2;CP2;1
+Cipher Pol;CP2;CP0;0.05
+Cipher Pol;CP2;CP1;0.5
+Cipher Pol;CP2;CP2;10
 
 # --- PREVIOUS: CP3 ---
-Cipher Pol;CP3;CP0;1
-Cipher Pol;CP3;CP1;1
-Cipher Pol;CP3;CP2;1
-Cipher Pol;CP3;CP3;1
+Cipher Pol;CP3;CP1;0.1
+Cipher Pol;CP3;CP2;0.5
+Cipher Pol;CP3;CP3;10
 
 # --- PREVIOUS: CP4 ---
-Cipher Pol;CP4;CP0;1
-Cipher Pol;CP4;CP1;1
-Cipher Pol;CP4;CP2;1
-Cipher Pol;CP4;CP3;1
-Cipher Pol;CP4;CP4;1
+Cipher Pol;CP4;CP2;0.1
+Cipher Pol;CP4;CP3;0.5
+Cipher Pol;CP4;CP4;10
 
 # --- PREVIOUS: CP5 ---
-Cipher Pol;CP5;CP0;1
-Cipher Pol;CP5;CP1;1
-Cipher Pol;CP5;CP2;1
-Cipher Pol;CP5;CP3;1
-Cipher Pol;CP5;CP4;1
-Cipher Pol;CP5;CP5;1
+Cipher Pol;CP5;CP3;0.1
+Cipher Pol;CP5;CP4;0.5
+Cipher Pol;CP5;CP5;10
 
 # --- PREVIOUS: CP6 ---
-Cipher Pol;CP6;CP0;1
-Cipher Pol;CP6;CP1;1
-Cipher Pol;CP6;CP2;1
-Cipher Pol;CP6;CP3;1
-Cipher Pol;CP6;CP4;1
-Cipher Pol;CP6;CP5;1
-Cipher Pol;CP6;CP6;1
+Cipher Pol;CP6;CP4;0.1
+Cipher Pol;CP6;CP5;0.5
+Cipher Pol;CP6;CP6;10
 
 # --- PREVIOUS: CP7 ---
-Cipher Pol;CP7;CP0;1
-Cipher Pol;CP7;CP1;1
-Cipher Pol;CP7;CP2;1
-Cipher Pol;CP7;CP3;1
-Cipher Pol;CP7;CP4;1
-Cipher Pol;CP7;CP5;1
-Cipher Pol;CP7;CP6;1
-Cipher Pol;CP7;CP7;1
+Cipher Pol;CP7;CP5;0.1
+Cipher Pol;CP7;CP6;0.5
+Cipher Pol;CP7;CP7;10
 
 # --- PREVIOUS: CP8 ---
-Cipher Pol;CP8;CP0;1
-Cipher Pol;CP8;CP1;1
-Cipher Pol;CP8;CP2;1
-Cipher Pol;CP8;CP3;1
-Cipher Pol;CP8;CP4;1
-Cipher Pol;CP8;CP5;1
-Cipher Pol;CP8;CP6;1
-Cipher Pol;CP8;CP7;1
-Cipher Pol;CP8;CP8;1
+Cipher Pol;CP8;CP6;0.1
+Cipher Pol;CP8;CP7;0.5
+Cipher Pol;CP8;CP8;10
+
+# --- PREVIOUS: CP9 ---
+Cipher Pol;CP9;CP7;0.1
+Cipher Pol;CP9;CP8;0.5
+Cipher Pol;CP9;CP9;10
 
 # --- INITIAL / FALLBACK ---
 Cipher Pol;;CP0;0
@@ -396,15 +381,15 @@ Cipher Pol;;CP9;1
 # ==========================================================
 
 # --- PREVIOUS: KING OF THE WORLD ---
-Government;King of the World;King of the World;1
+Government;King of the World;King of the World;10
 
 # --- PREVIOUS: FIVE ELDERS ---
-Government;Five Elders;King of the World;0.1
-Government;Five Elders;Five Elders;1
+Government;Five Elders;King of the World;0.01
+Government;Five Elders;Five Elders;10
 
 # --- PREVIOUS: HOLY KNIGHTS ---
-Government;Holy Knights;Five Elders;0.1
-Government;Holy Knights;Holy Knights;1
+Government;Holy Knights;Five Elders;0.02
+Government;Holy Knights;Holy Knights;10
 
 # --- INITIAL / FALLBACK ---
 Government;;Holy Knights;1
