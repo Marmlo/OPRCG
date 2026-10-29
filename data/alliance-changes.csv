@@ -49,8 +49,18 @@ Government;;Pirate;0.05
 # ========================================
 # WORLD GOVERNMENT — WORLD NOBLES
 # ========================================
-World Nobles;;World Nobles;20
+
+# --- CELESTIAL DRAGON ---
+World Nobles;Celestial Dragon;World Nobles;20
 World Nobles;Celestial Dragon;Government;7
+World Nobles;Celestial Dragon;Revolutionary Army;1
+World Nobles;Celestial Dragon;Marine;3
+World Nobles;Celestial Dragon;Pirate;3
+World Nobles;Celestial Dragon;Bounty Hunter;1
+World Nobles;Celestial Dragon;Cipher Pol;2
+
+# --- OTHER WORLD NOBLES ---
+World Nobles;;World Nobles;20
 World Nobles;;Government;0
 World Nobles;;Revolutionary Army;1
 World Nobles;;Marine;3
