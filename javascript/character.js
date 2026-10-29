@@ -185,18 +185,12 @@ function generateAlliance(n) {
     p.alliance = pickValue(DATA.alliances, "alliance");
   } else {
     var before = periods[n - 1].alliance;
-var previousRank = periods[n - 1].rank;
-
-var changes = matchTransitionRule(
-  RULES.allianceChanges,
-  {
-    period: n,
-    previous_alliance: before,
-    previous_rank: previousRank
-  }
-);
-
-p.alliance = pickValue(changes, "alliance") || before;
+    var changes = matchTransitionRule(RULES.allianceChanges, {
+      period: n,
+      previous_alliance: before,
+      previous_rank: periods[n - 1].rank
+    });
+    p.alliance = pickValue(changes, "alliance") || before;
   }
   p.mainAlliance = allianceInfo(n).main_alliance || "";
   show("main-alliance", n, p.mainAlliance);
@@ -205,185 +199,96 @@ p.alliance = pickValue(changes, "alliance") || before;
 }
 
 
-/**
- * HYBRID RANK TRANSFER SYSTEM
- *
- * Only applies when a character changes alliance.
- *
- * Priority:
- * 1. Specific previous alliance and rank
- * 2. General previous tier
- * 3. No valid transfer -> keep previous alliance
- *
- * Transfer weights are defined in rank-transfers.csv.
- * Rank tiers are defined in rank-tiers.csv.
- */
-
-function previousRankTier(alliance, rank) {
-  var row = DATA["rank-tiers"].find(function (r) {
-    return sameValue(r.alliance, alliance) &&
-           sameValue(r.rank, rank);
-  });
-
-  return row ? row.tier : "";
-}
-
-function getRankTransferChoices(n) {
-  if (n <= 1) return [];
-
-  var previous = periods[n - 1];
-  var current = periods[n];
-
-  if (sameValue(previous.alliance, current.alliance)) {
-    return [];
-  }
-
-  var tier = previousRankTier(
-    previous.alliance,
-    previous.rank
-  );
-
-  var choices = matchTransitionRule(
-    RULES.rankTransfers,
-    {
-      period: n,
-      previous_alliance: previous.alliance,
-      previous_rank: previous.rank,
-      previous_tier: tier,
-      alliance: current.alliance
-    }
-  );
-
-  // Only allow ranks that exist in the destination.
-  var validRanks = ranksOf(current.alliance);
-
-  return choices.filter(function (choice) {
-    return weightOf(choice) > 0 &&
-      validRanks.some(function (rank) {
-        return sameValue(rank.rank, choice.rank);
-      });
-  });
-}
-
 // Rank (coluna weight de data/ranks.csv no 1st Year, data/rank-changes.csv nos timeskips) ----------------------------------------------------------------------------------
 
+// Find the previous rank's tier using both its organization and its rank name.
+function previousRankTier(alliance, rank) {
+  var rows = DATA["rank-tiers"] || [];
+  var row = rows.find(function (r) {
+    return sameValue(r.alliance, alliance) && sameValue(r.rank, rank);
+  });
+  return row ? String(row.tier || "").trim() : "";
+}
 
+// Match exact transfer exceptions first, otherwise the general tier matrix.
+// Restrict results to existing destination ranks (including inherited ranks).
+function getRankTransferChoices(n) {
+  if (n <= 1 || !RULES.rankTransfers) return [];
+  var before = periods[n - 1], now = periods[n];
+  if (sameValue(before.alliance, now.alliance)) return [];
+  var tier = previousRankTier(before.alliance, before.rank);
+  var rows = matchTransitionRule(RULES.rankTransfers, {
+    period: n,
+    previous_alliance: before.alliance,
+    previous_rank: before.rank,
+    previous_tier: tier,
+    alliance: now.alliance
+  });
+  var allowed = ranksOf(now.alliance);
+  return rows.filter(function (r) {
+    return !!r.rank && weightOf(r) > 0 && allowed.some(function (a) {
+      return sameValue(a.rank, r.rank);
+    });
+  });
+}
 
+// Intra-alliance progressions still use rank-changes.csv.
+// Only actual transfers use rank-transfers.csv, so timeskip jumps cannot
+// bypass the limits imposed by the transfer matrix.
 function assignRank(n) {
   var p = periods[n];
-  var previous = n > 1 ? periods[n - 1] : null;
+  var choices = ranksOf(p.alliance);
 
-  // Only use ranks that actually exist and have a positive weight.
-  function validChoices(rows) {
-    return (rows || []).filter(function (r) {
-      return r.rank && weightOf(r) > 0;
-    });
-  }
-
-  var choices = validChoices(ranksOf(p.alliance));
-
-  if (previous) {
-    var changedAlliance = !sameValue(
-      previous.alliance,
-      p.alliance
-    );
+  if (n > 1) {
+    var before = periods[n - 1];
+    var changedAlliance = !sameValue(before.alliance, p.alliance);
 
     if (changedAlliance) {
-      var transfers = [];
-
-      if (
-        DATA["rank-tiers"] &&
-        DATA["rank-transfers"] &&
-        RULES.rankTransfers
-      ) {
-        transfers = validChoices(getRankTransferChoices(n));
-      } else {
-        console.warn("Rank transfer data not loaded.");
-      }
-
+      var transfers = getRankTransferChoices(n);
       if (transfers.length) {
         choices = transfers;
       } else {
-        console.warn(
-          "No valid rank transfer:",
-          previous.alliance,
-          previous.rank,
-          "->",
-          p.alliance
-        );
-
-        // Cancel the invalid organization transfer.
-        p.alliance = previous.alliance;
-        p.mainAlliance =
-          allianceInfo(n).main_alliance || "";
-
+        // Never invent an invalid rank or leave the rank field empty.
+        // A transfer without matching rules is cancelled.
+        console.warn("No valid rank transfer; keeping previous organization:",
+          before.alliance, before.rank, "->", p.alliance);
+        p.alliance = before.alliance;
+        p.mainAlliance = allianceInfo(n).main_alliance || "";
         show("main-alliance", n, p.mainAlliance);
         show("alliance", n, organizationHtml(p.alliance));
-
+        choices = ranksOf(p.alliance);
         changedAlliance = false;
-        choices = validChoices(ranksOf(p.alliance));
       }
     }
 
     if (!changedAlliance) {
-      var changes = matchTransitionRule(
-        RULES.rankChanges,
-        {
-          period: n,
-          alliance: p.alliance,
-          previous_rank: previous.rank
-        }
-      );
-
-      var validChanges = validChoices(changes);
-
-      if (validChanges.length) {
-        choices = validChanges;
+      var changes = matchTransitionRule(RULES.rankChanges, {
+        period: n,
+        alliance: p.alliance,
+        previous_rank: before.rank
+      });
+      if (changes.some(function (r) { return !!r.rank && weightOf(r) > 0; })) {
+        choices = changes;
       }
-
-      // Preserve the original timeskip jump mechanic.
-      var jump = ranksOf(p.alliance).filter(function (r) {
-        return Math.random() <
-          num(r.timeskip_jump_chance);
+      // Preserve the original timeskip jump mechanism only for normal progression.
+      var jump = choices.length && ranksOf(p.alliance).filter(function (r) {
+        return Math.random() < num(r.timeskip_jump_chance);
       })[0];
-
-      if (jump) {
-        choices = [{ rank: jump.rank, weight: 1 }];
-      }
+      if (jump) choices = [{ rank: jump.rank, weight: 1 }];
     }
   }
 
-  // Final safety fallback: never leave the rank empty.
+  // A valid rank is guaranteed whenever ranks.csv contains ranks for the alliance.
   p.rank = pickValue(choices, "rank");
-
   if (!p.rank) {
-    console.warn(
-      "Empty rank detected:",
-      p.alliance,
-      "period",
-      n
-    );
-
-    var fallback = validChoices(ranksOf(p.alliance));
-
-    p.rank = pickValue(fallback, "rank") ||
-      (previous && sameValue(previous.alliance, p.alliance)
-        ? previous.rank
-        : "");
+    console.warn("Empty rank choice for", p.alliance, "in period", n);
+    p.rank = pickValue(ranksOf(p.alliance), "rank") ||
+      ((n > 1 && sameValue(p.alliance, periods[n - 1].alliance))
+        ? periods[n - 1].rank : "");
   }
-
-  if (!p.rank) {
-    console.error(
-      "No valid rank available for",
-      p.alliance
-    );
-    p.rank = "Unknown";
-  }
-
-  show("rank", n, p.rank);
+  if (!p.rank) console.error("No rank available in ranks.csv for", p.alliance);
+  show("rank", n, p.rank || "Unknown");
 }
-
-
 
 
 // Fighting style (data/fighting-styles.csv) ----------------------------------------------------------------------------------------------------------------------------
