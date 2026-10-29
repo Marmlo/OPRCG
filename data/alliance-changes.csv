@@ -1,72 +1,73 @@
-previous_alliance;alliance;weight
+
+previous_alliance;previous_rank;alliance;weight
 
 # ========================================
 # FREE — PIRATE
 # ========================================
-Pirate;Pirate;15
-Pirate;Revolutionary Army;1
-Pirate;Bounty Hunter;1
-Pirate;Marine;0.5
-Pirate;Revolutionary Country;0.5
+Pirate;;Pirate;15
+Pirate;;Revolutionary Army;1
+Pirate;;Bounty Hunter;1
+Pirate;;Marine;0.5
+Pirate;;Revolutionary Country;0.5
 
 # ========================================
 # FREE — BOUNTY HUNTER
 # ========================================
-Bounty Hunter;Bounty Hunter;8
-Bounty Hunter;Revolutionary Army;1
-Bounty Hunter;Pirate;1
-Bounty Hunter;Marine;1
-Bounty Hunter;Revolutionary Country;0.5
+Bounty Hunter;;Bounty Hunter;8
+Bounty Hunter;;Revolutionary Army;1
+Bounty Hunter;;Pirate;1
+Bounty Hunter;;Marine;1
+Bounty Hunter;;Revolutionary Country;0.5
 
 # ========================================
 # REVOLUTIONARIES — REVOLUTIONARY ARMY
 # ========================================
-Revolutionary Army;Revolutionary Army;10
-Revolutionary Army;Pirate;2
-Revolutionary Army;Bounty Hunter;0.5
-Revolutionary Army;Revolutionary Country;1
+Revolutionary Army;;Revolutionary Army;10
+Revolutionary Army;;Pirate;2
+Revolutionary Army;;Bounty Hunter;0.5
+Revolutionary Army;;Revolutionary Country;1
 
 # ========================================
 # REVOLUTIONARIES — REVOLUTIONARY COUNTRY
 # ========================================
-Revolutionary Country;Revolutionary Country;10
-Revolutionary Country;Revolutionary Army;4
-Revolutionary Country;Pirate;2
-Revolutionary Country;Bounty Hunter;1
-Revolutionary Country;Marine;0.5
+Revolutionary Country;;Revolutionary Country;10
+Revolutionary Country;;Revolutionary Army;4
+Revolutionary Country;;Pirate;2
+Revolutionary Country;;Bounty Hunter;1
+Revolutionary Country;;Marine;0.5
 
 # ========================================
 # WORLD GOVERNMENT — GOVERNMENT
 # ========================================
-Government;Government;20
-Government;World Nobles;0.5
-Government;Cipher Pol;0.5
-Government;Marine;0.2
-Government;Revolutionary Army;0.05
-Government;Pirate;0.05
+Government;;Government;20
+Government;;World Nobles;0.5
+Government;;Cipher Pol;0.5
+Government;;Marine;0.2
+Government;;Revolutionary Army;0.05
+Government;;Pirate;0.05
 
 # ========================================
 # WORLD GOVERNMENT — WORLD NOBLES
 # ========================================
-World Nobles;World Nobles;20
-World Nobles;Government;7
-World Nobles;Revolutionary Army;1
-World Nobles;Marine;3
-World Nobles;Pirate;3
-World Nobles;Bounty Hunter;1
-World Nobles;Cipher Pol;2
+World Nobles;;World Nobles;20
+World Nobles;;Government;7
+World Nobles;;Revolutionary Army;1
+World Nobles;;Marine;3
+World Nobles;;Pirate;3
+World Nobles;;Bounty Hunter;1
+World Nobles;;Cipher Pol;2
 
 # ========================================
 # WORLD GOVERNMENT — MARINE
 # ========================================
-Marine;Marine;16
-Marine;Revolutionary Army;1
-Marine;Pirate;1
-Marine;Bounty Hunter;1
-Marine;Cipher Pol;2
+Marine;;Marine;16
+Marine;;Revolutionary Army;1
+Marine;;Pirate;1
+Marine;;Bounty Hunter;1
+Marine;;Cipher Pol;2
 
 # ========================================
 # WORLD GOVERNMENT — CIPHER POL
 # ========================================
-Cipher Pol;Cipher Pol;4
-Cipher Pol;Marine;1
+Cipher Pol;;Cipher Pol;4
+Cipher Pol;;Marine;1
