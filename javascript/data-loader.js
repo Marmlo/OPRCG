@@ -10,8 +10,12 @@
  // Paramecia;Bara Bara no Mi;Body separation;1
 
 var DATA_FILES = [
-  "settings", "names", "genders", "races", "hybrids", "clones", "regions", "alliances", "alliance-changes", "ranks", "rank-changes",
-  "fighting-styles", "haki-chances", "haki-level-chances", "haki-levels", "devil-fruit-types", "devil-fruits", "feats", "feat-counts"
+  "settings", "names", "genders", "races", "hybrids",
+  "clones", "regions", "alliances", "alliance-changes",
+  "ranks", "rank-changes", "rank-tiers", "rank-transfers",
+  "fighting-styles", "haki-chances", "haki-level-chances",
+  "haki-levels", "devil-fruit-types", "devil-fruits",
+  "feats", "feat-counts"
 ];
 
 var DATA = {};          // nome do ficheiro -> linhas, ex: DATA.races = [{ race: "Human", weight: "10", ... }]
@@ -358,7 +362,7 @@ var dataReady = Promise.all(DATA_FILES.map(function (name) { return loadCSV("dat
 
   RULES.regions = buildRules(DATA.regions, ["alliance", "race"]);
   RULES.allianceChanges = buildRules(DATA["alliance-changes"], ["previous_alliance", "previous_rank"]);
-  RULES.rankChanges = buildRules(DATA["rank-changes"], ["alliance", "previous_rank"]);
+  RULES.rankTransfers = buildRules(DATA["rank-transfers"],["previous_alliance","previous_rank","previous_tier","alliance"]);
   RULES.fighting = buildRules(DATA["fighting-styles"], ["alliance", "rank", "race"]);
   RULES.haki = buildRules(DATA["haki-chances"], ["fighting", "rank", "previous_haki"]);
 
