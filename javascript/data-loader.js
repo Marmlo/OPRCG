@@ -357,7 +357,7 @@ var dataReady = Promise.all(DATA_FILES.map(function (name) { return loadCSV("dat
   inheritRows(DATA["rank-changes"], DATA.alliances);
 
   RULES.regions = buildRules(DATA.regions, ["alliance", "race"]);
-  RULES.allianceChanges = buildRules(DATA["alliance-changes"], ["previous_alliance"]);
+  RULES.allianceChanges = buildRules(DATA["alliance-changes"], ["previous_alliance", "previous_rank"]);
   RULES.rankChanges = buildRules(DATA["rank-changes"], ["alliance", "previous_rank"]);
   RULES.fighting = buildRules(DATA["fighting-styles"], ["alliance", "rank", "race"]);
   RULES.haki = buildRules(DATA["haki-chances"], ["fighting", "rank", "previous_haki"]);
@@ -412,3 +412,54 @@ var dataReady = Promise.all(DATA_FILES.map(function (name) { return loadCSV("dat
   console.error(e);
   alert("Could not load the data files. If you opened index.html directly, run it through a local server.");
 });
+
+// POR CONFIRMAR
+
+/**
+ * Matches transition rules by specificity.
+ * Used only for alliance and rank transitions.
+ *
+ * More conditions = higher priority.
+ * CSV order breaks ties.
+ * Weighted probabilities remain unchanged.
+ */
+
+function matchTransitionRule(groups, ctx) {
+  var best = null;
+  var bestScore = -1;
+
+  for (var i = 0; i < groups.length; i++) {
+    var group = groups[i];
+
+    if (
+      ctx.period &&
+      group.periods.indexOf(ctx.period) === -1
+    ) continue;
+
+    var conditions = Object.keys(group.when);
+
+    var matches = conditions.every(function (key) {
+      return sameValue(group.when[key], ctx[key]);
+    });
+
+    if (!matches) continue;
+
+    var score = conditions.length;
+
+    // An explicitly defined period counts as one condition.
+    if (
+      ctx.period &&
+      group.rows.length &&
+      String(group.rows[0].period || "").trim()
+    ) {
+      score++;
+    }
+
+    if (score > bestScore) {
+      best = group;
+      bestScore = score;
+    }
+  }
+
+  return best ? best.rows : [];
+}
