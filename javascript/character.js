@@ -185,7 +185,18 @@ function generateAlliance(n) {
     p.alliance = pickValue(DATA.alliances, "alliance");
   } else {
     var before = periods[n - 1].alliance;
-    p.alliance = pickValue(matchRule(RULES.allianceChanges, { previous_alliance: before }), "alliance") || before;
+var previousRank = periods[n - 1].rank;
+
+var changes = matchTransitionRule(
+  RULES.allianceChanges,
+  {
+    period: n,
+    previous_alliance: before,
+    previous_rank: previousRank
+  }
+);
+
+p.alliance = pickValue(changes, "alliance") || before;
   }
   p.mainAlliance = allianceInfo(n).main_alliance || "";
   show("main-alliance", n, p.mainAlliance);
@@ -200,7 +211,14 @@ function assignRank(n) {
   var p = periods[n];
   var choices = ranksOf(p.alliance);
   if (n > 1) {
-    var changes = matchRule(RULES.rankChanges, { alliance: p.alliance, previous_rank: periods[n - 1].rank });
+    var changes = matchTransitionRule(
+  RULES.rankChanges,
+  {
+    period: n,
+    alliance: p.alliance,
+    previous_rank: periods[n - 1].rank
+  }
+);
     if (changes.length) choices = changes;
     // timeskip_jump_chance: chance de saltar diretamente para esse rank (ex.: Yonko), seja qual for o rank anterior
     var jump = choices.length && ranksOf(p.alliance).filter(function (r) { return Math.random() < num(r.timeskip_jump_chance); })[0];
