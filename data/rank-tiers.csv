@@ -1,0 +1,127 @@
+alliance;rank;tier
+
+# Hierarchical equivalence
+# Special ranks use individual rules before tier fallback.
+
+# ========================================
+# REVOLUTIONARY ARMY
+# ========================================
+# --- L0 ---
+Revolutionary Army;Leader;L0
+# --- L1 ---
+Revolutionary Army;Chief of Staff;L1
+Revolutionary Army;Army Commander;L1
+# --- L2 ---
+Revolutionary Army;Officer;L2
+# --- L3 ---
+Revolutionary Army;Member;L3
+# --- L4 ---
+Revolutionary Army;Associate;L4
+
+# ========================================
+# MARINE
+# ========================================
+# --- L0 ---
+Marine;Commander-in-chief;L0
+Marine;Fleet Admiral;L0
+# --- L1 ---
+Marine;Admiral;L1
+Marine;Vice Admiral;L1
+Marine;Inspector General;L1
+Marine;Instructor;L1
+Marine;Shichibukai;L1
+# --- L2 ---
+Marine;Rear Admiral;L2
+Marine;Commodore;L2
+Marine;Captain;L2
+Marine;Commander;L2
+# --- L3 ---
+Marine;Lieutenant;L3
+Marine;Ensign;L3
+Marine;Petty Officer;L3
+# --- L4 ---
+Marine;Seaman;L4
+Marine;Choreboy;L4
+
+# ========================================
+# PIRATE
+# ========================================
+# --- L0 ---
+Pirate;Yonko;L0
+# --- L1 ---
+Pirate;Yonko Commander;L1
+# --- L2 ---
+Pirate;Pirate Captain;L2
+Pirate;First Mate;L2
+# --- L3 ---
+Pirate;Swordsman;L3
+Pirate;Sniper;L3
+Pirate;Martial Artist;L3
+Pirate;Navigator;L3
+Pirate;Cook;L3
+Pirate;Doctor;L3
+Pirate;Shipwright;L3
+Pirate;Musician;L3
+# --- L4 ---
+Pirate;Aprentice;L4
+# --- SPECIAL ---
+Pirate;Pet;SPECIAL
+
+# ========================================
+# BOUNTY HUNTER
+# ========================================
+# --- L1 ---
+Bounty Hunter;Guild Leader;L1
+# --- L3 ---
+Bounty Hunter;Guild Member;L3
+# --- SPECIAL ---
+Bounty Hunter;Individual;SPECIAL
+
+# ========================================
+# CIPHER POL
+# ========================================
+# --- L1 ---
+Cipher Pol;CP0;L1
+Cipher Pol;CP1;L1
+Cipher Pol;CP2;L1
+# --- L2 ---
+Cipher Pol;CP3;L2
+Cipher Pol;CP4;L2
+Cipher Pol;CP5;L2
+# --- L3 ---
+Cipher Pol;CP6;L3
+Cipher Pol;CP7;L3
+# --- L4 ---
+Cipher Pol;CP8;L4
+Cipher Pol;CP9;L4
+
+# ========================================
+# GOVERNMENT
+# ========================================
+# --- L0 ---
+Government;King of the World;L0
+Government;Five Elders;L0
+# --- L1 ---
+Government;Holy Knights;L1
+
+# ========================================
+# WORLD NOBLES
+# ========================================
+# --- SPECIAL ---
+World Nobles;Celestial Dragon;SPECIAL
+# --- L2 ---
+World Nobles;King/Queen;L2
+World Nobles;Prince/Princess;L2
+World Nobles;Noble Commander;L2
+# --- L3 ---
+World Nobles;Soldier;L3
+
+# ========================================
+# REVOLUTIONARY COUNTRY
+# ========================================
+# --- L2 ---
+Revolutionary Country;King/Queen;L2
+Revolutionary Country;Prince/Princess;L2
+Revolutionary Country;Noble Commander;L2
+# --- L3 ---
+Revolutionary Country;Soldier;L3
