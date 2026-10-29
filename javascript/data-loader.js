@@ -1,5 +1,4 @@
-
- // Data files --------------------------------------------------------------------------------------------------------------------------------------------------------
+// Data files --------------------------------------------------------------------------------------------------------------------------------------------------------
  // Todos os valores e probabilidades do gerador vivem em data/*.csv (abrem no Excel). Ver data/README.md.
  // Para adicionar, alterar ou remover basta mexer nas linhas dos ficheiros, o código só aplica as regras.
  //
@@ -10,12 +9,8 @@
  // Paramecia;Bara Bara no Mi;Body separation;1
 
 var DATA_FILES = [
-  "settings", "names", "genders", "races", "hybrids",
-  "clones", "regions", "alliances", "alliance-changes",
-  "ranks", "rank-changes", "rank-tiers", "rank-transfers",
-  "fighting-styles", "haki-chances", "haki-level-chances",
-  "haki-levels", "devil-fruit-types", "devil-fruits",
-  "feats", "feat-counts"
+  "settings", "names", "genders", "races", "hybrids", "clones", "regions", "alliances", "alliance-changes", "ranks", "rank-changes", "rank-tiers", "rank-transfers",
+  "fighting-styles", "haki-chances", "haki-level-chances", "haki-levels", "devil-fruit-types", "devil-fruits", "feats", "feat-counts"
 ];
 
 var DATA = {};          // nome do ficheiro -> linhas, ex: DATA.races = [{ race: "Human", weight: "10", ... }]
@@ -239,6 +234,22 @@ function matchRule(groups, ctx) {
   return [];
 }
 
+// Matching by specificity ONLY for organization/rank transitions.
+// More conditions win; CSV order resolves equal specificity.
+// The original matchRule() is deliberately unchanged for other features.
+function matchTransitionRule(groups, ctx) {
+  var best = null, bestScore = -1;
+  (groups || []).forEach(function (g) {
+    if (ctx.period && g.periods.indexOf(ctx.period) === -1) return;
+    var keys = Object.keys(g.when);
+    if (!keys.every(function (key) { return sameValue(g.when[key], ctx[key]); })) return;
+    var score = keys.length;
+    if (ctx.period && g.rows.length && String(g.rows[0].period || "").trim()) score++;
+    if (score > bestScore) { best = g; bestScore = score; }
+  });
+  return best ? best.rows : [];
+}
+
 // Hierarquia ----------------------------------------------------------------------------------------------------------------------------------------------------------
 // Cada alliance (organização) tem uma main_alliance (afiliação principal) em data/alliances.csv, ex.: Government -> World Government.
 // Uma alliance com ranks_from (ex.: Revolutionary Country) usa os ranks e os rank-changes de outra alliance, sem os ranks_exclude
@@ -362,7 +373,8 @@ var dataReady = Promise.all(DATA_FILES.map(function (name) { return loadCSV("dat
 
   RULES.regions = buildRules(DATA.regions, ["alliance", "race"]);
   RULES.allianceChanges = buildRules(DATA["alliance-changes"], ["previous_alliance", "previous_rank"]);
-  RULES.rankTransfers = buildRules(DATA["rank-transfers"],["previous_alliance","previous_rank","previous_tier","alliance"]);
+  RULES.rankChanges = buildRules(DATA["rank-changes"], ["alliance", "previous_rank"]);
+  RULES.rankTransfers = buildRules(DATA["rank-transfers"], ["previous_alliance", "previous_rank", "previous_tier", "alliance"]);
   RULES.fighting = buildRules(DATA["fighting-styles"], ["alliance", "rank", "race"]);
   RULES.haki = buildRules(DATA["haki-chances"], ["fighting", "rank", "previous_haki"]);
 
@@ -416,54 +428,3 @@ var dataReady = Promise.all(DATA_FILES.map(function (name) { return loadCSV("dat
   console.error(e);
   alert("Could not load the data files. If you opened index.html directly, run it through a local server.");
 });
-
-// POR CONFIRMAR
-
-/**
- * Matches transition rules by specificity.
- * Used only for alliance and rank transitions.
- *
- * More conditions = higher priority.
- * CSV order breaks ties.
- * Weighted probabilities remain unchanged.
- */
-
-function matchTransitionRule(groups, ctx) {
-  var best = null;
-  var bestScore = -1;
-
-  for (var i = 0; i < groups.length; i++) {
-    var group = groups[i];
-
-    if (
-      ctx.period &&
-      group.periods.indexOf(ctx.period) === -1
-    ) continue;
-
-    var conditions = Object.keys(group.when);
-
-    var matches = conditions.every(function (key) {
-      return sameValue(group.when[key], ctx[key]);
-    });
-
-    if (!matches) continue;
-
-    var score = conditions.length;
-
-    // An explicitly defined period counts as one condition.
-    if (
-      ctx.period &&
-      group.rows.length &&
-      String(group.rows[0].period || "").trim()
-    ) {
-      score++;
-    }
-
-    if (score > bestScore) {
-      best = group;
-      bestScore = score;
-    }
-  }
-
-  return best ? best.rows : [];
-}
